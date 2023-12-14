@@ -11,6 +11,8 @@
 		21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E7A2B2B4522005FAC79 /* ContentView.swift */; };
 		21D67E7D2B2B4523005FAC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7C2B2B4523005FAC79 /* Assets.xcassets */; };
 		21D67E802B2B4523005FAC79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */; };
+		21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8B2B2B45CA005FAC79 /* LoginView.swift */; };
+		21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		21D67E7A2B2B4522005FAC79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		21D67E7C2B2B4523005FAC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		21D67E8B2B2B45CA005FAC79 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		21D67E772B2B4522005FAC79 /* Gymgraze */ = {
 			isa = PBXGroup;
 			children = (
+				21D67E872B2B458F005FAC79 /* Helpers */,
+				21D67E862B2B4587005FAC79 /* Views */,
 				21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */,
 				21D67E7A2B2B4522005FAC79 /* ContentView.swift */,
 				21D67E7C2B2B4523005FAC79 /* Assets.xcassets */,
@@ -65,6 +71,38 @@
 				21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		21D67E862B2B4587005FAC79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				21D67E892B2B45B4005FAC79 /* LoginView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		21D67E872B2B458F005FAC79 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		21D67E892B2B45B4005FAC79 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				21D67E8F2B2B45D8005FAC79 /* Components */,
+				21D67E8B2B2B45CA005FAC79 /* LoginView.swift */,
+				21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		21D67E8F2B2B45D8005FAC79 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +175,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */,
+				21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */,
 				21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
 			);
