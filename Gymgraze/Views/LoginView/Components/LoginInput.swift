@@ -23,12 +23,23 @@ struct LoginInput: View {
                 .padding(4)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .offset(y: 10)
-            TextField("", text: $data)
-                .padding()
-                .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 1)
-                )
+            
+            // add condition to make the input field secure for passwords
+            if title == "Password" {
+                SecureField("", text: $data)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+            } else {
+                TextField("", text: $data)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+            }
         }.padding([.leading, .trailing])
     }
 }
