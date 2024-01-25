@@ -8,11 +8,31 @@
 import SwiftUI
 
 struct LoginInput: View {
+    
+    // binding to store the data
+    @Binding var data: String
+    // the title to be displayed above the input field
+    var title: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack {
+            Text(title)
+                .font(.headline)
+                .foregroundStyle(.gray)
+                .padding(4)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .offset(y: 10)
+            TextField("", text: $data)
+                .padding()
+                .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth: 1)
+                )
+        }.padding()
     }
 }
 
 #Preview {
-    LoginInput()
+    LoginInput(data: .constant(""), title: "Email")
 }
