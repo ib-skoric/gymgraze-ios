@@ -13,8 +13,8 @@ struct LoginView: View {
     @State var password: String = ""
     
     var body: some View {
-        LoginInput(data: $email, title: "Email")
-        LoginInput(data: $password, title: "Password")
+        LoginInput(data: $email, title: "Email").accessibilityLabel("Email input field")
+        LoginInput(data: $password, title: "Password").accessibilityLabel("Password input field")
     }
 }
 
