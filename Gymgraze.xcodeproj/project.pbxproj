@@ -13,6 +13,7 @@
 		21D67E802B2B4523005FAC79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */; };
 		21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8B2B2B45CA005FAC79 /* LoginView.swift */; };
 		21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */; };
+		21EC13C62B62FB1B00CF0814 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C52B62FB1B00CF0814 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		21D67E8B2B2B45CA005FAC79 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		21EC13C52B62FB1B00CF0814 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,8 @@
 		21D67E772B2B4522005FAC79 /* Gymgraze */ = {
 			isa = PBXGroup;
 			children = (
+				21EC13C22B62FAE500CF0814 /* ViewModels */,
+				21EC13C12B62FACE00CF0814 /* Models */,
 				21D67E872B2B458F005FAC79 /* Helpers */,
 				21D67E862B2B4587005FAC79 /* Views */,
 				21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */,
@@ -93,7 +97,6 @@
 			children = (
 				21D67E8F2B2B45D8005FAC79 /* Components */,
 				21D67E8B2B2B45CA005FAC79 /* LoginView.swift */,
-				21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -103,6 +106,22 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		21EC13C12B62FACE00CF0814 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				21EC13C52B62FB1B00CF0814 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		21EC13C22B62FAE500CF0814 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +197,7 @@
 				21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */,
 				21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */,
 				21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */,
+				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
