@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @State var email: String = ""
+    @State var password: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        LoginInput(data: $email, title: "Email")
+        LoginInput(data: $password, title: "Password")
     }
 }
 

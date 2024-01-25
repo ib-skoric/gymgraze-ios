@@ -29,7 +29,7 @@ struct LoginInput: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray, lineWidth: 1)
                 )
-        }.padding()
+        }.padding([.leading, .trailing])
     }
 }
 
