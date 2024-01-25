@@ -14,6 +14,11 @@
 		21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8B2B2B45CA005FAC79 /* LoginView.swift */; };
 		21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */; };
 		21EC13C62B62FB1B00CF0814 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C52B62FB1B00CF0814 /* User.swift */; };
+		21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C72B62FD2A00CF0814 /* Goal.swift */; };
+		21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C92B62FD8900CF0814 /* Meal.swift */; };
+		21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13CB2B62FDF100CF0814 /* Food.swift */; };
+		21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */; };
+		21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +30,11 @@
 		21D67E8B2B2B45CA005FAC79 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		21EC13C52B62FB1B00CF0814 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		21EC13C72B62FD2A00CF0814 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		21EC13C92B62FD8900CF0814 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		21EC13CB2B62FDF100CF0814 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfo.swift; sourceTree = "<group>"; };
+		21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				21EC13C52B62FB1B00CF0814 /* User.swift */,
+				21EC13C72B62FD2A00CF0814 /* Goal.swift */,
+				21EC13C92B62FD8900CF0814 /* Meal.swift */,
+				21EC13CB2B62FDF100CF0814 /* Food.swift */,
+				21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */,
+				21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,10 +209,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */,
 				21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */,
+				21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */,
 				21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */,
+				21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */,
 				21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */,
 				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
+				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
+				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
