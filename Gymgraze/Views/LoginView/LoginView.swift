@@ -13,8 +13,19 @@ struct LoginView: View {
     @State var password: String = ""
     
     var body: some View {
-        LoginInput(data: $email, title: "Email").accessibilityLabel("Email input field")
-        LoginInput(data: $password, title: "Password").accessibilityLabel("Password input field")
+        VStack {
+            Image("logo").resizable().frame(width: 150, height: 150)
+            LoginInput(data: $email, title: "Email").accessibilityLabel("Email input field")
+            LoginInput(data: $password, title: "Password").accessibilityLabel("Password input field")
+            Button(action: {
+                print("Login button pressed")
+            }, label: {
+                Text("Login")
+            }).buttonStyle(LoginButton())
+                .padding()
+        }
+        
+        
     }
 }
 
