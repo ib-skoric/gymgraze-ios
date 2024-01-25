@@ -11,5 +11,5 @@ struct Goal: Codable {
     var kcal: Int
     var steps: Int
     var excercise: Int
-    var updated_at: Date
+    var updatedAt: Date
 }
