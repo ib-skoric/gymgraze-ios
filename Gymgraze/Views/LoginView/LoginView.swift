@@ -27,6 +27,7 @@ struct LoginView: View {
                 Text("Login")
             }).buttonStyle(LoginButton())
                 .padding()
+                .accessibilityLabel("Login button")
         }
     }
 }
