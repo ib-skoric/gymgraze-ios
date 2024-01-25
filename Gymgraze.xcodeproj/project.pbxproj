@@ -16,6 +16,7 @@
 		21EC13C62B62FB1B00CF0814 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C52B62FB1B00CF0814 /* User.swift */; };
 		21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C72B62FD2A00CF0814 /* Goal.swift */; };
 		21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C92B62FD8900CF0814 /* Meal.swift */; };
+		21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13CB2B62FDF100CF0814 /* Food.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		21EC13C52B62FB1B00CF0814 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		21EC13C72B62FD2A00CF0814 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		21EC13C92B62FD8900CF0814 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		21EC13CB2B62FDF100CF0814 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				21EC13C52B62FB1B00CF0814 /* User.swift */,
 				21EC13C72B62FD2A00CF0814 /* Goal.swift */,
 				21EC13C92B62FD8900CF0814 /* Meal.swift */,
+				21EC13CB2B62FDF100CF0814 /* Food.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */,
 				21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */,
 				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
+				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
 				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
 			);
