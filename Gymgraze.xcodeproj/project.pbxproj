@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21612DCB2B68E8FC00BF7740 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21612DCA2B68E8FC00BF7740 /* WebService.swift */; };
 		21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */; };
 		21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E7A2B2B4522005FAC79 /* ContentView.swift */; };
 		21D67E7D2B2B4523005FAC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7C2B2B4523005FAC79 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21612DCA2B68E8FC00BF7740 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		21D67E752B2B4522005FAC79 /* Gymgraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gymgraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymgrazeApp.swift; sourceTree = "<group>"; };
 		21D67E7A2B2B4522005FAC79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		21D67E872B2B458F005FAC79 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				21612DCA2B68E8FC00BF7740 /* WebService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21612DCB2B68E8FC00BF7740 /* WebService.swift in Sources */,
 				21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */,
 				21EC13D42B6306A400CF0814 /* LoginButton.swift in Sources */,
 				21EC13D22B63003900CF0814 /* LoginInput.swift in Sources */,
