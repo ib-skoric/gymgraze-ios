@@ -17,6 +17,7 @@ struct LoginButton: ButtonStyle {
                 .padding([.leading, .trailing])
                 // give it rounded corners and a gradient border
                 .background(
+                    // check if button is disabled
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom), lineWidth: 1)
                 )

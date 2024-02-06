@@ -32,8 +32,10 @@ struct LoginInput: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-            } else {
+            } else if (title == "Email") {
                 TextField("", text: $data)
+                    .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
                     .padding()
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)

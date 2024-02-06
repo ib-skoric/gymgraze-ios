@@ -13,6 +13,10 @@ struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
     
+    var isSignInButtonDisabled: Bool {
+        return email.isEmpty || password.isEmpty
+    }
+    
     @StateObject private var loginVM = LoginViewModel()
     
     var body: some View {
@@ -32,6 +36,7 @@ struct LoginView: View {
             }).buttonStyle(LoginButton())
                 .padding()
                 .accessibilityLabel("Login button")
+                .disabled(isSignInButtonDisabled)
         }
         .alert(isPresented: $loginVM.authenticationError) {
             Alert(title: Text("Authentication Error"), message: Text("Invalid username or password"), dismissButton: .default(Text("OK")))
