@@ -15,7 +15,7 @@ struct GymgrazeApp: App {
         WindowGroup {
             // check if token exists
             if getToken() != nil {
-                ContentView()
+                MainView()
             } else {
                 LoginView()
             }
