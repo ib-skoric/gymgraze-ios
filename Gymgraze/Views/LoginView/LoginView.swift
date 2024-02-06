@@ -16,6 +16,7 @@ struct LoginView: View {
     @StateObject private var loginVM = LoginViewModel()
     
     var body: some View {
+        
         VStack {
             // add the logo
             Image("logo").resizable().frame(width: 150, height: 150)
@@ -31,6 +32,9 @@ struct LoginView: View {
             }).buttonStyle(LoginButton())
                 .padding()
                 .accessibilityLabel("Login button")
+        }
+        .alert(isPresented: $loginVM.authenticationError) {
+            Alert(title: Text("Authentication Error"), message: Text("Invalid username or password"), dismissButton: .default(Text("OK")))
         }
     }
 }
