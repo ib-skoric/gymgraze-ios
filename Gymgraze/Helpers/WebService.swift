@@ -7,20 +7,20 @@
 
 import Foundation
 
-// enum used for handlign different authentication errors
+/// enumeration used for handlign different authentication errors
 enum AuthenticationError: Error {
     case invalidCredentials
     case invalidURL
     case custom(errorMessage: String)
 }
 
-// struct used for encoding login request
+/// structure used for encoding login request
 struct LoginBody: Codable {
     var username: String
     var password: String
 }
 
-// struct used for decoding login response
+/// structure used for decoding login response
 struct LoginResponse: Codable {
     var token: String?
 }
@@ -31,17 +31,17 @@ class WebService {
     ///   - username: user's username
     ///   - password: password
     ///   - completion: completion to be called after `login` finishes it's work
-    func login(username: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+    func authenticate(username: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         
         // construct the URL
-        guard let url = URL(string: "https://something.com/login") else {
+        guard let url = URL(string: "http://localhost:3000/authenticate") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(AuthenticationError.invalidURL) as Result<String, AuthenticationError>)
             return
         }
         
-        // construct the body
-        let body = LoginBody(username: "superuser", password: "coolbeans")
+        /// construct the body
+        let body = LoginBody(username: username, password: password)
         
         // create the request and set it's properties
         var request = URLRequest(url: url)
