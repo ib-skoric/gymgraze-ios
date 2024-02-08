@@ -40,11 +40,18 @@ struct InputField: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.gray, lineWidth: 1)
                         )
+                } else {
+                    TextField("", text: $data)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
                 }
             }.padding([.leading, .trailing])
     }
 }
 
 #Preview {
-    LoginInput(data: .constant(""), title: "Email")
+    InputField(data: .constant(""), title: "Email")
 }

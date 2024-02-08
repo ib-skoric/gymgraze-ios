@@ -22,7 +22,7 @@
 		21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */; };
 		21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */; };
 		21EC13D22B63003900CF0814 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13D12B63003900CF0814 /* InputField.swift */; };
-		21EC13D42B6306A400CF0814 /* LoginButtonCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13D32B6306A400CF0814 /* LoginButtonCTA.swift */; };
+		21EC13D42B6306A400CF0814 /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13D32B6306A400CF0814 /* CTAButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +42,7 @@
 		21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfo.swift; sourceTree = "<group>"; };
 		21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
 		21EC13D12B63003900CF0814 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
-		21EC13D32B6306A400CF0814 /* LoginButtonCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonCTA.swift; sourceTree = "<group>"; };
+		21EC13D32B6306A400CF0814 /* CTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				21EC13D12B63003900CF0814 /* InputField.swift */,
-				21EC13D32B6306A400CF0814 /* LoginButtonCTA.swift */,
+				21EC13D32B6306A400CF0814 /* CTAButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -231,7 +231,7 @@
 			files = (
 				21612DCB2B68E8FC00BF7740 /* WebService.swift in Sources */,
 				21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */,
-				21EC13D42B6306A400CF0814 /* LoginButtonCTA.swift in Sources */,
+				21EC13D42B6306A400CF0814 /* CTAButton.swift in Sources */,
 				21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
 				21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */,

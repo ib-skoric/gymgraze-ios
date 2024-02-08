@@ -32,7 +32,7 @@ struct LoginView: View {
                         loginVM.authenticate()
                     }, label: {
                         Text("Login")
-                    }).buttonStyle(LoginButtonCTA())
+                    }).buttonStyle(CTAButton())
                         .padding()
                         .accessibilityLabel("Login button")
                 }
