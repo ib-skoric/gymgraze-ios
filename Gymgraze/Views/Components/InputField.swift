@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginInput: View {
+struct InputField: View {
     
     // binding to store the data
     @Binding var data: String

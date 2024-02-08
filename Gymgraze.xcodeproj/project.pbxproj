@@ -14,14 +14,15 @@
 		21D67E802B2B4523005FAC79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */; };
 		21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8B2B2B45CA005FAC79 /* LoginView.swift */; };
 		21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */; };
+		21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */; };
 		21EC13C62B62FB1B00CF0814 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C52B62FB1B00CF0814 /* User.swift */; };
 		21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C72B62FD2A00CF0814 /* Goal.swift */; };
 		21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C92B62FD8900CF0814 /* Meal.swift */; };
 		21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13CB2B62FDF100CF0814 /* Food.swift */; };
 		21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */; };
 		21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */; };
-		21EC13D22B63003900CF0814 /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13D12B63003900CF0814 /* LoginInput.swift */; };
-		21EC13D42B6306A400CF0814 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13D32B6306A400CF0814 /* LoginButton.swift */; };
+		21EC13D22B63003900CF0814 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13D12B63003900CF0814 /* InputField.swift */; };
+		21EC13D42B6306A400CF0814 /* LoginButtonCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13D32B6306A400CF0814 /* LoginButtonCTA.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,14 +34,15 @@
 		21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		21D67E8B2B2B45CA005FAC79 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		21EC13C52B62FB1B00CF0814 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		21EC13C72B62FD2A00CF0814 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		21EC13C92B62FD8900CF0814 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		21EC13CB2B62FDF100CF0814 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfo.swift; sourceTree = "<group>"; };
 		21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
-		21EC13D12B63003900CF0814 /* LoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
-		21EC13D32B6306A400CF0814 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		21EC13D12B63003900CF0814 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
+		21EC13D32B6306A400CF0814 /* LoginButtonCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonCTA.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,8 @@
 		21D67E862B2B4587005FAC79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				21D67E8F2B2B45D8005FAC79 /* Components */,
+				21E2B2682B74C7D8001BBBFA /* RegistrationView */,
 				21D67E892B2B45B4005FAC79 /* LoginView */,
 			);
 			path = Views;
@@ -112,7 +116,6 @@
 		21D67E892B2B45B4005FAC79 /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
-				21D67E8F2B2B45D8005FAC79 /* Components */,
 				21D67E8B2B2B45CA005FAC79 /* LoginView.swift */,
 			);
 			path = LoginView;
@@ -121,10 +124,18 @@
 		21D67E8F2B2B45D8005FAC79 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				21EC13D12B63003900CF0814 /* LoginInput.swift */,
-				21EC13D32B6306A400CF0814 /* LoginButton.swift */,
+				21EC13D12B63003900CF0814 /* InputField.swift */,
+				21EC13D32B6306A400CF0814 /* LoginButtonCTA.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		21E2B2682B74C7D8001BBBFA /* RegistrationView */ = {
+			isa = PBXGroup;
+			children = (
+				21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */,
+			);
+			path = RegistrationView;
 			sourceTree = "<group>";
 		};
 		21EC13C12B62FACE00CF0814 /* Models */ = {
@@ -220,8 +231,9 @@
 			files = (
 				21612DCB2B68E8FC00BF7740 /* WebService.swift in Sources */,
 				21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */,
-				21EC13D42B6306A400CF0814 /* LoginButton.swift in Sources */,
-				21EC13D22B63003900CF0814 /* LoginInput.swift in Sources */,
+				21EC13D42B6306A400CF0814 /* LoginButtonCTA.swift in Sources */,
+				21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */,
+				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
 				21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */,
 				21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */,
 				21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */,
