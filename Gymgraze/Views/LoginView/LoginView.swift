@@ -36,6 +36,10 @@ struct LoginView: View {
                         .padding()
                         .accessibilityLabel("Login button")
                 }
+                NavigationLink(destination: RegistrationView()) {
+                    Text("Don't have an account? Sign up here")
+                        .tint(.secondary)
+                }
                 .alert(isPresented: $loginVM.authenticationError) {
                     Alert(title: Text("Authentication Error"), message: Text("Invalid username or password"), dismissButton: .default(Text("OK")))
                 }
