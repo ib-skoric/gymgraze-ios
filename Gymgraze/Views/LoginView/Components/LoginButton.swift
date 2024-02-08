@@ -12,7 +12,7 @@ struct LoginButton: ButtonStyle {
             configuration.label
                 .frame(maxWidth: .infinity)
                 .padding()
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .cornerRadius(10)
                 .padding([.leading, .trailing])
                 // give it rounded corners and a gradient border
