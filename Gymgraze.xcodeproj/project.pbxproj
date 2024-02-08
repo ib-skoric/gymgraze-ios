@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21612DCB2B68E8FC00BF7740 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21612DCA2B68E8FC00BF7740 /* WebService.swift */; };
 		21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */; };
-		21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E7A2B2B4522005FAC79 /* ContentView.swift */; };
+		21D67E7B2B2B4522005FAC79 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E7A2B2B4522005FAC79 /* MainView.swift */; };
 		21D67E7D2B2B4523005FAC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7C2B2B4523005FAC79 /* Assets.xcassets */; };
 		21D67E802B2B4523005FAC79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */; };
 		21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8B2B2B45CA005FAC79 /* LoginView.swift */; };
@@ -24,9 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21612DCA2B68E8FC00BF7740 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		21D67E752B2B4522005FAC79 /* Gymgraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gymgraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymgrazeApp.swift; sourceTree = "<group>"; };
-		21D67E7A2B2B4522005FAC79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		21D67E7A2B2B4522005FAC79 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		21D67E7C2B2B4523005FAC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		21D67E8B2B2B45CA005FAC79 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -76,7 +78,7 @@
 				21D67E872B2B458F005FAC79 /* Helpers */,
 				21D67E862B2B4587005FAC79 /* Views */,
 				21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */,
-				21D67E7A2B2B4522005FAC79 /* ContentView.swift */,
+				21D67E7A2B2B4522005FAC79 /* MainView.swift */,
 				21D67E7C2B2B4523005FAC79 /* Assets.xcassets */,
 				21D67E7E2B2B4523005FAC79 /* Preview Content */,
 			);
@@ -102,6 +104,7 @@
 		21D67E872B2B458F005FAC79 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				21612DCA2B68E8FC00BF7740 /* WebService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21612DCB2B68E8FC00BF7740 /* WebService.swift in Sources */,
 				21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */,
 				21EC13D42B6306A400CF0814 /* LoginButton.swift in Sources */,
 				21EC13D22B63003900CF0814 /* LoginInput.swift in Sources */,
@@ -222,7 +226,7 @@
 				21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */,
 				21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */,
 				21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */,
-				21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */,
+				21D67E7B2B2B4522005FAC79 /* MainView.swift in Sources */,
 				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
 				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
 				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
@@ -357,6 +361,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gymgraze/Preview Content\"";
@@ -375,6 +380,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ibskoric.intercom.Gymgraze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -386,6 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gymgraze/Preview Content\"";
@@ -404,6 +411,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ibskoric.intercom.Gymgraze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
