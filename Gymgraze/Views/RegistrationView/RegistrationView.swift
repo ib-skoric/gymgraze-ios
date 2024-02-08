@@ -13,6 +13,7 @@ struct RegistrationView: View {
     @State var password: String = ""
     @State var name: String = ""
     @State var step: Int = 0
+    @State var age: String = ""
     
     var body: some View {
         VStack {
@@ -61,12 +62,46 @@ struct RegistrationView: View {
                 InputField(data: $name, title: "Name").accessibilityLabel("Name input field")
             }
             .transition(.push(from: .trailing))
+        } else if step == 3 {
+            VStack {
+                Text("What is your age?")
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                
+                InputField(data: $age, title: "Age").accessibilityLabel("Age input field")
+            }
+            .transition(.push(from: .trailing))
+        } else if step == 4 {
+            VStack {
+                Text("What is your current weight?")
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                
+                InputField(data: $age, title: "Weight").accessibilityLabel("Weight input field")
+            }
+            .transition(.push(from: .trailing))
+        } else if step == 5 {
+            VStack {
+                Text("What is your current height?")
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                
+                InputField(data: $age, title: "Height").accessibilityLabel("Height input field")
+            }
+            .transition(.push(from: .trailing))
+        } else {
+            VStack {
+                Text("Thank you for signing up!")
+                    .multilineTextAlignment(.center)
+                    .font(.headline)
+            }
+            .transition(.push(from: .trailing))
         }
         
         
         Spacer()
         
-        if step != 2 {
+        if step <= 4  {
             Button(action: {
                 print("Next button pressed for step \(step)")
                 withAnimation {
@@ -77,9 +112,12 @@ struct RegistrationView: View {
             }).buttonStyle(CTAButton())
                 .padding()
                 .accessibilityLabel("Next step button")
-        } else {
+        } else if step == 5 {
             Button(action: {
                 print("Sign up button pressed")
+                withAnimation {
+                    step += 1
+                }
             }, label: {
                 Text("Sign up!")
             }).buttonStyle(CTAButton())
