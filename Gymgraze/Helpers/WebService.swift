@@ -8,7 +8,7 @@
 import Foundation
 
 /// enumeration used for handlign different authentication errors
-enum AuthenticationError: Error {
+enum APIError: Error {
     case invalidCredentials
     case invalidURL
     case custom(errorMessage: String)
@@ -31,12 +31,12 @@ class WebService {
     ///   - username: user's username
     ///   - password: password
     ///   - completion: completion to be called after `login` finishes it's work
-    func authenticate(username: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+    func authenticate(username: String, password: String, completion: @escaping (Result<String, APIError>) -> Void) {
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/authenticate") else {
             // if it's not valid, throw a invalid URL error
-            completion(.failure(AuthenticationError.invalidURL) as Result<String, AuthenticationError>)
+            completion(.failure(APIError.invalidURL) as Result<String, APIError>)
             return
         }
         
@@ -56,21 +56,21 @@ class WebService {
             // check if any data was received from the server
             guard let data = data, error == nil else {
                 // return custom errro that there was no data received
-                completion(.failure(AuthenticationError.custom(errorMessage: "No data was received from the server") as AuthenticationError))
+                completion(.failure(APIError.custom(errorMessage: "No data was received from the server") as APIError))
                 return
             }
             
             // try decode the response
             guard let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data) else {
                 // raise invalid credentials error
-                completion(.failure(AuthenticationError.invalidCredentials) as Result<String, AuthenticationError>)
+                completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
                 return
             }
             
             // get the token from the response
             guard let token = loginResponse.token else {
                 // if it's nil, raise invalid credentials error
-                completion(.failure(AuthenticationError.invalidCredentials))
+                completion(.failure(APIError.invalidCredentials))
                 return
             }
             
@@ -81,12 +81,12 @@ class WebService {
         
     }
     
-    func register(registration: Registration, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+    func register(registration: Registration, completion: @escaping (Result<String, APIError>) -> Void) {
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/user") else {
             // if it's not valid, throw a invalid URL error
-            completion(.failure(AuthenticationError.invalidURL) as Result<String, AuthenticationError>)
+            completion(.failure(APIError.invalidURL) as Result<String, APIError>)
             return
         }
         
@@ -106,14 +106,14 @@ class WebService {
             // check if any data was received from the server
             guard let data = data, error == nil else {
                 // return custom errro that there was no data received
-                completion(.failure(AuthenticationError.custom(errorMessage: "No data was received from the server") as AuthenticationError))
+                completion(.failure(APIError.custom(errorMessage: "No data was received from the server") as APIError))
                 return
             }
             
             // try decode the response
             guard let registrationResponse = try? JSONDecoder().decode(User.self, from: data) else {
                 // raise invalid credentials error
-                completion(.failure(AuthenticationError.custom(errorMessage: "Something went wrong, please try again later") as AuthenticationError))
+                completion(.failure(APIError.custom(errorMessage: "Something went wrong, please try again later") as APIError))
                 return
             }
             
