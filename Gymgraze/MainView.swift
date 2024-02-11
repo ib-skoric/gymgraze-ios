@@ -14,8 +14,22 @@ struct MainView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+            Button(action: { removeToken() }) {
+                Text("Logout")
+            }
         }
         .padding()
+    }
+    
+    func removeToken() {
+        let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
+                                            kSecAttrAccount as String: "token"]
+                let status = SecItemDelete(query as CFDictionary)
+                if status == errSecSuccess {
+                    print("Token removed successfully")
+                } else {
+                    print("Failed to remove token")
+                }
     }
 }
 

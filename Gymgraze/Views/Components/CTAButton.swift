@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginButton: ButtonStyle {
+struct CTAButton: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
                 .frame(maxWidth: .infinity)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginInput: View {
+struct InputField: View {
     
     // binding to store the data
     @Binding var data: String
@@ -23,15 +23,17 @@ struct LoginInput: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .offset(y: 10)
                 
-                // add condition to make the input field secure for passwords
-                if title == "Password" {
+                // switch based on title
+                switch title {
+                    case "Password":
                     SecureField("", text: $data)
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.gray, lineWidth: 1)
                         )
-                } else if (title == "Email") {
+                    
+                    case "Email":
                     TextField("", text: $data)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
@@ -40,11 +42,29 @@ struct LoginInput: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.gray, lineWidth: 1)
                         )
+                    
+                case "Age", "Weight", "Height":
+                    TextField("", text: $data)
+                        .keyboardType(.numberPad)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                default:
+                    TextField("", text: $data)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
                 }
+                
+            
             }.padding([.leading, .trailing])
     }
 }
 
 #Preview {
-    LoginInput(data: .constant(""), title: "Email")
+    InputField(data: .constant(""), title: "Email")
 }
