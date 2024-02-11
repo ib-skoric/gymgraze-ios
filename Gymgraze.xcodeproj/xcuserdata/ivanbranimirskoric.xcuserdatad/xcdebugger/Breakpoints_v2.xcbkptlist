@@ -3,4 +3,149 @@
    uuid = "10C70F37-5ECA-4858-B217-8F2886F7CB0F"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "95AF7DEB-78D7-439F-8816-1A4995740B30"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gymgraze/Helpers/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "register(registration:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C03DC491-1009-4290-956A-1B927BB9A750"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gymgraze/Helpers/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "register(registration:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C03DC491-1009-4290-956A-1B927BB9A750 - fe273303be5ef084"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.WebService.register(registration: Gymgraze.Registration, completion: (Swift.Result&lt;Swift.String, Gymgraze.AuthenticationError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Gymgraze"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/Gymgraze/Gymgraze/Helpers/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  uuid = "C03DC491-1009-4290-956A-1B927BB9A750 - fe273303be5ef084"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.WebService.register(registration: Gymgraze.Registration, completion: (Swift.Result&lt;Swift.String, Gymgraze.AuthenticationError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Gymgraze"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/Gymgraze/Gymgraze/Helpers/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "264">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2FFA892A-5B00-435C-97F0-A2CC494FFA97"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gymgraze/Helpers/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "register(registration:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2FFA892A-5B00-435C-97F0-A2CC494FFA97 - fe273303be5ef652"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.WebService.register(registration: Gymgraze.Registration, completion: (Swift.Result&lt;Swift.String, Gymgraze.AuthenticationError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Gymgraze"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/Gymgraze/Gymgraze/Helpers/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "876">
+               </Location>
+               <Location
+                  uuid = "2FFA892A-5B00-435C-97F0-A2CC494FFA97 - fe273303be5ef652"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.WebService.register(registration: Gymgraze.Registration, completion: (Swift.Result&lt;Swift.String, Gymgraze.AuthenticationError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Gymgraze"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/Gymgraze/Gymgraze/Helpers/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "840">
+               </Location>
+               <Location
+                  uuid = "2FFA892A-5B00-435C-97F0-A2CC494FFA97 - fe273303be5ef652"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.WebService.register(registration: Gymgraze.Registration, completion: (Swift.Result&lt;Swift.String, Gymgraze.AuthenticationError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Gymgraze"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/Gymgraze/Gymgraze/Helpers/WebService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "872">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "04824121-B324-4E1F-B439-C6510CC6C2EB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gymgraze/Helpers/WebService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "register(registration:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

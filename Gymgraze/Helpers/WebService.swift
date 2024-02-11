@@ -80,4 +80,52 @@ class WebService {
         }.resume()
         
     }
+    
+    func register(registration: Registration, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+        
+        // construct the URL
+        guard let url = URL(string: "http://localhost:3000/user") else {
+            // if it's not valid, throw a invalid URL error
+            completion(.failure(AuthenticationError.invalidURL) as Result<String, AuthenticationError>)
+            return
+        }
+        
+        /// construct the body
+        let body = registration
+        
+        // create the request and set it's properties
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        // try to encode the body as JSON
+        request.httpBody = try? JSONEncoder().encode(body)
+        
+        // create the data task
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // check if any data was received from the server
+            guard let data = data, error == nil else {
+                // return custom errro that there was no data received
+                completion(.failure(AuthenticationError.custom(errorMessage: "No data was received from the server") as AuthenticationError))
+                return
+            }
+            
+            // try decode the response
+            guard let registrationResponse = try? JSONDecoder().decode(User.self, from: data) else {
+                // raise invalid credentials error
+                completion(.failure(AuthenticationError.custom(errorMessage: "Something went wrong, please try again later") as AuthenticationError))
+                return
+            }
+            
+            // see if the response contains a email of the new user
+            let email = registrationResponse.email
+            
+            // if everything went well, return the email
+            print(email)
+            
+            completion(.success(email))
+            
+        }.resume()
+        
+    }
 }

@@ -16,6 +16,8 @@ struct RegistrationView: View {
     @State var age: String = ""
     @State var weight: String = ""
     @State var height: String = ""
+    
+    @StateObject private var registrationVM = RegistrationViewModel()
 
     struct Step {
         let question: String
@@ -85,6 +87,17 @@ struct RegistrationView: View {
         } else {
             Button(action: {
                 print("Sign up button pressed")
+                
+                // convert string values to int
+                let ageInt = Int(age) ?? 0
+                let heightInt = Int(height) ?? 0
+                
+                // convert string values to double
+                let weightDouble = Double(weight) ?? 0.0
+                
+                let registartion = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
+                
+                registrationVM.register(registration: registartion)
                 withAnimation {
                     step += 1
                 }

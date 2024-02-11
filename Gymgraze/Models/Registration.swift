@@ -13,4 +13,5 @@ struct Registration: Codable {
     var name: String
     var age: Int
     var weight: Double
+    var height: Int
 }
