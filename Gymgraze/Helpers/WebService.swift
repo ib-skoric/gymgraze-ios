@@ -11,6 +11,7 @@ import Foundation
 enum APIError: Error {
     case invalidCredentials
     case invalidURL
+    case serverDown
     case custom(errorMessage: String)
 }
 
@@ -56,26 +57,38 @@ class WebService {
             // check if any data was received from the server
             guard let data = data, error == nil else {
                 // return custom errro that there was no data received
-                completion(.failure(APIError.custom(errorMessage: "No data was received from the server") as APIError))
+                completion(.failure(APIError.serverDown) as Result<String, APIError>)
                 return
             }
             
-            // try decode the response
-            guard let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data) else {
-                // raise invalid credentials error
-                completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
-                return
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 200:
+                    // try decode the response
+                    guard let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data) else {
+                        // raise invalid credentials error
+                        completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
+                        return
+                    }
+                    
+                    // get the token from the response
+                    guard let token = loginResponse.token else {
+                        // if it's nil, raise invalid credentials error
+                        completion(.failure(APIError.invalidCredentials))
+                        return
+                    }
+                    
+                    // if everything went well, return the token
+                    completion(.success(token))
+                case 401:
+                    // if the status code is 401, raise invalid credentials error
+                    completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
+                    
+                default:
+                    // if the status code is not 200 or 401, raise custom error with the status code
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<String, APIError>)
+                }
             }
-            
-            // get the token from the response
-            guard let token = loginResponse.token else {
-                // if it's nil, raise invalid credentials error
-                completion(.failure(APIError.invalidCredentials))
-                return
-            }
-            
-            // if everything went well, return the token
-            completion(.success(token))
             
         }.resume()
         
