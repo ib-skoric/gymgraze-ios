@@ -9,14 +9,14 @@ import Foundation
 
 class LoginViewModel: ObservableObject {
     
-    var username: String = ""
+    var email: String = ""
     var password: String = ""
     @Published var authenticated: Bool = false
     @Published var authenticationError: Bool = false
     
     func authenticate() {
         // use webservice to authenticate the user
-        WebService().authenticate(username: username, password: password) { (result) in
+        WebService().authenticate(email: email, password: password) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let token):

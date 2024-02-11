@@ -24,7 +24,7 @@ struct LoginView: View {
                     // add the logo
                     Image("logo").resizable().frame(width: 150, height: 150)
                     // add in two custom input fields
-                    InputField(data: $loginVM.username, title: "Email").accessibilityLabel("Email input field")
+                    InputField(data: $loginVM.email, title: "Email").accessibilityLabel("Email input field")
                     InputField(data: $loginVM.password, title: "Password").accessibilityLabel("Password input field")
                     // add in the login button
                     Button(action: {

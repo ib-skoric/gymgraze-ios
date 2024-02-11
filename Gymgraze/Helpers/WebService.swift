@@ -17,7 +17,7 @@ enum APIError: Error {
 
 /// structure used for encoding login request
 struct LoginBody: Codable {
-    var username: String
+    var email: String
     var password: String
 }
 
@@ -32,7 +32,7 @@ class WebService {
     ///   - username: user's username
     ///   - password: password
     ///   - completion: completion to be called after `login` finishes it's work
-    func authenticate(username: String, password: String, completion: @escaping (Result<String, APIError>) -> Void) {
+    func authenticate(email: String, password: String, completion: @escaping (Result<String, APIError>) -> Void) {
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/authenticate") else {
@@ -42,7 +42,7 @@ class WebService {
         }
         
         /// construct the body
-        let body = LoginBody(username: username, password: password)
+        let body = LoginBody(email: email, password: password)
         
         // create the request and set it's properties
         var request = URLRequest(url: url)
@@ -147,10 +147,6 @@ class WebService {
                     completion(.failure(APIError.custom(errorMessage: "Status code: \(httpStatus.statusCode)")) as Result<String, APIError>)
                 }
             }
-            
-            
-            
         }.resume()
-        
     }
 }
