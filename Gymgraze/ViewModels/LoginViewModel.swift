@@ -16,7 +16,7 @@ class LoginViewModel: ObservableObject {
     
     func authenticate() {
         // use webservice to authenticate the user
-        WebService().authenticate(email: email, password: password) { (result) in
+        AuthenticationService().authenticate(email: email, password: password) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let token):

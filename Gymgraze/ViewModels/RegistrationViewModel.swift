@@ -12,7 +12,7 @@ class RegistrationViewModel: ObservableObject {
     var registration: Registration?
     
     func register(registration: Registration) {
-        WebService().register(registration: registration) { (result) in
+        RegistrationService().register(registration: registration) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let email):
