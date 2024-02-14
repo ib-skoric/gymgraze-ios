@@ -114,14 +114,14 @@ class AuthenticationService {
                     // if the status code is 200
                 case 200:
                     // try decode the response
-                    guard let loginResponse = try? JSONDecoder().decode(Registration.self, from: data) else {
+                    guard let user = try? JSONDecoder().decode(User.self, from: data) else {
                         // raise invalid credentials error
                         completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
                         return
                     }
                     
                     // get the token from the response
-                    guard let emailConfirmed = loginResponse.confirmedAt else {
+                    guard let emailConfirmed = user.confirmedAt else {
                         // if it's nil, raise invalid credentials error
                         completion(.failure(APIError.invalidCredentials))
                         return
