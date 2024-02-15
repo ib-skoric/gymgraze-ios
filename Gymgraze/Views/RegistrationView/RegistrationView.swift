@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RegistrationView: View {
     
+    // ----- Variables -----
     @State var email: String = ""
     @State var password: String = ""
     @State var name: String = ""
@@ -18,14 +19,17 @@ struct RegistrationView: View {
     @State var height: String = ""
     @State var isLoading: Bool = false
     
+    // view model
     @StateObject private var registrationVM = RegistrationViewModel()
-
+    
+    // Object to store registration steps
     struct Step {
         let question: String
         let placeholder: String
         let binding: Binding<String>
     }
-
+    
+    // array to hold all steps
     var steps: [Step] {
         [
             Step(question: "What's a good email to contact you on?", placeholder: "Email", binding: $email),
@@ -38,6 +42,7 @@ struct RegistrationView: View {
     }
 
     var body: some View {
+        // Main Vstack
         VStack {
             Text("Join us!")
                 .multilineTextAlignment(.center)
@@ -53,6 +58,7 @@ struct RegistrationView: View {
         
         Spacer()
         
+        // check current step count
         if step < steps.count {
             VStack {
                 Text(steps[step].question)
@@ -64,6 +70,7 @@ struct RegistrationView: View {
             }
             .transition(.push(from: .trailing))
         } else {
+            // Vstack for the last step of the registration process
             VStack {
                 Text("That's all!\n\n Ready?\n Hit the button below and let's go! 🚀")
                     .multilineTextAlignment(.center)
@@ -74,6 +81,8 @@ struct RegistrationView: View {
         
         Spacer()
         
+        // conditionally display different buttons
+        // TODO: Refactor this to make it more efficient rather than duplicating code
         if step < steps.count {
             Button(action: {
                 print("Next button pressed for step \(step)")

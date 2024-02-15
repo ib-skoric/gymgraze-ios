@@ -31,7 +31,7 @@ struct MainView: View {
     }
     
     func getEmailStatus() {
-        AuthenticationService().checkEmailConfirmed() { (result) in
+        RegistrationService().checkEmailConfirmed() { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let emailConfirmed):

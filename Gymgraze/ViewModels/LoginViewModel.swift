@@ -7,13 +7,16 @@
 
 import Foundation
 
+/// ViewModel used for managing the login process and authentication 
 class LoginViewModel: ObservableObject {
     
+    // ----- Variables -----
     var email: String = ""
     var password: String = ""
     @Published var authenticated: Bool = false
     @Published var authenticationError: Bool = false
     
+    /// Method used for authenticating the user via Rails back end. It also sets the token in the keychain.
     func authenticate() {
         // use webservice to authenticate the user
         AuthenticationService().authenticate(email: email, password: password) { (result) in
@@ -38,6 +41,7 @@ class LoginViewModel: ObservableObject {
         }
     }
     
+    /// Method for logging the user out of the app and destroying the token from the keychain.
     func logout() {
         let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                             kSecAttrAccount as String: "token"]

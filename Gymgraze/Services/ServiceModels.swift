@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// enumeration used for handlign different authentication errors
+/// Enumeration used for handlign different authentication errors
 enum APIError: Error {
     case invalidCredentials
     case invalidURL
@@ -15,13 +15,13 @@ enum APIError: Error {
     case custom(errorMessage: String)
 }
 
-/// structure used for encoding login request
+/// Structure used for encoding login request
 struct LoginBody: Codable {
     var email: String
     var password: String
 }
 
-/// structure used for decoding login response
+/// Structure used for decoding login response
 struct LoginResponse: Codable {
     var token: String?
 }

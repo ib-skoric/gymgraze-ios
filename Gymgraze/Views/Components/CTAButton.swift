@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Default app Call to Action (CTA) button style
 struct CTAButton: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label

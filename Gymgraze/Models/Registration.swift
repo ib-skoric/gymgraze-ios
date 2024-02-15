@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Registration object model
 struct Registration: Codable {
     var email: String
     var password: String

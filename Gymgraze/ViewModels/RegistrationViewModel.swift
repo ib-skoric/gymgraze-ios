@@ -8,11 +8,15 @@
 import Foundation
 import SwiftUI
 
+/// ViewModel for managing the registration process of a new user
 class RegistrationViewModel: ObservableObject {
     
+    // ----- Variables -----
     @Published var isRegistrationSuccessful: Bool = false
     var registration: Registration?
     
+    /// Method used for registering a new user via Rails back end.
+    /// - Parameter registration: registration object containing the user's data
     func register(registration: Registration) {
         RegistrationService().register(registration: registration) { (result) in
             DispatchQueue.main.async {

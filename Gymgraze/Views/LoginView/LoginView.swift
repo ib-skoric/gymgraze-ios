@@ -13,6 +13,7 @@ struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
     
+    // environment object to store the login view model
     @EnvironmentObject var loginVM: LoginViewModel
     
     var body: some View {
