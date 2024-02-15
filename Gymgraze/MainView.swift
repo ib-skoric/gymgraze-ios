@@ -12,7 +12,7 @@ struct MainView: View {
     @EnvironmentObject var loginVM: LoginViewModel
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 Image(systemName: "globe")
                     .imageScale(.large)
@@ -27,9 +27,6 @@ struct MainView: View {
                     Text("Logout")
                 }
             }.padding()
-        }
-        .navigationDestination(isPresented: $loginVM.authenticated) {
-            LoginView()
         }
     }
     
