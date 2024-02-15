@@ -14,5 +14,5 @@ struct User: Codable {
     var age: Int
     var weight: String
     var height: Int
-    var confirmedAt: String?
+    var confirmedAt: String? = nil
 }

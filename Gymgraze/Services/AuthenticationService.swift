@@ -92,7 +92,7 @@ class AuthenticationService {
         
         // create the request and set it's properties
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-type")
         // pass in the token in the headers for this request
         request.addValue("Bearer \(token ?? "no value")", forHTTPHeaderField: "Authorization")
@@ -129,6 +129,7 @@ class AuthenticationService {
                     
                     // if everything went well, return the token
                     completion(.success(emailConfirmed))
+                    print(emailConfirmed)
                 case 401:
                     // if the status code is 401, raise invalid credentials error
                     completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)

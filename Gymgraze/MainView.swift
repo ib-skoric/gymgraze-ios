@@ -8,31 +8,50 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @EnvironmentObject var loginVM: LoginViewModel
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            Button(action: { removeToken() }) {
-                Text("Logout")
-            }
+        NavigationStack {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+                Button(action: { getEmailStatus() }) {
+                    Text("Check email status")
+                }
+                Button(action: {
+                    loginVM.logout()
+                }) {
+                    Text("Logout")
+                }
+            }.padding()
         }
-        .padding()
+        .navigationDestination(isPresented: $loginVM.authenticated) {
+            LoginView()
+        }
     }
     
-    func removeToken() {
-        let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
-                                            kSecAttrAccount as String: "token"]
-                let status = SecItemDelete(query as CFDictionary)
-                if status == errSecSuccess {
-                    print("Token removed successfully")
-                } else {
-                    print("Failed to remove token")
+    func getEmailStatus() {
+        AuthenticationService().checkEmailConfirmed() { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let emailConfirmed):
+                    if emailConfirmed != nil {
+                        print("Email confirmed")
+                    } else {
+                        print("Email not confirmed")
+                    }
+                case .failure(let error):
+                    print("Error checking email status: \(error)")
                 }
+            }
+        }
     }
 }
 
 #Preview {
-    MainView()
+        MainView()
 }
+

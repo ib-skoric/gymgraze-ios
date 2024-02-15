@@ -37,4 +37,16 @@ class LoginViewModel: ObservableObject {
             }
         }
     }
+    
+    func logout() {
+        let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
+                                            kSecAttrAccount as String: "token"]
+                let status = SecItemDelete(query as CFDictionary)
+                if status == errSecSuccess {
+                    print("Token removed successfully")
+                    self.authenticated = false
+                } else {
+                    print("Failed to remove token")
+                }
+    }
 }

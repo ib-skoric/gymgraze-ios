@@ -14,10 +14,10 @@ struct GymgrazeApp: App {
     var body: some Scene {
         WindowGroup {
             // check if token exists
-            if getToken() != nil {
-                MainView()
+            if loginVM.authenticated {
+                MainView().environmentObject(loginVM)
             } else {
-                LoginView()
+                LoginView().environmentObject(loginVM)
             }
         }
     }
