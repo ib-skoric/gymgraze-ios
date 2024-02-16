@@ -60,13 +60,13 @@ class LoginViewModel: ObservableObject {
     /// Method for logging the user out of the app and destroying the token from the keychain.
     func logout() {
         let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
-                                            kSecAttrAccount as String: "token"]
-                let status = SecItemDelete(query as CFDictionary)
-                if status == errSecSuccess {
-                    print("Token removed successfully")
-                    self.authenticated = false
-                } else {
-                    print("Failed to remove token")
-                }
+                                    kSecAttrAccount as String: "token"]
+        let status = SecItemDelete(query as CFDictionary)
+        if status == errSecSuccess {
+            print("Token removed successfully")
+            self.authenticated = false
+        } else {
+            print("Failed to remove token")
+        }
     }
 }

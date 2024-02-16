@@ -41,7 +41,7 @@ struct RegistrationView: View {
             Step(question: "What is your current height?", placeholder: "Height", binding: $height)
         ]
     }
-
+    
     var body: some View {
         // Main Vstack
         VStack {
@@ -96,50 +96,50 @@ struct RegistrationView: View {
                 .padding()
                 .accessibilityLabel("Next step button")
         } else {
-                Button(action: {
-                    isLoading = true
-                    print("Sign up button pressed")
-                    
-                    // convert string values to int
-                    let ageInt = Int(age) ?? 0
-                    let heightInt = Int(height) ?? 0
-                    
-                    // convert string values to double
-                    let weightDouble = Double(weight) ?? 0.0
-                    
-                    let registration = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
-                    
-                    // we call registration method which returnes a closure
-                    registrationVM.register(registration: registration) { (result) in
-                            DispatchQueue.main.async {
-                                switch result {
-                                 // we check if the closure is 'success'
-                                case .success(let email):
-                                    print("User with email: \(email) was registered correctly")
-                                    // Start authentication process after successful registration
-                                    loginVM.email = email
-                                    loginVM.password = password
-                                    loginVM.authenticate()
-                                    print("User has been authenticated successfully: \(loginVM.authenticated)")
-                                // else, if the registration has failed, return an error
-                                case .failure(let error):
-                                    print("Oops something went wrong \(error)")
-                                }
-                            }
+            Button(action: {
+                isLoading = true
+                print("Sign up button pressed")
+                
+                // convert string values to int
+                let ageInt = Int(age) ?? 0
+                let heightInt = Int(height) ?? 0
+                
+                // convert string values to double
+                let weightDouble = Double(weight) ?? 0.0
+                
+                let registration = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
+                
+                // we call registration method which returnes a closure
+                registrationVM.register(registration: registration) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                            // we check if the closure is 'success'
+                        case .success(let email):
+                            print("User with email: \(email) was registered correctly")
+                            // Start authentication process after successful registration
+                            loginVM.email = email
+                            loginVM.password = password
+                            loginVM.authenticate()
+                            print("User has been authenticated successfully: \(loginVM.authenticated)")
+                            // else, if the registration has failed, return an error
+                        case .failure(let error):
+                            print("Oops something went wrong \(error)")
                         }
-                }, label: {
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        Text("Sign up")
                     }
-                }).buttonStyle(CTAButton())
-                    .padding()
-                    .accessibilityLabel("Sign up button")
-                    .background(
-                        NavigationLink(destination: RegistrationConfirmEmailView(email: email).navigationBarBackButtonHidden(true), isActive: $registrationVM.isRegistrationSuccessful) {
-                            EmptyView()
-                        })
+                }
+            }, label: {
+                if isLoading {
+                    ProgressView()
+                } else {
+                    Text("Sign up")
+                }
+            }).buttonStyle(CTAButton())
+                .padding()
+                .accessibilityLabel("Sign up button")
+                .background(
+                    NavigationLink(destination: RegistrationConfirmEmailView(email: email).navigationBarBackButtonHidden(true), isActive: $registrationVM.isRegistrationSuccessful) {
+                        EmptyView()
+                    })
         }
     }
 }
