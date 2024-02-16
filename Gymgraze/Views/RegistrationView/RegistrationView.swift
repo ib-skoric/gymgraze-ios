@@ -109,9 +109,11 @@ struct RegistrationView: View {
                     
                     let registration = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
                     
+                    // we call registration method which returnes a closure
                     registrationVM.register(registration: registration) { (result) in
                             DispatchQueue.main.async {
                                 switch result {
+                                 // we check if the closure is 'success'
                                 case .success(let email):
                                     print("User with email: \(email) was registered correctly")
                                     // Start authentication process after successful registration
@@ -119,6 +121,7 @@ struct RegistrationView: View {
                                     loginVM.password = password
                                     loginVM.authenticate()
                                     print("User has been authenticated successfully: \(loginVM.authenticated)")
+                                // else, if the registration has failed, return an error
                                 case .failure(let error):
                                     print("Oops something went wrong \(error)")
                                 }

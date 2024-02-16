@@ -16,7 +16,7 @@ class LoginViewModel: ObservableObject {
     @Published var authenticated: Bool = false
     @Published var authenticationError: Bool = false
     
-    
+    /// Method used for getting and setting the token in the Keychain
     func getAndSetTokenInKeychain(completion: @escaping (Result<Bool, APIError>) -> Void) {
         // use webservice to authenticate the user
         AuthenticationService().authenticate(email: email, password: password) { (result) in
@@ -40,12 +40,15 @@ class LoginViewModel: ObservableObject {
         }
     }
     
-    /// Method used for authenticating the user via Rails back end. It also sets the token in the keychain.
+    /// Method used for setting the user as authenticated
     func authenticate() {
         DispatchQueue.main.async {
+            // getAndSetTokenInKeychain returns a closure which we check
             self.getAndSetTokenInKeychain() { result in
                 switch result {
+                    // if we're able to get and set the token successfully
                 case .success:
+                    // make the user authenticated
                     self.authenticated = true
                 case .failure:
                     self.authenticationError = true
