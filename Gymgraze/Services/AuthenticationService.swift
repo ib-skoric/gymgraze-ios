@@ -16,6 +16,8 @@ class AuthenticationService {
     ///   - completion: completion to be called after `login` finishes it's work
     func authenticate(email: String, password: String, completion: @escaping (Result<String, APIError>) -> Void) {
         
+        print("Attempting to authenticate with email: \(email) and password: \(password)")
+        
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/authenticate") else {
             // if it's not valid, throw a invalid URL error

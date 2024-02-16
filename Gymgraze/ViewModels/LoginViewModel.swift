@@ -16,8 +16,8 @@ class LoginViewModel: ObservableObject {
     @Published var authenticated: Bool = false
     @Published var authenticationError: Bool = false
     
-    /// Method used for authenticating the user via Rails back end. It also sets the token in the keychain.
-    func authenticate() {
+    
+    func getAndSetTokenInKeychain(completion: @escaping (Result<Bool, APIError>) -> Void) {
         // use webservice to authenticate the user
         AuthenticationService().authenticate(email: email, password: password) { (result) in
             DispatchQueue.main.async {
@@ -30,11 +30,24 @@ class LoginViewModel: ObservableObject {
                     let status = SecItemAdd(query as CFDictionary, nil)
                     if status == errSecSuccess {
                         print("Token saved successfully")
+                        completion(.success(true))
                     }
-                    self.authenticated = true
-                    self.authenticationError = false
                 case .failure(let error):
                     print("Error authenticating: \(error)")
+                    completion(.failure(APIError.invalidCredentials))
+                }
+            }
+        }
+    }
+    
+    /// Method used for authenticating the user via Rails back end. It also sets the token in the keychain.
+    func authenticate() {
+        DispatchQueue.main.async {
+            self.getAndSetTokenInKeychain() { result in
+                switch result {
+                case .success:
+                    self.authenticated = true
+                case .failure:
                     self.authenticationError = true
                 }
             }

@@ -57,9 +57,9 @@ class RegistrationService {
                     let email = registrationResponse.email
                     
                     // if everything went well, return the email
-                    print(email)
+                    print(email!)
                     
-                    completion(.success(email))
+                    completion(.success(email!))
                 default:
                     // if the status code is not 200 or 401, raise custom error with the status code
                     completion(.failure(APIError.custom(errorMessage: "Status code: \(httpStatus.statusCode)")) as Result<String, APIError>)
@@ -113,7 +113,7 @@ class RegistrationService {
                     }
                     
                     // get the token from the response
-                    guard let emailConfirmed = user.confirmedAt else {
+                    guard let emailConfirmed = user.confirmed_at else {
                         // if it's nil, raise invalid credentials error
                         completion(.failure(APIError.invalidCredentials))
                         return

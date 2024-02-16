@@ -9,10 +9,6 @@ import SwiftUI
 
 struct LoginView: View {
     
-    // add two state variables to store the email and password
-    @State var email: String = ""
-    @State var password: String = ""
-    
     // environment object to store the login view model
     @EnvironmentObject var loginVM: LoginViewModel
     
@@ -29,6 +25,7 @@ struct LoginView: View {
                     InputField(data: $loginVM.password, title: "Password").accessibilityLabel("Password input field")
                     // add in the login button
                     Button(action: {
+                        loginVM.logout()
                         print("Login button pressed")
                         loginVM.authenticate()
                     }, label: {

@@ -9,11 +9,11 @@ import Foundation
 
 /// User object model
 struct User: Codable {
-    var id: Int
-    var email: String
-    var name: String
-    var age: Int
-    var weight: String
-    var height: Int
-    var confirmedAt: String? = nil
+    var id: Int?
+    var email: String?
+    var name: String?
+    var age: Int?
+    var weight: String?
+    var height: Int?
+    var confirmed_at: String? = nil
 }

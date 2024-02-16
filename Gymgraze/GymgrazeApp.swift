@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct GymgrazeApp: App {
     @StateObject var loginVM = LoginViewModel()
+    @StateObject var userVM = UserViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -17,9 +18,11 @@ struct GymgrazeApp: App {
             if loginVM.authenticated {
                 MainView()
                     .environmentObject(loginVM)
+                    .environmentObject(userVM)
             } else {
                 LoginView()
                     .environmentObject(loginVM)
+                    .environmentObject(userVM)
             }
         }
     }

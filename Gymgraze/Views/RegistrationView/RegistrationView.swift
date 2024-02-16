@@ -21,6 +21,7 @@ struct RegistrationView: View {
     
     // view model
     @StateObject private var registrationVM = RegistrationViewModel()
+    @EnvironmentObject var loginVM: LoginViewModel
     
     // Object to store registration steps
     struct Step {
@@ -106,12 +107,23 @@ struct RegistrationView: View {
                     // convert string values to double
                     let weightDouble = Double(weight) ?? 0.0
                     
-                    let registartion = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
+                    let registration = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
                     
-                    registrationVM.register(registration: registartion)
-                    withAnimation {
-                        step += 1
-                    }
+                    registrationVM.register(registration: registration) { (result) in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(let email):
+                                    print("User with email: \(email) was registered correctly")
+                                    // Start authentication process after successful registration
+                                    loginVM.email = email
+                                    loginVM.password = password
+                                    loginVM.authenticate()
+                                    print("User has been authenticated successfully: \(loginVM.authenticated)")
+                                case .failure(let error):
+                                    print("Oops something went wrong \(error)")
+                                }
+                            }
+                        }
                 }, label: {
                     if isLoading {
                         ProgressView()
