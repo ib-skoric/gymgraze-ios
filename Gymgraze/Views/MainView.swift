@@ -12,20 +12,32 @@ struct MainView: View {
     @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
-                HStack {
-                    Text("Welcome, Ivan 👋")
+        NavigationStack {
+            HStack  {
+                Text("Welcome, Ivan 👋")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Spacer()
+                Button(action: {}, label: {
+                    Image(systemName: "gear")
                         .font(.title)
-                        .fontWeight(.bold)
-                    Spacer()
-                    Button(action: {}, label: {
-                        Image(systemName: "gear")
-                            .font(.title)
-                            .foregroundColor(.gray)
-                    })
+                        .foregroundColor(.gray)
+                })
+            }
+            .padding()
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    StatCard(type: "calories")
+                    StatCard(type: "steps")
+                    StatCard(type: "workouts")
                 }
-                .padding()
+                .frame(height: 200)
+            }
+            Spacer()
+            }
+        }
     }
-}
 
 #Preview {
     MainView()
