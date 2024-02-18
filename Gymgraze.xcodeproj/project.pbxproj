@@ -23,6 +23,7 @@
 		21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8B2B2B45CA005FAC79 /* LoginView.swift */; };
 		21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */; };
 		21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */; };
+		21E58F542B82594B00E31882 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E58F532B82594B00E31882 /* MainView.swift */; };
 		21EC13C62B62FB1B00CF0814 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C52B62FB1B00CF0814 /* User.swift */; };
 		21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C72B62FD2A00CF0814 /* Goal.swift */; };
 		21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EC13C92B62FD8900CF0814 /* Meal.swift */; };
@@ -51,6 +52,7 @@
 		21D67E8B2B2B45CA005FAC79 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		21E58F532B82594B00E31882 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		21EC13C52B62FB1B00CF0814 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		21EC13C72B62FD2A00CF0814 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		21EC13C92B62FD8900CF0814 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		21D67E862B2B4587005FAC79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				21E58F532B82594B00E31882 /* MainView.swift */,
 				21D67E8F2B2B45D8005FAC79 /* Components */,
 				21E2B2682B74C7D8001BBBFA /* RegistrationView */,
 				21D67E892B2B45B4005FAC79 /* LoginView */,
@@ -272,6 +275,7 @@
 				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
 				217C07E02B78F37F0014290A /* RegistrationViewModel.swift in Sources */,
 				215D54322B757B1C00A07029 /* Registration.swift in Sources */,
+				21E58F542B82594B00E31882 /* MainView.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
 				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
 				216604932B7D254A0097C73E /* ServiceModels.swift in Sources */,

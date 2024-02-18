@@ -16,7 +16,7 @@ struct GymgrazeApp: App {
         WindowGroup {
             // check if token exists
             if loginVM.authenticated {
-                ContentView()
+                MainView()
                     .environmentObject(loginVM)
                     .environmentObject(userVM)
             } else {

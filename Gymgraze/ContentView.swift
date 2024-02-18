@@ -12,21 +12,27 @@ struct ContentView: View {
     @EnvironmentObject var loginVM: LoginViewModel
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
-                Button(action: { print("Get email status button tapped") }) {
-                    Text("Check email status")
+        TabView {
+            MainView()
+                .tabItem {
+                    Label("Home", systemImage: "house")
                 }
-                Button(action: {
-                    loginVM.logout()
-                }) {
-                    Text("Logout")
+            MainView()
+                .tabItem {
+                    Label("Diary", systemImage: "book.pages.fill")
                 }
-            }.padding()
+            MainView()
+                .tabItem {
+                    Label("Quick add", systemImage: "plus.circle")
+                }
+            MainView()
+                .tabItem {
+                    Label("Trends", systemImage: "chart.bar.xaxis.ascending")
+                }
+            MainView()
+                .tabItem {
+                    Label("Profile", systemImage: "person")
+                }
         }
     }
 }
