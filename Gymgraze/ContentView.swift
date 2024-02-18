@@ -17,7 +17,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            MainView()
+            DiaryView()
                 .tabItem {
                     Label("Diary", systemImage: "book.pages.fill")
                 }
@@ -25,11 +25,11 @@ struct ContentView: View {
                 .tabItem {
                     Label("Quick add", systemImage: "plus.circle")
                 }
-            MainView()
+            TrendsView()
                 .tabItem {
                     Label("Trends", systemImage: "chart.bar.xaxis.ascending")
                 }
-            MainView()
+            ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }

@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  DiaryView.swift
 //  Gymgraze
 //
 //  Created by Ivan Branimir Skoric on 18/02/2024.
@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct MainView: View {
-    
+struct DiaryView: View {
     var body: some View {
-        Text("Hello World this is the Main view")
+        Text("This is the diary view")
     }
 }
 
 #Preview {
-    MainView()
+    DiaryView()
 }

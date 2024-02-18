@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  ProfileView.swift
 //  Gymgraze
 //
 //  Created by Ivan Branimir Skoric on 18/02/2024.
@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct MainView: View {
-    
+struct ProfileView: View {
     var body: some View {
-        Text("Hello World this is the Main view")
+        Text("This is the profile view")
     }
 }
 
 #Preview {
-    MainView()
+    ProfileView()
 }
