@@ -15,7 +15,7 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             if loginVM.authenticated {
-                MainView()
+                ContentView()
             } else {
                 VStack {
                     // add the logo

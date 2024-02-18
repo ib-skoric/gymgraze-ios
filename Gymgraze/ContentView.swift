@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct ContentView: View {
     
     @EnvironmentObject var loginVM: LoginViewModel
     
@@ -32,6 +32,6 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    ContentView()
 }
 
