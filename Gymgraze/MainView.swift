@@ -8,31 +8,30 @@
 import SwiftUI
 
 struct MainView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            Button(action: { removeToken() }) {
-                Text("Logout")
-            }
-        }
-        .padding()
-    }
     
-    func removeToken() {
-        let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
-                                            kSecAttrAccount as String: "token"]
-                let status = SecItemDelete(query as CFDictionary)
-                if status == errSecSuccess {
-                    print("Token removed successfully")
-                } else {
-                    print("Failed to remove token")
+    @EnvironmentObject var loginVM: LoginViewModel
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+                Button(action: { print("Get email status button tapped") }) {
+                    Text("Check email status")
                 }
+                Button(action: {
+                    loginVM.logout()
+                }) {
+                    Text("Logout")
+                }
+            }.padding()
+        }
     }
 }
 
 #Preview {
     MainView()
 }
+

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// NutritionalInfo object model
 struct NutritionalInfo: Codable {
     var id: String
     var kcal: Int

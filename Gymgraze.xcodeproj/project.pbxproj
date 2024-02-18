@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21021E742B7E56B500A1195A /* RegistrationConfirmEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21021E732B7E56B500A1195A /* RegistrationConfirmEmailView.swift */; };
 		215D54322B757B1C00A07029 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D54312B757B1C00A07029 /* Registration.swift */; };
-		21612DCB2B68E8FC00BF7740 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21612DCA2B68E8FC00BF7740 /* WebService.swift */; };
+		21612DCB2B68E8FC00BF7740 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21612DCA2B68E8FC00BF7740 /* RegistrationService.swift */; };
+		216604932B7D254A0097C73E /* ServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604922B7D254A0097C73E /* ServiceModels.swift */; };
+		216604952B7D25770097C73E /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604942B7D25770097C73E /* AuthenticationService.swift */; };
+		216604982B7D27F30097C73E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604972B7D27F30097C73E /* Helpers.swift */; };
+		21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */; };
+		21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5C2B7EA92A00314DFE /* UserService.swift */; };
 		217C07E02B78F37F0014290A /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C07DF2B78F37F0014290A /* RegistrationViewModel.swift */; };
 		21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */; };
 		21D67E7B2B2B4522005FAC79 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E7A2B2B4522005FAC79 /* MainView.swift */; };
@@ -28,8 +34,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21021E732B7E56B500A1195A /* RegistrationConfirmEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmEmailView.swift; sourceTree = "<group>"; };
 		215D54312B757B1C00A07029 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
-		21612DCA2B68E8FC00BF7740 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		21612DCA2B68E8FC00BF7740 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		216604922B7D254A0097C73E /* ServiceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModels.swift; sourceTree = "<group>"; };
+		216604942B7D25770097C73E /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		216604972B7D27F30097C73E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		21679B5C2B7EA92A00314DFE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		217C07DF2B78F37F0014290A /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		21D67E752B2B4522005FAC79 /* Gymgraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gymgraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymgrazeApp.swift; sourceTree = "<group>"; };
@@ -81,10 +93,11 @@
 			children = (
 				21EC13C22B62FAE500CF0814 /* ViewModels */,
 				21EC13C12B62FACE00CF0814 /* Models */,
-				21D67E872B2B458F005FAC79 /* Helpers */,
+				21D67E872B2B458F005FAC79 /* Services */,
 				21D67E862B2B4587005FAC79 /* Views */,
 				21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */,
 				21D67E7A2B2B4522005FAC79 /* MainView.swift */,
+				216604972B7D27F30097C73E /* Helpers.swift */,
 				21D67E7C2B2B4523005FAC79 /* Assets.xcassets */,
 				21D67E7E2B2B4523005FAC79 /* Preview Content */,
 			);
@@ -109,12 +122,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		21D67E872B2B458F005FAC79 /* Helpers */ = {
+		21D67E872B2B458F005FAC79 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				21612DCA2B68E8FC00BF7740 /* WebService.swift */,
+				21612DCA2B68E8FC00BF7740 /* RegistrationService.swift */,
+				216604922B7D254A0097C73E /* ServiceModels.swift */,
+				216604942B7D25770097C73E /* AuthenticationService.swift */,
+				21679B5C2B7EA92A00314DFE /* UserService.swift */,
 			);
-			path = Helpers;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		21D67E892B2B45B4005FAC79 /* LoginView */ = {
@@ -138,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */,
+				21021E732B7E56B500A1195A /* RegistrationConfirmEmailView.swift */,
 			);
 			path = RegistrationView;
 			sourceTree = "<group>";
@@ -161,6 +178,7 @@
 			children = (
 				21D67E8D2B2B45D4005FAC79 /* LoginViewModel.swift */,
 				217C07DF2B78F37F0014290A /* RegistrationViewModel.swift */,
+				21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -235,9 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21612DCB2B68E8FC00BF7740 /* WebService.swift in Sources */,
+				21612DCB2B68E8FC00BF7740 /* RegistrationService.swift in Sources */,
+				21021E742B7E56B500A1195A /* RegistrationConfirmEmailView.swift in Sources */,
+				216604982B7D27F30097C73E /* Helpers.swift in Sources */,
 				21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */,
 				21EC13D42B6306A400CF0814 /* CTAButton.swift in Sources */,
+				216604952B7D25770097C73E /* AuthenticationService.swift in Sources */,
+				21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */,
 				21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
 				21D67E8E2B2B45D4005FAC79 /* LoginViewModel.swift in Sources */,
@@ -251,6 +273,8 @@
 				217C07E02B78F37F0014290A /* RegistrationViewModel.swift in Sources */,
 				215D54322B757B1C00A07029 /* Registration.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
+				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
+				216604932B7D254A0097C73E /* ServiceModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

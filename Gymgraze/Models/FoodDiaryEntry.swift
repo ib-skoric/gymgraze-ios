@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// FoodDiaryEntry object model
 struct FoodDiaryEntry: Codable {
     var id: Int
     var date: Date

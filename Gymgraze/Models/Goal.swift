@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Goal object model
 struct Goal: Codable {
     var kcal: Int
     var steps: Int
