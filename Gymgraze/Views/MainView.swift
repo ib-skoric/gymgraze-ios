@@ -9,8 +9,22 @@ import SwiftUI
 
 struct MainView: View {
     
+    @EnvironmentObject var userVM: UserViewModel
+    
     var body: some View {
-        Text("Hello World this is the Main view")
+                HStack {
+                    Text("Welcome, Ivan 👋")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Spacer()
+                    Button(action: {}, label: {
+                        Image(systemName: "gear")
+                            .font(.title)
+                            .foregroundColor(.gray)
+                    })
+                }
+                .padding()
+        Spacer()
     }
 }
 
