@@ -63,6 +63,7 @@ struct StatCard: View {
                 VStack {
                     Text(text)
                         .fontWeight(.light)
+                    // TODO: Replace me with actual data
                     Text("500/1750")
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

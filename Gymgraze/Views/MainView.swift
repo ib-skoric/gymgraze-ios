@@ -26,7 +26,7 @@ struct MainView: View {
             }
             .padding()
             
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     StatCard(type: "calories")
                     StatCard(type: "steps")
@@ -34,6 +34,14 @@ struct MainView: View {
                 }
                 .frame(height: 200)
             }
+            HStack {
+                Text("Why not try...")
+                    .font(.title2)
+                    .foregroundStyle(.gray)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            
             Spacer()
             }
         }
