@@ -42,6 +42,13 @@ struct MainView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
             
+            ScrollView(.vertical, showsIndicators: false) {
+                ArticleCard(image: "test", title: "Article card1", subheading: "Article card1", description: "Article card1")
+                ArticleCard(image: "test", title: "Article card2", subheading: "Article card2", description: "Article card2")
+                ArticleCard(image: "test", title: "Article card2", subheading: "Article card2", description: "Article card2")
+            }
+            .padding()
+            
             Spacer()
             }
         }
