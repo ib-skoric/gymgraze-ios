@@ -34,15 +34,14 @@ struct ArticleCard: View {
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .lineLimit(3)
-                    .multilineTextAlignment(.leading)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
         }
         .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
-        
     }
 }
 
 #Preview {
-    ArticleCard(image: "test", title: "Top 5", subheading: "Hello world", description: "Hello world again" ).frame(height: 350)
+    ArticleCard(image: "test", title: "Top 5 testing title", subheading: "Hello world", description: "Hello world again" ).frame(height: 350)
 }
