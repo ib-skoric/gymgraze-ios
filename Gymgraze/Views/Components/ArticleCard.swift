@@ -19,7 +19,7 @@ struct ArticleCard: View {
             Image("\(image)")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(height: 200)
+                .frame(height: 175)
                 .clipped()
             VStack(alignment: .leading) {
                 Text("\(title)")

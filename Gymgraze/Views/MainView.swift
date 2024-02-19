@@ -18,11 +18,6 @@ struct MainView: View {
                     .font(.title)
                     .fontWeight(.bold)
                 Spacer()
-                Button(action: {}, label: {
-                    Image(systemName: "gear")
-                        .font(.title)
-                        .foregroundColor(.gray)
-                })
             }
             .padding()
             
