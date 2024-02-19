@@ -8,23 +8,29 @@
 import SwiftUI
 
 struct ArticleCard: View {
+    
+    var image: String
+    var title: String
+    var subheading: String
+    var description: String
+    
     var body: some View {
         VStack {
-            Image("test")
+            Image("\(image)")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(height: 200)
                 .clipped()
             VStack(alignment: .leading) {
-                Text("The 5 Best Exercises for Building Lean Muscle")
+                Text("\(title)")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.black)
-                Text("Fitness")
+                Text("\(subheading)")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.gray)
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+                Text("\(description)")
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .lineLimit(3)
@@ -33,9 +39,10 @@ struct ArticleCard: View {
             .padding()
         }
         .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+        
     }
 }
 
 #Preview {
-    ArticleCard().frame(height: 350)
+    ArticleCard(image: "test", title: "Top 5", subheading: "Hello world", description: "Hello world again" ).frame(height: 350)
 }
