@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21021E742B7E56B500A1195A /* RegistrationConfirmEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21021E732B7E56B500A1195A /* RegistrationConfirmEmailView.swift */; };
 		2109E91C2B84980900F2E596 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109E91B2B84980900F2E596 /* Heading.swift */; };
+		2109E91E2B84992100F2E596 /* DiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109E91D2B84992100F2E596 /* DiaryRow.swift */; };
 		210DA2F72B825B3B00F96B75 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2F62B825B3B00F96B75 /* DiaryView.swift */; };
 		210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2F82B825B5000F96B75 /* TrendsView.swift */; };
 		210DA2FB2B825B6200F96B75 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2FA2B825B6200F96B75 /* ProfileView.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		21021E732B7E56B500A1195A /* RegistrationConfirmEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmEmailView.swift; sourceTree = "<group>"; };
 		2109E91B2B84980900F2E596 /* Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heading.swift; sourceTree = "<group>"; };
+		2109E91D2B84992100F2E596 /* DiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryRow.swift; sourceTree = "<group>"; };
 		210DA2F62B825B3B00F96B75 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		210DA2F82B825B5000F96B75 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
 		210DA2FA2B825B6200F96B75 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				210DA2FC2B825FE900F96B75 /* StatCard.swift */,
 				210DA2FE2B826ABF00F96B75 /* ArticleCard.swift */,
 				2109E91B2B84980900F2E596 /* Heading.swift */,
+				2109E91D2B84992100F2E596 /* DiaryRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
 				210DA2FF2B826ABF00F96B75 /* ArticleCard.swift in Sources */,
 				2109E91C2B84980900F2E596 /* Heading.swift in Sources */,
+				2109E91E2B84992100F2E596 /* DiaryRow.swift in Sources */,
 				216604932B7D254A0097C73E /* ServiceModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
