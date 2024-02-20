@@ -13,7 +13,7 @@ class LoginViewModel: ObservableObject {
     // ----- Variables -----
     var email: String = ""
     var password: String = ""
-    @Published var authenticated: Bool = false
+    @Published var authenticated: Bool = getToken() != nil
     @Published var authenticationError: Bool = false
     
     /// Method used for getting and setting the token in the Keychain
