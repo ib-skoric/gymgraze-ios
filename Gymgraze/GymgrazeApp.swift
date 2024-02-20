@@ -15,7 +15,7 @@ struct GymgrazeApp: App {
     var body: some Scene {
         WindowGroup {
             // check if token exists
-            if loginVM.authenticated {
+            if getToken() != nil {
                 ContentView()
                     .environmentObject(loginVM)
                     .environmentObject(userVM)

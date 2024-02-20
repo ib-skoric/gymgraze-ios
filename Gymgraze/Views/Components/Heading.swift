@@ -10,6 +10,7 @@ import SwiftUI
 struct Heading: View {
     
     var text: String
+    var icon: String?
     
     var body: some View {
         HStack {
@@ -17,11 +18,17 @@ struct Heading: View {
                 .font(.title)
                 .fontWeight(.bold)
             Spacer()
+            
+            if (icon != nil) {
+                Image(systemName: "\(icon ?? "questionmark")")
+                    .font(.title3)
+                    .foregroundColor(.gray)
+            }
         }
         .padding()
     }
 }
 
 #Preview {
-    Heading(text: "Hello, Ivan 👋")
+    Heading(text: "Hello, Ivan 👋", icon: "gear")
 }

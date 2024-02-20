@@ -36,7 +36,7 @@ struct MainView: View {
                 ArticleCard(image: "test", title: "Article card2", subheading: "Article card2", description: "Article card2")
                 ArticleCard(image: "test", title: "Article card2", subheading: "Article card2", description: "Article card2")
             }
-            .padding()
+            .padding([.top, .leading, .trailing])
             
             Spacer()
             }
