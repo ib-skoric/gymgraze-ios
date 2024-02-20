@@ -13,13 +13,7 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack {
-            HStack  {
-                Text("Welcome, Ivan 👋")
-                    .font(.title)
-                    .fontWeight(.bold)
-                Spacer()
-            }
-            .padding()
+            Heading(text: "👋 Welcome, Ivan")
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {

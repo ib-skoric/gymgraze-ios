@@ -10,12 +10,14 @@ import SwiftUI
 struct DiaryView: View {
     var body: some View {
         NavigationStack {
+            
+            Heading(text: "📒 Your diary")
+            
             List {
                 Text("Hello World")
                 Text("Hello World")
                 Text("Hello World")
             }
-            .navigationTitle("Diary")
         }
     }
 }
