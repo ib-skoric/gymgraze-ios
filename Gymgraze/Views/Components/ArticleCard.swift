@@ -25,7 +25,7 @@ struct ArticleCard: View {
                 Text("\(title)")
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 Text("\(subheading)")
                     .font(.subheadline)
                     .fontWeight(.semibold)
@@ -36,6 +36,7 @@ struct ArticleCard: View {
                     .lineLimit(3)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             .padding()
         }
         .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
