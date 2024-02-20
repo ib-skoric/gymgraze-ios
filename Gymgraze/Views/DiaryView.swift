@@ -9,10 +9,17 @@ import SwiftUI
 
 struct DiaryView: View {
     var body: some View {
-        Text("This is the diary view")
+        NavigationStack {
+            List {
+                Text("Hello World")
+                Text("Hello World")
+                Text("Hello World")
+            }
+            .navigationTitle("Diary")
+        }
     }
 }
 
 #Preview {
-    DiaryView()
+    ContentView()
 }
