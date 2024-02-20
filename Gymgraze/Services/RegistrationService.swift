@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct confirmEmail: Codable {
+    var confirmation_token: String
+}
+
 
 /// Service that handles all calles to Rails back end associated with registering a user
 class RegistrationService {
@@ -23,7 +27,7 @@ class RegistrationService {
             return
         }
         
-        /// construct the body
+        // construct the body
         let body = registration
         
         // create the request and set it's properties
@@ -73,7 +77,7 @@ class RegistrationService {
     func checkEmailConfirmed(completion: @escaping (Result<String, APIError>) -> Void) {
         
         // get the token for the currently logged in user
-        var token: String? = getToken()
+        let token: String? = getToken()
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/user") else {
@@ -139,7 +143,7 @@ class RegistrationService {
     /// Method used for confirming the user's email address
     func confirmEmail(confirmationCode: String, completion: @escaping (Result<String, APIError>) -> Void) {
         // get the token for the currently logged in user
-        var token: String? = getToken()
+        let token: String? = getToken()
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/confirm_email") else {
@@ -148,12 +152,17 @@ class RegistrationService {
             return
         }
         
+        // construct the body
+        let body = Gymgraze.confirmEmail(confirmation_token: confirmationCode)
+
         // create the request and set it's properties
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-type")
         // pass in the token in the headers for this request
         request.addValue("Bearer \(token ?? "no value")", forHTTPHeaderField: "Authorization")
+        // try to encode the body as JSON
+        request.httpBody = try? JSONEncoder().encode(body)
         
         // create the data task
         URLSession.shared.dataTask(with: request) { (data, response, error) in

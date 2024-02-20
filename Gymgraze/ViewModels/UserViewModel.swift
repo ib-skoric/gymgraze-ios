@@ -11,6 +11,10 @@ class UserViewModel: ObservableObject {
     
     @Published var user: User?
     
+    init() {
+        fetchUser()
+    }
+    
     func fetchUser() {
         UserService().fetchUser { (result) in
             DispatchQueue.main.async {
@@ -22,5 +26,9 @@ class UserViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func checkEmailConfirmed() -> Bool {
+        return user?.confirmed_at != nil
     }
 }

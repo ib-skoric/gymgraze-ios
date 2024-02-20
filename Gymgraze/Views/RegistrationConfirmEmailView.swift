@@ -15,6 +15,7 @@ struct RegistrationConfirmEmailView: View {
     var email: String = ""
     
     @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var registrationVM: RegistrationViewModel
     
     var body: some View {
         VStack {
@@ -38,9 +39,11 @@ struct RegistrationConfirmEmailView: View {
         InputField(data: $emailConfirmation, title: "Email confirmation code")
         Spacer()
         Button(action: {
-            userVM.fetchUser()
-            print("Current email auth status \(userVM.user?.confirmed_at ?? "no data")")
-            print("Email confirmation button tapped")
+            registrationVM.confirmEmail(confirmationCode: emailConfirmation) { (result) in
+                DispatchQueue.main.async {
+                    // TODO: Implement code here
+                }
+            }
         }, label: {
             Text("Confirm email")
         }).buttonStyle(CTAButton())

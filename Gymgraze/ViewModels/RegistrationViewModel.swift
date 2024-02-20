@@ -13,6 +13,7 @@ class RegistrationViewModel: ObservableObject {
     
     // ----- Variables -----
     @Published var isRegistrationSuccessful: Bool = false
+    @Published var hasEmailConfirmed: Bool = false
     var registration: Registration?
     
     /// Method used for registering a new user via Rails back end.
@@ -40,6 +41,7 @@ class RegistrationViewModel: ObservableObject {
                 switch result {
                 case .success(let email):
                     print("User with email: \(email) was confirmed correctly")
+                    self.hasEmailConfirmed = true
                     completion(.success(email))
                 case .failure(let error):
                     print("Oops something went wrong \(error)")
