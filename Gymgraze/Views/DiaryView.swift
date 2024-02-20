@@ -10,7 +10,8 @@ import SwiftUI
 struct DiaryView: View {
     var body: some View {
         NavigationStack {
-    
+            
+            Heading(text: "📒 Diary")
             
             List {
                 Section(header: Text("Breakfast")) {

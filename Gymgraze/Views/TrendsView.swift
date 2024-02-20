@@ -9,7 +9,9 @@ import SwiftUI
 
 struct TrendsView: View {
     var body: some View {
-        Text("This is the trends view")
+        NavigationStack {
+            Heading(text: "📊 Trends")
+        }
     }
 }
 

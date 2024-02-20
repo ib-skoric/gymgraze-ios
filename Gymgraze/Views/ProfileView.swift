@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        Text("This is the profile view")
+        NavigationStack {
+            Heading(text: "🧑 Profile")
+        }
+        
     }
 }
 
