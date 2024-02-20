@@ -25,3 +25,8 @@ struct LoginBody: Codable {
 struct LoginResponse: Codable {
     var token: String?
 }
+
+struct confirmEmail: Codable {
+    var confirmation_token: String
+}
+

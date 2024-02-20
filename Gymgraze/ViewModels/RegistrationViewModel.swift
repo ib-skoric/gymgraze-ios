@@ -32,6 +32,19 @@ class RegistrationViewModel: ObservableObject {
                 }
             }
         }
-        
+    }
+    
+    func confirmEmail(confirmationCode: String, completion: @escaping (Result<String, Error>) -> Void) {
+        RegistrationService().confirmEmail(confirmationCode: confirmationCode) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let email):
+                    print("User with email: \(email) was confirmed correctly")
+                    completion(.success(email))
+                case .failure(let error):
+                    print("Oops something went wrong \(error)")
+                }
+            }
+        }
     }
 }
