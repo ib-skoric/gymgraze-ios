@@ -5,30 +5,24 @@
 //  Created by Ivan Branimir Skoric on 20/02/2024.
 //
 
-import SwiftUI
+import SwiftUI // Make sure you import the SwiftUI framework
 
 struct Heading: View {
-    
     var text: String
-    var icon: String?
-    
+    var menuIcon: String?
+
     var body: some View {
         HStack {
             Text("\(text)")
                 .font(.title)
                 .fontWeight(.bold)
             Spacer()
-            
-            if (icon != nil) {
-                Image(systemName: "\(icon ?? "questionmark")")
-                    .font(.title3)
-                    .foregroundColor(.gray)
-            }
         }
         .padding()
     }
 }
 
+
 #Preview {
-    Heading(text: "Hello, Ivan 👋", icon: "gear")
+    Heading(text: "Hello, Ivan 👋")
 }
