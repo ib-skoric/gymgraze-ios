@@ -13,8 +13,8 @@ class RegistrationViewModel: ObservableObject {
     
     // ----- Variables -----
     @Published var isRegistrationSuccessful: Bool = false
-    @Published var hasEmailConfirmed: Bool = false
     var registration: Registration?
+    @Published var emailConfirmationError: Bool = false
     
     /// Method used for registering a new user via Rails back end.
     /// - Parameter registration: registration object containing the user's data
@@ -35,16 +35,15 @@ class RegistrationViewModel: ObservableObject {
         }
     }
     
-    func confirmEmail(confirmationCode: String, completion: @escaping (Result<String, Error>) -> Void) {
-        RegistrationService().confirmEmail(confirmationCode: confirmationCode) { (result) in
+    func confirmEmail(confirmationToken: String, completion: @escaping (Result<String, Error>) -> Void) {
+        RegistrationService().confirmEmail(confirmationToken: confirmationToken) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let email):
-                    print("User with email: \(email) was confirmed correctly")
-                    self.hasEmailConfirmed = true
-                    completion(.success(email))
+                case .success(let emailConfirmedTimestamp):
+                    completion(.success(emailConfirmedTimestamp))
                 case .failure(let error):
-                    print("Oops something went wrong \(error)")
+                    self.emailConfirmationError = true
+                    print("Oops something went wrong inside RegistrationViewModel: \(error)")
                 }
             }
         }

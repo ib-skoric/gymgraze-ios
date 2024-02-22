@@ -9,13 +9,14 @@ import SwiftUI
 
 /// View used to comfirm users email address
 struct RegistrationConfirmEmailView: View {
+
     
     // ---- Variables
     @State var emailConfirmation: String = ""
     var email: String = ""
     
     @EnvironmentObject var userVM: UserViewModel
-    @EnvironmentObject var registrationVM: RegistrationViewModel
+    @ObservedObject var registrationVM =  RegistrationViewModel()
     
     var body: some View {
         VStack {
@@ -33,15 +34,21 @@ struct RegistrationConfirmEmailView: View {
         
         Spacer()
         
-        Text("Head over to your email address: \(email) and copy the confirmation code here 👇")
+        Text("Head over to your email address \(userVM.user?.email ?? "") and copy the confirmation code here 👇")
             .multilineTextAlignment(.center)
         
         InputField(data: $emailConfirmation, title: "Email confirmation code")
         Spacer()
         Button(action: {
-            registrationVM.confirmEmail(confirmationCode: emailConfirmation) { (result) in
+            registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
                 DispatchQueue.main.async {
-                    // TODO: Implement code here
+                    switch result {
+                    case .success(let emailConfirmedTimestamp):
+                        userVM.user?.confirmed_at = emailConfirmedTimestamp
+                        
+                    case .failure(let error):
+                        print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                    }
                 }
             }
         }, label: {
@@ -49,7 +56,12 @@ struct RegistrationConfirmEmailView: View {
         }).buttonStyle(CTAButton())
             .padding()
             .accessibilityLabel("Confirm email")
+        
+            .alert(isPresented: $registrationVM.emailConfirmationError) {
+                Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
+            }
     }
+    
 }
 
 #Preview {

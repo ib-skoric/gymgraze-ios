@@ -139,7 +139,7 @@ struct RegistrationView: View {
                 .background(
                     NavigationLink(destination: RegistrationConfirmEmailView(email: email).navigationBarBackButtonHidden(true), isActive: $registrationVM.isRegistrationSuccessful) {
                         EmptyView()
-                    }).environmentObject(registrationVM)
+                    })
         }
     }
 }

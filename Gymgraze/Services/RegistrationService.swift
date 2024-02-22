@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct confirmEmail: Codable {
-    var confirmation_token: String
-}
-
-
 /// Service that handles all calles to Rails back end associated with registering a user
 class RegistrationService {
     /// Method used for registering the user
@@ -141,7 +136,7 @@ class RegistrationService {
     }
     
     /// Method used for confirming the user's email address
-    func confirmEmail(confirmationCode: String, completion: @escaping (Result<String, APIError>) -> Void) {
+    func confirmEmail(confirmationToken: String, completion: @escaping (Result<String, APIError>) -> Void) {
         // get the token for the currently logged in user
         let token: String? = getToken()
         
@@ -152,9 +147,9 @@ class RegistrationService {
             return
         }
         
-        // construct the body
-        let body = Gymgraze.confirmEmail(confirmation_token: confirmationCode)
-
+        // construct the body as JSON
+        let body = ["confirmation_token": confirmationToken]
+        
         // create the request and set it's properties
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -162,10 +157,15 @@ class RegistrationService {
         // pass in the token in the headers for this request
         request.addValue("Bearer \(token ?? "no value")", forHTTPHeaderField: "Authorization")
         // try to encode the body as JSON
-        request.httpBody = try? JSONEncoder().encode(body)
+        do {
+            request.httpBody = try JSONEncoder().encode(body)
+        } catch {
+            print("Error encoding JSON: \(error)")
+        }
         
         // create the data task
         URLSession.shared.dataTask(with: request) { (data, response, error) in
+            print("Entered dataTask block")
             
             // check if any data was received from the server
             guard let data = data, error == nil else {
@@ -186,16 +186,16 @@ class RegistrationService {
                         return
                     }
                     
-                    // get the token from the response
-                    guard let emailConfirmed = user.confirmed_at else {
+                    // get the timestamp of confirmation from the response
+                    guard let emailConfirmedTimestamp = user.confirmed_at else {
                         // if it's nil, raise invalid credentials error
                         completion(.failure(APIError.invalidCredentials))
                         return
                     }
                     
-                    // if everything went well, return the status
-                    completion(.success(emailConfirmed))
-                    print(emailConfirmed)
+                    // if everything went well, return the timestamp
+                    completion(.success(emailConfirmedTimestamp))
+                    print(emailConfirmedTimestamp)
                 case 401:
                     // if the status code is 401, raise invalid credentials error
                     completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
@@ -205,6 +205,6 @@ class RegistrationService {
                     completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<String, APIError>)
                 }
             }
-        }
+        }.resume()
     }
 }

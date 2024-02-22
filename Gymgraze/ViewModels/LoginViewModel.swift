@@ -10,6 +10,10 @@ import Foundation
 /// ViewModel used for managing the login process and authentication 
 class LoginViewModel: ObservableObject {
     
+    init () {
+        authenticated = getToken() != nil
+    }
+    
     // ----- Variables -----
     var email: String = ""
     var password: String = ""

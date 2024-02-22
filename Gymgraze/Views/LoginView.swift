@@ -14,9 +14,6 @@ struct LoginView: View {
     
     var body: some View {
         NavigationStack {
-            if loginVM.authenticated {
-                ContentView()
-            } else {
                 VStack {
                     // add the logo
                     Image("logo").resizable().frame(width: 150, height: 150)
@@ -44,7 +41,6 @@ struct LoginView: View {
             }
         }
     }
-}
 
 #Preview {
     LoginView()
