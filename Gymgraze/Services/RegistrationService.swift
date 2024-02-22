@@ -207,4 +207,16 @@ class RegistrationService {
             }
         }.resume()
     }
+    
+    func resendConfirmationEmail(completion: @escaping (Result<String, APIError>) -> Void) {
+        // get the token for the currently logged in user
+        let token: String? = getToken()
+        
+        // construct the URL
+        guard let url = URL(string: "http://localhost:3000/resend_confirmation_email") else {
+            // if it's not valid, throw a invalid URL error
+            completion(.failure(APIError.invalidURL) as Result<String, APIError>)
+            return
+        }
+    }
 }

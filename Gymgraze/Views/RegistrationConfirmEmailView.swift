@@ -9,7 +9,7 @@ import SwiftUI
 
 /// View used to comfirm users email address
 struct RegistrationConfirmEmailView: View {
-
+    
     
     // ---- Variables
     @State var emailConfirmation: String = ""
@@ -38,6 +38,12 @@ struct RegistrationConfirmEmailView: View {
             .multilineTextAlignment(.center)
         
         InputField(data: $emailConfirmation, title: "Email confirmation code")
+        
+        Button(action: {},
+               label: {
+            Text("Resend email")
+        })
+        
         Spacer()
         Button(action: {
             registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
