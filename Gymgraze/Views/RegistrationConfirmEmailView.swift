@@ -39,7 +39,20 @@ struct RegistrationConfirmEmailView: View {
         
         InputField(data: $emailConfirmation, title: "Email confirmation code")
         
-        Button(action: {  },
+        Button(action: {
+            
+            RegistrationService().resendEmailConfirmation() {
+                (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        print("yaaay")
+                    case .failure(let error):
+                        print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                    }
+                }
+            }
+        },
                label: {
             Text("Resend email")
         })

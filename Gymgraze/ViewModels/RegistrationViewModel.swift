@@ -48,17 +48,4 @@ class RegistrationViewModel: ObservableObject {
             }
         }
     }
-    
-    func resendEmail(completion: @escaping (Result<String, Error>) -> Void) {
-        RegistrationService().resendConfirmationEmail { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success():
-                    print("Email confirmation re-sent")
-                case .failure(let error):
-                    print("Error re-sending email confirmation \(error)")
-                }
-            }
-        }
-    }
 }
