@@ -10,17 +10,21 @@ import Foundation
 class UserViewModel: ObservableObject {
     
     @Published var user: User?
+    @Published var is_confirmed: Bool = false
+    @Published var isLoading: Bool = false
     
     init() {
         fetchUser()
     }
     
     func fetchUser() {
+        self.isLoading = true
         UserService().fetchUser { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let user):
                     self.user = user
+                    self.isLoading = false
                 case .failure(let error):
                     print("Error fetching user: \(error)")
                 }

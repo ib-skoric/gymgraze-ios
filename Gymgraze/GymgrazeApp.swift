@@ -15,7 +15,9 @@ struct GymgrazeApp: App {
     var body: some Scene {
         WindowGroup {
             // check if token exists
-            if loginVM.authenticated && userVM.user?.confirmed_at != nil {
+            if loginVM.isLoading || userVM.isLoading {
+                ProgressView()
+            } else if loginVM.authenticated && userVM.user?.confirmed_at != nil {
                 ContentView()
                     .environmentObject(loginVM)
                     .environmentObject(userVM)
