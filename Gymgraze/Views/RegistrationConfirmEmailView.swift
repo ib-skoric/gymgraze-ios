@@ -39,7 +39,7 @@ struct RegistrationConfirmEmailView: View {
         
         InputField(data: $emailConfirmation, title: "Email confirmation code")
         
-        Button(action: {},
+        Button(action: {  },
                label: {
             Text("Resend email")
         })
@@ -67,8 +67,9 @@ struct RegistrationConfirmEmailView: View {
                 Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
             }
     }
-    
 }
+
+
 
 #Preview {
     RegistrationConfirmEmailView()
