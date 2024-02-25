@@ -10,11 +10,28 @@ import Foundation
 /// ViewModel used for managing the login process and authentication 
 class LoginViewModel: ObservableObject {
     
+    @Published var isLoading = false
+    
+    init () {
+        checkAuthStatus()
+    }
+    
     // ----- Variables -----
     var email: String = ""
     var password: String = ""
     @Published var authenticated: Bool = getToken() != nil
     @Published var authenticationError: Bool = false
+    
+    func checkAuthStatus() {
+        self.isLoading = true
+        
+        if getToken() != nil {
+            self.authenticated = true
+            self.isLoading = false
+        } else {
+            self.isLoading = false
+        }
+    }
     
     /// Method used for getting and setting the token in the Keychain
     func getAndSetTokenInKeychain(completion: @escaping (Result<Bool, APIError>) -> Void) {

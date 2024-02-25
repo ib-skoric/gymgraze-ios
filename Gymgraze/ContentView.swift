@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var loginVM: LoginViewModel
-    
     var body: some View {
         TabView {
             MainView()

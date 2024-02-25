@@ -60,7 +60,6 @@ struct InputField: View {
                     )
             }
             
-            
         }.padding([.leading, .trailing])
     }
 }

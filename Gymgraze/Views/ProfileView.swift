@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    @EnvironmentObject var loginVM: LoginViewModel
+    
     var body: some View {
         NavigationStack {
             Heading(text: "🧑 Profile")
@@ -42,6 +45,10 @@ struct ProfileView: View {
                         Text("Apple Health data")
                     }
                 }
+                
+                Button(action: { loginVM.logout() }, label: {
+                        Text("Log out")
+                    })
             }
         }
     }
