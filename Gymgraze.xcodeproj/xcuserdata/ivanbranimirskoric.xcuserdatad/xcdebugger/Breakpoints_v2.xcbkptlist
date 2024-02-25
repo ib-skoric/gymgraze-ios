@@ -585,8 +585,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
-            landmarkName = "confirmEmail(confirmationToken:completion:)"
-            landmarkType = "7">
+            landmarkName = "RegistrationViewModel"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "9062B9F3-78A6-4355-90A1-B41C6D4E1B6E - 358cefc94278e4f0"
