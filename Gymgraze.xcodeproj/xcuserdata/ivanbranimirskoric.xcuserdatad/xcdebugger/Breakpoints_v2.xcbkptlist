@@ -7,266 +7,42 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "04824121-B324-4E1F-B439-C6510CC6C2EB"
+            uuid = "48EDBFE7-1CB1-4CB4-8310-608616ED6091"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Helpers/WebService.swift"
+            filePath = "Gymgraze/Models/User.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "register(registration:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FB6CEF68-0417-479D-85B4-FACA335E395B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/LoginView/LoginView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "630B38B7-F564-4D0B-A76D-813FDFD71D6F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/LoginView/LoginView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "55C1D962-6F3C-4C3C-93B4-A2F967B025D4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Helpers.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10"
-            endingLineNumber = "10"
-            landmarkName = "getToken()"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0033CCA0-5E5B-46DE-898C-7CFC99DA71DA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Helpers.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "getToken()"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "19FC5A14-73F1-41ED-96D3-08453E315A3D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/LoginView/LoginView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "19FC5A14-73F1-41ED-96D3-08453E315A3D - a931b5cfdd697434"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ModifiedContent&lt;Gymgraze.InputField, SwiftUI.AccessibilityAttachmentModifier&gt;, SwiftUI.ModifiedContent&lt;Gymgraze.InputField, SwiftUI.AccessibilityAttachmentModifier&gt;, SwiftUI.ModifiedContent&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.AccessibilityAttachmentModifier&gt;)&gt; in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;Gymgraze.MainView, SwiftUI.TupleView&lt;(SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ModifiedContent&lt;Gymgraze.InputField, SwiftUI.AccessibilityAttachmentModifier&gt;, SwiftUI.ModifiedContent&lt;Gymgraze.InputField, SwiftUI.AccessibilityAttachmentModifier&gt;, SwiftUI.ModifiedContent&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.AccessibilityAttachmentModifier&gt;)&gt;&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0)&gt;&gt; in Gymgraze.LoginView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/Gymgraze/Gymgraze/Views/LoginView/LoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "1544">
-               </Location>
-               <Location
-                  uuid = "19FC5A14-73F1-41ED-96D3-08453E315A3D - 159bab767d3adc76"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ModifiedContent&lt;Gymgraze.InputField, SwiftUI.AccessibilityAttachmentModifier&gt;, SwiftUI.ModifiedContent&lt;Gymgraze.InputField, SwiftUI.AccessibilityAttachmentModifier&gt;, SwiftUI.ModifiedContent&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.AccessibilityAttachmentModifier&gt;)&gt; in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;Gymgraze.MainView, SwiftUI.TupleView&lt;(SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ModifiedContent&lt;Gymgraze.InputField, SwiftUI.AccessibilityAttachmentModifier&gt;, SwiftUI.ModifiedContent&lt;Gymgraze.InputField, SwiftUI.AccessibilityAttachmentModifier&gt;, SwiftUI.ModifiedContent&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.AccessibilityAttachmentModifier&gt;)&gt;&gt;, &lt;&lt;opaque return type of SwiftUI.View.alert(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, content: () -&gt; SwiftUI.Alert) -&gt; some&gt;&gt;.0)&gt;&gt; in Gymgraze.LoginView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/Gymgraze/Gymgraze/Views/LoginView/LoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "88">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "634A7EBD-792D-42DF-B4CE-2F558418C2A1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/UserService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "fetchUser(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F8603C84-1915-430C-A2E5-9822F8727C25"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/RegistrationView/RegistrationView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "F8603C84-1915-430C-A2E5-9822F8727C25 - 82986b0b459bf7d9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #6 () -&gt; () in Gymgraze.RegistrationView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/Gymgraze/Gymgraze/Views/RegistrationView/RegistrationView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "680">
-               </Location>
-               <Location
-                  uuid = "F8603C84-1915-430C-A2E5-9822F8727C25 - 9f0882cf328c608a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #6 () -&gt; () in Gymgraze.RegistrationView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/Gymgraze/Gymgraze/Views/RegistrationView/RegistrationView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "216">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "03BCE6F6-AC1B-4B3F-A0FA-A542BC17B2F6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/AuthenticationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "authenticate(email:password:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "ACC97182-64F3-41E4-B94E-F63B20B14C7A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "checkEmailConfirmed(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F4388882-4B27-4D8B-B048-4EAC6C046C04"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/GymgrazeApp.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "GymgrazeApp"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "User"
             landmarkType = "14">
             <Locations>
                <Location
-                  uuid = "F4388882-4B27-4D8B-B048-4EAC6C046C04 - 98fd054afb6d2918"
+                  uuid = "48EDBFE7-1CB1-4CB4-8310-608616ED6091 - 8924f22e43e2bbf4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of Gymgraze.GymgrazeApp.loginVM : Gymgraze.LoginViewModel"
+                  symbolName = "Gymgraze.User.deinit"
                   moduleName = "Gymgraze"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Models/User.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "36">
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
-                  uuid = "F4388882-4B27-4D8B-B048-4EAC6C046C04 - 590eee2297a2e632"
+                  uuid = "48EDBFE7-1CB1-4CB4-8310-608616ED6091 - ba0dd7ca117e992b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.GymgrazeApp.loginVM.getter : Gymgraze.LoginViewModel"
+                  symbolName = "Gymgraze.User.__deallocating_deinit"
                   moduleName = "Gymgraze"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Models/User.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -274,34 +50,34 @@
                   offsetFromSymbolStart = "16">
                </Location>
                <Location
-                  uuid = "F4388882-4B27-4D8B-B048-4EAC6C046C04 - 8b24bd10893355f6"
+                  uuid = "48EDBFE7-1CB1-4CB4-8310-608616ED6091 - bf9b5a8f4a1c4a57"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.GymgrazeApp.$loginVM.getter : SwiftUI.ObservedObject&lt;Gymgraze.LoginViewModel&gt;.Wrapper"
+                  symbolName = "Gymgraze.User.__allocating_init() -&gt; Gymgraze.User"
                   moduleName = "Gymgraze"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Models/User.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "48EDBFE7-1CB1-4CB4-8310-608616ED6091 - 353a32adc4659f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Gymgraze.User.init() -&gt; Gymgraze.User"
+                  moduleName = "Gymgraze"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Models/User.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "12"
                   endingLineNumber = "12"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "F4388882-4B27-4D8B-B048-4EAC6C046C04 - a51ffb2dd2917aa8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 0 of Gymgraze.GymgrazeApp.init(loginVM: @autoclosure () -&gt; Gymgraze.LoginViewModel, userVM: @autoclosure () -&gt; Gymgraze.UserViewModel) -&gt; Gymgraze.GymgrazeApp"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -309,777 +85,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D5B1472E-D374-4CF6-826B-4911F086616F"
+            uuid = "E75CA32D-F808-44CF-9678-CF99C360ABD3"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Gymgraze/GymgrazeApp.swift"
+            filePath = "Gymgraze/Models/User.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "GymgrazeApp"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "User"
             landmarkType = "14">
             <Locations>
                <Location
-                  uuid = "D5B1472E-D374-4CF6-826B-4911F086616F - 70e239b97bfd8052"
+                  uuid = "E75CA32D-F808-44CF-9678-CF99C360ABD3 - 353a32adc4659f3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of Gymgraze.GymgrazeApp.userVM : Gymgraze.UserViewModel"
+                  symbolName = "Gymgraze.User.init() -&gt; Gymgraze.User"
                   moduleName = "Gymgraze"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Models/User.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "36">
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
-                  uuid = "D5B1472E-D374-4CF6-826B-4911F086616F - 605fe25a93916e64"
+                  uuid = "E75CA32D-F808-44CF-9678-CF99C360ABD3 - bdc92b6dc96bebb3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.GymgrazeApp.userVM.getter : Gymgraze.UserViewModel"
+                  symbolName = "Gymgraze.User.init(from: Swift.Decoder) throws -&gt; Gymgraze.User"
                   moduleName = "Gymgraze"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Models/User.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  uuid = "D5B1472E-D374-4CF6-826B-4911F086616F - d3edecea35f8e101"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.GymgrazeApp.$userVM.getter : SwiftUI.ObservedObject&lt;Gymgraze.UserViewModel&gt;.Wrapper"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "D5B1472E-D374-4CF6-826B-4911F086616F - 2a22d438b356a8a9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 1 of Gymgraze.GymgrazeApp.init(loginVM: @autoclosure () -&gt; Gymgraze.LoginViewModel, userVM: @autoclosure () -&gt; Gymgraze.UserViewModel) -&gt; Gymgraze.GymgrazeApp"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "164">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6DBEFA1D-D315-4417-8CBE-5BE20438BF4A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/GymgrazeApp.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "6DBEFA1D-D315-4417-8CBE-5BE20438BF4A - b44b0e3c863cfe0b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.environmentObject&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.ObservableObject&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.environmentObject&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.ObservableObject&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in Gymgraze.GymgrazeApp.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "1164">
-               </Location>
-               <Location
-                  uuid = "6DBEFA1D-D315-4417-8CBE-5BE20438BF4A - 31ef711a700eddf8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.environmentObject&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.ObservableObject&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.environmentObject&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.ObservableObject&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.environmentObject&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.ObservableObject&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in Gymgraze.GymgrazeApp.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/GymgrazeApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "1448">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "37DB296A-C11F-4084-BC68-02A85AF60395"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/RegistrationConfirmEmailView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "37DB296A-C11F-4084-BC68-02A85AF60395 - 852135ee754b7ee1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "2012">
-               </Location>
-               <Location
-                  uuid = "37DB296A-C11F-4084-BC68-02A85AF60395 - 852135ee754b7ee1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "2068">
-               </Location>
-               <Location
-                  uuid = "37DB296A-C11F-4084-BC68-02A85AF60395 - 817c6f88aa3522b1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FFB8CF98-3576-474A-9B97-745999B73278"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/RegistrationConfirmEmailView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "FFB8CF98-3576-474A-9B97-745999B73278 - 852135ee754b7ec0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "2068">
-               </Location>
-               <Location
-                  uuid = "FFB8CF98-3576-474A-9B97-745999B73278 - 817c6f88aa3522d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "FFB8CF98-3576-474A-9B97-745999B73278 - 817c6f88aa3522b1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "FFB8CF98-3576-474A-9B97-745999B73278 - aee1cbd603b795db"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "216">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9062B9F3-78A6-4355-90A1-B41C6D4E1B6E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/ViewModels/RegistrationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "RegistrationViewModel"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "9062B9F3-78A6-4355-90A1-B41C6D4E1B6E - 358cefc94278e4f0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.RegistrationViewModel.confirmEmail(confirmationToken: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/ViewModels/RegistrationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "76">
-               </Location>
-               <Location
-                  uuid = "9062B9F3-78A6-4355-90A1-B41C6D4E1B6E - 358cefc94278e4d7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.RegistrationViewModel.confirmEmail(confirmationToken: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/ViewModels/RegistrationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "909B6635-6D18-4DF3-9FE7-726A025BAE41"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "resendEmailConfirmation(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "909B6635-6D18-4DF3-9FE7-726A025BAE41 - 9d37ef4a6904942"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.RegistrationService.resendEmailConfirmation(completion: (Swift.Result&lt;Swift.Bool, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/RegistrationService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "235"
-                  endingLineNumber = "235"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  uuid = "909B6635-6D18-4DF3-9FE7-726A025BAE41 - 9d37ef4a6904942"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.RegistrationService.resendEmailConfirmation(completion: (Swift.Result&lt;Swift.Bool, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/RegistrationService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "235"
-                  endingLineNumber = "235"
-                  offsetFromSymbolStart = "188">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F337B5BA-CFD7-48F5-987F-81444DAD92F2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "resendEmailConfirmation(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D9BF0429-E80E-412E-ACFE-9485A828E198"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "resendEmailConfirmation(completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D9BF0429-E80E-412E-ACFE-9485A828E198 - 82dd96d8079140da"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.RegistrationService.resendEmailConfirmation(completion: (Swift.Result&lt;Swift.Bool, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/RegistrationService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
-                  offsetFromSymbolStart = "1296">
-               </Location>
-               <Location
-                  uuid = "D9BF0429-E80E-412E-ACFE-9485A828E198 - 9d37ef4a6904942"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.RegistrationService.resendEmailConfirmation(completion: (Swift.Result&lt;Swift.Bool, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/RegistrationService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "235"
-                  endingLineNumber = "235"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E86D4D0E-5A00-417C-9834-54ACDE01E00D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/RegistrationConfirmEmailView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "E86D4D0E-5A00-417C-9834-54ACDE01E00D - b06eb4d08920081c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  uuid = "E86D4D0E-5A00-417C-9834-54ACDE01E00D - b06eb4d08920081c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "156">
-               </Location>
-               <Location
-                  uuid = "E86D4D0E-5A00-417C-9834-54ACDE01E00D - b06eb4d08920083d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  uuid = "E86D4D0E-5A00-417C-9834-54ACDE01E00D - b06eb4d08920083d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "156">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "573B4A4D-1C5C-42BD-8D79-4843656AD5BD"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/RegistrationConfirmEmailView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "573B4A4D-1C5C-42BD-8D79-4843656AD5BD - b06eb4d08920081c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  uuid = "573B4A4D-1C5C-42BD-8D79-4843656AD5BD - b06eb4d08920081c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "156">
-               </Location>
-               <Location
-                  uuid = "573B4A4D-1C5C-42BD-8D79-4843656AD5BD - b06eb4d08920081c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #4 () -&gt; () in Gymgraze.RegistrationConfirmEmailView.body.getter : some"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/RegistrationConfirmEmailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "176">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F9DC2E5B-E473-4B81-9CC6-343B738DE49B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/ViewModels/RegistrationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "confirmEmail(confirmationToken:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F9DC2E5B-E473-4B81-9CC6-343B738DE49B - 358cefc94278e4d7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.RegistrationViewModel.confirmEmail(confirmationToken: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/ViewModels/RegistrationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "F9DC2E5B-E473-4B81-9CC6-343B738DE49B - f63e6965cdac9887"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Gymgraze.APIError&gt;) -&gt; () in Gymgraze.RegistrationViewModel.confirmEmail(confirmationToken: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/ViewModels/RegistrationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "248">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "31E64AB4-9EBF-4587-89EA-53B98C073C42"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "confirmEmail(confirmationToken:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E41E1DAD-EA2D-499D-A66E-AC6E7D10390C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "confirmEmail(confirmationToken:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "26EDE897-EBC2-4CA6-9F72-E5EC4C78519B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "confirmEmail(confirmationToken:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D77E07D8-45AF-41B4-9CA9-548EC169C5B8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "confirmEmail(confirmationToken:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D77E07D8-45AF-41B4-9CA9-548EC169C5B8 - 4e276967b9611f84"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.RegistrationService.confirmEmail(confirmationToken: Swift.String, completion: (Swift.Result&lt;Swift.String, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/RegistrationService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183"
-                  offsetFromSymbolStart = "772">
-               </Location>
-               <Location
-                  uuid = "D77E07D8-45AF-41B4-9CA9-548EC169C5B8 - 4e276967b9611f84"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.RegistrationService.confirmEmail(confirmationToken: Swift.String, completion: (Swift.Result&lt;Swift.String, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/RegistrationService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183"
-                  offsetFromSymbolStart = "784">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B1A4E026-D15B-4D21-8020-6E2842A054D8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "confirmEmail(confirmationToken:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B1A4E026-D15B-4D21-8020-6E2842A054D8 - 4e276967b9611f84"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.RegistrationService.confirmEmail(confirmationToken: Swift.String, completion: (Swift.Result&lt;Swift.String, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/RegistrationService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183"
-                  offsetFromSymbolStart = "772">
-               </Location>
-               <Location
-                  uuid = "B1A4E026-D15B-4D21-8020-6E2842A054D8 - 4e276967b9611f84"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Gymgraze.RegistrationService.confirmEmail(confirmationToken: Swift.String, completion: (Swift.Result&lt;Swift.String, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/RegistrationService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183"
-                  offsetFromSymbolStart = "784">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "108B3166-1935-471D-A6C8-84C6BC2762A5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Services/RegistrationService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "confirmEmail(confirmationToken:completion:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

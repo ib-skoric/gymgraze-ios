@@ -28,6 +28,8 @@ class LoginViewModel: ObservableObject {
         if getToken() != nil {
             self.authenticated = true
             self.isLoading = false
+        } else {
+            self.isLoading = false
         }
     }
     

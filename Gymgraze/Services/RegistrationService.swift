@@ -165,7 +165,6 @@ class RegistrationService {
         
         // create the data task
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print("Entered dataTask block")
             
             // check if any data was received from the server
             guard let data = data, error == nil else {

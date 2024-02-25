@@ -10,7 +10,6 @@ import SwiftUI
 /// View used to comfirm users email address
 struct RegistrationConfirmEmailView: View {
     
-    
     // ---- Variables
     @State var emailConfirmation: String = ""
     var email: String = ""
@@ -64,7 +63,6 @@ struct RegistrationConfirmEmailView: View {
                     switch result {
                     case .success(let emailConfirmedTimestamp):
                         userVM.user?.confirmed_at = emailConfirmedTimestamp
-                        
                     case .failure(let error):
                         print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
                     }

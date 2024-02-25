@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var loginVM: LoginViewModel
-    
     var body: some View {
         TabView {
             MainView()
@@ -30,7 +28,6 @@ struct ContentView: View {
                     Label("Trends", systemImage: "chart.bar.xaxis.ascending")
                 }
             ProfileView()
-                .environmentObject(loginVM)
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }

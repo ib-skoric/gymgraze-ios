@@ -10,7 +10,6 @@ import Foundation
 class UserViewModel: ObservableObject {
     
     @Published var user: User?
-    @Published var is_confirmed: Bool = false
     @Published var isLoading: Bool = false
     
     init() {
@@ -27,6 +26,7 @@ class UserViewModel: ObservableObject {
                     self.isLoading = false
                 case .failure(let error):
                     print("Error fetching user: \(error)")
+                    self.isLoading = false
                 }
             }
         }
