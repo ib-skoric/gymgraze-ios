@@ -63,6 +63,7 @@ struct RegistrationConfirmEmailView: View {
                     switch result {
                     case .success(let emailConfirmedTimestamp):
                         userVM.user?.confirmed_at = emailConfirmedTimestamp
+                        registrationVM.isEmailConfirmationSuccessful = true
                     case .failure(let error):
                         print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
                     }
@@ -71,9 +72,11 @@ struct RegistrationConfirmEmailView: View {
         }, label: {
             Text("Confirm email")
         }).buttonStyle(CTAButton())
+            .navigationDestination(isPresented: $registrationVM.isEmailConfirmationSuccessful) {
+                ContentView()
+            }
             .padding()
             .accessibilityLabel("Confirm email")
-        
             .alert(isPresented: $registrationVM.emailConfirmationError) {
                 Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
             }
