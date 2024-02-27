@@ -49,7 +49,7 @@ struct LoginView: View {
                     }).buttonStyle(CTAButton())
                         .padding()
                         .accessibilityLabel("Login button")
-                        .navigationDestination(isPresented: $loginVM.authenticated) {
+                        .navigationDestination(isPresented: $userVM.isConfirmedEmailUser) {
                             ContentView().navigationBarBackButtonHidden(true)
                         }
                 }

@@ -11,6 +11,7 @@ class UserViewModel: ObservableObject {
     
     @Published var user: User?
     @Published var isLoading: Bool = false
+    @Published var isConfirmedEmailUser: Bool = false
     
     init() {
         print("Attempting to fetch user inside init method")
@@ -24,6 +25,7 @@ class UserViewModel: ObservableObject {
                 switch result {
                 case .success(let user):
                     self.user = user
+                    self.isConfirmedEmailUser = self.checkEmailConfirmed()
                     print(user)
                     self.isLoading = false
                 case .failure(let error):

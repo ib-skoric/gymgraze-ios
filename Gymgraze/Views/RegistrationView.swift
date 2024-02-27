@@ -23,9 +23,14 @@ struct RegistrationView: View {
     @State var ageError: String = ""
     @State var weightError: String = ""
     @State var heightError: String = ""
+    
+    @State var showEmailConfirmationView: Bool = false
+    
     // view model
     @StateObject private var registrationVM = RegistrationViewModel()
     @EnvironmentObject var loginVM: LoginViewModel
+    @EnvironmentObject var userVM: UserViewModel
+    
     // Object to store registration steps
     struct Step {
         let question: String
@@ -116,7 +121,15 @@ struct RegistrationView: View {
                                     // Start authentication process after successful registration
                                     loginVM.email = email
                                     loginVM.password = password
-//                                    loginVM.authenticate()
+                                    loginVM.authenticate() { (result) in
+                                        switch result {
+                                        case .success:
+                                            userVM.fetchUser()
+                                            showEmailConfirmationView = true
+                                        case .failure:
+                                            print("Failed authing user after sign up")
+                                        }
+                                    }
                                     // else, if the registration has failed, return an error
                                 case .failure(let error):
                                     print("Oops something went wrong \(error)")
@@ -133,6 +146,9 @@ struct RegistrationView: View {
                 }).buttonStyle(CTAButton())
                     .padding()
                     .accessibilityLabel("Sign up button")
+                    .navigationDestination(isPresented: $showEmailConfirmationView) {
+                        RegistrationConfirmEmailView()
+                    }
             }
         }
     }
