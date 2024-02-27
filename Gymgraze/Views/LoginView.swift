@@ -13,6 +13,8 @@ struct LoginView: View {
     @EnvironmentObject var loginVM: LoginViewModel
     @EnvironmentObject var userVM: UserViewModel
     
+    @State var isLoading: Bool = false
+    
     var body: some View {
         NavigationStack {
                 VStack {
@@ -23,6 +25,7 @@ struct LoginView: View {
                     InputField(data: $loginVM.password, title: "Password").accessibilityLabel("Password input field")
                     // add in the login button
                     Button(action: {
+                        isLoading = true
                         loginVM.logout()
                         print("Login button pressed")
                         loginVM.authenticate() { result in
@@ -38,10 +41,17 @@ struct LoginView: View {
                         }
                         
                     }, label: {
-                        Text("Login")
+                        if isLoading {
+                            ProgressView()
+                        } else {
+                            Text("Login")
+                        }
                     }).buttonStyle(CTAButton())
                         .padding()
                         .accessibilityLabel("Login button")
+                        .navigationDestination(isPresented: $loginVM.authenticated) {
+                            ContentView().navigationBarBackButtonHidden(true)
+                        }
                 }
                 NavigationLink(destination: RegistrationView()) {
                     Text("Don't have an account? Sign up here")
