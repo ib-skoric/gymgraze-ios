@@ -27,9 +27,11 @@ class LoginViewModel: ObservableObject {
         
         if getToken() != nil {
             self.authenticated = true
+            print("LoginVM model method was able to auth user correctly")
             self.isLoading = false
         } else {
             self.isLoading = false
+            print("LoginVM model method was NOT able to auth user correctly")
         }
     }
     
@@ -58,7 +60,7 @@ class LoginViewModel: ObservableObject {
     }
     
     /// Method used for setting the user as authenticated
-    func authenticate() {
+    func authenticate(completion: @escaping (Result<Bool, APIError>) -> Void) {
         DispatchQueue.main.async {
             // getAndSetTokenInKeychain returns a closure which we check
             self.getAndSetTokenInKeychain() { result in
@@ -67,8 +69,10 @@ class LoginViewModel: ObservableObject {
                 case .success:
                     // make the user authenticated
                     self.authenticated = true
+                    completion(.success(true))
                 case .failure:
                     self.authenticationError = true
+                    completion(.failure(APIError.invalidCredentials))
                 }
             }
         }

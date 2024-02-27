@@ -25,8 +25,18 @@ struct LoginView: View {
                     Button(action: {
                         loginVM.logout()
                         print("Login button pressed")
-                        loginVM.authenticate()
-                        userVM.fetchUser()
+                        loginVM.authenticate() { result in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success:
+                                    userVM.fetchUser()
+                                    
+                                case .failure:
+                                    print("Failed to auth user from LoginView")
+                                }
+                            }
+                        }
+                        
                     }, label: {
                         Text("Login")
                     }).buttonStyle(CTAButton())

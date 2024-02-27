@@ -13,6 +13,7 @@ class UserViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     
     init() {
+        print("Attempting to fetch user inside init method")
         fetchUser()
     }
     

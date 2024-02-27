@@ -116,7 +116,7 @@ struct RegistrationView: View {
                                     // Start authentication process after successful registration
                                     loginVM.email = email
                                     loginVM.password = password
-                                    loginVM.authenticate()
+//                                    loginVM.authenticate()
                                     // else, if the registration has failed, return an error
                                 case .failure(let error):
                                     print("Oops something went wrong \(error)")
