@@ -11,6 +11,7 @@ struct LoginView: View {
     
     // environment object to store the login view model
     @EnvironmentObject var loginVM: LoginViewModel
+    @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
         NavigationStack {
@@ -25,6 +26,7 @@ struct LoginView: View {
                         loginVM.logout()
                         print("Login button pressed")
                         loginVM.authenticate()
+                        userVM.fetchUser()
                     }, label: {
                         Text("Login")
                     }).buttonStyle(CTAButton())

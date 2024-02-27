@@ -15,10 +15,8 @@ class RegistrationViewModel: ObservableObject {
     @Published var isRegistrationSuccessful: Bool = false
     @Published var isEmailConfirmationSuccessful: Bool = false
     @Published var emailConfirmationError: Bool = false
-    @Published var showConfirmationView = false
     var registration: Registration?
 
-    
     
     /// Method used for registering a new user via Rails back end.
     /// - Parameter registration: registration object containing the user's data
@@ -29,7 +27,6 @@ class RegistrationViewModel: ObservableObject {
                 case .success(let email):
                     print("User with email: \(email) was registered correctly")
                     self.isRegistrationSuccessful = true
-                    self.showConfirmationView = true
                     // returns completion for the "register" method so that we can proceed
                     // with auth the user
                     completion(.success(email))
@@ -45,6 +42,7 @@ class RegistrationViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let emailConfirmedTimestamp):
+                    self.isEmailConfirmationSuccessful = true
                     completion(.success(emailConfirmedTimestamp))
                 case .failure(let error):
                     self.emailConfirmationError = true

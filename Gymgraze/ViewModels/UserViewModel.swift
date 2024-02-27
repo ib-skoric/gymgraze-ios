@@ -23,6 +23,7 @@ class UserViewModel: ObservableObject {
                 switch result {
                 case .success(let user):
                     self.user = user
+                    print(user)
                     self.isLoading = false
                 case .failure(let error):
                     print("Error fetching user: \(error)")

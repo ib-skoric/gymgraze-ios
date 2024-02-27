@@ -45,6 +45,7 @@ struct RegistrationView: View {
         ]
     }
     var body: some View {
+        NavigationStack {
             // Main Vstack
             VStack {
                 Text("Join us!")
@@ -116,7 +117,6 @@ struct RegistrationView: View {
                                     loginVM.email = email
                                     loginVM.password = password
                                     loginVM.authenticate()
-                                    registrationVM.showConfirmationView = true
                                     // else, if the registration has failed, return an error
                                 case .failure(let error):
                                     print("Oops something went wrong \(error)")
@@ -133,10 +133,8 @@ struct RegistrationView: View {
                 }).buttonStyle(CTAButton())
                     .padding()
                     .accessibilityLabel("Sign up button")
-                    .navigationDestination(isPresented: $registrationVM.showConfirmationView) {
-                        RegistrationConfirmEmailView()
-                    }
             }
+        }
     }
     
     func validateField(step: Int) -> Bool {

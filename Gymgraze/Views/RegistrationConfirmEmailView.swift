@@ -18,68 +18,66 @@ struct RegistrationConfirmEmailView: View {
     @ObservedObject var registrationVM =  RegistrationViewModel()
     
     var body: some View {
-        VStack {
-            Text("Thank you for signing up!")
-                .multilineTextAlignment(.center)
-                .font(.title)
-                .fontWeight(.bold)
+        NavigationStack {
+            VStack {
+                Text("Thank you for signing up!")
+                    .multilineTextAlignment(.center)
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                Text("We will just need to confirm your email...")
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            .padding(.top)
             
-            Text("We will just need to confirm your email...")
+            Spacer()
+            
+            Text("Head over to your email address \(userVM.user?.email ?? "") and copy the confirmation code here 👇")
                 .multilineTextAlignment(.center)
-                .font(.subheadline)
-                .foregroundColor(.gray)
+            
+            InputField(data: $emailConfirmation, title: "Email confirmation code")
+            
+            Button(action: {
+                
+                RegistrationService().resendEmailConfirmation() {
+                    (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success:
+                            print("yaaay")
+                        case .failure(let error):
+                            print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                        }
+                    }
+                }
+            },
+                   label: {
+                Text("Resend email")
+            })
+            
+            Spacer()
+            Button(action: {
+                registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let emailConfirmedTimestamp):
+                            userVM.user?.confirmed_at = emailConfirmedTimestamp
+                        case .failure(let error):
+                            print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                        }
+                    }
+                }
+            }, label: {
+                Text("Confirm email")
+            }).buttonStyle(CTAButton())
+                .padding()
+                .accessibilityLabel("Confirm email")
+                .alert(isPresented: $registrationVM.emailConfirmationError) {
+                    Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
+                }
         }
-        .padding(.top)
-        
-        Spacer()
-        
-        Text("Head over to your email address \(userVM.user?.email ?? "") and copy the confirmation code here 👇")
-            .multilineTextAlignment(.center)
-        
-        InputField(data: $emailConfirmation, title: "Email confirmation code")
-        
-        Button(action: {
-            
-            RegistrationService().resendEmailConfirmation() {
-                (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success:
-                        print("yaaay")
-                    case .failure(let error):
-                        print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
-                    }
-                }
-            }
-        },
-               label: {
-            Text("Resend email")
-        })
-        
-        Spacer()
-        Button(action: {
-            registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let emailConfirmedTimestamp):
-                        userVM.user?.confirmed_at = emailConfirmedTimestamp
-                        registrationVM.isEmailConfirmationSuccessful = true
-                    case .failure(let error):
-                        print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
-                    }
-                }
-            }
-        }, label: {
-            Text("Confirm email")
-        }).buttonStyle(CTAButton())
-            .navigationDestination(isPresented: $registrationVM.isEmailConfirmationSuccessful) {
-                ContentView()
-            }
-            .padding()
-            .accessibilityLabel("Confirm email")
-            .alert(isPresented: $registrationVM.emailConfirmationError) {
-                Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
-            }
     }
 }
 
