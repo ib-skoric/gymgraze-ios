@@ -23,9 +23,14 @@ struct RegistrationView: View {
     @State var ageError: String = ""
     @State var weightError: String = ""
     @State var heightError: String = ""
+    
+    @State var showEmailConfirmationView: Bool = false
+    
     // view model
     @StateObject private var registrationVM = RegistrationViewModel()
     @EnvironmentObject var loginVM: LoginViewModel
+    @EnvironmentObject var userVM: UserViewModel
+    
     // Object to store registration steps
     struct Step {
         let question: String
@@ -45,106 +50,111 @@ struct RegistrationView: View {
         ]
     }
     var body: some View {
-        // Main Vstack
-        VStack {
-            Text("Join us!")
-                .multilineTextAlignment(.center)
-                .font(.title)
-                .fontWeight(.bold)
-            Text("Create an account to get started")
-                .multilineTextAlignment(.center)
-                .font(.subheadline)
-                .foregroundColor(.gray)
-        }
-        .padding(.top)
-        Spacer()
-        // check current step count
-        if step < steps.count {
+        NavigationStack {
+            // Main Vstack
             VStack {
-                Text(steps[step].question)
+                Text("Join us!")
+                    .multilineTextAlignment(.center)
+                    .font(.title)
+                    .fontWeight(.bold)
+                Text("Create an account to get started")
                     .multilineTextAlignment(.center)
                     .font(.subheadline)
-                InputField(data: steps[step].binding, title: steps[step].placeholder)
-                    .accessibilityLabel("\(steps[step].placeholder) input field")
-                if !steps[step].error.wrappedValue.isEmpty {
-                    Text(steps[step].error.wrappedValue)
-                        .font(.caption)
-                        .foregroundColor(.red)
-                }
+                    .foregroundColor(.gray)
             }
-            .transition(.push(from: .trailing))
-        } else {
-            // Vstack for the last step of the registration process
-            VStack {
-                Text("That's all!\n\n Ready?\n Hit the button below and let's go! 🚀")
-                    .multilineTextAlignment(.center)
-                    .font(.headline)
-            }
-            .transition(.push(from: .trailing))
-        }
-        Spacer()
-        // conditionally display different buttons
-        if step < steps.count {
-            Button(action: {
-                if validateField(step: step) {
-                    withAnimation {
-                        step += 1
+            .padding(.top)
+            Spacer()
+            // check current step count
+            if step < steps.count {
+                VStack {
+                    Text(steps[step].question)
+                        .multilineTextAlignment(.center)
+                        .font(.subheadline)
+                    InputField(data: steps[step].binding, title: steps[step].placeholder)
+                        .accessibilityLabel("\(steps[step].placeholder) input field")
+                    if !steps[step].error.wrappedValue.isEmpty {
+                        Text(steps[step].error.wrappedValue)
+                            .font(.caption)
+                            .foregroundColor(.red)
                     }
                 }
-            }, label: {
-                Text("Next")
-            }).buttonStyle(CTAButton())
-                .padding()
-                .accessibilityLabel("Next step button")
-        } else {
-            Button(action: {
-                if validateAllFields() {
-                    isLoading = true
-                    // convert string values to int
-                    let ageInt = Int(age) ?? 0
-                    let heightInt = Int(height) ?? 0
-                    // convert string values to double
-                    let weightDouble = Double(weight) ?? 0.0
-                    let registration = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
-                    // we call registration method which returnes a closure
-                    registrationVM.register(registration: registration) { (result) in
-                        DispatchQueue.main.async {
-                            switch result {
-                                // we check if the closure is 'success'
-                            case .success(let email):
-                                // Start authentication process after successful registration
-                                loginVM.email = email
-                                loginVM.password = password
-                                loginVM.authenticate()
-                                // else, if the registration has failed, return an error
-                            case .failure(let error):
-                                print("Oops something went wrong \(error)")
+                .transition(.push(from: .trailing))
+            } else {
+                // Vstack for the last step of the registration process
+                VStack {
+                    Text("That's all!\n\n Ready?\n Hit the button below and let's go! 🚀")
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
+                }
+                .transition(.push(from: .trailing))
+            }
+            Spacer()
+            // conditionally display different buttons
+            if step < steps.count {
+                Button(action: {
+                    if validateField(step: step) {
+                        withAnimation {
+                            step += 1
+                        }
+                    }
+                }, label: {
+                    Text("Next")
+                }).buttonStyle(CTAButton())
+                    .padding()
+                    .accessibilityLabel("Next step button")
+            } else {
+                Button(action: {
+                    if validateAllFields() {
+                        isLoading = true
+                        // convert string values to int
+                        let ageInt = Int(age) ?? 0
+                        let heightInt = Int(height) ?? 0
+                        // convert string values to double
+                        let weightDouble = Double(weight) ?? 0.0
+                        let registration = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
+                        // we call registration method which returnes a closure
+                        registrationVM.register(registration: registration) { (result) in
+                            DispatchQueue.main.async {
+                                switch result {
+                                    // we check if the closure is 'success'
+                                case .success(let email):
+                                    // Start authentication process after successful registration
+                                    loginVM.email = email
+                                    loginVM.password = password
+                                    loginVM.authenticate() { (result) in
+                                        switch result {
+                                        case .success:
+                                            userVM.fetchUser()
+                                            showEmailConfirmationView = true
+                                        case .failure:
+                                            print("Failed authing user after sign up")
+                                        }
+                                    }
+                                    // else, if the registration has failed, return an error
+                                case .failure(let error):
+                                    print("Oops something went wrong \(error)")
+                                }
                             }
                         }
                     }
-                }
-            }, label: {
-                if isLoading {
-                    ProgressView()
-                } else {
-                    Text("Sign up")
-                }
-            }).buttonStyle(CTAButton())
-                .padding()
-                .accessibilityLabel("Sign up button")
-                .background(
-                    NavigationLink(destination: RegistrationConfirmEmailView(email: email).navigationBarBackButtonHidden(true), isActive: $registrationVM.isRegistrationSuccessful) {
-                        EmptyView()
-                    })
+                }, label: {
+                    if isLoading {
+                        ProgressView()
+                    } else {
+                        Text("Sign up")
+                    }
+                }).buttonStyle(CTAButton())
+                    .padding()
+                    .accessibilityLabel("Sign up button")
+                    .navigationDestination(isPresented: $showEmailConfirmationView) {
+                        RegistrationConfirmEmailView()
+                    }
+            }
         }
     }
+    
     func validateField(step: Int) -> Bool {
         let value = steps[step].binding.wrappedValue
-        
-        if steps[step].placeholder == "Email" && value != "ibskoric@test.com" {
-            steps[step].error.wrappedValue = "Wrong email, bro"
-            return false
-        }
         
         if value.isEmpty {
             steps[step].error.wrappedValue = "This field cannot be empty"

@@ -18,7 +18,6 @@ class RegistrationViewModel: ObservableObject {
     var registration: Registration?
 
     
-    
     /// Method used for registering a new user via Rails back end.
     /// - Parameter registration: registration object containing the user's data
     func register(registration: Registration, completion: @escaping (Result<String, Error>) -> Void) {

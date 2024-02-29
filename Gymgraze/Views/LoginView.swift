@@ -11,6 +11,9 @@ struct LoginView: View {
     
     // environment object to store the login view model
     @EnvironmentObject var loginVM: LoginViewModel
+    @EnvironmentObject var userVM: UserViewModel
+    
+    @State var isLoading: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -22,14 +25,33 @@ struct LoginView: View {
                     InputField(data: $loginVM.password, title: "Password").accessibilityLabel("Password input field")
                     // add in the login button
                     Button(action: {
+                        isLoading = true
                         loginVM.logout()
                         print("Login button pressed")
-                        loginVM.authenticate()
+                        loginVM.authenticate() { result in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success:
+                                    userVM.fetchUser()
+                                    
+                                case .failure:
+                                    print("Failed to auth user from LoginView")
+                                }
+                            }
+                        }
+                        
                     }, label: {
-                        Text("Login")
+                        if isLoading {
+                            ProgressView()
+                        } else {
+                            Text("Login")
+                        }
                     }).buttonStyle(CTAButton())
                         .padding()
                         .accessibilityLabel("Login button")
+                        .navigationDestination(isPresented: $userVM.isConfirmedEmailUser) {
+                            ContentView().navigationBarBackButtonHidden(true)
+                        }
                 }
                 NavigationLink(destination: RegistrationView()) {
                     Text("Don't have an account? Sign up here")
