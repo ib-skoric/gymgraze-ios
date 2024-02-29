@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject var loginVM: LoginViewModel
+    @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
         NavigationStack {
@@ -46,9 +47,17 @@ struct ProfileView: View {
                     }
                 }
                 
-                Button(action: { loginVM.logout() }, label: {
+                Button(action: {
+                    DispatchQueue.main.async {
+                        loginVM.logout()
+                        userVM.user = nil
+                    }
+                }, label: {
                         Text("Log out")
                     })
+                .navigationDestination(isPresented: $loginVM.userLoggedOut) {
+                    LoginView().navigationBarBackButtonHidden(true)
+                }
             }
         }
     }

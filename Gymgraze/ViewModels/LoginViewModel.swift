@@ -20,6 +20,7 @@ class LoginViewModel: ObservableObject {
     var email: String = ""
     var password: String = ""
     @Published var authenticated: Bool = getToken() != nil
+    @Published var userLoggedOut: Bool = false
     @Published var authenticationError: Bool = false
     
     func checkAuthStatus() {
@@ -86,6 +87,7 @@ class LoginViewModel: ObservableObject {
         if status == errSecSuccess {
             print("Token removed successfully")
             self.authenticated = false
+            self.userLoggedOut = true
         } else {
             print("Failed to remove token")
         }

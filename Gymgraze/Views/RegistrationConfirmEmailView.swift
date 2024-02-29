@@ -75,7 +75,7 @@ struct RegistrationConfirmEmailView: View {
                 .padding()
                 .accessibilityLabel("Confirm email")
                 .navigationDestination(isPresented: $registrationVM.isEmailConfirmationSuccessful, destination: {
-                    ContentView().navigationBarBackButtonHidden()
+                    ContentView().navigationBarBackButtonHidden(true)
                 })
                 .alert(isPresented: $registrationVM.emailConfirmationError) {
                     Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
