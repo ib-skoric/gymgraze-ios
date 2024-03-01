@@ -159,8 +159,12 @@ struct RegistrationView: View {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         
+        let passwordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        
         var isValid: Bool = false
         
+        // validates if the field is not empty
         if value.isEmpty {
             steps[step].error.wrappedValue = "This field cannot be empty"
         } else {
@@ -168,12 +172,34 @@ struct RegistrationView: View {
             isValid = true
         }
         
+        // validates email field
         if field == "Email" {
             if emailTest.evaluate(with: value) {
                 steps[step].error.wrappedValue = ""
                 isValid = true
             } else {
                 steps[step].error.wrappedValue = "This email address is not valid"
+                isValid = false
+            }
+        }
+        
+        // validates password field
+        if field == "Password" {
+            if passwordTest.evaluate(with: value) {
+                steps[step].error.wrappedValue = ""
+                isValid = true
+            } else {
+                steps[step].error.wrappedValue = "Password must be at least 8 characters long and have uppercase & lowecase characters as well as a number"
+                isValid = false
+            }
+        }
+        
+        if field == "Age" || field == "Height" || field == "Weight" {
+            let intValue = Int(value) ?? nil
+            
+            // TODO: I am assuming that noone will be 18kg or 18cm which is acceptable for the time being
+            if intValue != nil && intValue! <= 18 {
+                steps[step].error.wrappedValue = "Value must be positive and you must be over 18 years of age"
                 isValid = false
             }
         }
