@@ -154,16 +154,34 @@ struct RegistrationView: View {
     }
     
     func validateField(step: Int) -> Bool {
+        let field = steps[step].placeholder
         let value = steps[step].binding.wrappedValue
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        
+        var isValid: Bool = false
         
         if value.isEmpty {
             steps[step].error.wrappedValue = "This field cannot be empty"
-            return false
         } else {
             steps[step].error.wrappedValue = ""
-            return true
+            isValid = true
         }
+        
+        if field == "Email" {
+            if emailTest.evaluate(with: value) {
+                steps[step].error.wrappedValue = ""
+                isValid = true
+            } else {
+                steps[step].error.wrappedValue = "This email address is not valid"
+                isValid = false
+            }
+        }
+        
+        return isValid
+        
     }
+    
     func validateAllFields() -> Bool {
         var allValid = true
         for i in 0..<steps.count {
