@@ -141,38 +141,6 @@ struct SetGoalsView: View {
             isValid = true
         }
         
-        // validates email field
-        if field == "Email" {
-            if emailTest.evaluate(with: value) {
-                steps[step].error.wrappedValue = ""
-                isValid = true
-            } else {
-                steps[step].error.wrappedValue = "This email address is not valid"
-                isValid = false
-            }
-        }
-        
-        // validates password field
-        if field == "Password" {
-            if passwordTest.evaluate(with: value) {
-                steps[step].error.wrappedValue = ""
-                isValid = true
-            } else {
-                steps[step].error.wrappedValue = "Password must be at least 8 characters long and have uppercase & lowecase characters as well as a number"
-                isValid = false
-            }
-        }
-        
-        if field == "Age" || field == "Height" || field == "Weight" {
-            let intValue = Int(value) ?? nil
-            
-            // TODO: I am assuming that noone will be 18kg or 18cm which is acceptable for the time being
-            if intValue != nil && intValue! <= 18 {
-                steps[step].error.wrappedValue = "Value must be positive and you must be over 18 years of age"
-                isValid = false
-            }
-        }
-        
         return isValid
         
     }
