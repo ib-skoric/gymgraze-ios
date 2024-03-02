@@ -12,7 +12,7 @@ struct RegistrationConfirmEmailView: View {
     
     // ---- Variables
     @State var emailConfirmation: String = ""
-    @State private var isResendEmailButtonDisabled = false
+    @State private var isResendEmailButtonDisabled = true
     @State private var countdownTimer = 60
     var email: String = ""
     
