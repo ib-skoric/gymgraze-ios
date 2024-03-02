@@ -36,7 +36,7 @@ struct PasswordResetView: View {
             
             Spacer()
             Button(action: {
-                
+                // TODO: Add logic here
             }, label: {
                 Text("Send password reset code")
             }).buttonStyle(CTAButton())

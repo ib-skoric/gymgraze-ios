@@ -12,6 +12,7 @@ enum APIError: Error {
     case invalidCredentials
     case invalidURL
     case serverDown
+    case userNotFound
     case custom(errorMessage: String)
 }
 
