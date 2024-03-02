@@ -41,14 +41,16 @@ class UserViewModel: ObservableObject {
         return user?.confirmed_at != nil
     }
     
-    func requestPasswordRest(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func requestPasswordRest(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         UserService().requestPasswordReset(email: email) { (result) in
           DispatchQueue.main.async {
           switch result {
             case .success(let string):
               self.hasSuccessfullyRequestedPasswordReset = true
+              completion(.success(true))
             case .failure(let error):
               print("Oops something went wrong requesting password reset email: \(error)")
+              completion(.failure(error))
           }
         }
         }
