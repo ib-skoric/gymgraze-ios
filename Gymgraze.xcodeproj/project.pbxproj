@@ -23,6 +23,7 @@
 		21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */; };
 		21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5C2B7EA92A00314DFE /* UserService.swift */; };
 		217C07E02B78F37F0014290A /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C07DF2B78F37F0014290A /* RegistrationViewModel.swift */; };
+		21BE04272B937DD100ADCC8A /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* PasswordResetView.swift */; };
 		21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */; };
 		21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E7A2B2B4522005FAC79 /* ContentView.swift */; };
 		21D67E7D2B2B4523005FAC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7C2B2B4523005FAC79 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		21679B5C2B7EA92A00314DFE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		217C07DF2B78F37F0014290A /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		21BE04262B937DD100ADCC8A /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		21D67E752B2B4522005FAC79 /* Gymgraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gymgraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymgrazeApp.swift; sourceTree = "<group>"; };
 		21D67E7A2B2B4522005FAC79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				21021E732B7E56B500A1195A /* RegistrationConfirmEmailView.swift */,
 				21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */,
 				21D67E8B2B2B45CA005FAC79 /* LoginView.swift */,
+				21BE04262B937DD100ADCC8A /* PasswordResetView.swift */,
 				21E58F532B82594B00E31882 /* MainView.swift */,
 				210DA2F62B825B3B00F96B75 /* DiaryView.swift */,
 				210DA2F82B825B5000F96B75 /* TrendsView.swift */,
@@ -282,6 +285,7 @@
 				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
 				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
 				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
+				21BE04272B937DD100ADCC8A /* PasswordResetView.swift in Sources */,
 				217C07E02B78F37F0014290A /* RegistrationViewModel.swift in Sources */,
 				215D54322B757B1C00A07029 /* Registration.swift in Sources */,
 				21E58F542B82594B00E31882 /* MainView.swift in Sources */,
