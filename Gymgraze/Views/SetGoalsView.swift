@@ -11,9 +11,9 @@ import SwiftUI
 
 struct SetGoalsView: View {
     // ----- Variables -----
-    @State var stepsCount: String
-    @State var exercise: String
-    @State var kcal: String
+    @State var stepsCount: String = ""
+    @State var exercise: String = ""
+    @State var kcal: String = ""
     
     // variables for error handling
     @State var stepsCountError: String = ""
@@ -40,8 +40,8 @@ struct SetGoalsView: View {
     var steps: [Step] {
         [
             Step(question: "👟 What do you want to be your steps goal to be?", placeholder: "Steps", binding: $stepsCount, error: $stepsCountError),
-            Step(question: "👟 What do you want to be your exercise goal to be?", placeholder: "Exercise", binding: $exercise, error: $exerciseError),
-            Step(question: "👟 What do you want to be your calories goal to be?", placeholder: "Calories (kcal)", binding: $kcal, error: $kcalError),
+            Step(question: "🏋️‍♂️ What do you want to be your exercise goal to be?", placeholder: "Exercise", binding: $exercise, error: $exerciseError),
+            Step(question: "🍏 What do you want to be your calories goal to be?", placeholder: "Calories (kcal)", binding: $kcal, error: $kcalError),
         ]
     }
     
@@ -102,33 +102,8 @@ struct SetGoalsView: View {
                         let stepsCountInt = Int(stepsCount) ?? 0
                         let exerciseInt = Int(exercise) ?? 0
                         let kcalInt = Int(kcal) ?? 0
-                        // convert string values to double
-                        let weightDouble = Double(weight) ?? 0.0
                         // TODO: Create a goal object here
-                        // we call registration method which returnes a closure
-                        registrationVM.register(registration: registration) { (result) in
-                            DispatchQueue.main.async {
-                                switch result {
-                                    // we check if the closure is 'success'
-                                case .success(let email):
-                                    // Start authentication process after successful registration
-                                    loginVM.email = email
-                                    loginVM.password = password
-                                    loginVM.authenticate() { (result) in
-                                        switch result {
-                                        case .success:
-                                            userVM.fetchUser()
-                                            showEmailConfirmationView = true
-                                        case .failure:
-                                            print("Failed authing user after sign up")
-                                        }
-                                    }
-                                    // else, if the registration has failed, return an error
-                                case .failure(let error):
-                                    print("Oops something went wrong \(error)")
-                                }
-                            }
-                        }
+                        // TODO: Add in method to set the goal here 
                     }
                 }, label: {
                     if isLoading {
