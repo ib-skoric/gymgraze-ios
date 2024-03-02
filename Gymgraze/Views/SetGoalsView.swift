@@ -103,7 +103,18 @@ struct SetGoalsView: View {
                         let exerciseInt = Int(exercise) ?? 0
                         let kcalInt = Int(kcal) ?? 0
                         // TODO: Create a goal object here
-                        // TODO: Add in method to set the goal here 
+                        let goal = GoalPayload(kcal: kcalInt, steps: stepsCountInt, exercise: exerciseInt)
+                        // TODO: Add in method to set the goal here
+                        userVM.setGoal(goal: goal) { result in
+                            switch result {
+                            case .success(let goal):
+                                print("goal set")
+                                print(goal)
+                                
+                            case .failure(let error):
+                                print("Error: \(error)")
+                            }
+                        }
                     }
                 }, label: {
                     if isLoading {
@@ -123,13 +134,7 @@ struct SetGoalsView: View {
     }
     
     func validateField(step: Int) -> Bool {
-        let field = steps[step].placeholder
         let value = steps[step].binding.wrappedValue
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        
-        let passwordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$"
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         
         var isValid: Bool = false
         

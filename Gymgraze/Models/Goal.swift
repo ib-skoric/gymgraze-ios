@@ -11,6 +11,12 @@ import Foundation
 struct Goal: Codable {
     var kcal: Int
     var steps: Int
-    var excercise: Int
-    var updatedAt: Date
+    var exercise: Int
+    var updated_at: Date
+}
+
+struct GoalPayload: Codable {
+    var kcal: Int
+    var steps: Int
+    var exercise: Int
 }
