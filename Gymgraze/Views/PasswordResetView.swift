@@ -10,6 +10,7 @@ import SwiftUI
 struct PasswordResetView: View {
     
     @State var passwordResetEmail: String = ""
+    @State var isLoading = false
     
     var body: some View {
         NavigationStack {
@@ -38,7 +39,11 @@ struct PasswordResetView: View {
             Button(action: {
                 // TODO: Add logic here
             }, label: {
-                Text("Send password reset code")
+                if isLoading {
+                    ProfileView()
+                } else {
+                    Text("Send password reset code")
+                }
             }).buttonStyle(CTAButton())
                 .padding()
                 .accessibilityLabel("Send password reset code button")

@@ -66,7 +66,7 @@ class UserService {
         
     }
     
-    func sendPasswordResetEmail(email: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
+    func requestPasswordReset(email: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/request_password_reset") else {
@@ -104,10 +104,10 @@ class UserService {
                 switch httpResonse.statusCode {
                     // if the status code is 200
                 case 202:
-                    completion(.success(true))
+                    completion(.success(true) as Result<Bool, APIError>)
                     return
                 case 404:
-                    completion(.failure(APIError.userNotFound))
+                    completion(.failure(APIError.userNotFound) as Result<Bool, APIError>)
                 default:
                     // if the status code is not 200 or 401, raise custom error with the status code
                     completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<Bool, APIError>)

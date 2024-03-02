@@ -12,6 +12,7 @@ class UserViewModel: ObservableObject {
     @Published var user: User?
     @Published var isLoading: Bool = false
     @Published var isConfirmedEmailUser: Bool = false
+    @Published var hasSuccessfullyRequestedPasswordReset = false
     
     init() {
         print("Attempting to fetch user inside init method")
@@ -38,5 +39,18 @@ class UserViewModel: ObservableObject {
     
     func checkEmailConfirmed() -> Bool {
         return user?.confirmed_at != nil
+    }
+    
+    func requestPasswordRest(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+        UserService().requestPasswordReset(email: email) { (result) in
+          DispatchQueue.main.async {
+          switch result {
+            case .success(let string):
+              self.hasSuccessfullyRequestedPasswordReset = true
+            case .failure(let error):
+              print("Oops something went wrong requesting password reset email: \(error)")
+          }
+        }
+        }
     }
 }
