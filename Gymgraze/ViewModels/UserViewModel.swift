@@ -42,7 +42,6 @@ class UserViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let email):
-                    print("User with email: \(email) was registered correctly")
                     self.hasSetGoals = true
                     completion(.success("Goal set successfully"))
                 case .failure(let error):

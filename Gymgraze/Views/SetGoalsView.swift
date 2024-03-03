@@ -107,10 +107,8 @@ struct SetGoalsView: View {
                         // TODO: Add in method to set the goal here
                         userVM.setGoal(goal: goal) { result in
                             switch result {
-                            case .success(let goal):
-                                print("goal set")
-                                print(goal)
-                                
+                            case .success(_):
+                                showContentView = true
                             case .failure(let error):
                                 print("Error: \(error)")
                             }

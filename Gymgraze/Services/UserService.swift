@@ -106,7 +106,7 @@ class UserService {
                     // try decode the response
                     guard let goalResponse = try? JSONDecoder().decode(Goal.self, from: data) else {
                         // raise invalid credentials error
-                        completion(.failure(APIError.invalidCredentials) as Result<Goal, APIError>)
+                        completion(.failure(APIError.invalidPayload) as Result<Goal, APIError>)
                         return
                     }
                     
