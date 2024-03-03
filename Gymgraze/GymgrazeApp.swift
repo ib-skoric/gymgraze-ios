@@ -14,9 +14,10 @@ struct GymgrazeApp: App {
     
     var body: some Scene {
         WindowGroup {
-           LoginView()
-                .environmentObject(loginVM)
-                .environmentObject(userVM)
+//           LoginView()
+//                .environmentObject(loginVM)
+//                .environmentObject(userVM)
+            BarcodeScannerView()
         }
     }
 }

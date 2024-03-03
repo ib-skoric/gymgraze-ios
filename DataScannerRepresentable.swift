@@ -26,6 +26,9 @@ struct DataScannerRepresentable: UIViewControllerRepresentable {
                 parent.scannedText = text.transcript
             case .barcode(let barcode):
                 parent.scannedText = barcode.payloadStringValue ?? "Unable to decode the scanned code"
+                DispatchQueue.main.async {
+                    self.parent.shouldStartScanning = false
+                }
             default:
                 print("unexpected item")
             }
