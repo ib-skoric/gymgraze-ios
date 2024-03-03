@@ -12,6 +12,8 @@ struct RegistrationConfirmEmailView: View {
     
     // ---- Variables
     @State var emailConfirmation: String = ""
+    @State private var isResendEmailButtonDisabled = true
+    @State private var countdownTimer = 60
     var email: String = ""
     
     @EnvironmentObject var userVM: UserViewModel
@@ -40,22 +42,27 @@ struct RegistrationConfirmEmailView: View {
             InputField(data: $emailConfirmation, title: "Email confirmation code")
             
             Button(action: {
-                
-                RegistrationService().resendEmailConfirmation() {
-                    (result) in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success:
-                            print("yaaay")
-                        case .failure(let error):
-                            print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                if !isResendEmailButtonDisabled {
+                    RegistrationService().resendEmailConfirmation() {
+                        (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success:
+                                print("yaaay")
+                            case .failure(let error):
+                                print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                            }
                         }
                     }
                 }
             },
                    label: {
-                Text("Resend email")
+                Text(isResendEmailButtonDisabled ? "Resend email in \(countdownTimer) seconds" : "Resend email")
+                .disabled(isResendEmailButtonDisabled)
             })
+            .onAppear() {
+                startCountdown()
+            }
             
             Spacer()
             Button(action: {
@@ -75,15 +82,25 @@ struct RegistrationConfirmEmailView: View {
                 .padding()
                 .accessibilityLabel("Confirm email")
                 .navigationDestination(isPresented: $registrationVM.isEmailConfirmationSuccessful, destination: {
-                    ContentView().navigationBarBackButtonHidden(true)
+                    SetGoalsView().navigationBarBackButtonHidden(true)
                 })
                 .alert(isPresented: $registrationVM.emailConfirmationError) {
                     Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
                 }
         }
     }
+    
+    func startCountdown() {
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            countdownTimer -= 1
+            
+            if countdownTimer == 0 {
+                timer.invalidate()
+                isResendEmailButtonDisabled = false
+            }
+        }
+    }
 }
-
 
 
 #Preview {
