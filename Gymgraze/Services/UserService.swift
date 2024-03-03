@@ -66,7 +66,58 @@ class UserService {
         
     }
     
-    func setGoal(goal: GoalPayload, completion: @escaping (Result<Goal, APIError>) -> Void) {
+func requestPasswordReset(email: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
+        
+        // construct the URL
+        guard let url = URL(string: "http://localhost:3000/request_password_reset") else {
+            // if it's not valid, throw a invalid URL error
+            completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
+            return
+        }
+        
+        // construct the body as JSON
+        let body = ["email": email]
+        
+        // create the request and set it's properties
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        // try to encode the body as JSON
+        do {
+            request.httpBody = try JSONEncoder().encode(body)
+        } catch {
+            print("Error encoding JSON: \(error)")
+        }
+        
+        // create the data task
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // check if any data was received from the server
+            guard let data = data, error == nil else {
+                // return custom errro that there was no data received
+                completion(.failure(APIError.serverDown) as Result<Bool, APIError>)
+                return
+            }
+            
+            // check the status code of the response
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                    // if the status code is 200
+                case 202:
+                    completion(.success(true) as Result<Bool, APIError>)
+                    return
+                case 404:
+                    completion(.failure(APIError.userNotFound) as Result<Bool, APIError>)
+                default:
+                    // if the status code is not 200 or 401, raise custom error with the status code
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<Bool, APIError>)
+                }
+            }
+            
+        }.resume()
+    }
+  
+  func setGoal(goal: GoalPayload, completion: @escaping (Result<Goal, APIError>) -> Void) {
         // fetch user from the back end
         // get the token for the currently logged in user
         var token: String? = getToken()
@@ -123,6 +174,5 @@ class UserService {
             }
             
         }.resume()
-    }
-    
+  }
 }
