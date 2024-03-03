@@ -19,7 +19,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Diary", systemImage: "book.pages.fill")
                 }
-            MainView()
+            BarcodeScannerView()
                 .tabItem {
                     Label("Quick add", systemImage: "plus.circle")
                 }

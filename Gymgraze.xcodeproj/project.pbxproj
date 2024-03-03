@@ -22,6 +22,8 @@
 		216604982B7D27F30097C73E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604972B7D27F30097C73E /* Helpers.swift */; };
 		21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */; };
 		21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5C2B7EA92A00314DFE /* UserService.swift */; };
+		21729B292B94DC63009091B0 /* DataScannerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */; };
+		21729B2B2B94DC7F009091B0 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */; };
 		217C07E02B78F37F0014290A /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C07DF2B78F37F0014290A /* RegistrationViewModel.swift */; };
 		21BE04272B937DD100ADCC8A /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* PasswordResetView.swift */; };
 		21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */; };
@@ -60,6 +62,8 @@
 		21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		21679B5C2B7EA92A00314DFE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		21729B272B94DA69009091B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerRepresentable.swift; sourceTree = "<group>"; };
+		21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
 		217C07DF2B78F37F0014290A /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		21BE04262B937DD100ADCC8A /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		21D67E752B2B4522005FAC79 /* Gymgraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gymgraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +100,7 @@
 		21D67E6C2B2B4522005FAC79 = {
 			isa = PBXGroup;
 			children = (
+				21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */,
 				21D67E772B2B4522005FAC79 /* Gymgraze */,
 				21D67E762B2B4522005FAC79 /* Products */,
 			);
@@ -147,6 +152,7 @@
 				210DA2F82B825B5000F96B75 /* TrendsView.swift */,
 				210DA2FA2B825B6200F96B75 /* ProfileView.swift */,
 				21D67E8F2B2B45D8005FAC79 /* Components */,
+				21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 			files = (
 				21612DCB2B68E8FC00BF7740 /* RegistrationService.swift in Sources */,
 				21021E742B7E56B500A1195A /* RegistrationConfirmEmailView.swift in Sources */,
+				21729B2B2B94DC7F009091B0 /* BarcodeScannerView.swift in Sources */,
 				216604982B7D27F30097C73E /* Helpers.swift in Sources */,
 				21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */,
 				21EC13D42B6306A400CF0814 /* CTAButton.swift in Sources */,
@@ -299,6 +306,7 @@
 				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
 				210DA2FF2B826ABF00F96B75 /* ArticleCard.swift in Sources */,
 				2109E91C2B84980900F2E596 /* Heading.swift in Sources */,
+				21729B292B94DC63009091B0 /* DataScannerRepresentable.swift in Sources */,
 				2109E91E2B84992100F2E596 /* DiaryRow.swift in Sources */,
 				216604932B7D254A0097C73E /* ServiceModels.swift in Sources */,
 			);
