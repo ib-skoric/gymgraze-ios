@@ -10,6 +10,7 @@ import VisionKit
 
 struct DataScannerRepresentable: UIViewControllerRepresentable {
     @Binding var shouldStartScanning: Bool
+    @Binding var showProductView: Bool
     @Binding var scannedText: String
     var dataToScanFor: Set<DataScannerViewController.RecognizedDataType>
     
@@ -27,7 +28,7 @@ struct DataScannerRepresentable: UIViewControllerRepresentable {
             case .barcode(let barcode):
                 parent.scannedText = barcode.payloadStringValue ?? "Unable to decode the scanned code"
                 DispatchQueue.main.async {
-                    self.parent.shouldStartScanning = false
+                    self.parent.showProductView = true
                 }
             default:
                 print("unexpected item")
@@ -39,7 +40,7 @@ struct DataScannerRepresentable: UIViewControllerRepresentable {
         let dataScannerVC = DataScannerViewController(
             recognizedDataTypes: dataToScanFor,
             qualityLevel: .accurate,
-            recognizesMultipleItems: true,
+            recognizesMultipleItems: false,
             isHighFrameRateTrackingEnabled: true,
             isPinchToZoomEnabled: true,
             isGuidanceEnabled: true,
@@ -52,7 +53,7 @@ struct DataScannerRepresentable: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: DataScannerViewController, context: Context) {
-       if shouldStartScanning {
+       if shouldStartScanning && !showProductView {
            try? uiViewController.startScanning()
        } else {
            uiViewController.stopScanning()
