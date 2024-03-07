@@ -40,19 +40,7 @@ struct RequestPasswordResetView: View {
             
             Spacer()
             Button(action: {
-                // TODO: Add logic here
-                isLoading = true
-                userVM.requestPasswordRest(email: passwordResetEmail) { result in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(_):
-                            print("Email sent sucessfully")
-                        case .failure(_):
-                            print("Something went wrong")
-                            hasErrorSendingEmail = true
-                        }
-                    }
-                }
+                requestPasswordReset()
             }, label: {
                 if isLoading {
                     ProgressView()
@@ -67,7 +55,23 @@ struct RequestPasswordResetView: View {
                 }
         }
     }
+    
+    func requestPasswordReset() {
+        // TODO: Add logic here
+        isLoading = true
+        userVM.requestPasswordRest(email: passwordResetEmail) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    print("Email sent sucessfully")
+                case .failure(_):
+                    print("Something went wrong")
+                    hasErrorSendingEmail = true
+                }
+            }
+        }
     }
+}
 
 #Preview {
     RequestPasswordResetView()

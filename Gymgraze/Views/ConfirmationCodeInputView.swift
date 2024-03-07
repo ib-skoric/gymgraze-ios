@@ -21,8 +21,8 @@ struct ConfirmationCodeInputView: View {
     @ObservedObject var registrationVM =  RegistrationViewModel()
     
     var body: some View {
-        var heading: String = (confirmationType == "email") ? "Thank you for signing up!" : "Your password has been reset"
-        var subheading: String = (confirmationType == "email") ? "We will just need to confirm your email..." : "We'll just need a code to confirm this..."
+        let heading: String = (confirmationType == "email") ? "Thank you for signing up!" : "Your password has been reset"
+        let subheading: String = (confirmationType == "email") ? "We will just need to confirm your email..." : "We'll just need a code to confirm this..."
         
         NavigationStack {
             VStack {
@@ -48,17 +48,7 @@ struct ConfirmationCodeInputView: View {
             
             Button(action: {
                 if !isResendEmailButtonDisabled && confirmationType == "email" {
-                    RegistrationService().resendEmailConfirmation() {
-                        (result) in
-                        DispatchQueue.main.async {
-                            switch result {
-                            case .success:
-                                print("yaaay")
-                            case .failure(let error):
-                                print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
-                            }
-                        }
-                    }
+                    resendConfirmationEmail()
                 } else {
                     // TODO: Logic for validating resetting password code
                 }
@@ -74,16 +64,7 @@ struct ConfirmationCodeInputView: View {
             Spacer()
             Button(action: {
                 if confirmationType == "email" {
-                    registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
-                        DispatchQueue.main.async {
-                            switch result {
-                            case .success(let emailConfirmedTimestamp):
-                                userVM.user?.confirmed_at = emailConfirmedTimestamp
-                            case .failure(let error):
-                                print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
-                            }
-                        }
-                    }
+                    confirmEmail()
                 } else {
                     // TODO: Logic for confirming password reset
                 }
@@ -109,6 +90,33 @@ struct ConfirmationCodeInputView: View {
             if countdownTimer == 0 {
                 timer.invalidate()
                 isResendEmailButtonDisabled = false
+            }
+        }
+    }
+    
+    func confirmEmail() {
+        registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let emailConfirmedTimestamp):
+                    userVM.user?.confirmed_at = emailConfirmedTimestamp
+                case .failure(let error):
+                    print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                }
+            }
+        }
+    }
+    
+    func resendConfirmationEmail() {
+        RegistrationService().resendEmailConfirmation() {
+            (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    print("yaaay")
+                case .failure(let error):
+                    print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                }
             }
         }
     }
