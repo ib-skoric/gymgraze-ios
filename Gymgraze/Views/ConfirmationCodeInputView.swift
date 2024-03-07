@@ -11,9 +11,11 @@ import SwiftUI
 struct ConfirmationCodeInputView: View {
     
     // ---- Variables
-    @State var emailConfirmation: String = ""
+    @State var token: String = ""
     @State private var isResendEmailButtonDisabled = true
     @State private var countdownTimer = 60
+    @State private var tokenConfirmedSuccessfully = false
+    
 //    var email: String = ""
     var confirmationType: String
     
@@ -44,7 +46,7 @@ struct ConfirmationCodeInputView: View {
                 .multilineTextAlignment(.center)
                 .padding()
             
-            InputField(data: $emailConfirmation, title: "Email confirmation code")
+            InputField(data: $token, title: "Email confirmation code")
             
             if confirmationType == "email" {
                 Button(action: {
@@ -77,10 +79,13 @@ struct ConfirmationCodeInputView: View {
             }).buttonStyle(CTAButton())
                 .padding()
                 .accessibilityLabel("Confirm email")
-                .navigationDestination(isPresented: $registrationVM.isEmailConfirmationSuccessful, destination: {
-                    SetGoalsView().navigationBarBackButtonHidden(true)
-                })
-               // TODO: Code for navigating to a password reset view
+                .background {
+                    if confirmationType == "email" {
+                        NavigationLink(destination: SetGoalsView().navigationBarBackButtonHidden(true), isActive: $registrationVM.isEmailConfirmationSuccessful) {}
+                    } else {
+                        NavigationLink(destination: ResetPasswordView().navigationBarBackButtonHidden(true), isActive: self.$tokenConfirmedSuccessfully) {}
+                    }
+                }
                 .alert(isPresented: $registrationVM.emailConfirmationError) {
                     Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
                 }
@@ -99,13 +104,13 @@ struct ConfirmationCodeInputView: View {
     }
     
     func validateCodeAndConfirmEmail() {
-        registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
+        registrationVM.confirmEmail(confirmationToken: token) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let emailConfirmedTimestamp):
                     userVM.user?.confirmed_at = emailConfirmedTimestamp
                 case .failure(let error):
-                    print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                    print(error)
                 }
             }
         }
@@ -119,14 +124,25 @@ struct ConfirmationCodeInputView: View {
                 case .success:
                     print("yaaay")
                 case .failure(let error):
-                    print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                    print(error)
                 }
             }
         }
     }
     
     func validatePasswordReset() {
-        
+        UserService().validatePasswordResetCode(token: token) {
+            (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    tokenConfirmedSuccessfully = true
+                    print("yaaay")
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
 }
 

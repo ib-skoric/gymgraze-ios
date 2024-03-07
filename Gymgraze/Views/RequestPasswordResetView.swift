@@ -12,6 +12,7 @@ struct RequestPasswordResetView: View {
     @State var passwordResetEmail: String = ""
     @State var isLoading = false
     @State var hasErrorSendingEmail = false
+    @State var emailSentSuccessfully = false
     
     @EnvironmentObject var userVM: UserViewModel
     
@@ -49,6 +50,12 @@ struct RequestPasswordResetView: View {
                 }
             }).buttonStyle(CTAButton())
                 .padding()
+//                .navigationDestination(isPresented: self.$emailSentSuccessfully, destination: {
+//                    ConfirmationCodeInputView(confirmationType: "password").navigationBarBackButtonHidden(true)
+//                })
+                .background {
+                    NavigationLink(destination: ConfirmationCodeInputView(confirmationType: "password").navigationBarBackButtonHidden(true), isActive: $emailSentSuccessfully) {}
+                }
                 .accessibilityLabel("Send password reset code button")
                 .alert(isPresented: $hasErrorSendingEmail) {
                     Alert(title: Text("Error sending email"), message: Text("Something's gone wrong."), dismissButton: .default(Text("Dismiss")))
@@ -57,13 +64,16 @@ struct RequestPasswordResetView: View {
     }
     
     func requestPasswordReset() {
-        // TODO: Add logic here
         isLoading = true
         userVM.requestPasswordRest(email: passwordResetEmail) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):
                     print("Email sent sucessfully")
+                    withAnimation {
+                        isLoading = false
+                        emailSentSuccessfully = true
+                    }
                 case .failure(_):
                     print("Something went wrong")
                     hasErrorSendingEmail = true
