@@ -36,8 +36,9 @@ struct RegistrationConfirmEmailView: View {
             
             Spacer()
             
-            Text("Head over to your email address \(userVM.user?.email ?? "") and copy the confirmation code here 👇")
+            Text("Head over to your email address: \(userVM.user?.email ?? "") and copy the confirmation code here 👇")
                 .multilineTextAlignment(.center)
+                .padding()
             
             InputField(data: $emailConfirmation, title: "Email confirmation code")
             
@@ -104,5 +105,5 @@ struct RegistrationConfirmEmailView: View {
 
 
 #Preview {
-    RegistrationConfirmEmailView()
+    RegistrationConfirmEmailView().environmentObject(UserViewModel())
 }
