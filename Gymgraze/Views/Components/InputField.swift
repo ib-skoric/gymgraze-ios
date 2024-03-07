@@ -25,7 +25,7 @@ struct InputField: View {
             
             // switch based on title
             switch title {
-            case "Password":
+            case "Password", "Your new password", "Confirm your new password":
                 SecureField("", text: $data)
                     .padding()
                     .overlay(

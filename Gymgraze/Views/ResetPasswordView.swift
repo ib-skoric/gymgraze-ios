@@ -38,7 +38,7 @@ struct ResetPasswordView: View {
             Spacer()
             
             Button(action: {
-                // TODO: Add an action
+                validatePasswordsMatch()
             }, label: {
                 Text("Reset password")
             }).buttonStyle(CTAButton())
@@ -47,6 +47,15 @@ struct ResetPasswordView: View {
                 .navigationDestination(isPresented: $passwordResetSuccessful, destination: {
                     ContentView().navigationBarBackButtonHidden(true)
                 })
+                .alert(isPresented: self.$hasErrorsResettingPassword) {
+                    Alert(title: Text("Email confirmation error"), message: Text("Inputted passwords don't match or there was an error processing your request"), dismissButton: .default(Text("OK")))
+                }
+        }
+    }
+    
+    func validatePasswordsMatch() {
+        if newPassword != newPasswordConfirm {
+            self.hasErrorsResettingPassword = true
         }
     }
     
