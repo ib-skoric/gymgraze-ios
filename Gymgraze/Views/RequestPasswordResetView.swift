@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PasswordResetView: View {
+struct RequestPasswordResetView: View {
     
     @State var passwordResetEmail: String = ""
     @State var isLoading = false
@@ -70,5 +70,5 @@ struct PasswordResetView: View {
     }
 
 #Preview {
-    PasswordResetView()
+    RequestPasswordResetView()
 }

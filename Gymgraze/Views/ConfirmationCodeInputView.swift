@@ -14,25 +14,29 @@ struct ConfirmationCodeInputView: View {
     @State var emailConfirmation: String = ""
     @State private var isResendEmailButtonDisabled = true
     @State private var countdownTimer = 60
-    var email: String = ""
+//    var email: String = ""
+    var confirmationType: String
     
     @EnvironmentObject var userVM: UserViewModel
     @ObservedObject var registrationVM =  RegistrationViewModel()
     
     var body: some View {
+        var heading: String = (confirmationType == "email") ? "Thank you for signing up!" : "Your password has been reset"
+        var subheading: String = (confirmationType == "email") ? "We will just need to confirm your email..." : "We'll just need a code to confirm this..."
+        
         NavigationStack {
             VStack {
-                Text("Thank you for signing up!")
+                Text(heading)
                     .multilineTextAlignment(.center)
                     .font(.title)
                     .fontWeight(.bold)
                 
-                Text("We will just need to confirm your email...")
+                Text(subheading)
                     .multilineTextAlignment(.center)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
-            .padding(.top)
+            .padding()
             
             Spacer()
             
@@ -43,7 +47,7 @@ struct ConfirmationCodeInputView: View {
             InputField(data: $emailConfirmation, title: "Email confirmation code")
             
             Button(action: {
-                if !isResendEmailButtonDisabled {
+                if !isResendEmailButtonDisabled && confirmationType == "email" {
                     RegistrationService().resendEmailConfirmation() {
                         (result) in
                         DispatchQueue.main.async {
@@ -55,6 +59,8 @@ struct ConfirmationCodeInputView: View {
                             }
                         }
                     }
+                } else {
+                    // TODO: Logic for validating resetting password code
                 }
             },
                    label: {
@@ -67,15 +73,19 @@ struct ConfirmationCodeInputView: View {
             
             Spacer()
             Button(action: {
-                registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(let emailConfirmedTimestamp):
-                            userVM.user?.confirmed_at = emailConfirmedTimestamp
-                        case .failure(let error):
-                            print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                if confirmationType == "email" {
+                    registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let emailConfirmedTimestamp):
+                                userVM.user?.confirmed_at = emailConfirmedTimestamp
+                            case .failure(let error):
+                                print("Oops something went wrong inside RegistrationConfirmEmailView: \(error)")
+                            }
                         }
                     }
+                } else {
+                    // TODO: Logic for confirming password reset
                 }
             }, label: {
                 Text("Confirm email")
@@ -85,6 +95,7 @@ struct ConfirmationCodeInputView: View {
                 .navigationDestination(isPresented: $registrationVM.isEmailConfirmationSuccessful, destination: {
                     SetGoalsView().navigationBarBackButtonHidden(true)
                 })
+               // TODO: Code for navigating to a password reset view
                 .alert(isPresented: $registrationVM.emailConfirmationError) {
                     Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
                 }
@@ -105,5 +116,5 @@ struct ConfirmationCodeInputView: View {
 
 
 #Preview {
-    ConfirmationCodeInputView().environmentObject(UserViewModel())
+    ConfirmationCodeInputView(confirmationType: "password").environmentObject(UserViewModel())
 }
