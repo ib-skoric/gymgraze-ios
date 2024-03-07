@@ -120,7 +120,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
   func setGoal(goal: GoalPayload, completion: @escaping (Result<Goal, APIError>) -> Void) {
         // fetch user from the back end
         // get the token for the currently logged in user
-        var token: String? = getToken()
+      let token: String? = getToken()
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/goals") else {

@@ -46,30 +46,34 @@ struct ConfirmationCodeInputView: View {
             
             InputField(data: $emailConfirmation, title: "Email confirmation code")
             
-            Button(action: {
-                if !isResendEmailButtonDisabled && confirmationType == "email" {
-                    resendConfirmationEmail()
-                } else {
-                    // TODO: Logic for validating resetting password code
+            if confirmationType == "email" {
+                Button(action: {
+                    if !isResendEmailButtonDisabled{
+                        resendConfirmationEmail()
+                    }
+                },
+                       label: {
+                    Text(isResendEmailButtonDisabled ? "Resend email in \(countdownTimer) seconds" : "Resend email")
+                        .disabled(isResendEmailButtonDisabled)
+                })
+                .onAppear() {
+                    startCountdown()
                 }
-            },
-                   label: {
-                Text(isResendEmailButtonDisabled ? "Resend email in \(countdownTimer) seconds" : "Resend email")
-                .disabled(isResendEmailButtonDisabled)
-            })
-            .onAppear() {
-                startCountdown()
             }
             
             Spacer()
             Button(action: {
                 if confirmationType == "email" {
-                    confirmEmail()
+                    validateCodeAndConfirmEmail()
                 } else {
-                    // TODO: Logic for confirming password reset
+                    validatePasswordReset()
                 }
             }, label: {
-                Text("Confirm email")
+                if confirmationType == "email" {
+                    Text("Confirm email")
+                } else {
+                    Text("Confirm password reset")
+                }
             }).buttonStyle(CTAButton())
                 .padding()
                 .accessibilityLabel("Confirm email")
@@ -94,7 +98,7 @@ struct ConfirmationCodeInputView: View {
         }
     }
     
-    func confirmEmail() {
+    func validateCodeAndConfirmEmail() {
         registrationVM.confirmEmail(confirmationToken: emailConfirmation) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -119,6 +123,10 @@ struct ConfirmationCodeInputView: View {
                 }
             }
         }
+    }
+    
+    func validatePasswordReset() {
+        
     }
 }
 
