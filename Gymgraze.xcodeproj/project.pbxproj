@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21021E742B7E56B500A1195A /* RegistrationConfirmEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21021E732B7E56B500A1195A /* RegistrationConfirmEmailView.swift */; };
+		21021E742B7E56B500A1195A /* ConfirmationCodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21021E732B7E56B500A1195A /* ConfirmationCodeInputView.swift */; };
 		2109E91C2B84980900F2E596 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109E91B2B84980900F2E596 /* Heading.swift */; };
 		2109E91E2B84992100F2E596 /* DiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109E91D2B84992100F2E596 /* DiaryRow.swift */; };
 		210DA2F72B825B3B00F96B75 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2F62B825B3B00F96B75 /* DiaryView.swift */; };
@@ -47,7 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		21021E732B7E56B500A1195A /* RegistrationConfirmEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmEmailView.swift; sourceTree = "<group>"; };
+		21021E732B7E56B500A1195A /* ConfirmationCodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationCodeInputView.swift; sourceTree = "<group>"; };
 		2109E91B2B84980900F2E596 /* Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heading.swift; sourceTree = "<group>"; };
 		2109E91D2B84992100F2E596 /* DiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryRow.swift; sourceTree = "<group>"; };
 		210DA2F62B825B3B00F96B75 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */,
-				21021E732B7E56B500A1195A /* RegistrationConfirmEmailView.swift */,
+				21021E732B7E56B500A1195A /* ConfirmationCodeInputView.swift */,
 				21DE9BC62B936FA700F086EB /* SetGoalsView.swift */,
 				21D67E8B2B2B45CA005FAC79 /* LoginView.swift */,
 				21BE04262B937DD100ADCC8A /* PasswordResetView.swift */,
@@ -279,7 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21612DCB2B68E8FC00BF7740 /* RegistrationService.swift in Sources */,
-				21021E742B7E56B500A1195A /* RegistrationConfirmEmailView.swift in Sources */,
+				21021E742B7E56B500A1195A /* ConfirmationCodeInputView.swift in Sources */,
 				21729B2B2B94DC7F009091B0 /* BarcodeScannerView.swift in Sources */,
 				216604982B7D27F30097C73E /* Helpers.swift in Sources */,
 				21EC13CE2B62FE6200CF0814 /* NutritionalInfo.swift in Sources */,

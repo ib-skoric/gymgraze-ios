@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// View used to comfirm users email address
-struct RegistrationConfirmEmailView: View {
+struct ConfirmationCodeInputView: View {
     
     // ---- Variables
     @State var emailConfirmation: String = ""
@@ -105,5 +105,5 @@ struct RegistrationConfirmEmailView: View {
 
 
 #Preview {
-    RegistrationConfirmEmailView().environmentObject(UserViewModel())
+    ConfirmationCodeInputView().environmentObject(UserViewModel())
 }
