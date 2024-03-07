@@ -35,8 +35,8 @@ struct BarcodeScannerView: View {
                             ProductView(barcode: scannedText)
                         }
                 }
-                .onChange(of: showProductView) { newValue in
-                    if !newValue {
+                .onChange(of: showProductView) { isShowing in
+                    if !isShowing {
                         scannedText = ""
                         isShowingScanner = false
                         DispatchQueue.main.async {
@@ -45,6 +45,7 @@ struct BarcodeScannerView: View {
                         }
                     }
                 }
+
 
             }
         }
