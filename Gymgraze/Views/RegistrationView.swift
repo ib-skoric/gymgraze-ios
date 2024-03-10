@@ -27,7 +27,6 @@ struct RegistrationView: View {
     @State var showEmailConfirmationView: Bool = false
     
     // view model
-    @StateObject private var registrationVM = RegistrationViewModel()
     @EnvironmentObject var loginVM: LoginViewModel
     @EnvironmentObject var userVM: UserViewModel
     
@@ -206,6 +205,7 @@ struct RegistrationView: View {
                     // set user to userVM
                     userVM.user = user
                     // Start authentication process after successful registration
+                    userVM.email = email
                     userVM.password = password
                     userVM.authenticate() { (result) in
                         switch result {

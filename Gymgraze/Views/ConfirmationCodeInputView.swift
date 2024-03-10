@@ -15,12 +15,13 @@ struct ConfirmationCodeInputView: View {
     @State private var isResendEmailButtonDisabled = true
     @State private var countdownTimer = 60
     @State private var tokenConfirmedSuccessfully = false
+    @State private var emailConfirmed = false
+    @State private var emailConfirmationError = false
     
 //    var email: String = ""
     var confirmationType: String
     
     @EnvironmentObject var userVM: UserViewModel
-    @ObservedObject var registrationVM =  RegistrationViewModel()
     
     var body: some View {
         let heading: String = (confirmationType == "email") ? "Thank you for signing up!" : "Your password has been reset"
@@ -81,12 +82,12 @@ struct ConfirmationCodeInputView: View {
                 .accessibilityLabel("Confirm email")
                 .background {
                     if confirmationType == "email" {
-                        NavigationLink(destination: SetGoalsView().navigationBarBackButtonHidden(true), isActive: $registrationVM.isEmailConfirmationSuccessful) {}
+                        NavigationLink(destination: SetGoalsView().navigationBarBackButtonHidden(true), isActive: self.$emailConfirmed) {}
                     } else {
                         NavigationLink(destination: ResetPasswordView(token: token).navigationBarBackButtonHidden(true), isActive: self.$tokenConfirmedSuccessfully) {}
                     }
                 }
-                .alert(isPresented: $registrationVM.emailConfirmationError) {
+                .alert(isPresented: self.$emailConfirmationError) {
                     Alert(title: Text("Email confirmation error"), message: Text("The confirmation code inputted is not correct, please try again."), dismissButton: .default(Text("OK")))
                 }
         }
@@ -104,12 +105,14 @@ struct ConfirmationCodeInputView: View {
     }
     
     func validateCodeAndConfirmEmail() {
-        registrationVM.confirmEmail(confirmationToken: token) { (result) in
+        RegistrationService().confirmEmail(confirmationToken: token) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let emailConfirmedTimestamp):
+                    self.emailConfirmed = true
                     userVM.user?.confirmed_at = emailConfirmedTimestamp
                 case .failure(let error):
+                    self.emailConfirmationError = true
                     print(error)
                 }
             }
