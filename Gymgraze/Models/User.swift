@@ -17,4 +17,5 @@ struct User: Codable {
     var height: Int?
     var confirmed_at: String? = nil
     var goal: Goal?
+    var meals: [Meal]?
 }

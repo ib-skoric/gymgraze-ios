@@ -11,6 +11,6 @@ import Foundation
 struct Meal: Codable {
     var id: Int
     var name: String
-    var createdAt: Date
-    var updatedAt: Date
+    var created_at: String
+    var updated_at: String
 }
