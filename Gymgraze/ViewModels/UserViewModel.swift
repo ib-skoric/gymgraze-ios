@@ -14,10 +14,11 @@ class UserViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var authenticated: Bool = false
     @Published var authenticationError: Bool = false
-    @Published var isLoading: Bool = false
     @Published var isConfirmedEmailUser: Bool = false
     @Published var hasSuccessfullyRequestedPasswordReset = false
     @Published var hasSetGoals = false
+    
+    private let cache = InMemoryCache<User>(expirationInterval: 1 * 60)
     
     /// Method used for setting the user as authenticated
     func authenticate(completion: @escaping (Result<Bool, APIError>) -> Void) {
@@ -52,19 +53,30 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    func fetchUser() {
-        self.isLoading = true
-        UserService().fetchUser { (result) in
+    func fetchUser() async {
+        if let user = await self.cache.value(forKey: String(describing: user?.id)) {
+            print("Found cached user - using that data")
             DispatchQueue.main.async {
-                switch result {
-                case .success(let user):
-                    self.user = user
-                    self.isConfirmedEmailUser = self.checkEmailConfirmed()
-                    print(user)
-                    self.isLoading = false
-                case .failure(let error):
-                    print("Error fetching user: \(error)")
-                    self.isLoading = false
+                self.user = user
+            }
+            return
+        } else {
+            print("Could not find any cached user, fetching from API...")
+            UserService().fetchUser { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let user):
+                        self.cache.setValue(user, forKey: String(describing: user.id))
+                        // set the user data to the property
+                        self.user = user
+                        // check if email is confirmed
+                        self.isConfirmedEmailUser = self.checkEmailConfirmed()
+                        // print the user
+                        print(user)
+                        // stop the loading
+                    case .failure(let error):
+                        print("Error fetching user: \(error)")
+                    }
                 }
             }
         }
@@ -91,16 +103,16 @@ class UserViewModel: ObservableObject {
     
     func requestPasswordRest(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         UserService().requestPasswordReset(email: email) { (result) in
-          DispatchQueue.main.async {
-          switch result {
-            case .success(let string):
-              self.hasSuccessfullyRequestedPasswordReset = true
-              completion(.success(true))
-            case .failure(let error):
-              print("Oops something went wrong requesting password reset email: \(error)")
-              completion(.failure(error))
-          }
-        }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let string):
+                    self.hasSuccessfullyRequestedPasswordReset = true
+                    completion(.success(true))
+                case .failure(let error):
+                    print("Oops something went wrong requesting password reset email: \(error)")
+                    completion(.failure(error))
+                }
+            }
         }
     }
 }

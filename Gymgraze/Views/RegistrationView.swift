@@ -210,7 +210,9 @@ struct RegistrationView: View {
                     userVM.authenticate() { (result) in
                         switch result {
                         case .success:
-                            userVM.fetchUser()
+                            Task.init {
+                                await userVM.fetchUser()
+                            }
                             showEmailConfirmationView = true
                         case .failure:
                             print("Failed authing user after sign up")

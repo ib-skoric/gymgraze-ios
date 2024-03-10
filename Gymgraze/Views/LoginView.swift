@@ -61,7 +61,9 @@ struct LoginView: View {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    userVM.fetchUser()
+                    Task.init {
+                        await userVM.fetchUser()
+                    }
                 case .failure:
                     print("Failed to auth user from LoginView")
                     isLoading = false
