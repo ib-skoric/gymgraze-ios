@@ -77,7 +77,7 @@ struct SetGoalsView: View {
                     .font(.subheadline)
                     .foregroundColor(.red)
                 
-                InputField(data: $stepsCount, title: "🍏 Calories to consume per day (kcal)")
+                InputField(data: $kcal, title: "🍏 Calories to consume per day (kcal)")
                     .padding(.bottom)
                 Text(kcalError)
                     .multilineTextAlignment(.center)
@@ -94,7 +94,9 @@ struct SetGoalsView: View {
             Spacer()
             
             Button(action: {
-                setGoals()
+                if validateFields() {
+                    setGoals()
+                }
             }, label: {
                 if isLoading {
                     ProgressView()
