@@ -59,21 +59,40 @@ struct SetGoalsView: View {
                     .foregroundColor(.gray)
             }
             .padding(.top)
+            
             Spacer()
+            
             VStack {
                 InputField(data: $stepsCount, title: "👟 Target step count per day")
                     .padding(.bottom)
-                InputField(data: $exercise, title: "🏋️‍♂️ Target exercise daily (in minutes)")
-                    .padding(.bottom)
-                InputField(data: $stepsCount, title: "🍏 Calories to consume per day (kcal)")
-                    .padding(.bottom)
-                
-                Text("You can always change these later.")
+                Text(stepsCountError)
                     .multilineTextAlignment(.center)
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.red)
+                
+                InputField(data: $exercise, title: "🏋️‍♂️ Target exercise daily (in minutes)")
+                    .padding(.bottom)
+                Text(exerciseError)
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.red)
+                
+                InputField(data: $stepsCount, title: "🍏 Calories to consume per day (kcal)")
+                    .padding(.bottom)
+                Text(kcalError)
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.red)
             }
+            
+            
+            Text("You can always change these later.")
+                .multilineTextAlignment(.center)
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            
             Spacer()
+            
             Button(action: {
                 setGoals()
             }, label: {
@@ -93,16 +112,16 @@ struct SetGoalsView: View {
         }
     }
     
-    func validateField(step: Int) -> Bool {
-        let value = steps[step].binding.wrappedValue
-        
+    func validateFields() -> Bool {
         var isValid: Bool = false
         
-        // validates if the field is not empty
-        if value.isEmpty {
-            steps[step].error.wrappedValue = "This field cannot be empty"
+        if stepsCount.isEmpty || Int(stepsCount)! < 1 {
+            stepsCountError = "Step count can't be empty of less than 1"
+        } else if (exercise.isEmpty || Int(exercise)! < 1) {
+            exerciseError = "Exercise minutes can't be empty of less than 1"
+        } else if (kcal.isEmpty || Int(kcal)! < 100) {
+            kcalError = "Calories goal can't be empty of less than 100"
         } else {
-            steps[step].error.wrappedValue = ""
             isValid = true
         }
         
