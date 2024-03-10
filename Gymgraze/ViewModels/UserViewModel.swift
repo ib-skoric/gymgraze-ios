@@ -19,11 +19,6 @@ class UserViewModel: ObservableObject {
     @Published var hasSuccessfullyRequestedPasswordReset = false
     @Published var hasSetGoals = false
     
-    init() {
-        print("Attempting to fetch user inside init method")
-        fetchUser()
-    }
-    
     /// Method used for setting the user as authenticated
     func authenticate(completion: @escaping (Result<Bool, APIError>) -> Void) {
         DispatchQueue.main.async {

@@ -18,7 +18,6 @@ struct ConfirmationCodeInputView: View {
     @State private var emailConfirmed = false
     @State private var emailConfirmationError = false
     
-//    var email: String = ""
     var confirmationType: String
     
     @EnvironmentObject var userVM: UserViewModel
