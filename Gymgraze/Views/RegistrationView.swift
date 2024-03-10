@@ -27,7 +27,6 @@ struct RegistrationView: View {
     @State var showEmailConfirmationView: Bool = false
     
     // view model
-    @EnvironmentObject var loginVM: LoginViewModel
     @EnvironmentObject var userVM: UserViewModel
     
     // Object to store registration steps

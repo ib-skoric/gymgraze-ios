@@ -9,8 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    // environment object to store the login view model
-    @EnvironmentObject var loginVM: LoginViewModel
+    // environment object to store the user view model
     @EnvironmentObject var userVM: UserViewModel
     
     @State var isLoading: Bool = false

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @EnvironmentObject var loginVM: LoginViewModel
     @EnvironmentObject var userVM: UserViewModel
     
     @State private var userLoggedOut: Bool = false
