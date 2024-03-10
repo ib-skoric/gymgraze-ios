@@ -147,7 +147,7 @@ struct RegistrationView: View {
                     .padding()
                     .accessibilityLabel("Sign up button")
                     .navigationDestination(isPresented: $showEmailConfirmationView) {
-                        RegistrationConfirmEmailView()
+                        ConfirmationCodeInputView(confirmationType: "email")
                             .navigationBarBackButtonHidden(true)
                     }
             }

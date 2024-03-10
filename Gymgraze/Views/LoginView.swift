@@ -53,7 +53,7 @@ struct LoginView: View {
                             ContentView().navigationBarBackButtonHidden(true)
                         }
                 }
-            NavigationLink(destination: PasswordResetView()) {
+            NavigationLink(destination: RequestPasswordResetView()) {
                 Text("🔒 Forgot password? Let's reset it")
                     .tint(.secondary)
             }
