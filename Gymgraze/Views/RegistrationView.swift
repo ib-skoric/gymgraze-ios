@@ -27,8 +27,6 @@ struct RegistrationView: View {
     @State var showEmailConfirmationView: Bool = false
     
     // view model
-    @StateObject private var registrationVM = RegistrationViewModel()
-    @EnvironmentObject var loginVM: LoginViewModel
     @EnvironmentObject var userVM: UserViewModel
     
     // Object to store registration steps
@@ -105,37 +103,7 @@ struct RegistrationView: View {
             } else {
                 Button(action: {
                     if validateAllFields() {
-                        isLoading = true
-                        // convert string values to int
-                        let ageInt = Int(age) ?? 0
-                        let heightInt = Int(height) ?? 0
-                        // convert string values to double
-                        let weightDouble = Double(weight) ?? 0.0
-                        let registration = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
-                        // we call registration method which returnes a closure
-                        registrationVM.register(registration: registration) { (result) in
-                            DispatchQueue.main.async {
-                                switch result {
-                                    // we check if the closure is 'success'
-                                case .success(let email):
-                                    // Start authentication process after successful registration
-                                    loginVM.email = email
-                                    loginVM.password = password
-                                    loginVM.authenticate() { (result) in
-                                        switch result {
-                                        case .success:
-                                            userVM.fetchUser()
-                                            showEmailConfirmationView = true
-                                        case .failure:
-                                            print("Failed authing user after sign up")
-                                        }
-                                    }
-                                    // else, if the registration has failed, return an error
-                                case .failure(let error):
-                                    print("Oops something went wrong \(error)")
-                                }
-                            }
-                        }
+                        registerUser()
                     }
                 }, label: {
                     if isLoading {
@@ -217,6 +185,43 @@ struct RegistrationView: View {
             }
         }
         return allValid
+    }
+    
+    func registerUser() {
+        isLoading = true
+        // convert string values to int
+        let ageInt = Int(age) ?? 0
+        let heightInt = Int(height) ?? 0
+        // convert string values to double
+        let weightDouble = Double(weight) ?? 0.0
+        let registration = Registration(email: email, password: password, name: name, age: ageInt, weight: weightDouble, height: heightInt)
+        // we call registration method which returnes a closure
+        RegistrationService().register(registration: registration) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                    // we check if the closure is 'success'
+                case .success(let user):
+                    // set user to userVM
+                    userVM.user = user
+                    // Start authentication process after successful registration
+                    userVM.email = email
+                    userVM.password = password
+                    userVM.logout()
+                    userVM.authenticate() { (result) in
+                        switch result {
+                        case .success:
+                            userVM.fetchUser()
+                            showEmailConfirmationView = true
+                        case .failure:
+                            print("Failed authing user after sign up")
+                        }
+                    }
+                    // else, if the registration has failed, return an error
+                case .failure(let error):
+                    print("Oops something went wrong \(error)")
+                }
+            }
+        }
     }
 }
 

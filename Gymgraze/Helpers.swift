@@ -31,3 +31,27 @@ func getToken() -> String? {
     // if there was an error, return nil
     return nil
 }
+
+/// Method used for getting and setting the token in the Keychain
+func getAndSetTokenInKeychain(email: String, password: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
+    // use webservice to authenticate the user
+    AuthenticationService().authenticate(email: email, password: password) { (result) in
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let token):
+                let tokenData = token.data(using: .utf8)!
+                let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
+                                            kSecAttrAccount as String: "token",
+                                            kSecValueData as String: tokenData]
+                let status = SecItemAdd(query as CFDictionary, nil)
+                if status == errSecSuccess {
+                    print("Token saved successfully")
+                    completion(.success(true))
+                }
+            case .failure(let error):
+                print("Error authenticating: \(error)")
+                completion(.failure(APIError.invalidCredentials))
+            }
+        }
+    }
+}

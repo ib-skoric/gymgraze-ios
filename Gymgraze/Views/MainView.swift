@@ -13,7 +13,7 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack {
-            Heading(text: "👋 Welcome, Ivan")
+            Heading(text: "👋 Welcome, \(userVM.user?.name ?? "there")")
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {

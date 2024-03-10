@@ -13,12 +13,12 @@ class RegistrationService {
     /// - Parameters:
     ///   - registration: Registration object containing the user's data
     ///   - completion: completion handler that returns the result of the registration
-    func register(registration: Registration, completion: @escaping (Result<String, APIError>) -> Void) {
+    func register(registration: Registration, completion: @escaping (Result<User, APIError>) -> Void) {
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/user") else {
             // if it's not valid, throw a invalid URL error
-            completion(.failure(APIError.invalidURL) as Result<String, APIError>)
+            completion(.failure(APIError.invalidURL) as Result<User, APIError>)
             return
         }
         
@@ -38,7 +38,7 @@ class RegistrationService {
             // check if any data was received from the server
             guard let data = data, error == nil else {
                 // return custom errro that there was no data received
-                completion(.failure(APIError.serverDown) as Result<String, APIError>)
+                completion(.failure(APIError.serverDown) as Result<User, APIError>)
                 return
             }
             
@@ -53,15 +53,15 @@ class RegistrationService {
                     }
                     
                     // see if the response contains a email of the new user
-                    let email = registrationResponse.email
+                    let user = registrationResponse
                     
                     // if everything went well, return the email
-                    print(email!)
+                    print(user)
                     
-                    completion(.success(email!))
+                    completion(.success(user))
                 default:
                     // if the status code is not 200 or 401, raise custom error with the status code
-                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpStatus.statusCode)")) as Result<String, APIError>)
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpStatus.statusCode)")) as Result<User, APIError>)
                 }
             }
         }.resume()
