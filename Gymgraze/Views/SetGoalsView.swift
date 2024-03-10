@@ -23,27 +23,10 @@ struct SetGoalsView: View {
     // variables for UI handling
     @State var isLoading: Bool = false
     @State var showContentView: Bool = false
-    @State var step: Int = 0
     
     // view model
     @EnvironmentObject var userVM: UserViewModel
-    
-    // Object to store registration steps
-    struct Step {
-        let question: String
-        let placeholder: String
-        let binding: Binding<String>
-        let error: Binding<String>
-    }
-    
-    // array to hold all steps
-    var steps: [Step] {
-        [
-            Step(question: "👟 What do you want to be your steps goal to be?", placeholder: "Steps", binding: $stepsCount, error: $stepsCountError),
-            Step(question: "🏋️‍♂️ What do you want to be your exercise goal to be?", placeholder: "Exercise", binding: $exercise, error: $exerciseError),
-            Step(question: "🍏 What do you want to be your calories goal to be?", placeholder: "Calories (kcal)", binding: $kcal, error: $kcalError),
-        ]
-    }
+
     
     var body: some View {
         NavigationStack {
