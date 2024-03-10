@@ -42,8 +42,9 @@ class UserViewModel: ObservableObject {
         UserService().setGoal(goal: goal) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let email):
+                case .success(let goal):
                     self.hasSetGoals = true
+                    self.user?.goal = goal
                     completion(.success("Goal set successfully"))
                 case .failure(let error):
                     print("Oops something went wrong \(error)")

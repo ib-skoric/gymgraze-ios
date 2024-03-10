@@ -19,7 +19,7 @@ struct SetGoalsView: View {
     @State var stepsCountError: String = ""
     @State var exerciseError: String = ""
     @State var kcalError: String = ""
-
+    
     // variables for UI handling
     @State var isLoading: Bool = false
     @State var showContentView: Bool = false
@@ -53,94 +53,75 @@ struct SetGoalsView: View {
                     .multilineTextAlignment(.center)
                     .font(.title)
                     .fontWeight(.bold)
+                Text("It's important to have goals and boxes to tick.")
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
             }
             .padding(.top)
+            
             Spacer()
-            // check current step count
-            if step < steps.count {
-                VStack {
-                    Text(steps[step].question)
-                        .multilineTextAlignment(.center)
-                        .font(.subheadline)
-                    InputField(data: steps[step].binding, title: steps[step].placeholder)
-                        .accessibilityLabel("\(steps[step].placeholder) input field")
-                    if !steps[step].error.wrappedValue.isEmpty {
-                        Text(steps[step].error.wrappedValue)
-                            .font(.caption)
-                            .foregroundColor(.red)
-                    }
-                }
-                .transition(.push(from: .trailing))
-            } else {
-                // Vstack for the last step of the registration process
-                VStack {
-                    Text("Nice one!\n\n Let's go smash some goals!\n")
-                        .multilineTextAlignment(.center)
-                        .font(.headline)
-                }
-                .transition(.push(from: .trailing))
+            
+            VStack {
+                InputField(data: $stepsCount, title: "👟 Target step count per day")
+                    .padding(.bottom)
+                Text(stepsCountError)
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.red)
+                
+                InputField(data: $exercise, title: "🏋️‍♂️ Target exercise daily (in minutes)")
+                    .padding(.bottom)
+                Text(exerciseError)
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.red)
+                
+                InputField(data: $stepsCount, title: "🍏 Calories to consume per day (kcal)")
+                    .padding(.bottom)
+                Text(kcalError)
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.red)
             }
+            
+            
+            Text("You can always change these later.")
+                .multilineTextAlignment(.center)
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            
             Spacer()
-            // conditionally display different buttons
-            if step < steps.count {
-                Button(action: {
-                    if validateField(step: step) {
-                        withAnimation {
-                            step += 1
-                        }
-                    }
-                }, label: {
-                    Text("Next")
-                }).buttonStyle(CTAButton())
-                    .padding()
-                    .accessibilityLabel("Next step button")
-            } else {
-                Button(action: {
-                    if validateAllFields() {
-                        isLoading = true
-                        // convert string values to int
-                        let stepsCountInt = Int(stepsCount) ?? 0
-                        let exerciseInt = Int(exercise) ?? 0
-                        let kcalInt = Int(kcal) ?? 0
-                        // TODO: Create a goal object here
-                        let goal = GoalPayload(kcal: kcalInt, steps: stepsCountInt, exercise: exerciseInt)
-                        // TODO: Add in method to set the goal here
-                        userVM.setGoal(goal: goal) { result in
-                            switch result {
-                            case .success(_):
-                                showContentView = true
-                            case .failure(let error):
-                                print("Error: \(error)")
-                            }
-                        }
-                    }
-                }, label: {
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        Text("Finish set up")
-                    }
-                }).buttonStyle(CTAButton())
-                    .padding()
-                    .accessibilityLabel("Sign up button")
-                    .navigationDestination(isPresented: $showContentView) {
-                        ContentView()
-                            .navigationBarBackButtonHidden(true)
-                    }
-            }
+            
+            Button(action: {
+                setGoals()
+            }, label: {
+                if isLoading {
+                    ProgressView()
+                } else {
+                    Text("Finish set up")
+                }
+            }).buttonStyle(CTAButton())
+                .padding()
+                .accessibilityLabel("Finish set up button")
+                .navigationDestination(isPresented: $showContentView) {
+                    ContentView()
+                        .navigationBarBackButtonHidden(true)
+                }
+            
         }
     }
     
-    func validateField(step: Int) -> Bool {
-        let value = steps[step].binding.wrappedValue
-        
+    func validateFields() -> Bool {
         var isValid: Bool = false
         
-        // validates if the field is not empty
-        if value.isEmpty {
-            steps[step].error.wrappedValue = "This field cannot be empty"
+        if stepsCount.isEmpty || Int(stepsCount)! < 1 {
+            stepsCountError = "Step count can't be empty of less than 1"
+        } else if (exercise.isEmpty || Int(exercise)! < 1) {
+            exerciseError = "Exercise minutes can't be empty of less than 1"
+        } else if (kcal.isEmpty || Int(kcal)! < 100) {
+            kcalError = "Calories goal can't be empty of less than 100"
         } else {
-            steps[step].error.wrappedValue = ""
             isValid = true
         }
         
@@ -148,14 +129,23 @@ struct SetGoalsView: View {
         
     }
     
-    func validateAllFields() -> Bool {
-        var allValid = true
-        for i in 0..<steps.count {
-            if !validateField(step: i) {
-                allValid = false
+    func setGoals() {
+        isLoading = true
+        // convert string values to int
+        let stepsCountInt = Int(stepsCount) ?? 0
+        let exerciseInt = Int(exercise) ?? 0
+        let kcalInt = Int(kcal) ?? 0
+        // TODO: Create a goal object here
+        let goal = GoalPayload(kcal: kcalInt, steps: stepsCountInt, exercise: exerciseInt)
+        // TODO: Add in method to set the goal here
+        userVM.setGoal(goal: goal) { result in
+            switch result {
+            case .success(_):
+                showContentView = true
+            case .failure(let error):
+                print("Error: \(error)")
             }
         }
-        return allValid
     }
 }
 
