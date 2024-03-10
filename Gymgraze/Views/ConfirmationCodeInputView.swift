@@ -42,7 +42,7 @@ struct ConfirmationCodeInputView: View {
             
             Spacer()
             
-            Text("Head over to your email address: \(userVM.user?.email ?? "") and copy the confirmation code here 👇")
+            Text("Head over to your email address and copy the confirmation code here 👇")
                 .multilineTextAlignment(.center)
                 .padding()
             
