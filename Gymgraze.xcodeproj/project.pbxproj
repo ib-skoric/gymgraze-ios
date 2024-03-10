@@ -27,6 +27,8 @@
 		21729B2D2B9503C4009091B0 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B2C2B9503C4009091B0 /* ProductView.swift */; };
 		21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */; };
 		21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */; };
+		21BFA5FC2B9E22820074F130 /* CacheEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FB2B9E22820074F130 /* CacheEntry.swift */; };
+		21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FD2B9E230B0074F130 /* Cache.swift */; };
 		21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */; };
 		21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E7A2B2B4522005FAC79 /* ContentView.swift */; };
 		21D67E7D2B2B4523005FAC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7C2B2B4523005FAC79 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		21729B2C2B9503C4009091B0 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetView.swift; sourceTree = "<group>"; };
+		21BFA5FB2B9E22820074F130 /* CacheEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheEntry.swift; sourceTree = "<group>"; };
+		21BFA5FD2B9E230B0074F130 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		21D67E752B2B4522005FAC79 /* Gymgraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gymgraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymgrazeApp.swift; sourceTree = "<group>"; };
 		21D67E7A2B2B4522005FAC79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21BFA5FA2B9E22690074F130 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				21BFA5FB2B9E22820074F130 /* CacheEntry.swift */,
+				21BFA5FD2B9E230B0074F130 /* Cache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		21D67E6C2B2B4522005FAC79 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +132,7 @@
 				21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */,
 				21729B272B94DA69009091B0 /* Info.plist */,
 				21EC13C22B62FAE500CF0814 /* ViewModels */,
+				21BFA5FA2B9E22690074F130 /* Cache */,
 				21EC13C12B62FACE00CF0814 /* Models */,
 				21D67E872B2B458F005FAC79 /* Services */,
 				21D67E862B2B4587005FAC79 /* Views */,
@@ -285,6 +299,7 @@
 				216604952B7D25770097C73E /* AuthenticationService.swift in Sources */,
 				21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */,
 				21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */,
+				21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
 				210DA2FD2B825FE900F96B75 /* StatCard.swift in Sources */,
 				21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */,
@@ -305,6 +320,7 @@
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
 				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
 				210DA2FF2B826ABF00F96B75 /* ArticleCard.swift in Sources */,
+				21BFA5FC2B9E22820074F130 /* CacheEntry.swift in Sources */,
 				2109E91C2B84980900F2E596 /* Heading.swift in Sources */,
 				21729B292B94DC63009091B0 /* DataScannerRepresentable.swift in Sources */,
 				2109E91E2B84992100F2E596 /* DiaryRow.swift in Sources */,
