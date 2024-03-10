@@ -152,14 +152,64 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
             // check the status code of the response
             if let httpResonse = response as? HTTPURLResponse {
                 switch httpResonse.statusCode {
-                    // if the status code is 200
+                    // if the status code is 202
                 case 202:
                     completion(.success(true) as Result<Bool, APIError>)
                     return
                 case 401:
                     completion(.failure(APIError.invalidCredentials) as Result<Bool, APIError>)
                 default:
-                    // if the status code is not 200 or 401, raise custom error with the status code
+                    // if the status code is not 202 or 401, raise custom error with the status code
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<Bool, APIError>)
+                }
+            }
+            
+        }.resume()
+    }
+    
+    func resetPsasword(token: String, password: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
+        // construct the URL
+        guard let url = URL(string: "http://localhost:3000/reset_password") else {
+            // if it's not valid, throw a invalid URL error
+            completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
+            return
+        }
+        
+        // construct the body as JSON
+        let body = ["token": token, "password": password]
+        
+        // create the request and set it's properties
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        // try to encode the body as JSON
+        do {
+            request.httpBody = try JSONEncoder().encode(body)
+        } catch {
+            print("Error encoding JSON: \(error)")
+        }
+        
+        // create the data task
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // check if any data was received from the server
+            guard let _ = data, error == nil else {
+                // return custom error that there was no data received
+                completion(.failure(APIError.serverDown) as Result<Bool, APIError>)
+                return
+            }
+            
+            // check the status code of the response
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                    // if the status code is 202
+                case 202:
+                    completion(.success(true) as Result<Bool, APIError>)
+                    return
+                case 401:
+                    completion(.failure(APIError.invalidCredentials) as Result<Bool, APIError>)
+                default:
+                    // if the status code is not 202 or 401, raise custom error with the status code
                     completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<Bool, APIError>)
                 }
             }
@@ -202,7 +252,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
             // check the status code of the response
             if let httpResonse = response as? HTTPURLResponse {
                 switch httpResonse.statusCode {
-                    // if the status code is 200
+                    // if the status code is 201
                 case 201:
                     // try decode the response
                     guard let goalResponse = try? JSONDecoder().decode(Goal.self, from: data) else {
@@ -214,11 +264,11 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
                     // if everything went well, return the user
                     completion(.success(goalResponse))
                 case 422:
-                    // if the status code is 401, raise invalid credentials error
+                    // if the status code is 422, raise invalid credentials error
                     completion(.failure(APIError.custom(errorMessage: "Something went wrong validating your goals")) as Result<Goal, APIError>)
                     
                 default:
-                    // if the status code is not 200 or 401, raise custom error with the status code
+                    // if the status code is not 201 or 401, raise custom error with the status code
                     completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<Goal, APIError>)
                 }
             }

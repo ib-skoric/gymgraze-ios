@@ -14,6 +14,7 @@ struct ResetPasswordView: View {
     @State private var newPasswordConfirm: String = ""
     @State private var passwordResetSuccessful = false
     @State private var hasErrorsResettingPassword = false
+    var token: String 
     
     var body: some View {
         NavigationStack {
@@ -39,13 +40,14 @@ struct ResetPasswordView: View {
             
             Button(action: {
                 validatePasswordsMatch()
+                resetPassword(token: token, password: newPassword)
             }, label: {
                 Text("Reset password")
             }).buttonStyle(CTAButton())
                 .padding()
                 .accessibilityLabel("Confirm email")
                 .navigationDestination(isPresented: $passwordResetSuccessful, destination: {
-                    ContentView().navigationBarBackButtonHidden(true)
+                    LoginView().navigationBarBackButtonHidden(true)
                 })
                 .alert(isPresented: self.$hasErrorsResettingPassword) {
                     Alert(title: Text("Email confirmation error"), message: Text("Inputted passwords don't match or there was an error processing your request"), dismissButton: .default(Text("OK")))
@@ -59,11 +61,24 @@ struct ResetPasswordView: View {
         }
     }
     
-    func resetPassword() {
-        // TODO: Add logic here
+    func resetPassword(token: String, password: String) {
+        UserService().resetPsasword(token: token, password: password) {
+            (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    passwordResetSuccessful = true
+                    print("yaaay")
+                case .failure(let error):
+                    hasErrorsResettingPassword = true
+                    print(error)
+                }
+            }
+        }
     }
+
 }
 
 #Preview {
-    ResetPasswordView()
+    ResetPasswordView(token: "jsadkajdkas")
 }

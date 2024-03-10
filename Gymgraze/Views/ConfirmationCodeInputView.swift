@@ -83,7 +83,7 @@ struct ConfirmationCodeInputView: View {
                     if confirmationType == "email" {
                         NavigationLink(destination: SetGoalsView().navigationBarBackButtonHidden(true), isActive: $registrationVM.isEmailConfirmationSuccessful) {}
                     } else {
-                        NavigationLink(destination: ResetPasswordView().navigationBarBackButtonHidden(true), isActive: self.$tokenConfirmedSuccessfully) {}
+                        NavigationLink(destination: ResetPasswordView(token: token).navigationBarBackButtonHidden(true), isActive: self.$tokenConfirmedSuccessfully) {}
                     }
                 }
                 .alert(isPresented: $registrationVM.emailConfirmationError) {
