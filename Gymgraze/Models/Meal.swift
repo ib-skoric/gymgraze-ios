@@ -8,7 +8,7 @@
 import Foundation
 
 /// Meal object model
-struct Meal: Codable {
+struct Meal: Codable, Hashable {
     var id: Int
     var name: String
     var created_at: String
