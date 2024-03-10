@@ -49,11 +49,7 @@ struct ProfileView: View {
                 }
                 
                 Button(action: {
-                    DispatchQueue.main.async {
-                        userVM.logout()
-                        userVM.user = nil
-                        userLoggedOut = true
-                    }
+                    logout()
                 }, label: {
                         Text("Log out")
                     })
@@ -61,6 +57,14 @@ struct ProfileView: View {
                     LoginView().navigationBarBackButtonHidden(true)
                 }
             }
+        }
+    }
+    
+    func logout() {
+        DispatchQueue.main.async {
+            userVM.logout()
+            userVM.user = nil
+            userLoggedOut = true
         }
     }
 }

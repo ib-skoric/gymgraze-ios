@@ -50,9 +50,6 @@ struct RequestPasswordResetView: View {
                 }
             }).buttonStyle(CTAButton())
                 .padding()
-//                .navigationDestination(isPresented: self.$emailSentSuccessfully, destination: {
-//                    ConfirmationCodeInputView(confirmationType: "password").navigationBarBackButtonHidden(true)
-//                })
                 .background {
                     NavigationLink(destination: ConfirmationCodeInputView(confirmationType: "password").navigationBarBackButtonHidden(true), isActive: $emailSentSuccessfully) {}
                 }
