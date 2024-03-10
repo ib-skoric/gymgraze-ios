@@ -19,7 +19,7 @@ struct SetGoalsView: View {
     @State var stepsCountError: String = ""
     @State var exerciseError: String = ""
     @State var kcalError: String = ""
-
+    
     // variables for UI handling
     @State var isLoading: Bool = false
     @State var showContentView: Bool = false
@@ -53,66 +53,43 @@ struct SetGoalsView: View {
                     .multilineTextAlignment(.center)
                     .font(.title)
                     .fontWeight(.bold)
+                Text("It's important to have goals and boxes to tick.")
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
             }
             .padding(.top)
             Spacer()
-            // check current step count
-            if step < steps.count {
-                VStack {
-                    Text(steps[step].question)
-                        .multilineTextAlignment(.center)
-                        .font(.subheadline)
-                    InputField(data: steps[step].binding, title: steps[step].placeholder)
-                        .accessibilityLabel("\(steps[step].placeholder) input field")
-                    if !steps[step].error.wrappedValue.isEmpty {
-                        Text(steps[step].error.wrappedValue)
-                            .font(.caption)
-                            .foregroundColor(.red)
-                    }
-                }
-                .transition(.push(from: .trailing))
-            } else {
-                // Vstack for the last step of the registration process
-                VStack {
-                    Text("Nice one!\n\n Let's go smash some goals!\n")
-                        .multilineTextAlignment(.center)
-                        .font(.headline)
-                }
-                .transition(.push(from: .trailing))
+            VStack {
+                InputField(data: $stepsCount, title: "👟 Target step count per day")
+                    .padding(.bottom)
+                InputField(data: $exercise, title: "🏋️‍♂️ Target exercise daily (in minutes)")
+                    .padding(.bottom)
+                InputField(data: $stepsCount, title: "🍏 Calories to consume per day (kcal)")
+                    .padding(.bottom)
+                
+                Text("You can always change these later.")
+                    .multilineTextAlignment(.center)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
             }
             Spacer()
-            // conditionally display different buttons
-            if step < steps.count {
-                Button(action: {
-                    if validateField(step: step) {
-                        withAnimation {
-                            step += 1
-                        }
-                    }
-                }, label: {
-                    Text("Next")
-                }).buttonStyle(CTAButton())
-                    .padding()
-                    .accessibilityLabel("Next step button")
-            } else {
-                Button(action: {
-                    if validateAllFields() {
-                        setGoals()
-                    }
-                }, label: {
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        Text("Finish set up")
-                    }
-                }).buttonStyle(CTAButton())
-                    .padding()
-                    .accessibilityLabel("Sign up button")
-                    .navigationDestination(isPresented: $showContentView) {
-                        ContentView()
-                            .navigationBarBackButtonHidden(true)
-                    }
-            }
+            Button(action: {
+                setGoals()
+            }, label: {
+                if isLoading {
+                    ProgressView()
+                } else {
+                    Text("Finish set up")
+                }
+            }).buttonStyle(CTAButton())
+                .padding()
+                .accessibilityLabel("Finish set up button")
+                .navigationDestination(isPresented: $showContentView) {
+                    ContentView()
+                        .navigationBarBackButtonHidden(true)
+                }
+            
         }
     }
     
@@ -131,16 +108,6 @@ struct SetGoalsView: View {
         
         return isValid
         
-    }
-    
-    func validateAllFields() -> Bool {
-        var allValid = true
-        for i in 0..<steps.count {
-            if !validateField(step: i) {
-                allValid = false
-            }
-        }
-        return allValid
     }
     
     func setGoals() {
