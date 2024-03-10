@@ -97,22 +97,7 @@ struct SetGoalsView: View {
             } else {
                 Button(action: {
                     if validateAllFields() {
-                        isLoading = true
-                        // convert string values to int
-                        let stepsCountInt = Int(stepsCount) ?? 0
-                        let exerciseInt = Int(exercise) ?? 0
-                        let kcalInt = Int(kcal) ?? 0
-                        // TODO: Create a goal object here
-                        let goal = GoalPayload(kcal: kcalInt, steps: stepsCountInt, exercise: exerciseInt)
-                        // TODO: Add in method to set the goal here
-                        userVM.setGoal(goal: goal) { result in
-                            switch result {
-                            case .success(_):
-                                showContentView = true
-                            case .failure(let error):
-                                print("Error: \(error)")
-                            }
-                        }
+                        setGoals()
                     }
                 }, label: {
                     if isLoading {
@@ -156,6 +141,25 @@ struct SetGoalsView: View {
             }
         }
         return allValid
+    }
+    
+    func setGoals() {
+        isLoading = true
+        // convert string values to int
+        let stepsCountInt = Int(stepsCount) ?? 0
+        let exerciseInt = Int(exercise) ?? 0
+        let kcalInt = Int(kcal) ?? 0
+        // TODO: Create a goal object here
+        let goal = GoalPayload(kcal: kcalInt, steps: stepsCountInt, exercise: exerciseInt)
+        // TODO: Add in method to set the goal here
+        userVM.setGoal(goal: goal) { result in
+            switch result {
+            case .success(_):
+                showContentView = true
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
     }
 }
 
