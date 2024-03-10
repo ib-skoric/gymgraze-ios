@@ -12,6 +12,8 @@ struct ProfileView: View {
     @EnvironmentObject var loginVM: LoginViewModel
     @EnvironmentObject var userVM: UserViewModel
     
+    @State private var userLoggedOut: Bool = false
+    
     var body: some View {
         NavigationStack {
             Heading(text: "🧑 Profile")
@@ -49,13 +51,13 @@ struct ProfileView: View {
                 
                 Button(action: {
                     DispatchQueue.main.async {
-                        loginVM.logout()
+                        userVM.logout()
                         userVM.user = nil
                     }
                 }, label: {
                         Text("Log out")
                     })
-                .navigationDestination(isPresented: $loginVM.userLoggedOut) {
+                .navigationDestination(isPresented: $userLoggedOut) {
                     LoginView().navigationBarBackButtonHidden(true)
                 }
             }

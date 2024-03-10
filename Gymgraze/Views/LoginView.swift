@@ -26,14 +26,13 @@ struct LoginView: View {
                     // add in the login button
                     Button(action: {
                         isLoading = true
-                        loginVM.logout()
+                        userVM.logout()
                         print("Login button pressed")
-                        loginVM.authenticate() { result in
+                        userVM.authenticate() { result in
                             DispatchQueue.main.async {
                                 switch result {
                                 case .success:
                                     userVM.fetchUser()
-                                    
                                 case .failure:
                                     print("Failed to auth user from LoginView")
                                 }
