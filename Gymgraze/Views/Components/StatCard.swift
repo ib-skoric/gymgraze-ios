@@ -10,6 +10,7 @@ import SwiftUI
 struct StatCard: View {
     
     var type: String
+    var goal: Int?
     
     var colour: Color {
         switch type {
@@ -63,8 +64,7 @@ struct StatCard: View {
                 VStack {
                     Text(text)
                         .fontWeight(.light)
-                    // TODO: Replace me with actual data
-                    Text("500/1750")
+                    Text("500/\(goal!)")
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 }
