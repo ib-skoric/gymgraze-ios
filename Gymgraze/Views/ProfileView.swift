@@ -53,6 +53,7 @@ struct ProfileView: View {
                     DispatchQueue.main.async {
                         userVM.logout()
                         userVM.user = nil
+                        userLoggedOut = true
                     }
                 }, label: {
                         Text("Log out")

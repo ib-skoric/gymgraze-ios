@@ -21,8 +21,8 @@ struct LoginView: View {
                     // add the logo
                     Image("logo").resizable().frame(width: 150, height: 150)
                     // add in two custom input fields
-                    InputField(data: $loginVM.email, title: "Email").accessibilityLabel("Email input field")
-                    InputField(data: $loginVM.password, title: "Password").accessibilityLabel("Password input field")
+                    InputField(data: $userVM.email, title: "Email").accessibilityLabel("Email input field")
+                    InputField(data: $userVM.password, title: "Password").accessibilityLabel("Password input field")
                     // add in the login button
                     Button(action: {
                         isLoading = true
@@ -61,7 +61,7 @@ struct LoginView: View {
                     Text("Don't have an account? Sign up here")
                         .tint(.secondary)
                 }
-                .alert(isPresented: $loginVM.authenticationError) {
+                .alert(isPresented: $userVM.authenticationError) {
                     Alert(title: Text("Authentication Error"), message: Text("Invalid username or password"), dismissButton: .default(Text("OK")))
                 }
             }

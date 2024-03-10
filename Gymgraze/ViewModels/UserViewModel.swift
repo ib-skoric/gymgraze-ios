@@ -10,6 +10,7 @@ import Foundation
 class UserViewModel: ObservableObject {
     
     @Published var user: User?
+    @Published var email: String = ""
     @Published var password: String = ""
     @Published var authenticated: Bool = false
     @Published var authenticationError: Bool = false
@@ -27,7 +28,7 @@ class UserViewModel: ObservableObject {
     func authenticate(completion: @escaping (Result<Bool, APIError>) -> Void) {
         DispatchQueue.main.async {
             // getAndSetTokenInKeychain returns a closure which we check
-            getAndSetTokenInKeychain(email: (self.user?.email)!, password: self.password) { result in
+            getAndSetTokenInKeychain(email: self.email, password: self.password) { result in
                 switch result {
                     // if we're able to get and set the token successfully
                 case .success:
