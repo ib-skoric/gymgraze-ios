@@ -29,8 +29,9 @@ struct Goal: Codable {
         
         // Decode the ISO8601 date string into a Swift Date
         let isoDate = try container.decode(String.self, forKey: .updatedAt)
-        let dateFormatter = ISO8601DateFormatter()
-        updatedAt = dateFormatter.date(from: isoDate)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        updatedAt = dateFormatter.date(from: isoDate) ?? Date()
     }
 }
 

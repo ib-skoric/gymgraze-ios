@@ -30,7 +30,7 @@ struct Meal: Codable, Hashable {
         let isoDateCreatedAt = try container.decode(String.self, forKey: .createdAt)
         let isoDateUpdatedAt = try container.decode(String.self, forKey: .updatedAt)
         let dateFormatter = ISO8601DateFormatter()
-        createdAt = dateFormatter.date(from: isoDateCreatedAt)!
-        updatedAt = dateFormatter.date(from: isoDateUpdatedAt)!
+        createdAt = dateFormatter.date(from: isoDateCreatedAt) ?? Date()
+        updatedAt = dateFormatter.date(from: isoDateUpdatedAt) ?? Date()
     }
 }
