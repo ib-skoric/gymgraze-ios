@@ -42,6 +42,16 @@ struct ProfileView: View {
                     // TODO: Add a view here
                 } label: {
                     HStack {
+                        Image(systemName: "fork.knife")
+                            .foregroundColor(.gray)
+                        Text("Meals")
+                    }
+                }
+                
+                NavigationLink {
+                    // TODO: Add a view here
+                } label: {
+                    HStack {
                         Image(systemName: "heart.text.square.fill")
                             .foregroundColor(.gray)
                         Text("Apple Health data")
