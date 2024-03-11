@@ -12,7 +12,14 @@ struct Goal: Codable {
     var kcal: Int
     var steps: Int
     var exercise: Int
-    var updated_at: String
+    var updatedAt: String
+    
+    enum CodingKeys: String, CodingKey {
+        case kcal
+        case steps
+        case exercise
+        case updatedAt = "updated_at"
+    }
 }
 
 struct GoalPayload: Codable {

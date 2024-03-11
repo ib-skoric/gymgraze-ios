@@ -112,7 +112,7 @@ class RegistrationService {
                     }
                     
                     // get the token from the response
-                    guard let emailConfirmed = user.confirmed_at else {
+                    guard let emailConfirmed = user.confirmedAt else {
                         // if it's nil, raise invalid credentials error
                         completion(.failure(APIError.invalidCredentials))
                         return
@@ -188,7 +188,7 @@ class RegistrationService {
                     print(user)
                     
                     // get the timestamp of confirmation from the response
-                    guard let emailConfirmedTimestamp = user.confirmed_at else {
+                    guard let emailConfirmedTimestamp = user.confirmedAt else {
                         // if it's nil, raise invalid credentials error
                         completion(.failure(APIError.invalidCredentials))
                         return

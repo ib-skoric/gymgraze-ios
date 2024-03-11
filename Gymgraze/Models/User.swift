@@ -15,7 +15,19 @@ struct User: Codable {
     var age: Int?
     var weight: String?
     var height: Int?
-    var confirmed_at: String? = nil
+    var confirmedAt: String? = nil
     var goal: Goal?
     var meals: [Meal]?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case email
+        case name
+        case age
+        case weight
+        case height
+        case confirmedAt = "confirmed_at"
+        case goal
+        case meals
+    }
 }

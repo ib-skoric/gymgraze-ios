@@ -98,7 +98,7 @@ class UserViewModel: ObservableObject {
     }
     
     func checkEmailConfirmed() -> Bool {
-        return user?.confirmed_at != nil
+        return user?.confirmedAt != nil
     }
     
     func requestPasswordRest(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {

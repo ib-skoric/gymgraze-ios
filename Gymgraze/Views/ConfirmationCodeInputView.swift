@@ -109,7 +109,7 @@ struct ConfirmationCodeInputView: View {
                 switch result {
                 case .success(let emailConfirmedTimestamp):
                     self.emailConfirmed = true
-                    userVM.user?.confirmed_at = emailConfirmedTimestamp
+                    userVM.user?.confirmedAt = emailConfirmedTimestamp
                 case .failure(let error):
                     self.emailConfirmationError = true
                     print(error)

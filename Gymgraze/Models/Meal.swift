@@ -11,6 +11,13 @@ import Foundation
 struct Meal: Codable, Hashable {
     var id: Int
     var name: String
-    var created_at: String
-    var updated_at: String
+    var createdAt: String
+    var updatedAt: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
 }
