@@ -10,11 +10,21 @@ import SwiftUI
 struct DiaryView: View {
     
     @EnvironmentObject var userVM: UserViewModel
+    @State var selectedDate: Date = Date()
     
     var body: some View {
         NavigationStack {
             
-            Heading(text: "📒 Diary")
+            VStack {
+                HStack {
+                    Heading(text: "📒 Diary")
+                    Spacer()
+                    DatePicker(selection: $selectedDate, displayedComponents: .date) {
+                        EmptyView()
+                    }
+                    .padding(.trailing)
+                }
+            }
             
             List {
 //                Section(header: Text("Breakfast")) {
@@ -26,13 +36,13 @@ struct DiaryView: View {
 //                    DiaryRow(foodName: "Ham", foodWeightInG: 75.0, nutritionalInfo: "C: 2, P:25, F:2", kcal: 125)
 //                }
                 
-                if let meals = userVM.user?.meals {
-                    ForEach(meals, id: \.self) {meal in
-                        Section(header: Text(meal.name)) {
-                            Text("This is your \(meal.name) section")
-                        }
-                    }
-                }
+//                if let meals = userVM.user?.meals {
+//                    ForEach(meals, id: \.self) {meal in
+//                        Section(header: Text(meal.name)) {
+//                            
+//                        }
+//                    }
+//                }
             }
         }
     }
