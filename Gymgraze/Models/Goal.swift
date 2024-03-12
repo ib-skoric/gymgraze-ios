@@ -12,7 +12,7 @@ struct Goal: Codable {
     var kcal: Int
     var steps: Int
     var exercise: Int
-    var updatedAt: Date
+    var updatedAt: Date?
     
     enum CodingKeys: String, CodingKey {
         case kcal
@@ -27,11 +27,9 @@ struct Goal: Codable {
         steps = try container.decode(Int.self, forKey: .steps)
         exercise = try container.decode(Int.self, forKey: .exercise)
         
-        // Decode the ISO8601 date string into a Swift Date
-        let isoDate = try container.decode(String.self, forKey: .updatedAt)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        updatedAt = dateFormatter.date(from: isoDate) ?? Date()
+        if let updatedAtTimestamp = try container.decodeIfPresent(Double.self, forKey: .updatedAt) {
+            updatedAt = Date(timeIntervalSince1970: updatedAtTimestamp)
+        }
     }
 }
 

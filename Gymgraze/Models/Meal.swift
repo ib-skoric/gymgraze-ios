@@ -11,8 +11,8 @@ import Foundation
 struct Meal: Codable, Hashable {
     var id: Int
     var name: String
-    var createdAt: Date
-    var updatedAt: Date
+    var createdAt: Date?
+    var updatedAt: Date?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -26,11 +26,12 @@ struct Meal: Codable, Hashable {
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         
-        // Decode the ISO8601 date string into a Swift Date
-        let isoDateCreatedAt = try container.decode(String.self, forKey: .createdAt)
-        let isoDateUpdatedAt = try container.decode(String.self, forKey: .updatedAt)
-        let dateFormatter = ISO8601DateFormatter()
-        createdAt = dateFormatter.date(from: isoDateCreatedAt) ?? Date()
-        updatedAt = dateFormatter.date(from: isoDateUpdatedAt) ?? Date()
+        if let createdAtTimestamp = try container.decodeIfPresent(Double.self, forKey: .createdAt) {
+            createdAt = Date(timeIntervalSince1970: createdAtTimestamp)
+        }
+        
+        if let updatedAtTimestamp = try container.decodeIfPresent(Double.self, forKey: .updatedAt) {
+            updatedAt = Date(timeIntervalSince1970: updatedAtTimestamp)
+        }
     }
 }
