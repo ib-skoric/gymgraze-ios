@@ -13,8 +13,13 @@ struct GymgrazeApp: App {
     
     var body: some Scene {
         WindowGroup {
-           LoginView()
-                .environmentObject(userVM)
+            if userVM.user != nil {
+                ContentView()
+                    .environmentObject(userVM)
+            } else {
+                LoginView()
+                    .environmentObject(userVM)
+            }
         }
     }
 }
