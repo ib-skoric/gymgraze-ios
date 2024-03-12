@@ -13,6 +13,7 @@ struct LoginView: View {
     @EnvironmentObject var userVM: UserViewModel
     
     @State var isLoading: Bool = false
+    @State var isAuthenticatedAndConfirmedUser = false
     
     var body: some View {
         NavigationStack {
@@ -34,8 +35,8 @@ struct LoginView: View {
                 }).buttonStyle(CTAButton())
                     .padding()
                     .accessibilityLabel("Login button")
-                    .navigationDestination(isPresented: $userVM.isConfirmedEmailUser) {
-                        ContentView().navigationBarBackButtonHidden(true)
+                    .background {
+                        NavigationLink(destination: ContentView().navigationBarBackButtonHidden(true), isActive: $userVM.isConfirmedEmailUser) {}
                     }
             }
             NavigationLink(destination: RequestPasswordResetView()) {
@@ -62,7 +63,7 @@ struct LoginView: View {
                 switch result {
                 case .success:
                     Task.init {
-                        await userVM.fetchUser()
+                        userVM.fetchUser()
                     }
                 case .failure:
                     print("Failed to auth user from LoginView")

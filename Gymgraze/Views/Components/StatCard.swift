@@ -64,7 +64,7 @@ struct StatCard: View {
                 VStack {
                     Text(text)
                         .fontWeight(.light)
-                    Text("500/\(goal!)")
+                    Text("500/\(goal ?? 0)")
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 }

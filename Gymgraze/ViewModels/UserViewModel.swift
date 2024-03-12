@@ -24,6 +24,17 @@ class UserViewModel: ObservableObject {
         fetchUser()
     }
     
+    func reset() {
+        user = nil
+        email = ""
+        password = ""
+        authenticated = false
+        authenticationError = false
+        isConfirmedEmailUser = false
+        hasSuccessfullyRequestedPasswordReset = false
+        hasSetGoals = false
+    }
+    
     /// Method used for setting the user as authenticated
     func authenticate(completion: @escaping (Result<Bool, APIError>) -> Void) {
         DispatchQueue.main.async {
@@ -50,8 +61,7 @@ class UserViewModel: ObservableObject {
         let status = SecItemDelete(query as CFDictionary)
         if status == errSecSuccess {
             print("Token removed successfully")
-            self.authenticated = false
-            self.user = nil
+            self.reset()
         } else {
             print("Failed to remove token")
         }

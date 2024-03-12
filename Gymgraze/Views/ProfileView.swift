@@ -69,7 +69,7 @@ struct ProfileView: View {
                 
                 Button(action: {
                     Task.init {
-                        await userVM.fetchUser()
+                        userVM.fetchUser()
                     }
                 }, label: {
                         Text("Fetch user details")
@@ -81,8 +81,6 @@ struct ProfileView: View {
     func logout() {
         DispatchQueue.main.async {
             userVM.logout()
-            userVM.user = nil
-            userLoggedOut = true
         }
     }
 }
