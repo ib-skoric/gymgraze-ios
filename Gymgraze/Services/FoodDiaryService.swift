@@ -15,7 +15,7 @@ class FoodDiaryService {
         var token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/food_diary_entries") else {
+        guard let url = URL(string: "http://localhost:3000/food_diary_entries/1") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<FoodDiaryEntry, APIError>)
             return

@@ -12,5 +12,12 @@ struct Food: Codable {
     var id: Int
     var name: String
     var nutritionalInfo: NutritionalInfo
-    var Meal: Meal
+    var meal: Meal
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case nutritionalInfo = "nutritional_info"
+        case meal
+    }
 }
