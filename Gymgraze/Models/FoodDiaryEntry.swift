@@ -10,10 +10,10 @@ import Foundation
 /// FoodDiaryEntry object model
 struct FoodDiaryEntry: Codable {
     var id: Int
-    var date: Date
+    var date: String
     var foods: [Food]
     
     var foodsByMeal: [String: [Food]] {
-        Dictionary(grouping: foods) { $0.Meal.name }
+        Dictionary(grouping: foods) { $0.meal.name }
     }
 }

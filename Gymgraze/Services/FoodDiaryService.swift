@@ -44,6 +44,13 @@ class FoodDiaryService {
                     // if the status code is 200
                 case 200:
                     // try decode the response
+                    
+                    do {
+                        let diaryResponse = try JSONDecoder().decode(FoodDiaryEntry.self, from: data)
+                    } catch let error {
+                        print("Error decoding FoodDiaryEntry: \(error)")
+                    }
+                    
                     guard let diaryResponse = try? JSONDecoder().decode(FoodDiaryEntry.self, from: data) else {
                         // raise invalid credentials error
                         completion(.failure(APIError.invalidDataReturnedFromAPI) as Result<FoodDiaryEntry, APIError>)

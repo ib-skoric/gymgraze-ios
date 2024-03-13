@@ -37,6 +37,23 @@ struct DiaryView: View {
                     }
                 }
             }
+            
+            Button(action: {
+                fetchFoodDiary()
+            }, label: {
+                Text("Fetch Food Diary")})
+        }
+    }
+    
+    func fetchFoodDiary() {
+        FoodDiaryService().fetchFoodDiaryEntry() { result in
+            switch result {
+            case .success(let entry):
+                print(entry)
+                
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }
