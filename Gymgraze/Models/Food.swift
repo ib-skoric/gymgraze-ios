@@ -12,4 +12,5 @@ struct Food: Codable {
     var id: Int
     var name: String
     var nutritionalInfo: NutritionalInfo
+    var Meal: Meal
 }

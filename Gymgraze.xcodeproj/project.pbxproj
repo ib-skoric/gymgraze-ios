@@ -25,6 +25,7 @@
 		21729B292B94DC63009091B0 /* DataScannerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */; };
 		21729B2B2B94DC7F009091B0 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */; };
 		21729B2D2B9503C4009091B0 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B2C2B9503C4009091B0 /* ProductView.swift */; };
+		2177A8062BA0FB950042ABA8 /* FoodDiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2177A8052BA0FB950042ABA8 /* FoodDiaryService.swift */; };
 		21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */; };
 		21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */; };
 		21BFA5FC2B9E22820074F130 /* CacheEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FB2B9E22820074F130 /* CacheEntry.swift */; };
@@ -68,6 +69,7 @@
 		21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerRepresentable.swift; sourceTree = "<group>"; };
 		21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
 		21729B2C2B9503C4009091B0 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		2177A8052BA0FB950042ABA8 /* FoodDiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDiaryService.swift; sourceTree = "<group>"; };
 		21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetView.swift; sourceTree = "<group>"; };
 		21BFA5FB2B9E22820074F130 /* CacheEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheEntry.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				216604922B7D254A0097C73E /* ServiceModels.swift */,
 				216604942B7D25770097C73E /* AuthenticationService.swift */,
 				21679B5C2B7EA92A00314DFE /* UserService.swift */,
+				2177A8052BA0FB950042ABA8 /* FoodDiaryService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				21EC13D42B6306A400CF0814 /* CTAButton.swift in Sources */,
 				216604952B7D25770097C73E /* AuthenticationService.swift in Sources */,
 				21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */,
+				2177A8062BA0FB950042ABA8 /* FoodDiaryService.swift in Sources */,
 				21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */,
 				21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,

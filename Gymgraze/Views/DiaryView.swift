@@ -10,6 +10,7 @@ import SwiftUI
 struct DiaryView: View {
     
     @EnvironmentObject var userVM: UserViewModel
+    @ObservedObject var diaryVM = DiaryViewModel()
     @State var selectedDate: Date = Date()
     
     var body: some View {
