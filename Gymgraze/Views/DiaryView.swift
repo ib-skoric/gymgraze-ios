@@ -11,7 +11,12 @@ struct DiaryView: View {
     
     @EnvironmentObject var userVM: UserViewModel
     @ObservedObject var diaryVM = DiaryViewModel()
+    @State var diaryFoods: [Food] = FoodDiaryEntry().foods
     @State var selectedDate: Date = Date()
+    
+    var foodsByMeal: [String: [Food]] {
+        Dictionary(grouping: diaryFoods) { $0.meal.name }
+    }
     
     var body: some View {
         NavigationStack {
@@ -28,16 +33,14 @@ struct DiaryView: View {
             }
             
             List {
-                if let meals = userVM.user?.meals {
-                    ForEach(meals, id: \.self) {meal in
-                        Section(header: Text(meal.name)) {
-                                DiaryRow(foodName: "Apple", foodWeightInG: 150.0, nutritionalInfo: "C: 20, P:0, F:0", kcal: 120)
-                                DiaryRow(foodName: "Cereal", foodWeightInG: 175.0, nutritionalInfo: "C: 35, P:1, F:7", kcal: 250)
+                ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealName in
+                    Section(header: Text(mealName)) {
+                        ForEach(foodsByMeal[mealName]!, id: \.id) { food in
+                            Text(food.name)
                         }
                     }
                 }
             }
-            
             Button(action: {
                 fetchFoodDiary()
             }, label: {
@@ -49,6 +52,7 @@ struct DiaryView: View {
         FoodDiaryService().fetchFoodDiaryEntry() { result in
             switch result {
             case .success(let entry):
+                diaryFoods = entry.foods
                 print(entry)
                 
             case .failure(let error):

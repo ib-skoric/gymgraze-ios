@@ -126,8 +126,8 @@
             filePath = "Gymgraze/Views/DiaryView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "fetchFoodDiary()"
             landmarkType = "7">
             <Locations>
@@ -158,6 +158,34 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51">
+               </Location>
+               <Location
+                  uuid = "650C4E8E-7F41-435F-ABE2-4BA9D38BC43E - e5a23ef60d25128"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Gymgraze.DiaryView.fetchFoodDiary() -&gt; ()"
+                  moduleName = "Gymgraze"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/DiaryView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52">
+               </Location>
+               <Location
+                  uuid = "650C4E8E-7F41-435F-ABE2-4BA9D38BC43E - 4b0905b3e714f34b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Gymgraze.FoodDiaryEntry, Gymgraze.APIError&gt;) -&gt; () in Gymgraze.DiaryView.fetchFoodDiary() -&gt; ()"
+                  moduleName = "Gymgraze"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/DiaryView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54">
                </Location>
             </Locations>
          </BreakpointContent>

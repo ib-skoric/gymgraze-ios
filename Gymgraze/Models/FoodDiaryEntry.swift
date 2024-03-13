@@ -13,6 +13,12 @@ struct FoodDiaryEntry: Codable {
     var date: String
     var foods: [Food]
     
+    init() {
+        self.id = 0
+        self.date = ""
+        self.foods = []
+    }
+    
     var foodsByMeal: [String: [Food]] {
         Dictionary(grouping: foods) { $0.meal.name }
     }
