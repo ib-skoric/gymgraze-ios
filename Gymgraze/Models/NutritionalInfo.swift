@@ -10,7 +10,7 @@ import Foundation
 /// NutritionalInfo object model
 struct NutritionalInfo: Codable {
     var id: Int?
-    var kcal: Double
+    var kcal: Int
     var carbs: Double
     var protein: Double
     var fat: Double

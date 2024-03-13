@@ -36,7 +36,7 @@ struct DiaryView: View {
                 ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealName in
                     Section(header: Text(mealName)) {
                         ForEach(foodsByMeal[mealName]!, id: \.id) { food in
-                            Text(food.name)
+                            DiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
                         }
                     }
                 }
