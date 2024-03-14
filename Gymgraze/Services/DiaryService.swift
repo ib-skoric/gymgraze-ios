@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FoodDiaryService {
+class DiaryService {
     
     func fetchFoodDiaryEntry(date: Date, completion: @escaping (Result<FoodDiaryEntry, APIError>) -> Void) {
         // fetch user from the back end

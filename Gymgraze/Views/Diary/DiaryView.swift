@@ -42,7 +42,7 @@ struct DiaryView: View {
                 
                 VStack {
                     Spacer()
-                    Text("No food diary entries for this day")
+                    Text("No diary entries for this day")
                     Spacer()
                 }
             } else {
@@ -69,7 +69,7 @@ struct DiaryView: View {
 
     
     func fetchFoodDiary() {
-        FoodDiaryService().fetchFoodDiaryEntry(date: selectedDate) { result in
+        DiaryService().fetchFoodDiaryEntry(date: selectedDate) { result in
             switch result {
             case .success(let entry):
                 diaryFoods = entry.foods
