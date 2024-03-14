@@ -9,8 +9,8 @@ struct DiaryView: View {
     @State private var selectedFood: Food?
     @State private var isDetailViewPresented: Bool = false
     
-    var foodsByMeal: [String: [Food]] {
-        Dictionary(grouping: diaryFoods) { $0.meal.name }
+    var foodsByMeal: [Int: [Food]] {
+        Dictionary(grouping: diaryFoods) { $0.meal.id }
     }
     
     var body: some View {
@@ -28,9 +28,9 @@ struct DiaryView: View {
             }
             
             List {
-                ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealName in
-                    Section(header: Text(mealName)) {
-                        ForEach(foodsByMeal[mealName]!, id: \.id) { food in
+                ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
+                    Section(header: Text(diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
+                        ForEach(foodsByMeal[mealId]!, id: \.id) { food in
                             DiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
                                 .onTapGesture {
                                     DispatchQueue.main.async {
@@ -42,6 +42,7 @@ struct DiaryView: View {
                 }
                 .sheet(item: $selectedFood) { food in
                         FoodDetailView(food: food)
+
                 }
                 
                 Button(action: {
