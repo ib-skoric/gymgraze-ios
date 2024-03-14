@@ -107,6 +107,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		214087782BA2F18F004E0B51 /* RegAndAuth */ = {
+			isa = PBXGroup;
+			children = (
+				21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */,
+				21021E732B7E56B500A1195A /* ConfirmationCodeInputView.swift */,
+				21DE9BC62B936FA700F086EB /* SetGoalsView.swift */,
+				21D67E8B2B2B45CA005FAC79 /* LoginView.swift */,
+				21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */,
+				21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */,
+			);
+			path = RegAndAuth;
+			sourceTree = "<group>";
+		};
 		21BFA5FA2B9E22690074F130 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,12 +175,7 @@
 		21D67E862B2B4587005FAC79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */,
-				21021E732B7E56B500A1195A /* ConfirmationCodeInputView.swift */,
-				21DE9BC62B936FA700F086EB /* SetGoalsView.swift */,
-				21D67E8B2B2B45CA005FAC79 /* LoginView.swift */,
-				21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */,
-				21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */,
+				214087782BA2F18F004E0B51 /* RegAndAuth */,
 				21E58F532B82594B00E31882 /* MainView.swift */,
 				210DA2F62B825B3B00F96B75 /* DiaryView.swift */,
 				21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */,
