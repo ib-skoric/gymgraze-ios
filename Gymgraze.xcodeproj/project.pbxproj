@@ -11,6 +11,9 @@
 		2109E91C2B84980900F2E596 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109E91B2B84980900F2E596 /* Heading.swift */; };
 		2109E91E2B84992100F2E596 /* DiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109E91D2B84992100F2E596 /* DiaryRow.swift */; };
 		2109EFB52BA398D300DC303C /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109EFB42BA398D300DC303C /* AddFoodView.swift */; };
+		2109EFB72BA39E7B00DC303C /* WorkoutDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109EFB62BA39E7B00DC303C /* WorkoutDiaryEntry.swift */; };
+		2109EFB92BA39E9F00DC303C /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109EFB82BA39E9F00DC303C /* Workout.swift */; };
+		2109EFBB2BA39EB500DC303C /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109EFBA2BA39EB500DC303C /* Exercise.swift */; };
 		210DA2F72B825B3B00F96B75 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2F62B825B3B00F96B75 /* DiaryView.swift */; };
 		210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2F82B825B5000F96B75 /* TrendsView.swift */; };
 		210DA2FB2B825B6200F96B75 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2FA2B825B6200F96B75 /* ProfileView.swift */; };
@@ -56,6 +59,9 @@
 		2109E91B2B84980900F2E596 /* Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heading.swift; sourceTree = "<group>"; };
 		2109E91D2B84992100F2E596 /* DiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryRow.swift; sourceTree = "<group>"; };
 		2109EFB42BA398D300DC303C /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		2109EFB62BA39E7B00DC303C /* WorkoutDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDiaryEntry.swift; sourceTree = "<group>"; };
+		2109EFB82BA39E9F00DC303C /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		2109EFBA2BA39EB500DC303C /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		210DA2F62B825B3B00F96B75 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		210DA2F82B825B5000F96B75 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
 		210DA2FA2B825B6200F96B75 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -234,6 +240,9 @@
 				21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */,
 				21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */,
 				215D54312B757B1C00A07029 /* Registration.swift */,
+				2109EFB62BA39E7B00DC303C /* WorkoutDiaryEntry.swift */,
+				2109EFB82BA39E9F00DC303C /* Workout.swift */,
+				2109EFBA2BA39EB500DC303C /* Exercise.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -332,13 +341,16 @@
 				21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
 				210DA2FD2B825FE900F96B75 /* StatCard.swift in Sources */,
+				2109EFB72BA39E7B00DC303C /* WorkoutDiaryEntry.swift in Sources */,
 				21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */,
 				21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */,
 				21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */,
 				21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */,
 				210DA2FB2B825B6200F96B75 /* ProfileView.swift in Sources */,
 				21DE9BC72B936FA700F086EB /* SetGoalsView.swift in Sources */,
+				2109EFBB2BA39EB500DC303C /* Exercise.swift in Sources */,
 				210DA2F72B825B3B00F96B75 /* DiaryView.swift in Sources */,
+				2109EFB92BA39E9F00DC303C /* Workout.swift in Sources */,
 				21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */,
 				210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */,
 				214087772BA25929004E0B51 /* FoodDetailView.swift in Sources */,
