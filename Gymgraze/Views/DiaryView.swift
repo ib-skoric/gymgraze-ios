@@ -1,10 +1,3 @@
-//
-//  DiaryView.swift
-//  Gymgraze
-//
-//  Created by Ivan Branimir Skoric on 18/02/2024.
-//
-
 import SwiftUI
 
 struct DiaryView: View {
@@ -13,6 +6,8 @@ struct DiaryView: View {
     @ObservedObject var diaryVM = DiaryViewModel()
     @State var diaryFoods: [Food] = FoodDiaryEntry().foods
     @State var selectedDate: Date = Date()
+    @State private var selectedFood: Food?
+    @State private var isDetailViewPresented: Bool = false
     
     var foodsByMeal: [String: [Food]] {
         Dictionary(grouping: diaryFoods) { $0.meal.name }
@@ -37,14 +32,23 @@ struct DiaryView: View {
                     Section(header: Text(mealName)) {
                         ForEach(foodsByMeal[mealName]!, id: \.id) { food in
                             DiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
+                                .onTapGesture {
+                                    DispatchQueue.main.async {
+                                        selectedFood = food
+                                    }
+                                }
                         }
                     }
                 }
+                .sheet(item: $selectedFood) { food in
+                        FoodDetailView(food: food)
+                }
+                
+                Button(action: {
+                    fetchFoodDiary()
+                }, label: {
+                    Text("Fetch Food Diary")})
             }
-            Button(action: {
-                fetchFoodDiary()
-            }, label: {
-                Text("Fetch Food Diary")})
         }
     }
     
@@ -60,8 +64,8 @@ struct DiaryView: View {
             }
         }
     }
-}
-
-#Preview {
-    ContentView().environmentObject(UserViewModel())
+    
+    #Preview {
+        ContentView().environmentObject(UserViewModel())
+    }
 }

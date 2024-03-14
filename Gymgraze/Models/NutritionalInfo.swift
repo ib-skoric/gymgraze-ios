@@ -17,4 +17,15 @@ struct NutritionalInfo: Codable {
     var salt: Double
     var sugar: Double
     var fiber: Double
+    
+    init() {
+        self.id = nil
+        self.kcal = 0
+        self.carbs = 0
+        self.protein = 0
+        self.fat = 0
+        self.salt = 0
+        self.sugar = 0
+        self.fiber = 0
+    }
 }
