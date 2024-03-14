@@ -41,7 +41,7 @@ struct DiaryView: View {
             }
             .onAppear(perform: fetchFoodDiary) // Fetch food diary when the view appears
             .onAppear(perform: fetchWorkoutDiary) // Fetch food diary when the view appears
-            
+
             if diaryFoods.isEmpty && diaryWokrouts.isEmpty {
                 VStack {
                     Spacer()
@@ -50,18 +50,6 @@ struct DiaryView: View {
                 }
             } else {
                 VStack {
-                    Text("Food diary")
-                    
-                    List {
-                        ForEach(diaryWokrouts, id: \.id) { workout in
-                            Text("\(diaryWokrouts[0].exercises[0].name)")
-                        }
-                    }
-                    .sheet(item: $selectedFood) { food in
-                        FoodDetailView(food: food)
-                    }
-                    
-                    Text("Workout diary")
                     List {
                         ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
                             Section(header: Text(diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
@@ -75,11 +63,23 @@ struct DiaryView: View {
                                 }
                             }
                         }
+                        .sheet(item: $selectedFood) { food in
+                            FoodDetailView(food: food)
+                        }
+                        
+                        Section("Workout Diary") {
+                                ForEach(diaryWokrouts, id: \.id) { workout in
+                                    Text(workout.exercises[0].name)
+                            }
+                        }
+                        // TODO: Remove this
+                        .foregroundColor(.green)
                     }
                 }
             }
         }
     }
+
     
     func fetchFoodDiary() {
         DiaryService().fetchFoodDiaryEntry(date: selectedDate) { result in
@@ -106,8 +106,8 @@ struct DiaryView: View {
             }
         }
     }
-}
-
-#Preview {
-    ContentView().environmentObject(UserViewModel())
+    
+    #Preview {
+        ContentView().environmentObject(UserViewModel())
+    }
 }
