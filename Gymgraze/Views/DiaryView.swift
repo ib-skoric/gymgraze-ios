@@ -15,7 +15,6 @@ struct DiaryView: View {
     
     var body: some View {
         NavigationStack {
-            
             VStack {
                 HStack {
                     Heading(text: "📒 Diary")
@@ -24,9 +23,15 @@ struct DiaryView: View {
                         EmptyView()
                     }
                     .padding(.trailing)
+                    .onChange(of: selectedDate) { newValue, oldValue in
+                        if newValue != oldValue {
+                            fetchFoodDiary() 
+                        }
+                    }
                 }
             }
-            
+            .onAppear(perform: fetchFoodDiary) // Fetch food diary when the view appears
+
             List {
                 ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
                     Section(header: Text(diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
@@ -41,17 +46,12 @@ struct DiaryView: View {
                     }
                 }
                 .sheet(item: $selectedFood) { food in
-                        FoodDetailView(food: food)
-
+                    FoodDetailView(food: food)
                 }
-                
-                Button(action: {
-                    fetchFoodDiary()
-                }, label: {
-                    Text("Fetch Food Diary")})
             }
         }
     }
+
     
     func fetchFoodDiary() {
         FoodDiaryService().fetchFoodDiaryEntry() { result in
