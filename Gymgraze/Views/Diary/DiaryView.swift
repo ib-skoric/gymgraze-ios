@@ -22,6 +22,12 @@ struct DiaryView: View {
                     DatePicker(selection: $selectedDate, displayedComponents: .date) {
                         EmptyView()
                     }
+                    
+                    Button(action: {}, label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 25))
+                    })
+                    
                     .padding(.trailing)
                     .onChange(of: selectedDate) { newValue, oldValue in
                         if newValue != oldValue {
