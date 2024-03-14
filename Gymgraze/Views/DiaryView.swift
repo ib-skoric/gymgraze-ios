@@ -54,7 +54,7 @@ struct DiaryView: View {
 
     
     func fetchFoodDiary() {
-        FoodDiaryService().fetchFoodDiaryEntry() { result in
+        FoodDiaryService().fetchFoodDiaryEntry(date: selectedDate) { result in
             switch result {
             case .success(let entry):
                 diaryFoods = entry.foods

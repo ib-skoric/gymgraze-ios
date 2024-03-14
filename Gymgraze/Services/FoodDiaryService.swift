@@ -9,17 +9,19 @@ import Foundation
 
 class FoodDiaryService {
     
-    func fetchFoodDiaryEntry(completion: @escaping (Result<FoodDiaryEntry, APIError>) -> Void) {
+    func fetchFoodDiaryEntry(date: Date, completion: @escaping (Result<FoodDiaryEntry, APIError>) -> Void) {
         // fetch user from the back end
         // get the token for the currently logged in user
-        var token: String? = getToken()
+        let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/food_diary_entries/1") else {
+        guard let url = URL(string: "http://localhost:3000/food_diary_entries/\(date)") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<FoodDiaryEntry, APIError>)
             return
         }
+        
+        print(url)
         
         // create the request and set it's properties
         var request = URLRequest(url: url)
@@ -44,12 +46,6 @@ class FoodDiaryService {
                     // if the status code is 200
                 case 200:
                     // try decode the response
-                    
-                    do {
-                        let diaryResponse = try JSONDecoder().decode(FoodDiaryEntry.self, from: data)
-                    } catch let error {
-                        print("Error decoding FoodDiaryEntry: \(error)")
-                    }
                     
                     guard let diaryResponse = try? JSONDecoder().decode(FoodDiaryEntry.self, from: data) else {
                         // raise invalid credentials error
