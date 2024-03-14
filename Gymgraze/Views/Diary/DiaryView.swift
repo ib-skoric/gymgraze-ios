@@ -32,21 +32,30 @@ struct DiaryView: View {
             }
             .onAppear(perform: fetchFoodDiary) // Fetch food diary when the view appears
 
-            List {
-                ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
-                    Section(header: Text(diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
-                        ForEach(foodsByMeal[mealId]!, id: \.id) { food in
-                            DiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
-                                .onTapGesture {
-                                    DispatchQueue.main.async {
-                                        selectedFood = food
+            if diaryFoods.isEmpty {
+                
+                VStack {
+                    Spacer()
+                    Text("No food diary entries for this day")
+                    Spacer()
+                }
+            } else {
+                List {
+                    ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
+                        Section(header: Text(diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
+                            ForEach(foodsByMeal[mealId]!, id: \.id) { food in
+                                DiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
+                                    .onTapGesture {
+                                        DispatchQueue.main.async {
+                                            selectedFood = food
+                                        }
                                     }
-                                }
+                            }
                         }
                     }
-                }
-                .sheet(item: $selectedFood) { food in
-                    FoodDetailView(food: food)
+                    .sheet(item: $selectedFood) { food in
+                        FoodDetailView(food: food)
+                    }
                 }
             }
         }
