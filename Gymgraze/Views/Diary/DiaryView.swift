@@ -14,6 +14,7 @@ struct DiaryView: View {
     
     var body: some View {
         ZStack {
+            VStack {
                 NavigationStack {
                     VStack {
                         HStack {
@@ -51,52 +52,54 @@ struct DiaryView: View {
                     .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch food diary when the view appears
                     
                     VStack {
-                        List {
-                            if !diaryVM.diaryFoods.isEmpty {
-                                ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
-                                    Section(header: Text(diaryVM.diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
-                                        ForEach(foodsByMeal[mealId]!, id: \.id) { food in
-                                            FoodDiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
+                        if diaryVM.isLoading {
+                            VStack {
+                                ProgressView()
+                            }
+                            Spacer()
+                        } else if diaryVM.diaryFoods.isEmpty && diaryVM.diaryWokrouts.isEmpty {
+                            VStack {
+                                Text("No entries for this date.")
+                                    .font(.title)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+                        } else {
+                            List {
+                                if !diaryVM.diaryFoods.isEmpty {
+                                    ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
+                                        Section(header: Text(diaryVM.diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
+                                            ForEach(foodsByMeal[mealId]!, id: \.id) { food in
+                                                FoodDiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
+                                                    .onTapGesture {
+                                                        selectedFood = food
+                                                    }
+                                            }
+                                        }
+                                    }
+                                    .sheet(item: $selectedFood) { food in
+                                        FoodDetailView(food: food)
+                                    }
+                                }
+                                
+                                if !diaryVM.diaryWokrouts.isEmpty {
+                                    Section("Workout Diary") {
+                                        ForEach(diaryVM.diaryWokrouts, id: \.id) { workout in
+                                            WorkoutDiaryRow(workout: workout)
                                                 .onTapGesture {
-                                                    selectedFood = food
+                                                    selectedWorkout = workout
                                                 }
                                         }
                                     }
-                                }
-                                .sheet(item: $selectedFood) { food in
-                                    FoodDetailView(food: food)
-                                }
-                            }
-                            
-                            if !diaryVM.diaryWokrouts.isEmpty {
-                                Section("Workout Diary") {
-                                    ForEach(diaryVM.diaryWokrouts, id: \.id) { workout in
-                                        WorkoutDiaryRow(workout: workout)
-                                            .onTapGesture {
-                                                selectedWorkout = workout
-                                            }
+                                    // TODO: Remove this
+                                    .foregroundColor(.green)
+                                    .sheet(item: $selectedWorkout) { workout in
+                                        WorkoutDetailView(workout: workout)
                                     }
                                 }
-                                // TODO: Remove this
-                                .foregroundColor(.green)
-                                .sheet(item: $selectedWorkout) { workout in
-                                    WorkoutDetailView(workout: workout)
-                                }
                             }
+                        }
                     }
-                }
-            }
-            
-            if diaryVM.isLoading {
-                VStack {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                }
-            } else if diaryVM.diaryFoods.isEmpty && diaryVM.diaryWokrouts.isEmpty {
-                VStack {
-                    Text("No entries for this date.")
-                        .font(.title)
-                        .foregroundColor(.gray)
                 }
             }
         }
