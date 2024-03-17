@@ -5,8 +5,9 @@ struct DiaryView: View {
     @EnvironmentObject var userVM: UserViewModel
     @ObservedObject var diaryVM = DiaryViewModel()
     @State private var selectedFood: Food?
+    @State private var selectedWorkout: Workout?
     @State private var isDetailViewPresented: Bool = false
-
+    
     var foodsByMeal: [Int: [Food]] {
         Dictionary(grouping: diaryVM.diaryFoods) { $0.meal.id }
     }
@@ -38,7 +39,7 @@ struct DiaryView: View {
             }
             .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
             .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch food diary when the view appears
-
+            
             if diaryVM.diaryFoods.isEmpty && diaryVM.diaryWokrouts.isEmpty {
                 VStack {
                     Spacer()
@@ -53,9 +54,7 @@ struct DiaryView: View {
                                 ForEach(foodsByMeal[mealId]!, id: \.id) { food in
                                     FoodDiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
                                         .onTapGesture {
-                                            DispatchQueue.main.async {
-                                                selectedFood = food
-                                            }
+                                            selectedFood = food
                                         }
                                 }
                             }
@@ -67,10 +66,16 @@ struct DiaryView: View {
                         Section("Workout Diary") {
                             ForEach(diaryVM.diaryWokrouts, id: \.id) { workout in
                                 WorkoutDiaryRow(workout: workout)
+                                    .onTapGesture {
+                                    selectedWorkout = workout
+                                }
                             }
                         }
                         // TODO: Remove this
                         .foregroundColor(.green)
+                        .sheet(item: $selectedWorkout) { workout in
+                            WorkoutDetailView(workout: workout)
+                        }
                     }
                 }
             }
