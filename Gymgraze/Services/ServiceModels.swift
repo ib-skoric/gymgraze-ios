@@ -15,6 +15,7 @@ enum APIError: Error {
     case userNotFound
     case invalidPayload
     case invalidDataReturnedFromAPI
+    case entryNotFound
     case custom(errorMessage: String)
 }
 

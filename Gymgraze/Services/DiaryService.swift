@@ -58,6 +58,10 @@ class DiaryService {
                 case 401:
                     // if the status code is 401, raise invalid credentials error
                     completion(.failure(APIError.invalidCredentials) as Result<FoodDiaryEntry, APIError>)
+                
+                case 404:
+                    // if the status code is 404, raise not found error
+                    completion(.failure(APIError.entryNotFound) as Result<FoodDiaryEntry, APIError>)
                     
                 default:
                     // if the status code is not 200 or 401, raise custom error with the status code
@@ -115,6 +119,10 @@ class DiaryService {
                 case 401:
                     // if the status code is 401, raise invalid credentials error
                     completion(.failure(APIError.invalidCredentials) as Result<WorkoutDiaryEntry, APIError>)
+                    
+                case 404:
+                    // if the status code is 404, raise not found error
+                    completion(.failure(APIError.entryNotFound) as Result<WorkoutDiaryEntry, APIError>)
                     
                 default:
                     // if the status code is not 200 or 401, raise custom error with the status code
