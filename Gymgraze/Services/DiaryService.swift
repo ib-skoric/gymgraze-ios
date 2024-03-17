@@ -21,6 +21,8 @@ class DiaryService {
             return
         }
         
+        print(url)
+        
         // create the request and set it's properties
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
