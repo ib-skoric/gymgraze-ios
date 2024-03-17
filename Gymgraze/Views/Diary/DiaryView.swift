@@ -6,7 +6,7 @@ struct DiaryView: View {
     @ObservedObject var diaryVM = DiaryViewModel()
     @State private var selectedFood: Food?
     @State private var selectedWorkout: Workout?
-    @State private var isDetailViewPresented: Bool = false
+    @State private var isAddViewPresented: Bool = false
     
     var foodsByMeal: [Int: [Food]] {
         Dictionary(grouping: diaryVM.diaryFoods) { $0.meal.id }
@@ -28,11 +28,20 @@ struct DiaryView: View {
                         }
                     }
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        isAddViewPresented = true
+                    }, label: {
                         Image(systemName: "plus")
                             .font(.system(size: 25))
                     })
-                    
+                    .background {
+                        NavigationLink(
+                            destination: AddFoodView(),
+                            isActive: $isAddViewPresented,
+                            label: {
+                                EmptyView()
+                            })
+                    }
                     .padding(.trailing)
                     
                 }
