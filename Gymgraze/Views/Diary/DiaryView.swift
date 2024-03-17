@@ -51,7 +51,7 @@ struct DiaryView: View {
                         ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
                             Section(header: Text(diaryVM.diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
                                 ForEach(foodsByMeal[mealId]!, id: \.id) { food in
-                                    DiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
+                                    FoodDiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
                                         .onTapGesture {
                                             DispatchQueue.main.async {
                                                 selectedFood = food

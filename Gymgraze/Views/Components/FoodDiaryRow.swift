@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DiaryRow: View {
+struct FoodDiaryRow: View {
     
     var foodName: String
     var foodWeightInG: Double
