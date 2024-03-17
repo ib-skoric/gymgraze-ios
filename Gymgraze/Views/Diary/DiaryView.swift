@@ -4,15 +4,11 @@ struct DiaryView: View {
     
     @EnvironmentObject var userVM: UserViewModel
     @ObservedObject var diaryVM = DiaryViewModel()
-    @State var selectedDate: Date = Date()
     @State private var selectedFood: Food?
     @State private var isDetailViewPresented: Bool = false
-    
-    @State var diaryFoods: [Food] = FoodDiaryEntry().foods
-    @State var diaryWokrouts: [Workout] = WorkoutDiaryEntry().workouts
-    
+
     var foodsByMeal: [Int: [Food]] {
-        Dictionary(grouping: diaryFoods) { $0.meal.id }
+        Dictionary(grouping: diaryVM.diaryFoods) { $0.meal.id }
     }
     
     var body: some View {
@@ -21,8 +17,14 @@ struct DiaryView: View {
                 HStack {
                     Heading(text: "📒 Diary")
                     Spacer()
-                    DatePicker(selection: $selectedDate, displayedComponents: .date) {
+                    DatePicker(selection: $diaryVM.selectedDate, displayedComponents: .date) {
                         EmptyView()
+                    }
+                    .onChange(of: diaryVM.selectedDate) { newValue, oldValue in
+                        if newValue != oldValue {
+                            diaryVM.fetchFoodDiary()
+                            diaryVM.fetchWorkoutDiary()
+                        }
                     }
                     
                     Button(action: {}, label: {
@@ -31,18 +33,13 @@ struct DiaryView: View {
                     })
                     
                     .padding(.trailing)
-                    .onChange(of: selectedDate) { newValue, oldValue in
-                        if newValue != oldValue {
-                            fetchFoodDiary()
-                            fetchWorkoutDiary()
-                        }
-                    }
+                    
                 }
             }
-            .onAppear(perform: fetchFoodDiary) // Fetch food diary when the view appears
-            .onAppear(perform: fetchWorkoutDiary) // Fetch food diary when the view appears
+            .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
+            .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch food diary when the view appears
 
-            if diaryFoods.isEmpty && diaryWokrouts.isEmpty {
+            if diaryVM.diaryFoods.isEmpty && diaryVM.diaryWokrouts.isEmpty {
                 VStack {
                     Spacer()
                     Text("No diary entries for this day")
@@ -52,7 +49,7 @@ struct DiaryView: View {
                 VStack {
                     List {
                         ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
-                            Section(header: Text(diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
+                            Section(header: Text(diaryVM.diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
                                 ForEach(foodsByMeal[mealId]!, id: \.id) { food in
                                     DiaryRow(foodName: food.name, foodWeightInG: 100.0, nutritionalInfo: food.nutritionalInfo)
                                         .onTapGesture {
@@ -68,7 +65,7 @@ struct DiaryView: View {
                         }
                         
                         Section("Workout Diary") {
-                                ForEach(diaryWokrouts, id: \.id) { workout in
+                            ForEach(diaryVM.diaryWokrouts, id: \.id) { workout in
                                     Text(workout.exercises[0].name)
                             }
                         }
@@ -76,33 +73,6 @@ struct DiaryView: View {
                         .foregroundColor(.green)
                     }
                 }
-            }
-        }
-    }
-
-    
-    func fetchFoodDiary() {
-        DiaryService().fetchFoodDiaryEntry(date: selectedDate) { result in
-            switch result {
-            case .success(let entry):
-                diaryFoods = entry.foods
-                print(entry)
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    func fetchWorkoutDiary() {
-        DiaryService().fetchWorkoutDiaryEntry(date: selectedDate) { result in
-            switch result {
-            case .success(let entry):
-                diaryWokrouts = entry.workouts
-                print(entry)
-                
-            case .failure(let error):
-                print(error)
             }
         }
     }

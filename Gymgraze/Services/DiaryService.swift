@@ -79,9 +79,7 @@ class DiaryService {
             completion(.failure(APIError.invalidURL) as Result<WorkoutDiaryEntry, APIError>)
             return
         }
-        
-        print(url)
-        
+                
         // create the request and set it's properties
         var request = URLRequest(url: url)
         request.httpMethod = "GET"

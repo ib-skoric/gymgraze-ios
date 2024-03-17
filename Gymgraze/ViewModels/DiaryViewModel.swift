@@ -8,5 +8,37 @@
 import Foundation
 
 class DiaryViewModel: ObservableObject {
+    @Published var selectedDate: Date = Date()
+    @Published var diaryFoods: [Food] = FoodDiaryEntry().foods
+    @Published var diaryWokrouts: [Workout] = WorkoutDiaryEntry().workouts
     
+    func fetchFoodDiary() {
+        DiaryService().fetchFoodDiaryEntry(date: selectedDate) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let entry):
+                    self.diaryFoods = entry.foods
+                    print(entry)
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func fetchWorkoutDiary() {
+        DiaryService().fetchWorkoutDiaryEntry(date: selectedDate) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let entry):
+                    self.diaryWokrouts = entry.workouts
+                    print(entry)
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
 }
