@@ -11,7 +11,6 @@ struct FoodDiaryRow: View {
     
     var foodName: String
     var foodWeightInG: Double
-    // TODO: This should be changed
     var nutritionalInfo: NutritionalInfo
     
     var body: some View {
@@ -39,6 +38,6 @@ struct FoodDiaryRow: View {
     }
 }
 
-//#Preview {
-//    DiaryRow(foodName: "Apple", foodWeightInG: 150.0, nutritionalInfo: "C: 20, P:0, F:0", kcal: 120)
-//}
+#Preview {
+    FoodDiaryRow(foodName: "Apple", foodWeightInG: 150.0, nutritionalInfo: NutritionalInfo())
+}

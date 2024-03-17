@@ -33,6 +33,7 @@
 		2177A8062BA0FB950042ABA8 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2177A8052BA0FB950042ABA8 /* DiaryService.swift */; };
 		21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */; };
 		21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */; };
+		21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */; };
 		21BFA5FC2B9E22820074F130 /* CacheEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FB2B9E22820074F130 /* CacheEntry.swift */; };
 		21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FD2B9E230B0074F130 /* Cache.swift */; };
 		21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FF2B9E2A8E0074F130 /* DiaryViewModel.swift */; };
@@ -82,6 +83,7 @@
 		2177A8052BA0FB950042ABA8 /* DiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryService.swift; sourceTree = "<group>"; };
 		21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetView.swift; sourceTree = "<group>"; };
+		21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDiaryRow.swift; sourceTree = "<group>"; };
 		21BFA5FB2B9E22820074F130 /* CacheEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheEntry.swift; sourceTree = "<group>"; };
 		21BFA5FD2B9E230B0074F130 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		21BFA5FF2B9E2A8E0074F130 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				210DA2FE2B826ABF00F96B75 /* ArticleCard.swift */,
 				2109E91B2B84980900F2E596 /* Heading.swift */,
 				2109E91D2B84992100F2E596 /* FoodDiaryRow.swift */,
+				21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
 				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
 				21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */,
+				21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */,
 				21729B2D2B9503C4009091B0 /* ProductView.swift in Sources */,
 				215D54322B757B1C00A07029 /* Registration.swift in Sources */,
 				21E58F542B82594B00E31882 /* MainView.swift in Sources */,

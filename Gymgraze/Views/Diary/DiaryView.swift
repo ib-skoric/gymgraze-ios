@@ -66,7 +66,7 @@ struct DiaryView: View {
                         
                         Section("Workout Diary") {
                             ForEach(diaryVM.diaryWokrouts, id: \.id) { workout in
-                                    Text(workout.exercises[0].name)
+                                WorkoutDiaryRow(workout: workout)
                             }
                         }
                         // TODO: Remove this

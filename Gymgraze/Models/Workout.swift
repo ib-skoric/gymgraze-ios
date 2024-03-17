@@ -10,4 +10,9 @@ import Foundation
 struct Workout: Codable {
     let id: Int
     let exercises: [Exercise]
+    
+    init() {
+        id = 0
+        exercises = []
+    }
 }
