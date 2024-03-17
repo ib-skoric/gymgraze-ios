@@ -12,6 +12,7 @@ class DiaryViewModel: ObservableObject {
     @Published var diaryFoods: [Food] = FoodDiaryEntry().foods
     @Published var diaryWokrouts: [Workout] = WorkoutDiaryEntry().workouts
     
+    
     func fetchFoodDiary() {
         DiaryService().fetchFoodDiaryEntry(date: selectedDate) { result in
             DispatchQueue.main.async {
