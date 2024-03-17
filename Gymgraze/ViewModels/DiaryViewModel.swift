@@ -21,7 +21,12 @@ class DiaryViewModel: ObservableObject {
                     print(entry)
                     
                 case .failure(let error):
-                    print(error)
+                    if case APIError.entryNotFound = error {
+                        print("Ran into 404 error, returning empty array...")
+                        self.diaryFoods = []
+                    } else {
+                        print(error)
+                    }
                 }
             }
         }
@@ -36,7 +41,12 @@ class DiaryViewModel: ObservableObject {
                     print(entry)
                     
                 case .failure(let error):
-                    print(error)
+                    if case APIError.entryNotFound = error {
+                        print("Ran into 404 error, returning empty array...")
+                        self.diaryWokrouts = []
+                    } else {
+                        print(error)
+                    }
                 }
             }
         }
