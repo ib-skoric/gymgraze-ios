@@ -12,14 +12,18 @@ struct Food: Codable, Identifiable {
     var id: Int
     var barcode: String
     var name: String
+    var amount: Int
     var nutritionalInfo: NutritionalInfo
+    var totalNutrition: NutritionalInfo
     var meal: Meal
     
     enum CodingKeys: String, CodingKey {
         case id
         case barcode
         case name
+        case amount
         case nutritionalInfo = "nutritional_info"
+        case totalNutrition = "total_nutrition"
         case meal
     }
     
@@ -27,7 +31,9 @@ struct Food: Codable, Identifiable {
         id = 0
         barcode = ""
         name = ""
+        amount = 0
         nutritionalInfo = NutritionalInfo()
+        totalNutrition = NutritionalInfo()
         meal = Meal()
     }
 }

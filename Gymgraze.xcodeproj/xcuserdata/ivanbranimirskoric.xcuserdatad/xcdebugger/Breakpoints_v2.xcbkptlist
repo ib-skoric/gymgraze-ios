@@ -14,8 +14,8 @@
             filePath = "Gymgraze/Views/Diary/FoodDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "fetchImage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -50,6 +50,22 @@
             endingLineNumber = "22"
             landmarkName = "fetchFoodItemImage(barcode:completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4EE000E8-9234-4F8B-9936-450B41991C8B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gymgraze/Views/Components/NutritionalInfoTable.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

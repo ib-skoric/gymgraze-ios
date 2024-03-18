@@ -10,48 +10,56 @@ import SwiftUI
 struct NutritionalInfoTable: View {
     
     var nutritionalInfo: NutritionalInfo
+    @Binding var amount: String
     
     var body: some View {
+        
+        var calories = nutritionalInfo.kcal * (Int(amount) ?? 0) / 100
+        var protein = nutritionalInfo.protein * (Double(amount) ?? 0) / 100
+        var carbs = nutritionalInfo.carbs * (Double(amount) ?? 0) / 100
+        var fat = nutritionalInfo.fat * (Double(amount) ?? 0) / 100
+        var fiber = nutritionalInfo.fiber * (Double(amount) ?? 0) / 100
+        var sugar = nutritionalInfo.sugar * (Double(amount) ?? 0) / 100
+        var salt = nutritionalInfo.salt * (Double(amount) ?? 0) / 100
+
         VStack {
             HStack {
-                Text("**Calories:** \(nutritionalInfo.kcal)")
+                Text("**Calories:** \(calories)")
                     .font(.subheadline)
                     .fontWeight(.light)
                 Spacer()
-                Text("**P:** \(nutritionalInfo.protein, specifier: "%.2f")g")
+                Text("**P:** \(protein, specifier: "%.2f")g")
                     .font(.subheadline)
                     .fontWeight(.light)
                 Spacer()
-                Text("**C:** \(nutritionalInfo.carbs, specifier: "%.2f")g")
+                Text("**C:** \(carbs, specifier: "%.2f")g")
                     .font(.subheadline)
                     .fontWeight(.light)
                 Spacer()
-                Text("**F:** \(nutritionalInfo.fat, specifier: "%.2f")g")
+                Text("**F:** \(fat, specifier: "%.2f")g")
                     .font(.subheadline)
                     .fontWeight(.light)
             }
-            .padding()
             Divider()
             HStack {
-                Text("**Fiber:** \(nutritionalInfo.fiber, specifier: "%.2f")g")
+                Text("**Fiber:** \(fiber, specifier: "%.2f")g")
                     .font(.subheadline)
                     .fontWeight(.light)
                 Spacer()
-                Text("**Sugars:** \(nutritionalInfo.sugar, specifier: "%.2f")g")
+                Text("**Sugars:** \(sugar, specifier: "%.2f")g")
                     .font(.subheadline)
                     .fontWeight(.light)
                 Spacer()
-                Text("**Salt:** \(nutritionalInfo.salt, specifier: "%.2f")mg")
+                Text("**Salt:** \(salt, specifier: "%.2f")mg")
                     .font(.subheadline)
                     .fontWeight(.light)
             }
-            .padding()
         }
-        .padding()
+       .padding()
         .frame(height: 75)
     }
 }
 
-#Preview {
-    NutritionalInfoTable(nutritionalInfo: NutritionalInfo())
-}
+//#Preview {
+//    NutritionalInfoTable(nutritionalInfo: NutritionalInfo())
+//}

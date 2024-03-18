@@ -12,6 +12,7 @@ struct FoodDetailView: View {
     @State private var isLoading: Bool = false
     @State var food: Food
     @State var foodImageURL: String = ""
+    @State private var amount: String = ""
     
     var body: some View {
         VStack {
@@ -34,8 +35,24 @@ struct FoodDetailView: View {
                 }
                 .padding()
                 VStack {
-                    NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo)
+                    NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: $amount)
+                    HStack {
+                        Text("Amount (g):")
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                        Spacer()
+                        TextField("100g", text: $amount)
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.numberPad)
+                            .onAppear {
+                                self.amount = String(food.amount)
+                            }
+                    }
+                    .padding()
                 }
+                .padding()
             }
             Spacer()
         }
