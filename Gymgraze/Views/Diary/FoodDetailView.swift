@@ -51,6 +51,15 @@ struct FoodDetailView: View {
                             }
                     }
                     .padding()
+                    Spacer()
+                    Button(action: {
+                        // TODO: Actually save item
+                        print("Save button tapped")
+                    }, label: {
+                        Text("Save item")
+                    })
+                    .buttonStyle(CTAButton())
+                    .padding()
                 }
                 .padding()
             }
@@ -90,6 +99,6 @@ struct FoodDetailView: View {
     
 }
 
-//#Preview {
-//    FoodDetailView(food: Food(name: "Apple", nutritionalInfo: NutritionalInfo(kcal: 120, carbs: 20, protein: 0, fat: 0, salt: 0, sugar: 0, fiber: 0), meal: ))
-//}
+#Preview {
+    FoodDetailView(food: Food(), foodImageURL: "")
+}
