@@ -29,7 +29,15 @@ struct FoodItem: Codable, Identifiable {
     var product: Product
     
     struct Product: Codable {
+        var productName: String
+        var imageURL: String
         var nutriments: Nutriments
+        
+        enum CodingKeys: String, CodingKey {
+            case productName = "product_name"
+            case imageURL = "image_thumb_url"
+            case nutriments
+        }
     }
     
     struct Nutriments: Codable {
@@ -64,6 +72,6 @@ struct FoodItem: Codable, Identifiable {
     
     init() {
         id = ""
-        product = Product(nutriments: Nutriments(kcal100g: 0, carbs100g: 0, protein100g: 0, fat100g: 0, salt100g: 0, sugar100g: 0, fiber100g: 0))
+        product = Product(productName: "", imageURL: "", nutriments: Nutriments(kcal100g: 0, carbs100g: 0, protein100g: 0, fat100g: 0, salt100g: 0, sugar100g: 0, fiber100g: 0))
     }
 }

@@ -18,8 +18,23 @@ struct FoodDetailView: View {
             if isLoading {
                 ProgressView()
             } else {
-                Text(food.product.nutriments.kcal100g.description)
+                HStack {
+                    AsyncImage(url: URL(string: food.product.imageURL)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 75, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    Text(food.product.productName)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding()
+                    Spacer()
+                }
+                .padding()
             }
+            Spacer()
         }
         .onAppear() {
             fetchFoodItem(barcode: foodBarcode)
