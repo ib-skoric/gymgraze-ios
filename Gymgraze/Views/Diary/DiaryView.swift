@@ -36,33 +36,35 @@ struct DiaryView: View {
                                 Image(systemName: "plus")
                                     .font(.system(size: 25))
                             })
-                            .background {
-                                NavigationLink(
-                                    destination: AddFoodView(),
-                                    isActive: $isAddViewPresented,
-                                    label: {
-                                        EmptyView()
-                                    })
-                            }
                             .padding(.trailing)
                             
                         }
                     }
                     .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
-                    .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch food diary when the view appears
+                    .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch workout diary when the view appears
                     
                     VStack {
                         if diaryVM.isLoading {
+                            Spacer()
                             VStack {
                                 ProgressView()
                             }
                             Spacer()
                         } else if diaryVM.diaryFoods.isEmpty && diaryVM.diaryWokrouts.isEmpty {
+                            Spacer()
                             VStack {
                                 Text("No entries for this date.")
                                     .font(.title)
                                     .foregroundColor(.gray)
+                                Button(action: {
+                                    isAddViewPresented = true
+                                }, label: {
+                                    Text("Add entry")
+                                })
+                                .padding()
+                                .buttonStyle(CTAButton())
                             }
+                            .padding()
                             Spacer()
                         } else {
                             List {
@@ -97,9 +99,18 @@ struct DiaryView: View {
                                         WorkoutDetailView(workout: workout)
                                     }
                                 }
+                                
                             }
                         }
                     }
+                    .background(
+                        NavigationLink(
+                            destination: AddFoodView(),
+                            isActive: $isAddViewPresented,
+                            label: {
+                                EmptyView()
+                            })
+                    )
                 }
             }
         }
