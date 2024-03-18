@@ -33,6 +33,9 @@ struct FoodDetailView: View {
                     Spacer()
                 }
                 .padding()
+                VStack {
+                    NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo)
+                }
             }
             Spacer()
         }

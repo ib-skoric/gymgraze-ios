@@ -14,40 +14,10 @@
             filePath = "Gymgraze/Views/Diary/FoodDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "fetchImage()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "79BFC0AE-3D36-408C-86C3-8269B4680060 - d548957b34f6b807"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.FoodDetailView.fetchImage() -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/Diary/FoodDetailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60">
-               </Location>
-               <Location
-                  uuid = "79BFC0AE-3D36-408C-86C3-8269B4680060 - f3303b3b48ec4d7b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Gymgraze.APIError&gt;) -&gt; () in Gymgraze.FoodDetailView.fetchImage() -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Views/Diary/FoodDetailView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
