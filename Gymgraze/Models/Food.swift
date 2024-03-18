@@ -61,4 +61,9 @@ struct FoodItem: Codable, Identifiable {
         self.id = id
         self.product = product
     }
+    
+    init() {
+        id = ""
+        product = Product(nutriments: Nutriments(kcal100g: 0, carbs100g: 0, protein100g: 0, fat100g: 0, salt100g: 0, sugar100g: 0, fiber100g: 0))
+    }
 }

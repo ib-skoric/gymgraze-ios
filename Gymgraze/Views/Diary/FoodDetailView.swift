@@ -9,30 +9,36 @@ import SwiftUI
 
 struct FoodDetailView: View {
     
-    var food: Food
+    var foodBarcode: Int
+    @State private var isLoading: Bool = false
+    @State private var food: FoodItem = FoodItem()
     
     var body: some View {
         VStack {
-            Text(food.name)
-            Text(String(food.nutritionalInfo.kcal))
-            
-        }.onAppear() {
-            fetchFoodItem(barcode: "0035826086433")
+            if isLoading {
+                ProgressView()
+            } else {
+                Text(food.product.nutriments.kcal100g.description)
+            }
+        }
+        .onAppear() {
+            fetchFoodItem(barcode: foodBarcode)
         }
     }
     
-    func fetchFoodItem(barcode: String) {
+    func fetchFoodItem(barcode: Int) {
         let openFoodFactsService = OpenFoodFactsService()
         openFoodFactsService.fetchFoodItem(barcode: barcode) { result in
             switch result {
             case .success(let food):
+                self.food = food
                 print(food)
             case .failure(let error):
                 print(error)
             }
         }
     }
-
+    
 }
 
 //#Preview {
