@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct AddFoodView: View {
+struct AddToDiaryView: View {
     var body: some View {
-        Text("This is the add food view")
+        Text("This is the add to diary view")
     }
 }
 
 #Preview {
-    AddFoodView()
+    AddToDiaryView()
 }

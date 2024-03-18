@@ -105,7 +105,7 @@ struct DiaryView: View {
                     }
                     .background(
                         NavigationLink(
-                            destination: AddFoodView(),
+                            destination: AddToDiaryView(),
                             isActive: $isAddViewPresented,
                             label: {
                                 EmptyView()

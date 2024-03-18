@@ -10,7 +10,7 @@
 		21021E742B7E56B500A1195A /* ConfirmationCodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21021E732B7E56B500A1195A /* ConfirmationCodeInputView.swift */; };
 		2109E91C2B84980900F2E596 /* Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109E91B2B84980900F2E596 /* Heading.swift */; };
 		2109E91E2B84992100F2E596 /* FoodDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109E91D2B84992100F2E596 /* FoodDiaryRow.swift */; };
-		2109EFB52BA398D300DC303C /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109EFB42BA398D300DC303C /* AddFoodView.swift */; };
+		2109EFB52BA398D300DC303C /* AddToDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109EFB42BA398D300DC303C /* AddToDiaryView.swift */; };
 		2109EFB72BA39E7B00DC303C /* WorkoutDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109EFB62BA39E7B00DC303C /* WorkoutDiaryEntry.swift */; };
 		2109EFB92BA39E9F00DC303C /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109EFB82BA39E9F00DC303C /* Workout.swift */; };
 		2109EFBB2BA39EB500DC303C /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109EFBA2BA39EB500DC303C /* Exercise.swift */; };
@@ -60,7 +60,7 @@
 		21021E732B7E56B500A1195A /* ConfirmationCodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationCodeInputView.swift; sourceTree = "<group>"; };
 		2109E91B2B84980900F2E596 /* Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heading.swift; sourceTree = "<group>"; };
 		2109E91D2B84992100F2E596 /* FoodDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDiaryRow.swift; sourceTree = "<group>"; };
-		2109EFB42BA398D300DC303C /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		2109EFB42BA398D300DC303C /* AddToDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDiaryView.swift; sourceTree = "<group>"; };
 		2109EFB62BA39E7B00DC303C /* WorkoutDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDiaryEntry.swift; sourceTree = "<group>"; };
 		2109EFB82BA39E9F00DC303C /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		2109EFBA2BA39EB500DC303C /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 				210DA2F62B825B3B00F96B75 /* DiaryView.swift */,
 				21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */,
 				214087762BA25929004E0B51 /* FoodDetailView.swift */,
-				2109EFB42BA398D300DC303C /* AddFoodView.swift */,
+				2109EFB42BA398D300DC303C /* AddToDiaryView.swift */,
 				21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */,
 			);
 			path = Diary;
@@ -332,7 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2109EFB52BA398D300DC303C /* AddFoodView.swift in Sources */,
+				2109EFB52BA398D300DC303C /* AddToDiaryView.swift in Sources */,
 				21612DCB2B68E8FC00BF7740 /* RegistrationService.swift in Sources */,
 				21021E742B7E56B500A1195A /* ConfirmationCodeInputView.swift in Sources */,
 				21729B2B2B94DC7F009091B0 /* BarcodeScannerView.swift in Sources */,
