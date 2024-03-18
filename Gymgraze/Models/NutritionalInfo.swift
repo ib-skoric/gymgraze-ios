@@ -28,4 +28,15 @@ struct NutritionalInfo: Codable {
         self.sugar = 0
         self.fiber = 0
     }
+    
+    init(kcal: Int, carbs: Double, protein: Double, fat: Double, salt: Double, sugar: Double, fiber: Double) {
+        self.id = nil
+        self.kcal = kcal
+        self.carbs = carbs
+        self.protein = protein
+        self.fat = fat
+        self.salt = salt
+        self.sugar = sugar
+        self.fiber = fiber
+    }
 }
