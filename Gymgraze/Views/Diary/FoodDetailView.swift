@@ -12,9 +12,27 @@ struct FoodDetailView: View {
     var food: Food
     
     var body: some View {
-        Text(food.name)
-        Text(String(food.nutritionalInfo.kcal))
+        VStack {
+            Text(food.name)
+            Text(String(food.nutritionalInfo.kcal))
+            
+        }.onAppear() {
+            fetchFoodItem(barcode: "0035826086433")
+        }
     }
+    
+    func fetchFoodItem(barcode: String) {
+        let openFoodFactsService = OpenFoodFactsService()
+        openFoodFactsService.fetchFoodItem(barcode: barcode) { result in
+            switch result {
+            case .success(let food):
+                print(food)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
 }
 
 //#Preview {

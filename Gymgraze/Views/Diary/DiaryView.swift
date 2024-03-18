@@ -116,6 +116,18 @@ struct DiaryView: View {
         }
     }
     
+    func fetchFoodItem(barcode: String) {
+        let openFoodFactsService = OpenFoodFactsService()
+        openFoodFactsService.fetchFoodItem(barcode: barcode) { result in
+            switch result {
+            case .success(let food):
+                print(food)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     #Preview {
         ContentView().environmentObject(UserViewModel())
     }

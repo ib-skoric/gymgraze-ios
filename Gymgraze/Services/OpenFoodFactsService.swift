@@ -8,7 +8,7 @@
 import Foundation
 
 class OpenFoodFactsService {
-    func fetchFoodItem(barcode: String, completion: @escaping (Result<Food, APIError>) -> Void) {
+    func fetchFoodItem(barcode: String, completion: @escaping (Result<FoodItem, APIError>) -> Void) {
         let url = URL(string: "https://world.openfoodfacts.org/api/v0/product/\(barcode).json")!
         
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -25,8 +25,9 @@ class OpenFoodFactsService {
             }
             
             do {
-                let foodItem = try JSONDecoder().decode(Food.self, from: data)
+                let foodItem = try JSONDecoder().decode(FoodItem.self, from: data)
                 completion(.success(foodItem))
+                print(foodItem)
             } catch {
                 print("Error decoding food item: \(error)")
                 completion(.failure(.invalidPayload))
