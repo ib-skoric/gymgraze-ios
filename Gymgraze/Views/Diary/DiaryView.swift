@@ -80,7 +80,7 @@ struct DiaryView: View {
                                         }
                                     }
                                     .sheet(item: $selectedFood) { food in
-                                        FoodDetailView(foodBarcode: food.barcode)
+                                        FoodDetailView(food: food)
                                     }
                                 }
                                 

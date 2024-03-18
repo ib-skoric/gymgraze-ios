@@ -10,7 +10,7 @@ import Foundation
 /// Food object model
 struct Food: Codable, Identifiable {
     var id: Int
-    var barcode: Int
+    var barcode: String
     var name: String
     var nutritionalInfo: NutritionalInfo
     var meal: Meal
@@ -21,6 +21,14 @@ struct Food: Codable, Identifiable {
         case name
         case nutritionalInfo = "nutritional_info"
         case meal
+    }
+    
+    init() {
+        id = 0
+        barcode = ""
+        name = ""
+        nutritionalInfo = NutritionalInfo()
+        meal = Meal()
     }
 }
 

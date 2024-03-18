@@ -34,4 +34,11 @@ struct Meal: Codable, Hashable {
             updatedAt = Date(timeIntervalSince1970: updatedAtTimestamp)
         }
     }
+    
+    init() {
+        id = 0
+        name = ""
+        createdAt = nil
+        updatedAt = nil
+    }
 }

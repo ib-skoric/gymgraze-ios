@@ -9,9 +9,8 @@ import SwiftUI
 
 struct FoodDetailView: View {
     
-    var foodBarcode: Int
     @State private var isLoading: Bool = false
-    @State private var food: FoodItem = FoodItem()
+    @State var food: Food
     
     var body: some View {
         VStack {
@@ -19,14 +18,14 @@ struct FoodDetailView: View {
                 ProgressView()
             } else {
                 HStack {
-                    AsyncImage(url: URL(string: food.product.imageURL)) { image in
-                        image.resizable()
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .frame(width: 75, height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    Text(food.product.productName)
+//                    AsyncImage(url: URL(string: food.product.imageURL)) { image in
+//                        image.resizable()
+//                    } placeholder: {
+//                        ProgressView()
+//                    }
+//                    .frame(width: 75, height: 100)
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    Text(food.name)
                         .font(.title)
                         .fontWeight(.bold)
                         .padding()
@@ -37,13 +36,13 @@ struct FoodDetailView: View {
             Spacer()
         }
         .onAppear() {
-            fetchFoodItem(barcode: foodBarcode)
+            fetchFoodItem(foodId: food.id)
         }
     }
     
-    func fetchFoodItem(barcode: Int) {
-        let openFoodFactsService = OpenFoodFactsService()
-        openFoodFactsService.fetchFoodItem(barcode: barcode) { result in
+    func fetchFoodItem(foodId: Int) {
+        let diaryService = DiaryService()
+        diaryService.fetchFoodItem(foodId: foodId) { result in
             switch result {
             case .success(let food):
                 self.food = food
