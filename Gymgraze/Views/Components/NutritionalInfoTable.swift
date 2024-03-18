@@ -14,13 +14,13 @@ struct NutritionalInfoTable: View {
     
     var body: some View {
         
-        var calories = nutritionalInfo.kcal * (Int(amount) ?? 0) / 100
-        var protein = nutritionalInfo.protein * (Double(amount) ?? 0) / 100
-        var carbs = nutritionalInfo.carbs * (Double(amount) ?? 0) / 100
-        var fat = nutritionalInfo.fat * (Double(amount) ?? 0) / 100
-        var fiber = nutritionalInfo.fiber * (Double(amount) ?? 0) / 100
-        var sugar = nutritionalInfo.sugar * (Double(amount) ?? 0) / 100
-        var salt = nutritionalInfo.salt * (Double(amount) ?? 0) / 100
+        let calories = nutritionalInfo.kcal * (Int(amount) ?? 0) / 100
+        let protein = nutritionalInfo.protein * (Double(amount) ?? 0) / 100
+        let carbs = nutritionalInfo.carbs * (Double(amount) ?? 0) / 100
+        let fat = nutritionalInfo.fat * (Double(amount) ?? 0) / 100
+        let fiber = nutritionalInfo.fiber * (Double(amount) ?? 0) / 100
+        let sugar = nutritionalInfo.sugar * (Double(amount) ?? 0) / 100
+        let salt = nutritionalInfo.salt * (Double(amount) ?? 0) / 100
 
         VStack {
             HStack {
