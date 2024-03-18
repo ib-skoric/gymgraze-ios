@@ -17,9 +17,9 @@ struct MainView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    StatCard(type: "calories")
-                    StatCard(type: "steps")
-                    StatCard(type: "workouts")
+                    StatCard(type: "calories", goal: userVM.user?.goal?.kcal)
+                    StatCard(type: "steps", goal: userVM.user?.goal?.steps)
+                    StatCard(type: "workouts", goal: userVM.user?.goal?.exercise)
                 }
                 .frame(height: 200)
             }
@@ -44,5 +44,5 @@ struct MainView: View {
     }
 
 #Preview {
-    MainView()
+    MainView().environmentObject(UserViewModel())
 }

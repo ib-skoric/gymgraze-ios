@@ -42,6 +42,16 @@ struct ProfileView: View {
                     // TODO: Add a view here
                 } label: {
                     HStack {
+                        Image(systemName: "fork.knife")
+                            .foregroundColor(.gray)
+                        Text("Meals")
+                    }
+                }
+                
+                NavigationLink {
+                    // TODO: Add a view here
+                } label: {
+                    HStack {
                         Image(systemName: "heart.text.square.fill")
                             .foregroundColor(.gray)
                         Text("Apple Health data")
@@ -59,7 +69,7 @@ struct ProfileView: View {
                 
                 Button(action: {
                     Task.init {
-                        await userVM.fetchUser()
+                        userVM.fetchUser()
                     }
                 }, label: {
                         Text("Fetch user details")
@@ -71,8 +81,6 @@ struct ProfileView: View {
     func logout() {
         DispatchQueue.main.async {
             userVM.logout()
-            userVM.user = nil
-            userLoggedOut = true
         }
     }
 }

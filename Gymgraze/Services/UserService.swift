@@ -15,7 +15,7 @@ class UserService {
         var token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/profile") else {
+        guard let url = URL(string: "http://localhost:3000/user") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<User, APIError>)
             return
@@ -46,7 +46,7 @@ class UserService {
                     // try decode the response
                     guard let userResponse = try? JSONDecoder().decode(User.self, from: data) else {
                         // raise invalid credentials error
-                        completion(.failure(APIError.invalidCredentials) as Result<User, APIError>)
+                        completion(.failure(APIError.invalidDataReturnedFromAPI) as Result<User, APIError>)
                         return
                     }
                     

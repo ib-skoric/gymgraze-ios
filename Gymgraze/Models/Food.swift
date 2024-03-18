@@ -8,8 +8,16 @@
 import Foundation
 
 /// Food object model
-struct Food: Codable {
+struct Food: Codable, Identifiable {
     var id: Int
     var name: String
     var nutritionalInfo: NutritionalInfo
+    var meal: Meal
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case nutritionalInfo = "nutritional_info"
+        case meal
+    }
 }

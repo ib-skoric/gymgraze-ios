@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @EnvironmentObject var userVM: UserViewModel
+    
     var body: some View {
         TabView {
             MainView()
@@ -37,5 +39,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(UserViewModel())
 }
 

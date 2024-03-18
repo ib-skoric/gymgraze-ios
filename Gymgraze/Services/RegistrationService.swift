@@ -69,7 +69,7 @@ class RegistrationService {
     
     /// Method used for checking if the current user's email address is confirmed or not
     /// - Parameter completion: completion to be called after `checkEmailConfirmed` finishes it's work
-    func checkEmailConfirmed(completion: @escaping (Result<String, APIError>) -> Void) {
+    func checkEmailConfirmed(completion: @escaping (Result<Date, APIError>) -> Void) {
         
         // get the token for the currently logged in user
         let token: String? = getToken()
@@ -77,7 +77,7 @@ class RegistrationService {
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/user") else {
             // if it's not valid, throw a invalid URL error
-            completion(.failure(APIError.invalidURL) as Result<String, APIError>)
+            completion(.failure(APIError.invalidURL) as Result<Date, APIError>)
             return
         }
         
@@ -95,7 +95,7 @@ class RegistrationService {
             // check if any data was received from the server
             guard let data = data, error == nil else {
                 // return custom errro that there was no data received
-                completion(.failure(APIError.serverDown) as Result<String, APIError>)
+                completion(.failure(APIError.serverDown) as Result<Date, APIError>)
                 return
             }
             
@@ -107,27 +107,27 @@ class RegistrationService {
                     // try decode the response
                     guard let user = try? JSONDecoder().decode(User.self, from: data) else {
                         // raise invalid credentials error
-                        completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
+                        completion(.failure(APIError.invalidCredentials) as Result<Date, APIError>)
                         return
                     }
                     
                     // get the token from the response
-                    guard let emailConfirmed = user.confirmed_at else {
+                    guard let emailConfirmedAt = user.confirmedAt else {
                         // if it's nil, raise invalid credentials error
                         completion(.failure(APIError.invalidCredentials))
                         return
                     }
                     
                     // if everything went well, return the status
-                    completion(.success(emailConfirmed))
-                    print(emailConfirmed)
+                    completion(.success(emailConfirmedAt))
+                    print(emailConfirmedAt)
                 case 401:
                     // if the status code is 401, raise invalid credentials error
-                    completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
+                    completion(.failure(APIError.invalidCredentials) as Result<Date, APIError>)
                     
                 default:
                     // if the status code is not 200 or 401, raise custom error with the status code
-                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<String, APIError>)
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<Date, APIError>)
                 }
             }
             
@@ -136,14 +136,14 @@ class RegistrationService {
     }
     
     /// Method used for confirming the user's email address
-    func confirmEmail(confirmationToken: String, completion: @escaping (Result<String, APIError>) -> Void) {
+    func confirmEmail(confirmationToken: String, completion: @escaping (Result<Date, APIError>) -> Void) {
         // get the token for the currently logged in user
         let token: String? = getToken()
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/confirm_email") else {
             // if it's not valid, throw a invalid URL error
-            completion(.failure(APIError.invalidURL) as Result<String, APIError>)
+            completion(.failure(APIError.invalidURL) as Result<Date, APIError>)
             return
         }
         
@@ -169,7 +169,7 @@ class RegistrationService {
             // check if any data was received from the server
             guard let data = data, error == nil else {
                 // return custom errro that there was no data received
-                completion(.failure(APIError.serverDown) as Result<String, APIError>)
+                completion(.failure(APIError.serverDown) as Result<Date, APIError>)
                 return
             }
             
@@ -181,14 +181,14 @@ class RegistrationService {
                     // try decode the response
                     guard let user = try? JSONDecoder().decode(User.self, from: data) else {
                         // raise invalid credentials error
-                        completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
+                        completion(.failure(APIError.invalidCredentials) as Result<Date, APIError>)
                         return
                     }
                     
                     print(user)
                     
                     // get the timestamp of confirmation from the response
-                    guard let emailConfirmedTimestamp = user.confirmed_at else {
+                    guard let emailConfirmedTimestamp = user.confirmedAt else {
                         // if it's nil, raise invalid credentials error
                         completion(.failure(APIError.invalidCredentials))
                         return
@@ -199,11 +199,11 @@ class RegistrationService {
                     print(emailConfirmedTimestamp)
                 case 401:
                     // if the status code is 401, raise invalid credentials error
-                    completion(.failure(APIError.invalidCredentials) as Result<String, APIError>)
+                    completion(.failure(APIError.invalidCredentials) as Result<Date, APIError>)
                     
                 default:
                     // if the status code is not 200 or 401, raise custom error with the status code
-                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<String, APIError>)
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")) as Result<Date, APIError>)
                 }
             }
         }.resume()

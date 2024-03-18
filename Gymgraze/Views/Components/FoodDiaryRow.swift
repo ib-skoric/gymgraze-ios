@@ -7,13 +7,11 @@
 
 import SwiftUI
 
-struct DiaryRow: View {
+struct FoodDiaryRow: View {
     
     var foodName: String
     var foodWeightInG: Double
-    // TODO: This should be changed
-    var nutritionalInfo: String
-    var kcal: Int
+    var nutritionalInfo: NutritionalInfo
     
     var body: some View {
         HStack {
@@ -24,14 +22,14 @@ struct DiaryRow: View {
                     .font(.subheadline)
                     .fontWeight(.light)
                     .foregroundStyle(.gray)
-                Text("\(nutritionalInfo)")
+                Text("C: \(String(format: "%.1f", nutritionalInfo.carbs)) F: \(String(format: "%.1f", nutritionalInfo.fat)) P: \(String(format: "%.1f", nutritionalInfo.protein))")
                     .font(.subheadline)
                     .fontWeight(.light)
                     .foregroundStyle(.gray)
             }
             Spacer()
             
-            Text("\(kcal)kcal")
+            Text("\(nutritionalInfo.kcal)kcal")
                 .font(.headline)
                 .fontWeight(.light)
                 .foregroundStyle(.gray)
@@ -41,5 +39,5 @@ struct DiaryRow: View {
 }
 
 #Preview {
-    DiaryRow(foodName: "Apple", foodWeightInG: 150.0, nutritionalInfo: "C: 20, P:0, F:0", kcal: 120)
+    FoodDiaryRow(foodName: "Apple", foodWeightInG: 150.0, nutritionalInfo: NutritionalInfo())
 }
