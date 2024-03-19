@@ -9,10 +9,15 @@ import SwiftUI
 
 struct ProductView: View {
     
+    @Environment(\.dismiss) var dismiss
     @State var barcode: String
     @State private var amount = "100"
     @State var foodItem: FoodItem = FoodItem()
     @State var isLoading: Bool = false
+    @State var meal: Meal = Meal()
+    @State private var showDiaryView = false
+    @EnvironmentObject var userVM: UserViewModel
+    
     
     var body: some View {
         VStack {
@@ -37,7 +42,41 @@ struct ProductView: View {
                 VStack {
                     NutritionalInfoTable(nutritionalInfo: NutritionalInfo(from: foodItem.product.nutriments), amount: $amount)
                     .padding()
+                    HStack {
+                        Text("Meal:")
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                        Spacer()
+                        Picker("Meal", selection: $meal) {
+                            ForEach(userVM.user?.meals ?? [], id: \.self) { meal in
+                                Text(meal.name)
+                                    .tag(meal.id)
+                            }
+                        }
+                    }
+                    .padding()
+                    HStack {
+                        Text("Amount (g):")
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                        Spacer()
+                        TextField("100g", text: $amount)
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.numberPad)
+                    }
+                    .padding()
                     Spacer()
+                    Button(action: {
+                        addFoodItemToDiary()
+                        print("Save button tapped")
+                        dismiss()
+                    }, label: {
+                        Text("Add to diary")
+                    })
+                    .buttonStyle(CTAButton())
+                    .padding()
                 }
                 .padding()
             }
@@ -59,6 +98,11 @@ struct ProductView: View {
                 print(error)
             }
         }
+    }
+    
+    func addFoodItemToDiary() {
+        let diaryService = DiaryService()
+        self.showDiaryView = true
     }
 }
 

@@ -55,7 +55,6 @@ struct FoodDetailView: View {
                     .padding()
                     Spacer()
                     Button(action: {
-                        // TODO: Actually save item
                         print("Save button tapped")
                         updateFoodAmount()
                         dismiss()

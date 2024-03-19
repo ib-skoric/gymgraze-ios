@@ -27,13 +27,9 @@ struct BarcodeScannerView: View {
                         dataToScanFor: [.barcode(symbologies: [.ean13])]
                     )
                     .id(id)
-                    Text(scannedText)
-                        .padding()
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .navigationDestination(isPresented: $showProductView) {
-                            ProductView(barcode: scannedText)
-                        }
+                    .sheet(isPresented: $showProductView) {
+                        ProductView(barcode: scannedText)
+                    }
                 }
                 .onChange(of: showProductView) { isShowing in
                     if !isShowing {
