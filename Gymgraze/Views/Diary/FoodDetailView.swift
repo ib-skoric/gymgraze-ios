@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FoodDetailView: View {
     
+    @Environment(\.dismiss) var dismiss
     @State private var isLoading: Bool = false
     @State var food: Food
     @State var foodImageURL: String = ""
@@ -57,6 +58,7 @@ struct FoodDetailView: View {
                         // TODO: Actually save item
                         print("Save button tapped")
                         updateFoodAmount()
+                        dismiss()
                     }, label: {
                         Text("Save item")
                     })
