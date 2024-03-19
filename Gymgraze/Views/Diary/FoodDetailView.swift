@@ -13,6 +13,7 @@ struct FoodDetailView: View {
     @State var food: Food
     @State var foodImageURL: String = ""
     @State private var amount: String = ""
+    @EnvironmentObject var diaryVM: DiaryViewModel
     
     var body: some View {
         VStack {
@@ -109,6 +110,7 @@ struct FoodDetailView: View {
             switch result {
             case .success(let food):
                 print(food)
+                diaryVM.fetchFoodDiary()
             case .failure(let error):
                 print(error)
             }

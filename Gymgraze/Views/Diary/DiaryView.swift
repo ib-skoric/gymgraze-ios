@@ -81,6 +81,7 @@ struct DiaryView: View {
                                     }
                                     .sheet(item: $selectedFood) { food in
                                         FoodDetailView(food: food)
+                                            .environmentObject(diaryVM)
                                     }
                                 }
                                 
