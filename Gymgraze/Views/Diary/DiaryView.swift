@@ -77,6 +77,9 @@ struct DiaryView: View {
                                                         selectedFood = food
                                                     }
                                             }
+                                            .onDelete(perform: { indexSet in
+                                                deleteFood(mealId: mealId)
+                                            })
                                         }
                                     }
                                     .sheet(item: $selectedFood) { food in
@@ -117,6 +120,20 @@ struct DiaryView: View {
         }
     }
     
+    func deleteFood(mealId: Int) {
+        let foodToDelete = foodsByMeal[mealId]![0].id
+        
+        DiaryService().removeFoodItem(foodId: Int(foodToDelete)) { result in
+            switch result {
+            case .success(let deleted):
+                print("deleted food")
+                diaryVM.fetchFoodDiary()
+            case .failure(let error):
+                print("Error deleting food \(error)")
+            }
+        }
+    }
+        
     #Preview {
         ContentView().environmentObject(UserViewModel())
     }
