@@ -7,33 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "79BFC0AE-3D36-408C-86C3-8269B4680060"
+            uuid = "CABCD5DA-7907-401C-B6D6-0DB40B1405ED"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gymgraze/Views/Diary/FoodDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "fetchImage()"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "updateFoodAmount()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4EE000E8-9234-4F8B-9936-450B41991C8B"
+            uuid = "ED2CC3C7-875E-4369-B770-60E4B87AA867"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/Components/NutritionalInfoTable.swift"
+            filePath = "Gymgraze/Views/Diary/FoodDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "updateFoodAmount()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -62,15 +62,23 @@ class DiaryService {
     func updateFoodAmount(foodId: Int, amount: Int, completion: @escaping (Result<Food, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/food/\(foodId)") else {
+        guard let url = URL(string: "http://localhost:3000/foods/\(foodId)") else {
             completion(.failure(APIError.invalidURL))
             return
         }
+        
+        var body = ["amount": amount]
         
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-type")
         request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        // try to encode the body as JSON
+        do {
+            request.httpBody = try JSONEncoder().encode(body)
+        } catch {
+            print("Error encoding JSON: \(error)")
+        }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {

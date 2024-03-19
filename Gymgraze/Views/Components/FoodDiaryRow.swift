@@ -21,14 +21,14 @@ struct FoodDiaryRow: View {
                     .font(.subheadline)
                     .fontWeight(.light)
                     .foregroundStyle(.gray)
-                Text("C: \(String(format: "%.1f", nutritionalInfo.carbs)) F: \(String(format: "%.1f", nutritionalInfo.fat)) P: \(String(format: "%.1f", nutritionalInfo.protein))")
+                Text("C: \(String(format: "%.1f", food.totalNutrition.carbs)) F: \(String(format: "%.1f", food.totalNutrition.fat)) P: \(String(format: "%.1f", food.totalNutrition.protein))")
                     .font(.subheadline)
                     .fontWeight(.light)
                     .foregroundStyle(.gray)
             }
             Spacer()
             
-            Text("\(nutritionalInfo.kcal)kcal")
+            Text("\(food.totalNutrition.kcal)kcal")
                 .font(.headline)
                 .fontWeight(.light)
                 .foregroundStyle(.gray)

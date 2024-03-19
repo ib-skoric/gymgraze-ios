@@ -55,6 +55,7 @@ struct FoodDetailView: View {
                     Button(action: {
                         // TODO: Actually save item
                         print("Save button tapped")
+                        updateFoodAmount()
                     }, label: {
                         Text("Save item")
                     })
@@ -91,6 +92,23 @@ struct FoodDetailView: View {
             case .success(let imageURL):
                 self.foodImageURL = imageURL
                 print(imageURL)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func updateFoodAmount() {
+        let diaryService = DiaryService()
+        
+        let intAmount = Int(amount) ?? 0
+        
+        print(food.id)
+        
+        diaryService.updateFoodAmount(foodId: food.id, amount: intAmount) { result in
+            switch result {
+            case .success(let food):
+                print(food)
             case .failure(let error):
                 print(error)
             }

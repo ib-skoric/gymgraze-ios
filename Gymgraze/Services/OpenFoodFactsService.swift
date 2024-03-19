@@ -9,16 +9,12 @@ import Foundation
 
 class OpenFoodFactsService {
     
-    func fetch<T: Decodable>(barcode: String, completion: @escaping (Result<T, APIError>) -> Void) {
-        guard let url = URL(string: "https://world.openfoodfacts.org/api/v0/product/\(barcode).json") else {
-            print("Invalid URL")
-            completion(.failure(.invalidURL))
-            return
-        }
+    func fetchFoodItemImage(barcode: String, completion: @escaping (Result<String, APIError>) -> Void) {
+        let url = URL(string: "https://world.openfoodfacts.org/api/v0/product/\(barcode).json")!
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                print("Error fetching data: \(error)")
+                print("Error fetching food item image: \(error)")
                 completion(.failure(.serverDown))
                 return
             }
@@ -30,21 +26,39 @@ class OpenFoodFactsService {
             }
             
             do {
-                let item = try JSONDecoder().decode(T.self, from: data)
-                completion(.success(item))
+                let foodItem = try JSONDecoder().decode(FoodItem.self, from: data)
+                completion(.success(foodItem.product.imageURL))
             } catch {
-                print("Error decoding item: \(error)")
+                print("Error decoding food item: \(error)")
                 completion(.failure(.invalidPayload))
             }
         }.resume()
     }
     
-    func fetchFoodItemImage(barcode: String, completion: @escaping (Result<String, APIError>) -> Void) {
-        fetch(barcode: barcode, completion: completion)
-    }
-    
     func fetchFoodItem(barcode: String, completion: @escaping (Result<FoodItem, APIError>) -> Void) {
-        fetch(barcode: barcode, completion: completion)
+        let url = URL(string: "https://world.openfoodfacts.org/api/v0/product/\(barcode).json")!
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error fetching food item: \(error)")
+                completion(.failure(.serverDown))
+                return
+            }
+            
+            guard let data = data else {
+                print("No data returned from API")
+                completion(.failure(.invalidDataReturnedFromAPI))
+                return
+            }
+            
+            do {
+                let foodItem = try JSONDecoder().decode(FoodItem.self, from: data)
+                completion(.success(foodItem))
+                print(foodItem)
+            } catch {
+                print("Error decoding food item: \(error)")
+                completion(.failure(.invalidPayload))
+            }
+        }.resume()
     }
 }
-
