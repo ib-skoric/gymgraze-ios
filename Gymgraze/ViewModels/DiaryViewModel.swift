@@ -53,7 +53,7 @@ class DiaryViewModel: ObservableObject {
         DiaryService().fetchWorkoutDiaryEntry(date: dateString) { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let entry):s
+                case .success(let entry):
                     self.diaryWokrouts = entry.workouts
                     print(entry)
                     self.isLoading = false

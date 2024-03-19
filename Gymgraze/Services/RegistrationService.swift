@@ -16,7 +16,7 @@ class RegistrationService {
     func register(registration: Registration, completion: @escaping (Result<User, APIError>) -> Void) {
         
         // construct the URL
-        guard let url = URL(string: "http://602e-2a02-8084-181-9600-88ad-962e-55db-e53f.ngrok-free.app/user") else {
+        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/user") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<User, APIError>)
             return
@@ -75,7 +75,7 @@ class RegistrationService {
         let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://602e-2a02-8084-181-9600-88ad-962e-55db-e53f.ngrok-free.app/user") else {
+        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/user") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Date, APIError>)
             return
@@ -141,7 +141,7 @@ class RegistrationService {
         let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://602e-2a02-8084-181-9600-88ad-962e-55db-e53f.ngrok-free.app/confirm_email") else {
+        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/confirm_email") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Date, APIError>)
             return
@@ -215,7 +215,7 @@ class RegistrationService {
         let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://602e-2a02-8084-181-9600-88ad-962e-55db-e53f.ngrok-free.app/resend_confirmation_email") else {
+        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/resend_confirmation_email") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return

@@ -131,6 +131,7 @@
 				214087762BA25929004E0B51 /* FoodDetailView.swift */,
 				2109EFB42BA398D300DC303C /* AddToDiaryView.swift */,
 				21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */,
+				21729B2C2B9503C4009091B0 /* ProductView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -209,7 +210,6 @@
 				210DA2F82B825B5000F96B75 /* TrendsView.swift */,
 				210DA2FA2B825B6200F96B75 /* ProfileView.swift */,
 				21D67E8F2B2B45D8005FAC79 /* Components */,
-				21729B2C2B9503C4009091B0 /* ProductView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

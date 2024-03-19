@@ -48,21 +48,21 @@ class DiaryService {
     }
     
     func fetchFoodDiaryEntry(date: String, completion: @escaping (Result<FoodDiaryEntry, APIError>) -> Void) {
-        fetch(urlString: "http://602e-2a02-8084-181-9600-88ad-962e-55db-e53f.ngrok-free.app/food_diary_entries/\(date)", completion: completion)
+        fetch(urlString: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/food_diary_entries/\(date)", completion: completion)
     }
     
     func fetchWorkoutDiaryEntry(date: String, completion: @escaping (Result<WorkoutDiaryEntry, APIError>) -> Void) {
-        fetch(urlString: "http://602e-2a02-8084-181-9600-88ad-962e-55db-e53f.ngrok-free.app/workout_diary_entries/\(date)", completion: completion)
+        fetch(urlString: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/workout_diary_entries/\(date)", completion: completion)
     }
     
     func fetchFoodItem(foodId: Int, completion: @escaping (Result<Food, APIError>) -> Void) {
-        fetch(urlString: "http://602e-2a02-8084-181-9600-88ad-962e-55db-e53f.ngrok-free.app/foods/\(foodId)", completion: completion)
+        fetch(urlString: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/foods/\(foodId)", completion: completion)
     }
     
     func updateFoodAmount(foodId: Int, amount: Int, completion: @escaping (Result<Food, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://602e-2a02-8084-181-9600-88ad-962e-55db-e53f.ngrok-free.app/foods/\(foodId)") else {
+        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/foods/\(foodId)") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -108,7 +108,7 @@ class DiaryService {
     func removeFoodItem(foodId: Int, completion: @escaping (Result<Bool, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://602e-2a02-8084-181-9600-88ad-962e-55db-e53f.ngrok-free.app/foods/\(foodId)") else {
+        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/foods/\(foodId)") else {
             completion(.failure(APIError.invalidURL))
             return
         }

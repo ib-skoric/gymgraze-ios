@@ -43,7 +43,7 @@ struct FoodItem: Codable, Identifiable {
     var product: Product
     
     struct Product: Codable {
-        var productName: String
+        var productName: String?
         var imageURL: String
         var nutriments: Nutriments
         
@@ -55,13 +55,13 @@ struct FoodItem: Codable, Identifiable {
     }
     
     struct Nutriments: Codable {
-        var kcal100g: Int
-        var carbs100g: Double
-        var protein100g: Double
-        var fat100g: Double
-        var salt100g: Double
-        var sugar100g: Double
-        var fiber100g: Double
+        var kcal100g: Int?
+        var carbs100g: Double?
+        var protein100g: Double?
+        var fat100g: Double?
+        var salt100g: Double?
+        var sugar100g: Double?
+        var fiber100g: Double?
         
         enum CodingKeys: String, CodingKey {
             case kcal100g = "energy-kcal_100g"

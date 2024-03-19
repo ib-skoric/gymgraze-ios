@@ -39,4 +39,14 @@ struct NutritionalInfo: Codable {
         self.sugar = sugar
         self.fiber = fiber
     }
+    
+    init(from nutriments: FoodItem.Nutriments) {
+        self.kcal = nutriments.kcal100g ?? 0
+        self.carbs = nutriments.carbs100g ?? 0.0
+        self.protein = nutriments.protein100g ?? 0.0
+        self.fat = nutriments.fat100g ?? 0.0
+        self.salt = nutriments.salt100g ?? 0.0
+        self.sugar = nutriments.sugar100g ?? 0.0
+        self.fiber = nutriments.fiber100g ?? 0.0
+    }
 }
