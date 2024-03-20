@@ -15,7 +15,7 @@ class UserService {
         var token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/user") else {
+        guard let url = URL(string: "http://fbd7-89-101-228-229.ngrok-free.app/user") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<User, APIError>)
             return
@@ -69,7 +69,7 @@ class UserService {
 func requestPasswordReset(email: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         
         // construct the URL
-        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/request_password_reset") else {
+        guard let url = URL(string: "http://fbd7-89-101-228-229.ngrok-free.app/request_password_reset") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return
@@ -119,7 +119,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
     
     func validatePasswordResetCode(token: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         // construct the URL
-        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/validate_password_reset_token") else {
+        guard let url = URL(string: "http://fbd7-89-101-228-229.ngrok-free.app/validate_password_reset_token") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return
@@ -169,7 +169,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
     
     func resetPsasword(token: String, password: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         // construct the URL
-        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/reset_password") else {
+        guard let url = URL(string: "http://fbd7-89-101-228-229.ngrok-free.app/reset_password") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return
@@ -223,7 +223,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
       let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://6914-2a02-8084-181-9600-a8ae-371-ccd3-5f3c.ngrok-free.app/goals") else {
+        guard let url = URL(string: "http://fbd7-89-101-228-229.ngrok-free.app/goals") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Goal, APIError>)
             return
