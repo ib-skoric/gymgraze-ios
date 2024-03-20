@@ -8,7 +8,7 @@
 import Foundation
 
 /// Enumeration used for handlign different authentication errors
-enum APIError: Error {
+enum APIError: Error, Equatable {
     case invalidCredentials
     case invalidURL
     case serverDown
