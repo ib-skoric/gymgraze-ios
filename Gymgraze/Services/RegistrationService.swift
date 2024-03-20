@@ -16,7 +16,7 @@ class RegistrationService {
     func register(registration: Registration, completion: @escaping (Result<User, APIError>) -> Void) {
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/user") else {
+        guard let url = URL(string: "http://fbd7-89-101-228-229.ngrok-free.app/user") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<User, APIError>)
             return
@@ -75,7 +75,7 @@ class RegistrationService {
         let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/user") else {
+        guard let url = URL(string: "http://fbd7-89-101-228-229.ngrok-free.app/user") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Date, APIError>)
             return
@@ -141,7 +141,7 @@ class RegistrationService {
         let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/confirm_email") else {
+        guard let url = URL(string: "http://fbd7-89-101-228-229.ngrok-free.app/confirm_email") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Date, APIError>)
             return
@@ -215,7 +215,7 @@ class RegistrationService {
         let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/resend_confirmation_email") else {
+        guard let url = URL(string: "http://fbd7-89-101-228-229.ngrok-free.app/resend_confirmation_email") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return

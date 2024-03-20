@@ -19,6 +19,7 @@
 		210DA2FB2B825B6200F96B75 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2FA2B825B6200F96B75 /* ProfileView.swift */; };
 		210DA2FD2B825FE900F96B75 /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2FC2B825FE900F96B75 /* StatCard.swift */; };
 		210DA2FF2B826ABF00F96B75 /* ArticleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2FE2B826ABF00F96B75 /* ArticleCard.swift */; };
+		2132124D2BA8A1A2006548D3 /* NutritionalInfoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2132124C2BA8A1A2006548D3 /* NutritionalInfoTable.swift */; };
 		214087772BA25929004E0B51 /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214087762BA25929004E0B51 /* FoodDetailView.swift */; };
 		215D54322B757B1C00A07029 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D54312B757B1C00A07029 /* Registration.swift */; };
 		21612DCB2B68E8FC00BF7740 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21612DCA2B68E8FC00BF7740 /* RegistrationService.swift */; };
@@ -35,6 +36,7 @@
 		21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */; };
 		21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */; };
 		21BF71B12BA7630E0000F573 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */; };
+		21BF71B32BA851AD0000F573 /* OpenFoodFactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71B22BA851AD0000F573 /* OpenFoodFactsService.swift */; };
 		21BFA5FC2B9E22820074F130 /* CacheEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FB2B9E22820074F130 /* CacheEntry.swift */; };
 		21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FD2B9E230B0074F130 /* Cache.swift */; };
 		21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FF2B9E2A8E0074F130 /* DiaryViewModel.swift */; };
@@ -69,6 +71,7 @@
 		210DA2FA2B825B6200F96B75 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		210DA2FC2B825FE900F96B75 /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCard.swift; sourceTree = "<group>"; };
 		210DA2FE2B826ABF00F96B75 /* ArticleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCard.swift; sourceTree = "<group>"; };
+		2132124C2BA8A1A2006548D3 /* NutritionalInfoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfoTable.swift; sourceTree = "<group>"; };
 		214087762BA25929004E0B51 /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
 		215D54312B757B1C00A07029 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		21612DCA2B68E8FC00BF7740 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 		21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetView.swift; sourceTree = "<group>"; };
 		21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDiaryRow.swift; sourceTree = "<group>"; };
 		21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
+		21BF71B22BA851AD0000F573 /* OpenFoodFactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsService.swift; sourceTree = "<group>"; };
 		21BFA5FB2B9E22820074F130 /* CacheEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheEntry.swift; sourceTree = "<group>"; };
 		21BFA5FD2B9E230B0074F130 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		21BFA5FF2B9E2A8E0074F130 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				214087762BA25929004E0B51 /* FoodDetailView.swift */,
 				2109EFB42BA398D300DC303C /* AddToDiaryView.swift */,
 				21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */,
+				21729B2C2B9503C4009091B0 /* ProductView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -205,7 +210,6 @@
 				210DA2F82B825B5000F96B75 /* TrendsView.swift */,
 				210DA2FA2B825B6200F96B75 /* ProfileView.swift */,
 				21D67E8F2B2B45D8005FAC79 /* Components */,
-				21729B2C2B9503C4009091B0 /* ProductView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,6 +222,7 @@
 				216604942B7D25770097C73E /* AuthenticationService.swift */,
 				21679B5C2B7EA92A00314DFE /* UserService.swift */,
 				2177A8052BA0FB950042ABA8 /* DiaryService.swift */,
+				21BF71B22BA851AD0000F573 /* OpenFoodFactsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				2109E91B2B84980900F2E596 /* Heading.swift */,
 				2109E91D2B84992100F2E596 /* FoodDiaryRow.swift */,
 				21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */,
+				2132124C2BA8A1A2006548D3 /* NutritionalInfoTable.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -334,7 +340,9 @@
 			files = (
 				2109EFB52BA398D300DC303C /* AddToDiaryView.swift in Sources */,
 				21612DCB2B68E8FC00BF7740 /* RegistrationService.swift in Sources */,
+				2132124D2BA8A1A2006548D3 /* NutritionalInfoTable.swift in Sources */,
 				21021E742B7E56B500A1195A /* ConfirmationCodeInputView.swift in Sources */,
+				21BF71B32BA851AD0000F573 /* OpenFoodFactsService.swift in Sources */,
 				21729B2B2B94DC7F009091B0 /* BarcodeScannerView.swift in Sources */,
 				21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */,
 				216604982B7D27F30097C73E /* Helpers.swift in Sources */,

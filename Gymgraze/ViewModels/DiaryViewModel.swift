@@ -13,9 +13,16 @@ class DiaryViewModel: ObservableObject {
     @Published var diaryWokrouts: [Workout] = WorkoutDiaryEntry().workouts
     @Published var isLoading = false
     
+    
     func fetchFoodDiary() {
         self.isLoading = true
-        DiaryService().fetchFoodDiaryEntry(date: selectedDate) { result in
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let dateString = dateFormatter.string(from: selectedDate)
+
+        DiaryService().fetchFoodDiaryEntry(date: dateString) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let entry):
@@ -37,7 +44,13 @@ class DiaryViewModel: ObservableObject {
     
     func fetchWorkoutDiary() {
         self.isLoading = true
-        DiaryService().fetchWorkoutDiaryEntry(date: selectedDate) { result in
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let dateString = dateFormatter.string(from: selectedDate)
+        
+        DiaryService().fetchWorkoutDiaryEntry(date: dateString) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let entry):
@@ -56,4 +69,6 @@ class DiaryViewModel: ObservableObject {
             }
         }
     }
+    
+    
 }

@@ -9,14 +9,117 @@ import SwiftUI
 
 struct FoodDetailView: View {
     
-    var food: Food
+    @Environment(\.dismiss) var dismiss
+    @State private var isLoading: Bool = false
+    @State var food: Food
+    @State var foodImageURL: String = ""
+    @State private var amount: String = ""
+    @EnvironmentObject var diaryVM: DiaryViewModel
     
     var body: some View {
-        Text(food.name)
-        Text(String(food.nutritionalInfo.kcal))
+        VStack {
+            if isLoading {
+                ProgressView()
+            } else {
+                HStack {
+                    AsyncImage(url: URL(string: foodImageURL)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 75, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    Text(food.name)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding()
+                    Spacer()
+                }
+                .padding()
+                VStack {
+                    NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: $amount)
+                    HStack {
+                        Text("Amount (g):")
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                        Spacer()
+                        TextField("100g", text: $amount)
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.numberPad)
+                            .onAppear {
+                                self.amount = String(food.amount)
+                            }
+                    }
+                    .padding()
+                    Spacer()
+                    Button(action: {
+                        print("Save button tapped")
+                        updateFoodAmount()
+                        dismiss()
+                    }, label: {
+                        Text("Save item")
+                    })
+                    .buttonStyle(CTAButton())
+                    .padding()
+                }
+                .padding()
+            }
+            Spacer()
+        }
+        .onAppear() {
+            fetchFoodItem(foodId: food.id)
+            fetchImage()
+        }
     }
+    
+    func fetchFoodItem(foodId: Int) {
+        let diaryService = DiaryService()
+        diaryService.fetchFoodItem(foodId: foodId) { result in
+            switch result {
+            case .success(let food):
+                self.food = food
+                print(food)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func fetchImage() {
+        let openFoodFactsService = OpenFoodFactsService()
+        openFoodFactsService.fetchFoodItemImage(barcode: food.barcode) { result in
+            switch result {
+            case .success(let imageURL):
+                self.foodImageURL = imageURL
+                print(imageURL)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func updateFoodAmount() {
+        let diaryService = DiaryService()
+        
+        let intAmount = Int(amount) ?? 0
+        
+        print(food.id)
+        
+        diaryService.updateFoodAmount(foodId: food.id, amount: intAmount) { result in
+            switch result {
+            case .success(let food):
+                print(food)
+                diaryVM.fetchFoodDiary()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }
 
-//#Preview {
-//    FoodDetailView(food: Food(name: "Apple", nutritionalInfo: NutritionalInfo(kcal: 120, carbs: 20, protein: 0, fat: 0, salt: 0, sugar: 0, fiber: 0), meal: ))
-//}
+#Preview {
+    FoodDetailView(food: Food(), foodImageURL: "")
+}

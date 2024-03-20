@@ -1,0 +1,111 @@
+//
+//  ProductView.swift
+//  Gymgraze
+//
+//  Created by Ivan Branimir Skoric on 03/03/2024.
+//
+
+import SwiftUI
+
+struct ProductView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    @State var barcode: String
+    @State private var amount = "100"
+    @State var foodItem: FoodItem = FoodItem()
+    @State var isLoading: Bool = false
+    @State var meal: Meal = Meal()
+    @State private var showDiaryView = false
+    @EnvironmentObject var userVM: UserViewModel
+    
+    
+    var body: some View {
+        VStack {
+            if isLoading {
+                ProgressView()
+            } else {
+                HStack {
+                    AsyncImage(url: URL(string: foodItem.product.imageURL)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 75, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    Text(foodItem.product.productName ?? "No name found")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding()
+                    Spacer()
+                }
+                .padding()
+                VStack {
+                    NutritionalInfoTable(nutritionalInfo: NutritionalInfo(from: foodItem.product.nutriments), amount: $amount)
+                    .padding()
+                    HStack {
+                        Text("Meal:")
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                        Spacer()
+                        Picker("Meal", selection: $meal) {
+                            ForEach(userVM.user?.meals ?? [], id: \.self) { meal in
+                                Text(meal.name)
+                                    .tag(meal.id)
+                            }
+                        }
+                    }
+                    .padding()
+                    HStack {
+                        Text("Amount (g):")
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                        Spacer()
+                        TextField("100g", text: $amount)
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.numberPad)
+                    }
+                    .padding()
+                    Spacer()
+                    Button(action: {
+                        addFoodItemToDiary()
+                        print("Save button tapped")
+                        dismiss()
+                    }, label: {
+                        Text("Add to diary")
+                    })
+                    .buttonStyle(CTAButton())
+                    .padding()
+                }
+                .padding()
+            }
+            Spacer()
+        }
+        .onAppear {
+            fetchFoodItem()
+        }
+    }
+    
+    func fetchFoodItem() {
+        let openFoodFactsService = OpenFoodFactsService()
+        openFoodFactsService.fetchFoodItem(barcode: barcode) { result in
+            switch result {
+            case .success(let foodItem):
+                self.foodItem = foodItem
+                print(foodItem)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func addFoodItemToDiary() {
+        let diaryService = DiaryService()
+        self.showDiaryView = true
+    }
+}
+
+#Preview {
+    ProductView(barcode: "4543435454534")
+}
