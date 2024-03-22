@@ -31,24 +31,7 @@ struct DiaryView: View {
                                 }
                             }
                             
-                            Menu {
-                                Button(action: {
-                                    isAddFoodViewPresented = true
-                                }, label: {
-                                    Label("Add food", systemImage: "fork.knife")
-                                })
-                                
-                                Button(action: {
-                                    isAddWorkoutViewPresented = true
-                                }, label: {
-                                    Label("Add workout", systemImage: "figure.run")
-                                })
-                                
-                            } label: {
-                                Label("", systemImage: "plus")
-                                    .font(.system(size: 25))
-                            }
-                            .padding(.trailing)
+                            AddToDropdown(isAddFoodViewPresented: $isAddFoodViewPresented, isAddWorkoutViewPresented: $isAddWorkoutViewPresented, type: "menu")
                         }
                     }
                     .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
@@ -67,13 +50,7 @@ struct DiaryView: View {
                                 Text("No entries for this date.")
                                     .font(.title)
                                     .foregroundColor(.gray)
-                                Button(action: {
-                                    isAddFoodViewPresented = true
-                                }, label: {
-                                    Text("Add entry")
-                                })
-                                .padding()
-                                .buttonStyle(CTAButton())
+                                AddToDropdown(isAddFoodViewPresented: $isAddFoodViewPresented, isAddWorkoutViewPresented: $isAddWorkoutViewPresented, type: "button")
                             }
                             .padding()
                             Spacer()
