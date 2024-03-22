@@ -24,7 +24,7 @@ struct ContentView: View {
                 }.tag(1)
             BarcodeScannerView()
                 .tabItem {
-                    Label("Quick add", systemImage: "plus.circle")
+                    Label("Quick scan", systemImage: "plus.circle")
                 }.tag(2)
             TrendsView()
                 .tabItem {
