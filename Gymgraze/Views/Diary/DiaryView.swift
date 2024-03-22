@@ -6,7 +6,8 @@ struct DiaryView: View {
     @ObservedObject var diaryVM = DiaryViewModel()
     @State private var selectedFood: Food?
     @State private var selectedWorkout: Workout?
-    @State private var isAddViewPresented: Bool = false
+    @State private var isAddFoodViewPresented: Bool = false
+    @State private var isAddWorkoutViewPresented: Bool = false
     
     var foodsByMeal: [Int: [Food]] {
         Dictionary(grouping: diaryVM.diaryFoods) { $0.meal.id }
@@ -30,14 +31,24 @@ struct DiaryView: View {
                                 }
                             }
                             
-                            Button(action: {
-                                isAddViewPresented = true
-                            }, label: {
-                                Image(systemName: "plus")
+                            Menu {
+                                Button(action: {
+                                    isAddFoodViewPresented = true
+                                }, label: {
+                                    Label("Add food", systemImage: "fork.knife")
+                                })
+                                
+                                Button(action: {
+                                    isAddWorkoutViewPresented = true
+                                }, label: {
+                                    Label("Add workout", systemImage: "figure.run")
+                                })
+                                
+                            } label: {
+                                Label("", systemImage: "plus")
                                     .font(.system(size: 25))
-                            })
+                            }
                             .padding(.trailing)
-                            
                         }
                     }
                     .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
@@ -57,7 +68,7 @@ struct DiaryView: View {
                                     .font(.title)
                                     .foregroundColor(.gray)
                                 Button(action: {
-                                    isAddViewPresented = true
+                                    isAddFoodViewPresented = true
                                 }, label: {
                                     Text("Add entry")
                                 })
@@ -107,14 +118,12 @@ struct DiaryView: View {
                             }
                         }
                     }
-                    .background(
-                        NavigationLink(
-                            destination: AddToDiaryView(),
-                            isActive: $isAddViewPresented,
-                            label: {
-                                EmptyView()
-                            })
-                    )
+                    .navigationDestination(isPresented: $isAddFoodViewPresented) {
+                        AddToFoodDiaryView()
+                    }
+                    .navigationDestination(isPresented: $isAddWorkoutViewPresented) {
+                        AddToWorkoutDiaryView()
+                    }
                 }
             }
         }
@@ -125,7 +134,7 @@ struct DiaryView: View {
         
         DiaryService().removeFoodItem(foodId: Int(foodToDelete)) { result in
             switch result {
-            case .success(let deleted):
+            case .success(_):
                 print("deleted food")
                 diaryVM.fetchFoodDiary()
             case .failure(let error):
@@ -133,7 +142,7 @@ struct DiaryView: View {
             }
         }
     }
-        
+    
     #Preview {
         ContentView().environmentObject(UserViewModel())
     }
