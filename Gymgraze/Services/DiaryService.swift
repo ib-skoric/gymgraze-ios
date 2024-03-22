@@ -270,50 +270,72 @@ class DiaryService {
     }
     
     
-    //    func addFoodToDiary(foodId: Food, amount: Int, date: String, mealId: Int, completion: @escaping (Result<Food, APIError>) -> Void) {
-    //        let token: String? = getToken()
-    //
-    //        guard let url = URL(string: "http://localhost:3000/food_diary_entries/\(date)/foods") else {
-    //            completion(.failure(APIError.invalidURL))
-    //            return
-    //        }
-    //
-    //        let body = []
-    //
-    //        var request = URLRequest(url: url)
-    //        request.httpMethod = "POST"
-    //        request.addValue("application/json", forHTTPHeaderField: "Content-type")
-    //        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
-    //        // try to encode the body as JSON
-    //        do {
-    //            request.httpBody = try JSONEncoder().encode(body)
-    //        } catch {
-    //            print("Error encoding JSON: \(error)")
-    //        }
-    //
-    //        URLSession.shared.dataTask(with: request) { (data, response, error) in
-    //            guard let data = data, error == nil else {
-    //                completion(.failure(APIError.serverDown))
-    //                return
-    //            }
-    //
-    //            if let httpResonse = response as? HTTPURLResponse {
-    //                switch httpResonse.statusCode {
-    //                case 201:
-    //                    guard let diaryResponse = try? JSONDecoder().decode(Food.self, from: data) else {
-    //                        completion(.failure(APIError.invalidDataReturnedFromAPI))
-    //                        return
-    //                    }
-    //                    completion(.success(diaryResponse))
-    //                case 401:
-    //                    completion(.failure(APIError.invalidCredentials))
-    //                case 404:
-    //                    completion(.failure(APIError.entryNotFound))
-    //                default:
-    //                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
-    //                }
-    //            }
-    //        }.resume()
-    //    }
+    func addFoodToDiary(food: FoodItem, amount: Int, date: String, mealId: Int, nutritionalInfo: FoodItem.Nutriments, completion: @escaping (Result<Food, APIError>) -> Void) {
+        let token: String? = getToken()
+        
+        guard let url = URL(string: "http://localhost:3000/foods") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        
+        struct FoodToAPI: Encodable {
+            var name: String
+            var barcode: String
+            var amount: Int
+            var diary_date: String
+            var meal_id: Int
+            var nutritional_info_attributes: NutritionalInfoToAPI
+        }
+        
+        struct NutritionalInfoToAPI: Encodable {
+            var kcal: Int
+            var carbs: Double
+            var fat: Double
+            var protein: Double
+            var salt: Double
+            var sugar: Double
+            var fiber: Double
+        }
+        
+        let nutritionalInfo = NutritionalInfoToAPI(kcal: nutritionalInfo.kcal100g ?? 0, carbs: nutritionalInfo.carbs100g ?? 0.0, fat: nutritionalInfo.fat100g ?? 0.0, protein: nutritionalInfo.protein100g ?? 0.0, salt: nutritionalInfo.salt100g ?? 0.0, sugar: nutritionalInfo.sugar100g ?? 0.0, fiber: nutritionalInfo.fiber100g ?? 0.0)
+        
+        let food = FoodToAPI(name: food.product.productName ?? "No name found", barcode: food.id, amount: amount, diary_date: date, meal_id: 2, nutritional_info_attributes: nutritionalInfo)
+        
+        // try to encode the body as JSON
+        do {
+            request.httpBody = try JSONEncoder().encode(food)
+        } catch {
+            print("Error encoding JSON: \(error)")
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 201:
+                    guard let diaryResponse = try? JSONDecoder().decode(Food.self, from: data) else {
+                        completion(.failure(APIError.invalidDataReturnedFromAPI))
+                        return
+                    }
+                    completion(.success(diaryResponse))
+                case 401:
+                    completion(.failure(APIError.invalidCredentials))
+                case 404:
+                    completion(.failure(APIError.entryNotFound))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+    }
 }
 

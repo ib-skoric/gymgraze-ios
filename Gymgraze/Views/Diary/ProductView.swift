@@ -102,7 +102,15 @@ struct ProductView: View {
     
     func addFoodItemToDiary() {
         let diaryService = DiaryService()
-        self.showDiaryView = true
+        
+        diaryService.addFoodToDiary(food: foodItem, amount: Int(amount) ?? 0, date: "2024-03-20", mealId: meal.id, nutritionalInfo: foodItem.product.nutriments) { result in
+            switch result {
+                case .success(let response):
+                    print(response)
+                case .failure(let error):
+                    print(error)
+            }
+        }
     }
 }
 
