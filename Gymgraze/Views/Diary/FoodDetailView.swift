@@ -41,13 +41,17 @@ struct FoodDetailView: View {
                     HStack {
                         Text("Amount (g):")
                             .font(.subheadline)
-                            .fontWeight(.light)
+                            .fontWeight(.bold)
+                        
                         Spacer()
+                        
                         TextField("100g", text: $amount)
                             .font(.subheadline)
                             .fontWeight(.light)
                             .multilineTextAlignment(.trailing)
                             .keyboardType(.numberPad)
+                            .frame(width: 100)
+                            .textFieldStyle(.roundedBorder)
                             .onAppear {
                                 self.amount = String(food.amount)
                             }

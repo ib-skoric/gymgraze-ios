@@ -17,7 +17,7 @@ struct ProductView: View {
     @State var meal: Meal = Meal()
     @State private var showDiaryView = false
     @EnvironmentObject var userVM: UserViewModel
-    
+    @State var selectedDate: Date = Date()
     
     var body: some View {
         VStack {
@@ -43,6 +43,17 @@ struct ProductView: View {
                     NutritionalInfoTable(nutritionalInfo: NutritionalInfo(from: foodItem.product.nutriments), amount: $amount)
                     .padding()
                     HStack {
+                        Text("Date:")
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                        Spacer()
+                        DatePicker(selection: $selectedDate, displayedComponents: .date) {
+                            EmptyView()
+                        }
+                    }
+                    .padding()
+                    
+                    HStack {
                         Text("Meal:")
                             .font(.subheadline)
                             .fontWeight(.light)
@@ -55,19 +66,26 @@ struct ProductView: View {
                         }
                     }
                     .padding()
+                    
                     HStack {
                         Text("Amount (g):")
                             .font(.subheadline)
-                            .fontWeight(.light)
+                            .fontWeight(.bold)
+                        
                         Spacer()
+                        
                         TextField("100g", text: $amount)
                             .font(.subheadline)
                             .fontWeight(.light)
                             .multilineTextAlignment(.trailing)
+                            .frame(width: 100)
                             .keyboardType(.numberPad)
+                            .textFieldStyle(.roundedBorder)
                     }
                     .padding()
+                    
                     Spacer()
+                    
                     Button(action: {
                         addFoodItemToDiary()
                         print("Save button tapped")
@@ -103,7 +121,12 @@ struct ProductView: View {
     func addFoodItemToDiary() {
         let diaryService = DiaryService()
         
-        diaryService.addFoodToDiary(food: foodItem, amount: Int(amount) ?? 0, date: "2024-03-20", mealId: meal.id, nutritionalInfo: foodItem.product.nutriments) { result in
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let dateString = dateFormatter.string(from: selectedDate)
+        
+        diaryService.addFoodToDiary(food: foodItem, amount: Int(amount) ?? 0, date: dateString, mealId: meal.id, nutritionalInfo: foodItem.product.nutriments) { result in
             switch result {
                 case .success(let response):
                     print(response)
