@@ -45,7 +45,7 @@ struct ProductView: View {
                     HStack {
                         Text("Date:")
                             .font(.subheadline)
-                            .fontWeight(.light)
+                            .fontWeight(.bold)
                         Spacer()
                         DatePicker(selection: $selectedDate, displayedComponents: .date) {
                             EmptyView()
@@ -56,7 +56,7 @@ struct ProductView: View {
                     HStack {
                         Text("Meal:")
                             .font(.subheadline)
-                            .fontWeight(.light)
+                            .fontWeight(.bold)
                         Spacer()
                         Picker("Meal", selection: $meal) {
                             ForEach(userVM.user?.meals ?? [], id: \.self) { meal in
