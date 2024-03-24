@@ -62,10 +62,11 @@ struct AddWorkoutView: View {
                     }
                     
                     ForEach(viewModel.workoutExercies) { exercise in
-                        Text(exercise.name)
+                        ExerciseCard(exercise: exercise)
                     }
-
+                
                 }
+                .padding()
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 
                 Spacer()

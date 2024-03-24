@@ -28,6 +28,7 @@ struct AddExerciseView: View {
                 }
                 .onTapGesture {
                     viewModel.workoutExercies.append(exercise)
+                    print(viewModel.workoutExercies)
                     self.presentationMode.wrappedValue.dismiss()
                 }
                 

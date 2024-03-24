@@ -40,6 +40,7 @@
 		219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461672BB076C700B57AA3 /* SetRepRow.swift */; };
 		2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461692BB07E2400B57AA3 /* AddExerciseView.swift */; };
 		2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */; };
+		2194616E2BB08A2200B57AA3 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */; };
 		21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */; };
 		21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */; };
 		21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */; };
@@ -101,6 +102,7 @@
 		219461672BB076C700B57AA3 /* SetRepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepRow.swift; sourceTree = "<group>"; };
 		219461692BB07E2400B57AA3 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewModel.swift; sourceTree = "<group>"; };
+		2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetView.swift; sourceTree = "<group>"; };
 		21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDiaryRow.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				217607902BAE306F007C76BF /* AddToDropdown.swift */,
 				2176079A2BAEF73A007C76BF /* FoodItemRow.swift */,
 				219461672BB076C700B57AA3 /* SetRepRow.swift */,
+				2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				217607972BAEF64D007C76BF /* AddToFoodDiaryViewModel.swift in Sources */,
 				2109E91E2B84992100F2E596 /* FoodDiaryRow.swift in Sources */,
 				216604932B7D254A0097C73E /* ServiceModels.swift in Sources */,
+				2194616E2BB08A2200B57AA3 /* ExerciseCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

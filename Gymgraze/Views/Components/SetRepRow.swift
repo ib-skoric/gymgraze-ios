@@ -11,9 +11,12 @@ struct SetRepRow: View {
     
     @State private var repWeight: String = ""
     @State private var repCount: String = ""
+    @State var exerciseId: Int 
     
     var body: some View {
         HStack {
+            
+            
             TextField("Weight", text: $repWeight)
                 .font(.subheadline)
                 .fontWeight(.light)
@@ -32,12 +35,11 @@ struct SetRepRow: View {
                 Image(systemName: "checkmark")
                     .foregroundColor(.orange)
             })
-            .padding()
+            .padding([.leading, .trailing])
         }
-        .padding([.trailing, .leading])
     }
 }
 
 #Preview {
-    SetRepRow()
+    SetRepRow(exerciseId: 1)
 }
