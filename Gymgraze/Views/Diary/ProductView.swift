@@ -25,7 +25,7 @@ struct ProductView: View {
                 ProgressView()
             } else {
                 HStack {
-                    AsyncImage(url: URL(string: foodItem.product.imageURL)) { image in
+                    AsyncImage(url: URL(string: foodItem.product.imageURL ?? "https://placehold.co/400")) { image in
                         image.resizable()
                     } placeholder: {
                         ProgressView()

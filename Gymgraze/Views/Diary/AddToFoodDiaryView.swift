@@ -11,6 +11,7 @@ struct AddToFoodDiaryView: View {
     
     @State var searchTerm: String = ""
     @State var isBarcodeScannerPresented: Bool = false
+    @StateObject var viewModel = AddToFoodDiaryViewModel()
     
     var body: some View {
         NavigationStack {
@@ -37,17 +38,22 @@ struct AddToFoodDiaryView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(10)
                     
-                    Button {
-                        // Add food to diary
-                    } label: {
+                    Button (action: {
+                        viewModel.searchForFood(searchTerm: searchTerm)
+                    }, label: {
                         HStack {
-                            Text("Search")
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .padding([.trailing, .leading])
+                            } else {
+                                Text("Search")
+                            }
                         }
-                        .padding()
-                        .background(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                    }
+                    })
+                    .padding()
+                    .background(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
                 }
                 .navigationDestination(isPresented: $isBarcodeScannerPresented, destination: {
                     BarcodeScannerView()
@@ -55,6 +61,14 @@ struct AddToFoodDiaryView: View {
                 .padding()
                 
                 Spacer()
+                
+                if viewModel.isLoading {
+                    EmptyView()
+                } else {
+                    List(viewModel.foodItems) { foodItem in
+                        FoodItemRow(food: foodItem)
+                    }
+                }
             }
         }
     }
