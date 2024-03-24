@@ -54,6 +54,13 @@ struct FoodItem: Codable, Identifiable {
             case imageURL = "image_thumb_url"
             case nutriments
         }
+        
+        init() {
+            id = ""
+            productName = ""
+            imageURL = ""
+            nutriments = Nutriments()
+        }
     }
     
     struct Nutriments: Codable {
@@ -146,6 +153,6 @@ struct FoodItem: Codable, Identifiable {
     
     init() {
         id = ""
-        product = Product(id: "", productName: "", imageURL: "", nutriments: Nutriments())
+        product = Product()
     }
 }

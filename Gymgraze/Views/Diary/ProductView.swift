@@ -14,10 +14,10 @@ struct ProductView: View {
     @State private var amount = "100"
     @State var foodItem: FoodItem = FoodItem()
     @State var isLoading: Bool = false
-    @State var meal: Meal = Meal()
     @State private var showDiaryView = false
     @EnvironmentObject var userVM: UserViewModel
     @State var selectedDate: Date = Date()
+    @State private var meal: Meal = Meal()
     
     var body: some View {
         VStack {
@@ -41,7 +41,7 @@ struct ProductView: View {
                 .padding()
                 VStack {
                     NutritionalInfoTable(nutritionalInfo: NutritionalInfo(from: foodItem.product.nutriments), amount: $amount)
-                    .padding()
+                        .padding()
                     HStack {
                         Text("Date:")
                             .font(.subheadline)
@@ -101,6 +101,7 @@ struct ProductView: View {
             Spacer()
         }
         .onAppear {
+            meal = userVM.user?.meals?.first ?? Meal()
             fetchFoodItem()
         }
     }
@@ -123,15 +124,15 @@ struct ProductView: View {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-
+        
         let dateString = dateFormatter.string(from: selectedDate)
         
         diaryService.addFoodToDiary(food: foodItem, amount: Int(amount) ?? 0, date: dateString, mealId: meal.id, nutritionalInfo: foodItem.product.nutriments) { result in
             switch result {
-                case .success(let response):
-                    print(response)
-                case .failure(let error):
-                    print(error)
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(error)
             }
         }
     }

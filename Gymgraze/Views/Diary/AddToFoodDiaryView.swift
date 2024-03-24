@@ -11,6 +11,7 @@ struct AddToFoodDiaryView: View {
     
     @State var searchTerm: String = ""
     @State var isBarcodeScannerPresented: Bool = false
+    @State var selectedFood: FoodItem.Product?
     @StateObject var viewModel = AddToFoodDiaryViewModel()
     
     var body: some View {
@@ -67,8 +68,15 @@ struct AddToFoodDiaryView: View {
                 } else {
                     List(viewModel.foodItems) { foodItem in
                         FoodItemRow(food: foodItem)
+                            .onTapGesture {
+                                selectedFood = foodItem
+                            }
+                    }
+                    .sheet(item: $selectedFood) { foodItem in
+                        ProductView(barcode: String(foodItem.id))
                     }
                 }
+                    
             }
         }
     }

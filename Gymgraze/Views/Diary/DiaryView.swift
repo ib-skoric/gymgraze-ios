@@ -83,8 +83,6 @@ struct DiaryView: View {
                                                     Text("**F**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.nutritionalInfo.fat }))")
                                                 }
                                             }
-                                        } footer: {
-                                            
                                         }
                                     }
                                     .sheet(item: $selectedFood) { food in
