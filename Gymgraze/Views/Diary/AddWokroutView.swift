@@ -43,10 +43,7 @@ struct AddWorkoutView: View {
                         NavigationLink(destination: AddExerciseView(viewModel: viewModel), isActive: $showAddExerciseView) {}
                     }
                     .padding(.trailing)
-                    
-                    
                 }
-                .padding(.bottom)
                 
                 Text("Started at: \(formatDate(date: startedAt))")
                     .fontWeight(.light)

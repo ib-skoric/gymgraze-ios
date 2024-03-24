@@ -11,31 +11,37 @@ struct SetRepRow: View {
     
     @State private var repWeight: String = ""
     @State private var repCount: String = ""
-    @State var exerciseId: Int 
+    @State var exerciseId: Int
+    @State var completed: Bool = false
+    
+    var completedSetColor: Color {
+        completed ? .green : .primary
+    }
     
     var body: some View {
-        HStack {
-            
-            
+        HStack(alignment: .center) {
             TextField("Weight", text: $repWeight)
                 .font(.subheadline)
                 .fontWeight(.light)
                 .multilineTextAlignment(.center)
                 .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)
+                .foregroundColor(completedSetColor)
             
-                TextField("Reps", text: $repCount)
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
+            TextField("Reps", text: $repCount)
+                .font(.subheadline)
+                .fontWeight(.light)
+                .multilineTextAlignment(.center)
+                .keyboardType(.numberPad)
+                .textFieldStyle(.roundedBorder)
+                .foregroundColor(completedSetColor)
             
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: {
+                completed.toggle()
+            }, label: {
                 Image(systemName: "checkmark")
                     .foregroundColor(.orange)
             })
-            .padding([.leading, .trailing])
         }
     }
 }

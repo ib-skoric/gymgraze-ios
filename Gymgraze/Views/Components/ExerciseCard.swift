@@ -12,28 +12,12 @@ struct ExerciseCard: View {
     @State var exercise: Exercise
     
     var body: some View {
-            VStack {
-                    Text("Bench press")
-                        .fontWeight(.bold)
-
-                    if (exercise.exerciseSets?.isEmpty ?? true) {
-                        Text("No sets added")
-                    }
+        VStack {
+            HStack {
+                Text(exercise.name)
+                    .fontWeight(.bold)
                 
-                    ForEach(exercise.exerciseSets ?? [], id: \.id) { set in
-                        HStack {
-                            Button(action: {
-                                exercise.exerciseSets?.removeAll(where: { $0.id == set.id })
-                            }, label: {
-                                Image(systemName: "minus.circle.fill")
-                                    .foregroundColor(.gray)
-                            })
-                            .padding([.leading, .trailing])
-                            
-                            SetRepRow(exerciseId: set.exerciseId)
-                                .padding(.bottom)
-                        }
-                    }
+                Spacer()
                 
                 Button(action: {
                     let set = Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exercise.id, weight: 0.0, reps: 0)
@@ -46,10 +30,31 @@ struct ExerciseCard: View {
                     print(exercise.exerciseSets ?? [])
                 }, label: {
                     Text("Add set")
+                        .foregroundColor(.orange)
                 })
-
+            }
+            
+            if (exercise.exerciseSets?.isEmpty ?? true) {
+                Text("No sets added")
+            }
+            
+            ForEach(exercise.exerciseSets ?? [], id: \.id) { set in
+                HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
+                    Button(action: {
+                        exercise.exerciseSets?.removeAll(where: { $0.id == set.id })
+                    }, label: {
+                        Image(systemName: "minus.circle.fill")
+                            .foregroundColor(.gray)
+                    })
+                    
+                    SetRepRow(exerciseId: set.exerciseId)
                 }
-        .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom)
+            }
+            
+            
+        }
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
     }
 }
 

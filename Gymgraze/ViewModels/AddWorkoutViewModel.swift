@@ -25,4 +25,15 @@ class AddWorkoutViewModel: ObservableObject {
             self.isLoading = false
         }
     }
+    
+    func saveWorkout() {
+        DiaryService().saveWorkout(workout: workout) { result in
+            switch result {
+            case .success(_):
+                print("Workout saved")
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
