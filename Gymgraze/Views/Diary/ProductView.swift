@@ -27,21 +27,26 @@ struct ProductView: View {
                 HStack {
                     AsyncImage(url: URL(string: foodItem.product.imageURL ?? "https://placehold.co/400")) { image in
                         image.resizable()
+                            .scaledToFill()
                     } placeholder: {
                         ProgressView()
                     }
-                    .frame(width: 75, height: 100)
+                    .frame(width: 150, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     Text(foodItem.product.productName ?? "No name found")
                         .font(.title)
                         .fontWeight(.bold)
-                        .padding()
-                    Spacer()
+                        .multilineTextAlignment(.leading)
+                        .padding(.leading)
                 }
                 .padding()
+                Text("Typical serving size: " + (foodItem.product.servingSize ?? "Unknown"))
+                    .font(.subheadline)
+                    .fontWeight(.ultraLight)
+                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
                 VStack {
                     NutritionalInfoTable(nutritionalInfo: NutritionalInfo(from: foodItem.product.nutriments), amount: $amount)
-                        .padding()
+                        .padding(.bottom)
                     HStack {
                         Text("Date:")
                             .font(.subheadline)
@@ -68,7 +73,7 @@ struct ProductView: View {
                     .padding()
                     
                     HStack {
-                        Text("Amount (g):")
+                        Text("Amount (g/ml):")
                             .font(.subheadline)
                             .fontWeight(.bold)
                         

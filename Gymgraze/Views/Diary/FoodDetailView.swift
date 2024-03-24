@@ -24,10 +24,11 @@ struct FoodDetailView: View {
                 HStack {
                     AsyncImage(url: URL(string: foodImageURL)) { image in
                         image.resizable()
+                            .scaledToFill()
                     } placeholder: {
                         ProgressView()
                     }
-                    .frame(width: 75, height: 100)
+                    .frame(width: 150, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     Text(food.name)
                         .font(.title)

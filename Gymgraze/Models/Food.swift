@@ -47,12 +47,14 @@ struct FoodItem: Codable, Identifiable {
         var productName: String?
         var imageURL: String?
         var nutriments: Nutriments
+        var servingSize: String?
         
         enum CodingKeys: String, CodingKey {
             case id = "_id"
             case productName = "product_name"
             case imageURL = "image_thumb_url"
             case nutriments
+            case servingSize = "serving_size"
         }
         
         init() {
