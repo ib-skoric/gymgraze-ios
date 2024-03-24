@@ -114,7 +114,7 @@ struct DiaryView: View {
                         AddToFoodDiaryView()
                     }
                     .navigationDestination(isPresented: $isAddWorkoutViewPresented) {
-                        AddWorkoutView()
+                        AddWorkoutView().navigationBarBackButtonHidden(true)
                     }
                 }
             }

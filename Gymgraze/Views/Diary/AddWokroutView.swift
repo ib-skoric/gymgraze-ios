@@ -9,11 +9,13 @@ import SwiftUI
 
 struct AddWorkoutView: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var startedAt: Date = Date.now
     @State private var repWeight: String = ""
     @State private var repCount: String = ""
-    
-    
+    @State private var showAddExerciseView: Bool = false
+    @ObservedObject var viewModel = AddWorkoutViewModel()
+
     func formatDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -25,32 +27,58 @@ struct AddWorkoutView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                VStack {
+                HStack {
                     Heading(text: "New workout")
-                    Text("Started at: \(formatDate(date: startedAt))")
-                        .fontWeight(.light)
-                        .font(.subheadline)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        showAddExerciseView = true
+                    }, label: {
+                        Label("", systemImage: "plus")
+                            .font(.system(size: 25))
+                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+                    })
+                    .background {
+                        NavigationLink(destination: AddExerciseView(viewModel: viewModel), isActive: $showAddExerciseView) {}
+                    }
+                    .padding(.trailing)
+                    
+                    
                 }
                 .padding(.bottom)
                 
+                Text("Started at: \(formatDate(date: startedAt))")
+                    .fontWeight(.light)
+                    .font(.subheadline)
+                
                 ScrollView {
-                    Text("Bench press")
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     
-                    SetRepRow()
-                    SetRepRow()
-                    SetRepRow()
+                    if viewModel.workoutExercies.isEmpty {
+                        Text("No exercises added")
+                            .font(.title2)
+                            .fontWeight(.light)
+                            .padding()
+                    }
+                    
+                    ForEach(viewModel.workoutExercies) { exercise in
+                        Text(exercise.name)
+                    }
 
                 }
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 
                 Spacer()
                 
-                Button(action: {}) {
-                    Text("Add exercise")
-                }.buttonStyle(CTAButton())
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Finish workout")
+                }
+                    .buttonStyle(CTAButton())
                     .padding()
             }
+            
         }
     }
 }

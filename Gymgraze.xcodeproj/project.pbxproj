@@ -38,6 +38,8 @@
 		2176079B2BAEF73A007C76BF /* FoodItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176079A2BAEF73A007C76BF /* FoodItemRow.swift */; };
 		2177A8062BA0FB950042ABA8 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2177A8052BA0FB950042ABA8 /* DiaryService.swift */; };
 		219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461672BB076C700B57AA3 /* SetRepRow.swift */; };
+		2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461692BB07E2400B57AA3 /* AddExerciseView.swift */; };
+		2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */; };
 		21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */; };
 		21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */; };
 		21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */; };
@@ -97,6 +99,8 @@
 		2176079A2BAEF73A007C76BF /* FoodItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemRow.swift; sourceTree = "<group>"; };
 		2177A8052BA0FB950042ABA8 /* DiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryService.swift; sourceTree = "<group>"; };
 		219461672BB076C700B57AA3 /* SetRepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepRow.swift; sourceTree = "<group>"; };
+		219461692BB07E2400B57AA3 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
+		2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewModel.swift; sourceTree = "<group>"; };
 		21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetView.swift; sourceTree = "<group>"; };
 		21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDiaryRow.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				2176078E2BAE2F85007C76BF /* AddWokroutView.swift */,
 				21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */,
 				21729B2C2B9503C4009091B0 /* ProductView.swift */,
+				219461692BB07E2400B57AA3 /* AddExerciseView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */,
 				21BFA5FF2B9E2A8E0074F130 /* DiaryViewModel.swift */,
 				217607962BAEF64D007C76BF /* AddToFoodDiaryViewModel.swift */,
+				2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 				21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */,
 				2177A8062BA0FB950042ABA8 /* DiaryService.swift in Sources */,
 				21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */,
+				2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */,
 				21BF71B12BA7630E0000F573 /* WorkoutDetailView.swift in Sources */,
 				21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
@@ -384,6 +391,7 @@
 				21DE9BC72B936FA700F086EB /* SetGoalsView.swift in Sources */,
 				217607992BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift in Sources */,
 				2109EFBB2BA39EB500DC303C /* Exercise.swift in Sources */,
+				2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */,
 				210DA2F72B825B3B00F96B75 /* DiaryView.swift in Sources */,
 				2109EFB92BA39E9F00DC303C /* Workout.swift in Sources */,
 				21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */,

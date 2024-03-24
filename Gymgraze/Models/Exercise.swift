@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Exercise: Codable {
+struct Exercise: Codable, Identifiable {
     let id: Int
     let name: String
     let exerciseType: String
