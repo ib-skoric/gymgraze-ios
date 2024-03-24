@@ -47,7 +47,7 @@ struct BarcodeScannerView: View {
         }
             
         else if !DataScannerViewController.isSupported {
-            Text("It looks like this device doesn't support the DataScannerViewController")
+            Text("It looks like you might be using a similator. This must be tried on a real device")
         } else {
             Text("It appears your camera may not be available")
         }
