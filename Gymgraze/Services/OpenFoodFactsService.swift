@@ -27,7 +27,7 @@ class OpenFoodFactsService {
             
             do {
                 let foodItem = try JSONDecoder().decode(FoodItem.self, from: data)
-                completion(.success(foodItem.product.imageURL))
+                completion(.success(foodItem.product.imageURL ?? "https://placehold.co/400"))
             } catch {
                 print("Error decoding food item: \(error)")
                 completion(.failure(.invalidPayload))
@@ -57,6 +57,32 @@ class OpenFoodFactsService {
                 print(foodItem)
             } catch {
                 print("Error decoding food item: \(error)")
+                completion(.failure(.invalidPayload))
+            }
+        }.resume()
+    }
+    
+    func searchForFood(searchTerm: String, completion: @escaping (Result<[FoodItem.Product], APIError>) -> Void) {
+        let url = URL(string: "https://world.openfoodfacts.org/cgi/search.pl?search_terms=\(searchTerm)&search_simple=1&action=process&json=1")!
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error searching for food: \(error)")
+                completion(.failure(.serverDown))
+                return
+            }
+            
+            guard let data = data else {
+                print("No data returned from API")
+                completion(.failure(.invalidDataReturnedFromAPI))
+                return
+            }
+            
+            do {
+                let searchResult = try JSONDecoder().decode(OpenFoodFactsSearchResult.self, from: data)
+                completion(.success(searchResult.products))
+            } catch {
+                print("Error decoding search result: \(error)")
                 completion(.failure(.invalidPayload))
             }
         }.resume()

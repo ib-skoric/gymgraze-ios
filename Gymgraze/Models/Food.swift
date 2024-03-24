@@ -42,15 +42,26 @@ struct FoodItem: Codable, Identifiable {
     var id: String
     var product: Product
     
-    struct Product: Codable {
+    struct Product: Codable, Identifiable {
+        var id: String
         var productName: String?
-        var imageURL: String
+        var imageURL: String?
         var nutriments: Nutriments
+        var servingSize: String?
         
         enum CodingKeys: String, CodingKey {
+            case id = "_id"
             case productName = "product_name"
             case imageURL = "image_thumb_url"
             case nutriments
+            case servingSize = "serving_size"
+        }
+        
+        init() {
+            id = ""
+            productName = ""
+            imageURL = ""
+            nutriments = Nutriments()
         }
     }
     
@@ -72,6 +83,64 @@ struct FoodItem: Codable, Identifiable {
             case sugar100g = "sugars_100g"
             case fiber100g = "fiber_100g"
         }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            
+            kcal100g = try? container.decode(Int.self, forKey: .kcal100g)
+            carbs100g = try? container.decode(Double.self, forKey: .carbs100g)
+            protein100g = try? container.decode(Double.self, forKey: .protein100g)
+            fat100g = try? container.decode(Double.self, forKey: .fat100g)
+            salt100g = try? container.decode(Double.self, forKey: .salt100g)
+            sugar100g = try? container.decode(Double.self, forKey: .sugar100g)
+            fiber100g = try? container.decode(Double.self, forKey: .fiber100g)
+            
+            if carbs100g == nil {
+                if let carbsString = try? container.decode(String.self, forKey: .carbs100g) {
+                    carbs100g = Double(carbsString)
+                }
+            }
+            
+            if protein100g == nil {
+                if let proteinString = try? container.decode(String.self, forKey: .carbs100g) {
+                    protein100g = Double(proteinString)
+                }
+            }
+            
+            if fat100g == nil {
+                if let fatString = try? container.decode(String.self, forKey: .carbs100g) {
+                    fat100g = Double(fatString)
+                }
+            }
+            
+            if salt100g == nil {
+                if let saltString = try? container.decode(String.self, forKey: .carbs100g) {
+                    salt100g = Double(saltString)
+                }
+            }
+            
+            if sugar100g == nil {
+                if let sugarString = try? container.decode(String.self, forKey: .carbs100g) {
+                    sugar100g = Double(sugarString)
+                }
+            }
+            
+            if fiber100g == nil {
+                if let fiberString = try? container.decode(String.self, forKey: .carbs100g) {
+                    fiber100g = Double(fiberString)
+                }
+            }
+        }
+        
+        init() {
+            self.kcal100g = 0
+            self.carbs100g = 0
+            self.protein100g = 0
+            self.fat100g = 0
+            self.salt100g = 0
+            self.sugar100g = 0
+            self.fiber100g = 0
+        }
     }
     
     enum CodingKeys: String, CodingKey {
@@ -86,6 +155,6 @@ struct FoodItem: Codable, Identifiable {
     
     init() {
         id = ""
-        product = Product(productName: "", imageURL: "", nutriments: Nutriments(kcal100g: 0, carbs100g: 0, protein100g: 0, fat100g: 0, salt100g: 0, sugar100g: 0, fiber100g: 0))
+        product = Product()
     }
 }

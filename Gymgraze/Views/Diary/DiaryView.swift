@@ -58,7 +58,7 @@ struct DiaryView: View {
                             List {
                                 if !diaryVM.diaryFoods.isEmpty {
                                     ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
-                                        Section(header: Text(diaryVM.diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")) {
+                                        Section() {
                                             ForEach(foodsByMeal[mealId]!, id: \.id) { food in
                                                 FoodDiaryRow(food: food, nutritionalInfo: food.nutritionalInfo)
                                                     .onTapGesture {
@@ -68,6 +68,21 @@ struct DiaryView: View {
                                             .onDelete(perform: { indexSet in
                                                 deleteFood(mealId: mealId)
                                             })
+                                        } header: {
+                                            HStack {
+                                                VStack {
+                                                    Text(diaryVM.diaryFoods.first(where: { $0.meal.id ==  mealId })?.meal.name ?? "")
+                                                }
+                                                
+                                                Spacer()
+                                                
+                                                HStack {
+                                                    Text("**Kcal**: \(foodsByMeal[mealId]!.reduce(0) { $0 + $1.nutritionalInfo.kcal })")
+                                                    Text("**C**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.nutritionalInfo.carbs }))")
+                                                    Text("**P**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.nutritionalInfo.protein }))")
+                                                    Text("**F**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.nutritionalInfo.fat }))")
+                                                }
+                                            }
                                         }
                                     }
                                     .sheet(item: $selectedFood) { food in

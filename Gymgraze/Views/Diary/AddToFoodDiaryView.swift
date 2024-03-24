@@ -8,8 +8,77 @@
 import SwiftUI
 
 struct AddToFoodDiaryView: View {
+    
+    @State var searchTerm: String = ""
+    @State var isBarcodeScannerPresented: Bool = false
+    @State var selectedFood: FoodItem.Product?
+    @StateObject var viewModel = AddToFoodDiaryViewModel()
+    
     var body: some View {
-        Text("This is the add to food diary view")
+        NavigationStack {
+            VStack {
+                HStack {
+                    Heading(text: "Add food to diary")
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        isBarcodeScannerPresented = true
+                    }, label: {
+                        Label("", systemImage: "barcode.viewfinder")
+                            .font(.system(size: 25))
+                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+                    })
+                    .padding(.trailing)
+                    
+                }
+                
+                HStack {
+                    TextField("Search for food", text: $searchTerm)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                    
+                    Button (action: {
+                        viewModel.searchForFood(searchTerm: searchTerm)
+                    }, label: {
+                        HStack {
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .padding([.trailing, .leading])
+                            } else {
+                                Text("Search")
+                            }
+                        }
+                    })
+                    .padding()
+                    .background(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
+                }
+                .navigationDestination(isPresented: $isBarcodeScannerPresented, destination: {
+                    BarcodeScannerView()
+                })
+                .padding()
+                
+                Spacer()
+                
+                if viewModel.isLoading {
+                    EmptyView()
+                } else {
+                    List(viewModel.foodItems) { foodItem in
+                        FoodItemRow(food: foodItem)
+                            .onTapGesture {
+                                selectedFood = foodItem
+                            }
+                    }
+                    .sheet(item: $selectedFood) { foodItem in
+                        ProductView(barcode: String(foodItem.id))
+                    }
+                }
+                    
+            }
+        }
     }
 }
 

@@ -24,10 +24,11 @@ struct FoodDetailView: View {
                 HStack {
                     AsyncImage(url: URL(string: foodImageURL)) { image in
                         image.resizable()
+                            .scaledToFill()
                     } placeholder: {
                         ProgressView()
                     }
-                    .frame(width: 75, height: 100)
+                    .frame(width: 150, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     Text(food.name)
                         .font(.title)
@@ -41,13 +42,17 @@ struct FoodDetailView: View {
                     HStack {
                         Text("Amount (g):")
                             .font(.subheadline)
-                            .fontWeight(.light)
+                            .fontWeight(.bold)
+                        
                         Spacer()
+                        
                         TextField("100g", text: $amount)
                             .font(.subheadline)
                             .fontWeight(.light)
                             .multilineTextAlignment(.trailing)
                             .keyboardType(.numberPad)
+                            .frame(width: 100)
+                            .textFieldStyle(.roundedBorder)
                             .onAppear {
                                 self.amount = String(food.amount)
                             }

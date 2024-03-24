@@ -14,10 +14,10 @@ struct ProductView: View {
     @State private var amount = "100"
     @State var foodItem: FoodItem = FoodItem()
     @State var isLoading: Bool = false
-    @State var meal: Meal = Meal()
     @State private var showDiaryView = false
     @EnvironmentObject var userVM: UserViewModel
-    
+    @State var selectedDate: Date = Date()
+    @State private var meal: Meal = Meal()
     
     var body: some View {
         VStack {
@@ -25,27 +25,43 @@ struct ProductView: View {
                 ProgressView()
             } else {
                 HStack {
-                    AsyncImage(url: URL(string: foodItem.product.imageURL)) { image in
+                    AsyncImage(url: URL(string: foodItem.product.imageURL ?? "https://placehold.co/400")) { image in
                         image.resizable()
+                            .scaledToFill()
                     } placeholder: {
                         ProgressView()
                     }
-                    .frame(width: 75, height: 100)
+                    .frame(width: 150, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     Text(foodItem.product.productName ?? "No name found")
                         .font(.title)
                         .fontWeight(.bold)
-                        .padding()
-                    Spacer()
+                        .multilineTextAlignment(.leading)
+                        .padding(.leading)
                 }
                 .padding()
+                Text("Typical serving size: " + (foodItem.product.servingSize ?? "Unknown"))
+                    .font(.subheadline)
+                    .fontWeight(.ultraLight)
+                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
                 VStack {
                     NutritionalInfoTable(nutritionalInfo: NutritionalInfo(from: foodItem.product.nutriments), amount: $amount)
+                        .padding(.bottom)
+                    HStack {
+                        Text("Date:")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                        Spacer()
+                        DatePicker(selection: $selectedDate, displayedComponents: .date) {
+                            EmptyView()
+                        }
+                    }
                     .padding()
+                    
                     HStack {
                         Text("Meal:")
                             .font(.subheadline)
-                            .fontWeight(.light)
+                            .fontWeight(.bold)
                         Spacer()
                         Picker("Meal", selection: $meal) {
                             ForEach(userVM.user?.meals ?? [], id: \.self) { meal in
@@ -55,19 +71,26 @@ struct ProductView: View {
                         }
                     }
                     .padding()
+                    
                     HStack {
-                        Text("Amount (g):")
+                        Text("Amount (g/ml):")
                             .font(.subheadline)
-                            .fontWeight(.light)
+                            .fontWeight(.bold)
+                        
                         Spacer()
+                        
                         TextField("100g", text: $amount)
                             .font(.subheadline)
                             .fontWeight(.light)
                             .multilineTextAlignment(.trailing)
+                            .frame(width: 100)
                             .keyboardType(.numberPad)
+                            .textFieldStyle(.roundedBorder)
                     }
                     .padding()
+                    
                     Spacer()
+                    
                     Button(action: {
                         addFoodItemToDiary()
                         print("Save button tapped")
@@ -83,6 +106,7 @@ struct ProductView: View {
             Spacer()
         }
         .onAppear {
+            meal = userVM.user?.meals?.first ?? Meal()
             fetchFoodItem()
         }
     }
@@ -103,12 +127,17 @@ struct ProductView: View {
     func addFoodItemToDiary() {
         let diaryService = DiaryService()
         
-        diaryService.addFoodToDiary(food: foodItem, amount: Int(amount) ?? 0, date: "2024-03-20", mealId: meal.id, nutritionalInfo: foodItem.product.nutriments) { result in
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let dateString = dateFormatter.string(from: selectedDate)
+        
+        diaryService.addFoodToDiary(food: foodItem, amount: Int(amount) ?? 0, date: dateString, mealId: meal.id, nutritionalInfo: foodItem.product.nutriments) { result in
             switch result {
-                case .success(let response):
-                    print(response)
-                case .failure(let error):
-                    print(error)
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(error)
             }
         }
     }

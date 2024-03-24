@@ -31,6 +31,7 @@ struct AddToDropdown: View {
             if type == "menu" {
                 Label("", systemImage: "plus")
                     .font(.system(size: 25))
+                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
             } else {
                 Button(action: {}, label: {
                     Label("Add to diary", systemImage: "plus")

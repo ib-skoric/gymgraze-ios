@@ -21,7 +21,7 @@ struct FoodDiaryRow: View {
                     .font(.subheadline)
                     .fontWeight(.light)
                     .foregroundStyle(.gray)
-                Text("C: \(String(format: "%.1f", food.totalNutrition.carbs)) F: \(String(format: "%.1f", food.totalNutrition.fat)) P: \(String(format: "%.1f", food.totalNutrition.protein))")
+                Text("C: \(String(format: "%.1f", food.totalNutrition.carbs)) P: \(String(format: "%.1f", food.totalNutrition.protein)) F: \(String(format: "%.1f", food.totalNutrition.fat))")
                     .font(.subheadline)
                     .fontWeight(.light)
                     .foregroundStyle(.gray)

@@ -304,7 +304,7 @@ class DiaryService {
         
         let nutritionalInfo = NutritionalInfoToAPI(kcal: nutritionalInfo.kcal100g ?? 0, carbs: nutritionalInfo.carbs100g ?? 0.0, fat: nutritionalInfo.fat100g ?? 0.0, protein: nutritionalInfo.protein100g ?? 0.0, salt: nutritionalInfo.salt100g ?? 0.0, sugar: nutritionalInfo.sugar100g ?? 0.0, fiber: nutritionalInfo.fiber100g ?? 0.0)
         
-        let food = FoodToAPI(name: food.product.productName ?? "No name found", barcode: food.id, amount: amount, diary_date: date, meal_id: 2, nutritional_info_attributes: nutritionalInfo)
+        let food = FoodToAPI(name: food.product.productName ?? "No name found", barcode: food.id, amount: amount, diary_date: date, meal_id: mealId, nutritional_info_attributes: nutritionalInfo)
         
         // try to encode the body as JSON
         do {

@@ -35,6 +35,7 @@ struct ContentView: View {
                     Label("Profile", systemImage: "person")
                 }.tag(4)
         }
+        .accentColor(Color(.orange))
     }
 }
 
