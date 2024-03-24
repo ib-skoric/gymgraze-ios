@@ -10,6 +10,8 @@ import SwiftUI
 struct AddWorkoutView: View {
     
     @State private var startedAt: Date = Date.now
+    @State private var repWeight: String = ""
+    @State private var repCount: String = ""
     
     
     func formatDate(date: Date) -> String {
@@ -29,6 +31,18 @@ struct AddWorkoutView: View {
                         .fontWeight(.light)
                         .font(.subheadline)
                 }
+                .padding(.bottom)
+                
+                ScrollView {
+                    Text("Bench press")
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    
+                    SetRepRow()
+                    SetRepRow()
+                    SetRepRow()
+
+                }
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 
                 Spacer()
                 
