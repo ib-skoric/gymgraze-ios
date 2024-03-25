@@ -9,31 +9,31 @@ import SwiftUI
 
 struct ExerciseCard: View {
     
-    @State var exercise: Exercise
+    @ObservedObject var exercise: Exercise
     
     var body: some View {
         VStack {
+            HStack {
                 Text(exercise.name)
                     .fontWeight(.bold)
                 
                 Spacer()
                 
-                if exercise.exerciseType != "cardio" {
-                    Button(action: {
-                        let set = Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exercise.id, weight: 0.0, reps: 0)
-                        
-                        if exercise.exerciseSets == nil {
-                            exercise.exerciseSets = []
-                        }
-                        
-                        exercise.exerciseSets?.append(set)
-                        print(exercise.exerciseSets ?? [])
-                    }, label: {
-                        Text("Add set")
-                            .foregroundColor(.orange)
-                    })
-                }
-
+                Button(action: {
+                    let set = Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exercise.id, weight: 0.0, reps: 0)
+                    
+                    if exercise.exerciseSets == nil {
+                        exercise.exerciseSets = []
+                    }
+                    
+                    exercise.exerciseSets?.append(set)
+                    print(exercise.exerciseSets ?? [])
+                }, label: {
+                    Text("Add set")
+                        .foregroundColor(.orange)
+                })
+            }
+            
             if (exercise.exerciseSets?.isEmpty ?? true && exercise.exerciseType != "cardio") {
                 Text("No sets added")
             }
