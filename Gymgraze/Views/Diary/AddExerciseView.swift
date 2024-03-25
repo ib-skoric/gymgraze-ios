@@ -36,8 +36,14 @@ struct AddExerciseView: View {
 
                 }
                 .onTapGesture {
-                    viewModel.workoutExercies.append(exercise)
-                    print(viewModel.workoutExercies)
+                
+                    if viewModel.workoutExercies.contains(where: { $0 == exercise }) {
+                        viewModel.workoutExercies.removeAll(where: { $0 == exercise })
+                    } else {
+                        viewModel.workoutExercies.append(exercise)
+                        print(viewModel.workoutExercies)
+                    }
+                    
                     dismiss()
                 }
                 

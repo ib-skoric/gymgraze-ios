@@ -42,7 +42,7 @@ struct AddWorkoutView: View {
                             .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
                     })
                     .padding(.trailing)
-                    .navigationDestination(isPresented: $showAddExerciseView) {
+                    .sheet(isPresented: $showAddExerciseView) {
                         AddExerciseView(viewModel: viewModel)
                     }
                 }
