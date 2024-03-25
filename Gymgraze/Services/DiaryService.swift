@@ -48,13 +48,13 @@ class DiaryService {
     }
     
     func fetchFoodItem(foodId: Int, completion: @escaping (Result<Food, APIError>) -> Void) {
-        fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/foods/\(foodId)", completion: completion)
+        fetch(urlString: "http://localhost:3000/foods/\(foodId)", completion: completion)
     }
     
     func updateFoodAmount(foodId: Int, amount: Int, completion: @escaping (Result<Food, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/foods/\(foodId)") else {
+        guard let url = URL(string: "http://localhost:3000/foods/\(foodId)") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -100,7 +100,7 @@ class DiaryService {
     func removeFoodItem(foodId: Int, completion: @escaping (Result<Bool, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/foods/\(foodId)") else {
+        guard let url = URL(string: "http://localhost:3000/foods/\(foodId)") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -134,7 +134,7 @@ class DiaryService {
     func createFoodDiaryEntry(date: String, completion: @escaping (Result<FoodDiaryEntry, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/food_diary_entries") else {
+        guard let url = URL(string: "http://localhost:3000/food_diary_entries") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -180,7 +180,7 @@ class DiaryService {
     func createWorkoutDiaryEntry(date: String, completion: @escaping (Result<WorkoutDiaryEntry, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/workout_diary_entries") else {
+        guard let url = URL(string: "http://localhost:3000/workout_diary_entries") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -224,7 +224,7 @@ class DiaryService {
     }
     
     func fetchFoodDiaryEntry(date: String, completion: @escaping (Result<FoodDiaryEntry, APIError>) -> Void) {
-        fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/food_diary_entries/\(date)") { (result: Result<FoodDiaryEntry, APIError>) in
+        fetch(urlString: "http://localhost:3000/food_diary_entries/\(date)") { (result: Result<FoodDiaryEntry, APIError>) in
             switch result {
             case .success(let foodDiaryEntry):
                 completion(.success(foodDiaryEntry))
@@ -247,7 +247,7 @@ class DiaryService {
     }
     
     func fetchWorkoutDiaryEntry(date: String, completion: @escaping (Result<WorkoutDiaryEntry, APIError>) -> Void) {
-        fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/workout_diary_entries/\(date)") { (result: Result<WorkoutDiaryEntry, APIError>) in
+        fetch(urlString: "http://localhost:3000/workout_diary_entries/\(date)") { (result: Result<WorkoutDiaryEntry, APIError>) in
             switch result {
             case .success(let foodDiaryEntry):
                 completion(.success(foodDiaryEntry))
@@ -273,7 +273,7 @@ class DiaryService {
     func addFoodToDiary(food: FoodItem, amount: Int, date: String, mealId: Int, nutritionalInfo: FoodItem.Nutriments, completion: @escaping (Result<Food, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/foods") else {
+        guard let url = URL(string: "http://localhost:3000/foods") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -353,7 +353,7 @@ class DiaryService {
     func fetchExercisesForUser(completion: @escaping (Result<[Exercise], APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/exercises") else {
+        guard let url = URL(string: "http://localhost:3000/exercises") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -389,7 +389,7 @@ class DiaryService {
         let token: String? = getToken()
         var workoutDiaryEntryID: String?
         
-        guard let workoutURL = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/workouts") else {
+        guard let workoutURL = URL(string: "http://localhost:3000/workouts") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -444,8 +444,36 @@ class DiaryService {
                 completion(.failure(error))
             }
         }
-        
-        
     }
     
+    func createExercises(date: Date, exercises: [Exercise], completion: @escaping (Result<Workout, APIError>) -> Void) {
+        let token: String? = getToken()
+        var workoutDiaryEntryID: String?
+        
+        guard let workoutURL = URL(string: "http://localhost:3000/workouts") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var workoutRequest = URLRequest(url: workoutURL)
+        
+        workoutRequest.httpMethod = "POST"
+        workoutRequest.addValue("application/json", forHTTPHeaderField: "Content-type")
+        workoutRequest.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.string(from: date)
+        
+        fetchWorkoutDiaryEntry(date: date) { result in
+            switch result {
+            case .success(let workoutDiaryEntry):
+                
+                workoutDiaryEntryID = String(workoutDiaryEntry.id)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        
+    }
 }

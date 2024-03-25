@@ -14,6 +14,7 @@ class DiaryViewModel: ObservableObject {
     @Published var isLoading = false
     
     @Published var workoutAdded: Bool = false
+    @Published var workoutFetchCompleted: Bool = false
     
     func fetchFoodDiary() {
         self.isLoading = true
@@ -28,9 +29,9 @@ class DiaryViewModel: ObservableObject {
                 switch result {
                 case .success(let entry):
                     self.diaryFoods = entry.foods
+                    self.workoutFetchCompleted = true
                     print(entry)
                     self.isLoading = false
-
                 case .failure(let error):
                     if case APIError.entryNotFound = error {
                         print("Ran into 404 error, returning empty array...")

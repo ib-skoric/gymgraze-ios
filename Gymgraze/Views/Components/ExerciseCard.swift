@@ -13,28 +13,28 @@ struct ExerciseCard: View {
     
     var body: some View {
         VStack {
-            HStack {
                 Text(exercise.name)
                     .fontWeight(.bold)
                 
                 Spacer()
                 
-                Button(action: {
-                    let set = Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exercise.id, weight: 0.0, reps: 0)
-                    
-                    if exercise.exerciseSets == nil {
-                        exercise.exerciseSets = []
-                    }
-                    
-                    exercise.exerciseSets?.append(set)
-                    print(exercise.exerciseSets ?? [])
-                }, label: {
-                    Text("Add set")
-                        .foregroundColor(.orange)
-                })
-            }
-            
-            if (exercise.exerciseSets?.isEmpty ?? true) {
+                if exercise.exerciseType != "cardio" {
+                    Button(action: {
+                        let set = Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exercise.id, weight: 0.0, reps: 0)
+                        
+                        if exercise.exerciseSets == nil {
+                            exercise.exerciseSets = []
+                        }
+                        
+                        exercise.exerciseSets?.append(set)
+                        print(exercise.exerciseSets ?? [])
+                    }, label: {
+                        Text("Add set")
+                            .foregroundColor(.orange)
+                    })
+                }
+
+            if (exercise.exerciseSets?.isEmpty ?? true && exercise.exerciseType != "cardio") {
                 Text("No sets added")
             }
             

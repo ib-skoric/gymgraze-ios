@@ -10,10 +10,11 @@ import SwiftUI
 struct AddExerciseView: View {
     
     @ObservedObject var viewModel: AddWorkoutViewModel
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var showWorkoutView: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
+        NavigationStack {
             List(viewModel.exercises) { exercise in
                 HStack {
                     if (exercise.exerciseType == "cardio") {
@@ -25,11 +26,19 @@ struct AddExerciseView: View {
                     }
                     
                     Text(exercise.name)
+                    
+                    Spacer()
+                    
+                    if viewModel.workoutExercies.contains(where: { $0 == exercise }) {
+                        Image(systemName: "checkmark")
+                            .foregroundColor(.orange)
+                    }
+
                 }
                 .onTapGesture {
                     viewModel.workoutExercies.append(exercise)
                     print(viewModel.workoutExercies)
-                    self.presentationMode.wrappedValue.dismiss()
+                    dismiss()
                 }
                 
             }

@@ -45,7 +45,10 @@ struct DiaryView: View {
                     .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
                     .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch workout diary when the view appears
                     .onReceive(diaryVM.$workoutAdded) { _ in
-                        diaryVM.fetchWorkoutDiary()
+                        if diaryVM.workoutFetchCompleted {
+                            diaryVM.fetchWorkoutDiary()
+                            diaryVM.workoutFetchCompleted = false  // Reset it to false after fetching
+                        }
                     }
                     
                     VStack {

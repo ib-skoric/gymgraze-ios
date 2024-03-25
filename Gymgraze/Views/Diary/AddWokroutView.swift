@@ -41,10 +41,10 @@ struct AddWorkoutView: View {
                             .font(.system(size: 25))
                             .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
                     })
-                    .background {
-                        NavigationLink(destination: AddExerciseView(viewModel: viewModel), isActive: $showAddExerciseView) {}
-                    }
                     .padding(.trailing)
+                    .navigationDestination(isPresented: $showAddExerciseView) {
+                        AddExerciseView(viewModel: viewModel)
+                    }
                 }
                 
                 Text("Started at: \(formatDate(date: startedAt))")
@@ -72,6 +72,7 @@ struct AddWorkoutView: View {
                 
                 Button(action: {
                     viewModel.date = date
+                    diaryVM.workoutAdded = true
                     viewModel.createWorkout()
                     self.isWorkoutFinished = true
                 }) {

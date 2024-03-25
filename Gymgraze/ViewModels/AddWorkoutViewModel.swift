@@ -13,7 +13,6 @@ class AddWorkoutViewModel: ObservableObject {
     @Published var workoutExercies: [Exercise] = []
     @Published var isLoading: Bool = false
     @Published var date: Date = Date()
-    
     @Published var workoutAdded: Bool = false
     
     func fetchExercises() {
