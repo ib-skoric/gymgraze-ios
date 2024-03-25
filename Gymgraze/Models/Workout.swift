@@ -26,4 +26,11 @@ struct Workout: Codable, Identifiable {
         workoutDiaryEntryId = 0
         exercises = []
     }
+    
+    init(id: Int, date: String, workoutDiaryEntryId: Int, exercises: [Exercise]) {
+        self.id = id
+        self.date = date
+        self.workoutDiaryEntryId = workoutDiaryEntryId
+        self.exercises = exercises
+    }
 }

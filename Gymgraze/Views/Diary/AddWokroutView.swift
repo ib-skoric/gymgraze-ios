@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddWorkoutView: View {
     
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var diaryVM: DiaryViewModel
     @State private var startedAt: Date = Date.now
     @State private var repWeight: String = ""
     @State private var repCount: String = ""
@@ -80,10 +80,9 @@ struct AddWorkoutView: View {
                     .buttonStyle(CTAButton())
                     .padding()
                     .navigationDestination(isPresented: $isWorkoutFinished) {
-                        DiaryView().navigationBarBackButtonHidden(true)
+                        DiaryView(selectedDate: date).navigationBarBackButtonHidden(true)
                     }
             }
-            
         }
     }
 }
