@@ -14,6 +14,7 @@ struct AddWorkoutView: View {
     @State private var repWeight: String = ""
     @State private var repCount: String = ""
     @State private var showAddExerciseView: Bool = false
+    @State private var isWorkoutFinished: Bool = false
     @Binding var date: Date
     @ObservedObject var viewModel = AddWorkoutViewModel()
 
@@ -72,12 +73,15 @@ struct AddWorkoutView: View {
                 Button(action: {
                     viewModel.date = date
                     viewModel.createWorkout()
-                    self.presentationMode.wrappedValue.dismiss()
+                    self.isWorkoutFinished = true
                 }) {
                     Text("Finish workout")
                 }
                     .buttonStyle(CTAButton())
                     .padding()
+                    .navigationDestination(isPresented: $isWorkoutFinished) {
+                        DiaryView().navigationBarBackButtonHidden(true)
+                    }
             }
             
         }

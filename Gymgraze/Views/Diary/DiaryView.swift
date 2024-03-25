@@ -8,7 +8,7 @@ struct DiaryView: View {
     @State private var selectedWorkout: Workout?
     @State private var isAddFoodViewPresented: Bool = false
     @State private var isAddWorkoutViewPresented: Bool = false
-    
+        
     var foodsByMeal: [Int: [Food]] {
         Dictionary(grouping: diaryVM.diaryFoods) { $0.meal.id }
     }
@@ -111,10 +111,10 @@ struct DiaryView: View {
                         }
                     }
                     .navigationDestination(isPresented: $isAddFoodViewPresented) {
-                        AddToFoodDiaryView()
+                        AddToFoodDiaryView(date: diaryVM.selectedDate)
                     }
                     .navigationDestination(isPresented: $isAddWorkoutViewPresented) {
-                        AddWorkoutView(date: $diaryVM.selectedDate).navigationBarBackButtonHidden(true)
+                        AddWorkoutView(date: $diaryVM.selectedDate)
                     }
                 }
             }

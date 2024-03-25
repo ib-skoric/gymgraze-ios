@@ -28,7 +28,7 @@ struct BarcodeScannerView: View {
                     )
                     .id(id)
                     .sheet(isPresented: $showProductView) {
-                        ProductView(barcode: scannedText)
+                        ProductView(barcode: scannedText, selectedDate: Date())
                     }
                 }
                 .onChange(of: showProductView) { isShowing in

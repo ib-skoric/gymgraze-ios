@@ -16,7 +16,7 @@ struct ProductView: View {
     @State var isLoading: Bool = false
     @State private var showDiaryView = false
     @EnvironmentObject var userVM: UserViewModel
-    @State var selectedDate: Date = Date()
+    @State var selectedDate: Date
     @State private var meal: Meal = Meal()
     
     var body: some View {
@@ -144,5 +144,6 @@ struct ProductView: View {
 }
 
 #Preview {
-    ProductView(barcode: "4543435454534")
+    ProductView(barcode: "4543435454534", selectedDate: Date())
+        .environmentObject(UserViewModel())
 }
