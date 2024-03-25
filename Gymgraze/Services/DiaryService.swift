@@ -372,5 +372,68 @@ class DiaryService {
             }
         }.resume()
     }
+    
+    func createWorkout(date: Date, completion: @escaping (Result<Workout, APIError>) -> Void) {
+        let token: String? = getToken()
+        var workoutDiaryEntryID: String?
+        
+        guard let workoutURL = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/workouts") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var workoutRequest = URLRequest(url: workoutURL)
+        
+        workoutRequest.httpMethod = "POST"
+        workoutRequest.addValue("application/json", forHTTPHeaderField: "Content-type")
+        workoutRequest.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.string(from: date)
+        
+        fetchWorkoutDiaryEntry(date: date) { result in
+            switch result {
+            case .success(let workoutDiaryEntry):
+                
+                workoutDiaryEntryID = String(workoutDiaryEntry.id)
+                
+                let payload = ["date": date, "workout_diary_entry_id": workoutDiaryEntryID]
+                
+                do {
+                    workoutRequest.httpBody = try JSONEncoder().encode(payload)
+                } catch {
+                    print("Error encoding JSON: \(error)")
+                }
+                
+                URLSession.shared.dataTask(with: workoutRequest) { (data, response, error) in
+                    guard let data = data, error == nil else {
+                        completion(.failure(APIError.serverDown))
+                        return
+                    }
+                    
+                    if let httpResonse = response as? HTTPURLResponse {
+                        switch httpResonse.statusCode {
+                        case 201:
+                            guard let exercises = try? JSONDecoder().decode(Workout.self, from: data) else {
+                                completion(.failure(APIError.invalidDataReturnedFromAPI))
+                                return
+                            }
+                            completion(.success(exercises))
+                        case 401:
+                            completion(.failure(APIError.invalidCredentials))
+                        default:
+                            completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                        }
+                    }
+                }.resume()
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        
+        
+    }
+    
 }
-

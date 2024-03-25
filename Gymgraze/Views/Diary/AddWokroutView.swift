@@ -14,6 +14,7 @@ struct AddWorkoutView: View {
     @State private var repWeight: String = ""
     @State private var repCount: String = ""
     @State private var showAddExerciseView: Bool = false
+    @Binding var date: Date
     @ObservedObject var viewModel = AddWorkoutViewModel()
 
     func formatDate(date: Date) -> String {
@@ -69,6 +70,8 @@ struct AddWorkoutView: View {
                 Spacer()
                 
                 Button(action: {
+                    viewModel.date = date
+                    viewModel.createWorkout()
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Finish workout")
@@ -81,6 +84,6 @@ struct AddWorkoutView: View {
     }
 }
 
-#Preview {
-    AddWorkoutView()
-}
+//#Preview {
+//    AddWorkoutView()
+//}

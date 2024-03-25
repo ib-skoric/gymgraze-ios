@@ -12,6 +12,7 @@ class AddWorkoutViewModel: ObservableObject {
     @Published var exercises: [Exercise] = []
     @Published var workoutExercies: [Exercise] = []
     @Published var isLoading: Bool = false
+    @Published var date: Date = Date()
     
     func fetchExercises() {
         self.isLoading = true
@@ -26,8 +27,8 @@ class AddWorkoutViewModel: ObservableObject {
         }
     }
     
-    func saveWorkout() {
-        DiaryService().saveWorkout(workout: workout) { result in
+    func createWorkout() {
+        DiaryService().createWorkout(date: date) { result in
             switch result {
             case .success(_):
                 print("Workout saved")
