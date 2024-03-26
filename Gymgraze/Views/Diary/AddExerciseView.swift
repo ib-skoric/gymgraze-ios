@@ -15,9 +15,9 @@ struct AddExerciseView: View {
     
     var body: some View {
         NavigationStack {
-            List(viewModel.exercises) { exercise in
+            List(viewModel.exercisesTypes, id: \.id) { exerciseType in
                 HStack {
-                    if (exercise.exerciseType == "cardio") {
+                    if (exerciseType.exerciseCategory == "cardio") {
                         Image(systemName: "figure.run")
                             .foregroundColor(.red)
                     } else {
@@ -25,11 +25,11 @@ struct AddExerciseView: View {
                             .foregroundColor(.orange)
                     }
                     
-                    Text(exercise.name)
+                    Text(exerciseType.name)
                     
                     Spacer()
                     
-                    if viewModel.workoutExercies.contains(where: { $0 == exercise }) {
+                    if viewModel.workoutExercies.contains(where: { $0.exerciseTypeId == exerciseType.id }) {
                         Image(systemName: "checkmark")
                             .foregroundColor(.orange)
                     }
@@ -37,10 +37,10 @@ struct AddExerciseView: View {
                 }
                 .onTapGesture {
                 
-                    if viewModel.workoutExercies.contains(where: { $0 == exercise }) {
-                        viewModel.workoutExercies.removeAll(where: { $0 == exercise })
+                    if viewModel.workoutExercies.contains(where: { $0.exerciseTypeId == exerciseType.id }) {
+                        viewModel.workoutExercies.removeAll(where: { $0.exerciseTypeId == exerciseType.id })
                     } else {
-                        viewModel.workoutExercies.append(exercise)
+                        viewModel.workoutExercies.append(Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil))
                         print(viewModel.workoutExercies)
                     }
                     

@@ -11,12 +11,14 @@ class Exercise: Codable, Identifiable, ObservableObject {
     let id: Int
     let name: String
     let exerciseTypeId: Int
+    let exerciseCategory: String
     @Published var exerciseSets: [ExerciseSet]?
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case exerciseTypeId = "exercise_type_id"
+        case exerciseCategory
         case exerciseSets = "exercise_sets"
     }
     
@@ -46,6 +48,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .id)
         exerciseTypeId = try container.decode(Int.self, forKey: .exerciseTypeId)
+        exerciseCategory = try container.decode(String.self, forKey: .id)
         exerciseSets = try container.decodeIfPresent([ExerciseSet].self, forKey: .exerciseSets)
     }
     
@@ -54,6 +57,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
             try container.encode(id, forKey: .id)
             try container.encode(name, forKey: .name)
             try container.encode(exerciseTypeId, forKey: .exerciseTypeId)
+            try container.encode(exerciseCategory, forKey: .exerciseCategory)
             try container.encode(exerciseSets, forKey: .exerciseSets)
         }
     
@@ -61,7 +65,16 @@ class Exercise: Codable, Identifiable, ObservableObject {
         id = 0
         name = ""
         exerciseTypeId = 0
+        exerciseCategory = ""
         exerciseSets = []
+    }
+    
+    init(id: Int, name: String, exerciseTypeId: Int, exerciseCategory: String, exerciseSets: [ExerciseSet]?) {
+        self.id = id
+        self.name = name
+        self.exerciseTypeId = exerciseTypeId
+        self.exerciseCategory = exerciseCategory
+        self.exerciseSets = exerciseSets
     }
 }
 

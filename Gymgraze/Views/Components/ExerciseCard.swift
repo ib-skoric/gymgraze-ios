@@ -19,7 +19,7 @@ struct ExerciseCard: View {
                 
                 Spacer()
                 
-                if (exercise.exerciseType != "cardio") {
+                if (exercise.exerciseCategory != "cardio") {
                     Button(action: {
                         let set = Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exercise.id, weight: 0.0, reps: 0)
                         
@@ -36,7 +36,7 @@ struct ExerciseCard: View {
                 }
             }
             
-            if (exercise.exerciseSets?.isEmpty ?? true && exercise.exerciseType != "cardio") {
+            if (exercise.exerciseSets?.isEmpty ?? true && exercise.exerciseCategory != "cardio") {
                 Text("No sets added")
             }
             
