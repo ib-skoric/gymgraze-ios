@@ -19,19 +19,21 @@ struct ExerciseCard: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    let set = Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exercise.id, weight: 0.0, reps: 0)
-                    
-                    if exercise.exerciseSets == nil {
-                        exercise.exerciseSets = []
-                    }
-                    
-                    exercise.exerciseSets?.append(set)
-                    print(exercise.exerciseSets ?? [])
-                }, label: {
-                    Text("Add set")
-                        .foregroundColor(.orange)
-                })
+                if (exercise.exerciseType != "cardio") {
+                    Button(action: {
+                        let set = Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exercise.id, weight: 0.0, reps: 0)
+                        
+                        if exercise.exerciseSets == nil {
+                            exercise.exerciseSets = []
+                        }
+                        
+                        exercise.exerciseSets?.append(set)
+                        print(exercise.exerciseSets ?? [])
+                    }, label: {
+                        Text("Add set")
+                            .foregroundColor(.orange)
+                    })
+                }
             }
             
             if (exercise.exerciseSets?.isEmpty ?? true && exercise.exerciseType != "cardio") {
