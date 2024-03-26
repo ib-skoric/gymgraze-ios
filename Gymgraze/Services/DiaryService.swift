@@ -350,7 +350,7 @@ class DiaryService {
         
     }
     
-    func createWorkout(date: Date, completion: @escaping (Result<Workout, APIError>) -> Void) {
+    func saveWorkout(date: Date, exercises: [Exercise], completion: @escaping (Result<Workout, APIError>) -> Void) {
         let token: String? = getToken()
         var workoutDiaryEntryID: String?
         
@@ -392,11 +392,11 @@ class DiaryService {
                     if let httpResonse = response as? HTTPURLResponse {
                         switch httpResonse.statusCode {
                         case 201:
-                            guard let exercises = try? JSONDecoder().decode(Workout.self, from: data) else {
+                            guard let workout = try? JSONDecoder().decode(Workout.self, from: data) else {
                                 completion(.failure(APIError.invalidDataReturnedFromAPI))
                                 return
                             }
-                            completion(.success(exercises))
+                            completion(.success(workout))
                         case 401:
                             completion(.failure(APIError.invalidCredentials))
                         default:
@@ -411,9 +411,8 @@ class DiaryService {
         }
     }
     
-    func createExercises(date: Date, exercises: [Exercise], completion: @escaping (Result<[Exercise], APIError>) -> Void) {
+    func createExercises(workoutId: Int, exercises: [Exercise], completion: @escaping (Result<[Exercise], APIError>) -> Void) {
         let token: String? = getToken()
-        var workoutDiaryEntryID: Int?
         
         guard let workoutURL = URL(string: "http://localhost:3000/exercises") else {
             completion(.failure(APIError.invalidURL))
@@ -426,57 +425,23 @@ class DiaryService {
         workoutRequest.addValue("application/json", forHTTPHeaderField: "Content-type")
         workoutRequest.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.string(from: date)
+        var exercisesToAPI: [ExerciseToAPI] = []
         
-        fetchWorkoutDiaryEntry(date: date) { result in
-            switch result {
-            case .success(let workoutDiaryEntry):
-                
-                workoutDiaryEntryID = workoutDiaryEntry.id
-                
-                struct exerciseToAPI: Encodable {
-                    var date: String
-                    var workout_id: Int
-                    var exercises: [Exercise]
-                }
-                
-                var payload = exerciseToAPI(date: date, workout_id: workoutDiaryEntryID ?? 0, exercises: exercises)
-                
-                do {
-                    workoutRequest.httpBody = try JSONEncoder().encode(payload)
-                    print (String(data: workoutRequest.httpBody!, encoding: .utf8)!)
-                } catch {
-                    print("Error encoding JSON: \(error)")
-                }
-                
-                URLSession.shared.dataTask(with: workoutRequest) { (data, response, error) in
-                    guard let data = data, error == nil else {
-                        completion(.failure(APIError.serverDown))
-                        return
-                    }
-                    
-                    if let httpResonse = response as? HTTPURLResponse {
-                        switch httpResonse.statusCode {
-                        case 201:
-                            guard let exercises = try? JSONDecoder().decode([Exercise].self, from: data) else {
-                                completion(.failure(APIError.invalidDataReturnedFromAPI))
-                                return
-                            }
-                            completion(.success(exercises))
-                        case 401:
-                            completion(.failure(APIError.invalidCredentials))
-                        default:
-                            completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
-                        }
-                    }
-                }.resume()
-                
-            case .failure(let error):
-                completion(.failure(error))
-            }
+        // loop over all the passed in exercises and create a new exerciseToAPI
+        for exercise in exercises {
+            exercisesToAPI.append(ExerciseToAPI(exercise: exercise, workoutId: workoutId))
         }
         
+        // try to encode the body as JSON
+        do {
+            workoutRequest.httpBody = try JSONEncoder().encode(exercisesToAPI)
+            // print JSON
+            let json = try JSONSerialization.jsonObject(with: workoutRequest.httpBody!, options: .mutableContainers)
+            print(json)
+        } catch {
+            print("Error encoding JSON: \(error)")
+        }
     }
+    
 }
+

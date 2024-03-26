@@ -78,4 +78,31 @@ class Exercise: Codable, Identifiable, ObservableObject {
     }
 }
 
+struct ExerciseToAPI: Encodable {
+    var name: String
+    var exercise_category: String
+    var exercise_type_id: Int
+    var workout_id: Int
+    var exercise_sets_attributes: [ExerciseSetToAPI]
+    
+    struct ExerciseSetToAPI: Encodable {
+        var reps: Int
+        var weight: Double
+        var workout_id: Int
+    }
+    
+    init(exercise: Exercise, workoutId: Int) {
+        self.name = exercise.name
+        self.exercise_category = exercise.exerciseCategory
+        self.exercise_type_id = exercise.id
+        self.workout_id = workoutId
+        self.exercise_sets_attributes = []
+        
+        for set in exercise.exerciseSets ?? []{
+            let exerciseSet = ExerciseSetToAPI(reps: set.reps, weight: set.weight, workout_id: workoutId)
+            self.exercise_sets_attributes.append(exerciseSet)
+        }
+    }
+}
+
 
