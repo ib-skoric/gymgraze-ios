@@ -9,7 +9,7 @@ import Foundation
 
 class AddWorkoutViewModel: ObservableObject {
     
-    @Published var exercises: [Exercise] = []
+    @Published var exercisesTypes: [ExerciseType] = []
     @Published var workoutExercies: [Exercise] = []
     @Published var isLoading: Bool = false
     @Published var date: Date = Date()
@@ -17,10 +17,10 @@ class AddWorkoutViewModel: ObservableObject {
     
     func fetchExercises() {
         self.isLoading = true
-        DiaryService().fetchExercisesForUser { result in
+        UserService().fetchExercisesForUser { result in
             switch result {
-            case .success(let exercises):
-                self.exercises = exercises
+            case .success(let exerciseTypes):
+                self.exercisesTypes = exerciseTypes
             case .failure(let error):
                 print(error)
             }
