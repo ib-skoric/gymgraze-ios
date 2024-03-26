@@ -8,9 +8,7 @@
 import Foundation
 
 class Exercise: Codable, Identifiable, Equatable, ObservableObject {
-    static func == (lhs: Exercise, rhs: Exercise) -> Bool {
-        return lhs.id == rhs.id
-    }
+    
     
     let id: Int
     let name: String

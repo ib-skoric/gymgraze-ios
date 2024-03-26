@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct ExerciseType: Codable, Identifiable {
+struct ExerciseType: Codable, Identifiable, Equatable {
+    
+    static func == (lhs: ExerciseType, rhs: ExerciseType) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     var id: Int
     var name: String
     var exerciseCategory: String
