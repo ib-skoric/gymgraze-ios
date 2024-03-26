@@ -28,8 +28,8 @@ class AddWorkoutViewModel: ObservableObject {
         }
     }
     
-    func createWorkout() {
-        DiaryService().createWorkout(date: date) { result in
+    func saveWorkout() {
+        DiaryService().saveWorkout(date: date, exercises: workoutExercies) { result in
             switch result {
             case .success(_):
                 print("Workout saved")
@@ -37,19 +37,6 @@ class AddWorkoutViewModel: ObservableObject {
             case .failure(let error):
                 print(error)
             }
-        }
-    }
-    
-    func createExercisesForWorkout() {
-        DiaryService().createExercises(date: date, exercises: workoutExercies) { result in
-            switch result {
-            case .success(_):
-                print("Exercises saved")
-                
-            case .failure(let error):
-                print(error)
-            }
-            
         }
     }
 }

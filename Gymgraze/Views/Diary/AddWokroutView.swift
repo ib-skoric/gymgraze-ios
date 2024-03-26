@@ -73,8 +73,7 @@ struct AddWorkoutView: View {
                 Button(action: {
                     viewModel.date = date
                     diaryVM.workoutAdded = true
-                    viewModel.createWorkout()
-                    viewModel.createExercisesForWorkout()
+                    viewModel.saveWorkout()
                     self.isWorkoutFinished = true
                 }) {
                     Text("Finish workout")

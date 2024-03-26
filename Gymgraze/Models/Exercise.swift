@@ -94,7 +94,7 @@ struct ExerciseToAPI: Encodable {
     init(exercise: Exercise, workoutId: Int) {
         self.name = exercise.name
         self.exercise_category = exercise.exerciseCategory
-        self.exercise_type_id = exercise.id
+        self.exercise_type_id = exercise.exerciseTypeId
         self.workout_id = workoutId
         self.exercise_sets_attributes = []
         

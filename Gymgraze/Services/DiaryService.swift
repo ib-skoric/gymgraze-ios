@@ -161,6 +161,7 @@ class DiaryService {
             if let httpResonse = response as? HTTPURLResponse {
                 switch httpResonse.statusCode {
                 case 201:
+                    print("Created new workout diary entry")
                     guard let diaryResponse = try? JSONDecoder().decode(FoodDiaryEntry.self, from: data) else {
                         completion(.failure(APIError.invalidDataReturnedFromAPI))
                         return
@@ -249,8 +250,9 @@ class DiaryService {
     func fetchWorkoutDiaryEntry(date: String, completion: @escaping (Result<WorkoutDiaryEntry, APIError>) -> Void) {
         fetch(urlString: "http://localhost:3000/workout_diary_entries/\(date)") { (result: Result<WorkoutDiaryEntry, APIError>) in
             switch result {
-            case .success(let foodDiaryEntry):
-                completion(.success(foodDiaryEntry))
+            case .success(let workoutDiaryEntry):
+                print(workoutDiaryEntry)
+                completion(.success(workoutDiaryEntry))
             case .failure(let error):
                 if error == APIError.entryNotFound {
                     // create new entry with this date
@@ -367,18 +369,23 @@ class DiaryService {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.string(from: date)
+        let dateString = dateFormatter.string(from: date)
         
-        fetchWorkoutDiaryEntry(date: date) { result in
+        fetchWorkoutDiaryEntry(date: dateString) { result in
             switch result {
             case .success(let workoutDiaryEntry):
                 
                 workoutDiaryEntryID = String(workoutDiaryEntry.id)
                 
-                let payload = ["date": date, "workout_diary_entry_id": workoutDiaryEntryID]
+                struct WorkoutToAPI: Encodable {
+                    var workout_diary_entry_id: String
+                    var date: String
+                }
+                
+                let workout = WorkoutToAPI(workout_diary_entry_id: workoutDiaryEntryID ?? "0", date: dateString)
                 
                 do {
-                    workoutRequest.httpBody = try JSONEncoder().encode(payload)
+                    workoutRequest.httpBody = try JSONEncoder().encode(workout)
                 } catch {
                     print("Error encoding JSON: \(error)")
                 }
@@ -396,6 +403,14 @@ class DiaryService {
                                 completion(.failure(APIError.invalidDataReturnedFromAPI))
                                 return
                             }
+                            self.createExercises(workoutId: workout.id, exercises: exercises) { result in
+                                switch result {
+                                case .success(_):
+                                    completion(.success(workout))
+                                case .failure(let error):
+                                    print(error)
+                                }
+                            }
                             completion(.success(workout))
                         case 401:
                             completion(.failure(APIError.invalidCredentials))
@@ -411,19 +426,19 @@ class DiaryService {
         }
     }
     
-    func createExercises(workoutId: Int, exercises: [Exercise], completion: @escaping (Result<[Exercise], APIError>) -> Void) {
+    func createExercises(workoutId: Int, exercises: [Exercise], completion: @escaping (Result<Bool, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let workoutURL = URL(string: "http://localhost:3000/exercises") else {
+        guard let exerciseURL = URL(string: "http://localhost:3000/exercises") else {
             completion(.failure(APIError.invalidURL))
             return
         }
         
-        var workoutRequest = URLRequest(url: workoutURL)
+        var exerciseRequest = URLRequest(url: exerciseURL)
         
-        workoutRequest.httpMethod = "POST"
-        workoutRequest.addValue("application/json", forHTTPHeaderField: "Content-type")
-        workoutRequest.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        exerciseRequest.httpMethod = "POST"
+        exerciseRequest.addValue("application/json", forHTTPHeaderField: "Content-type")
+        exerciseRequest.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
         
         var exercisesToAPI: [ExerciseToAPI] = []
         
@@ -432,16 +447,34 @@ class DiaryService {
             exercisesToAPI.append(ExerciseToAPI(exercise: exercise, workoutId: workoutId))
         }
         
-        // try to encode the body as JSON
+        let exercisesDict = ["exercises": exercisesToAPI]
         do {
-            workoutRequest.httpBody = try JSONEncoder().encode(exercisesToAPI)
-            // print JSON
-            let json = try JSONSerialization.jsonObject(with: workoutRequest.httpBody!, options: .mutableContainers)
-            print(json)
+            exerciseRequest.httpBody = try JSONEncoder().encode(exercisesDict)
+            // print the JSON sent to server
+            print(String(data: exerciseRequest.httpBody!, encoding: .utf8)!)
         } catch {
             print("Error encoding JSON: \(error)")
         }
+
+        
+        URLSession.shared.dataTask(with: exerciseRequest) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 201:
+                    completion(.success(true))
+                case 401:
+                    completion(.failure(APIError.invalidCredentials))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+        
     }
-    
 }
 
