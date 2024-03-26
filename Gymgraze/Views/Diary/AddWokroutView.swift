@@ -74,6 +74,7 @@ struct AddWorkoutView: View {
                     viewModel.date = date
                     diaryVM.workoutAdded = true
                     viewModel.createWorkout()
+                    viewModel.createExercisesForWorkout()
                     self.isWorkoutFinished = true
                 }) {
                     Text("Finish workout")

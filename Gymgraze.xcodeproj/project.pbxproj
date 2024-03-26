@@ -224,11 +224,11 @@
 		21D67E862B2B4587005FAC79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2109EFB32BA398B400DC303C /* Diary */,
-				214087782BA2F18F004E0B51 /* RegAndAuth */,
 				21E58F532B82594B00E31882 /* MainView.swift */,
 				210DA2F82B825B5000F96B75 /* TrendsView.swift */,
 				210DA2FA2B825B6200F96B75 /* ProfileView.swift */,
+				2109EFB32BA398B400DC303C /* Diary */,
+				214087782BA2F18F004E0B51 /* RegAndAuth */,
 				21D67E8F2B2B45D8005FAC79 /* Components */,
 			);
 			path = Views;

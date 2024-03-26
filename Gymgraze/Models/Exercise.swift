@@ -21,7 +21,7 @@ class Exercise: Codable, Identifiable, Equatable, ObservableObject {
         case id
         case name
         case exerciseType = "exercise_type"
-        case exerciseSets = "sets"
+        case exerciseSets = "exercise_sets"
     }
     
     class ExerciseSet: Codable, Identifiable {

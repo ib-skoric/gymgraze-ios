@@ -371,11 +371,14 @@ class DiaryService {
             if let httpResonse = response as? HTTPURLResponse {
                 switch httpResonse.statusCode {
                 case 200:
-                    guard let exercises = try? JSONDecoder().decode([Exercise].self, from: data) else {
+                    do {
+                        let exercises = try JSONDecoder().decode([Exercise].self, from: data)
+                        completion(.success(exercises))
+                    } catch let decodeError {
+                        print("Decoding failed with error: \(decodeError)")
+                        print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
                         completion(.failure(APIError.invalidDataReturnedFromAPI))
-                        return
                     }
-                    completion(.success(exercises))
                 case 401:
                     completion(.failure(APIError.invalidCredentials))
                 default:
@@ -446,11 +449,11 @@ class DiaryService {
         }
     }
     
-    func createExercises(date: Date, exercises: [Exercise], completion: @escaping (Result<Workout, APIError>) -> Void) {
+    func createExercises(date: Date, exercises: [Exercise], completion: @escaping (Result<[Exercise], APIError>) -> Void) {
         let token: String? = getToken()
-        var workoutDiaryEntryID: String?
+        var workoutDiaryEntryID: Int?
         
-        guard let workoutURL = URL(string: "http://localhost:3000/workouts") else {
+        guard let workoutURL = URL(string: "http://localhost:3000/exercises") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -469,7 +472,45 @@ class DiaryService {
             switch result {
             case .success(let workoutDiaryEntry):
                 
-                workoutDiaryEntryID = String(workoutDiaryEntry.id)
+                workoutDiaryEntryID = workoutDiaryEntry.id
+                
+                struct exerciseToAPI: Encodable {
+                    var date: String
+                    var workout_id: Int
+                    var exercises: [Exercise]
+                }
+                
+                var payload = exerciseToAPI(date: date, workout_id: workoutDiaryEntryID ?? 0, exercises: exercises)
+                
+                do {
+                    workoutRequest.httpBody = try JSONEncoder().encode(payload)
+                    print (String(data: workoutRequest.httpBody!, encoding: .utf8)!)
+                } catch {
+                    print("Error encoding JSON: \(error)")
+                }
+                
+                URLSession.shared.dataTask(with: workoutRequest) { (data, response, error) in
+                    guard let data = data, error == nil else {
+                        completion(.failure(APIError.serverDown))
+                        return
+                    }
+                    
+                    if let httpResonse = response as? HTTPURLResponse {
+                        switch httpResonse.statusCode {
+                        case 201:
+                            guard let exercises = try? JSONDecoder().decode([Exercise].self, from: data) else {
+                                completion(.failure(APIError.invalidDataReturnedFromAPI))
+                                return
+                            }
+                            completion(.success(exercises))
+                        case 401:
+                            completion(.failure(APIError.invalidCredentials))
+                        default:
+                            completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                        }
+                    }
+                }.resume()
+                
             case .failure(let error):
                 completion(.failure(error))
             }
