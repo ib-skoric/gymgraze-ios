@@ -37,6 +37,7 @@
 		217607992BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217607982BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift */; };
 		2176079B2BAEF73A007C76BF /* FoodItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176079A2BAEF73A007C76BF /* FoodItemRow.swift */; };
 		2177A8062BA0FB950042ABA8 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2177A8052BA0FB950042ABA8 /* DiaryService.swift */; };
+		218281C82BB35F2400603436 /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218281C72BB35F2400603436 /* ExerciseType.swift */; };
 		219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461672BB076C700B57AA3 /* SetRepRow.swift */; };
 		2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461692BB07E2400B57AA3 /* AddExerciseView.swift */; };
 		2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */; };
@@ -99,6 +100,7 @@
 		217607982BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsSearchResult.swift; sourceTree = "<group>"; };
 		2176079A2BAEF73A007C76BF /* FoodItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemRow.swift; sourceTree = "<group>"; };
 		2177A8052BA0FB950042ABA8 /* DiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryService.swift; sourceTree = "<group>"; };
+		218281C72BB35F2400603436 /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
 		219461672BB076C700B57AA3 /* SetRepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepRow.swift; sourceTree = "<group>"; };
 		219461692BB07E2400B57AA3 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewModel.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				2109EFB82BA39E9F00DC303C /* Workout.swift */,
 				2109EFBA2BA39EB500DC303C /* Exercise.swift */,
 				217607982BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift */,
+				218281C72BB35F2400603436 /* ExerciseType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				215D54322B757B1C00A07029 /* Registration.swift in Sources */,
 				21E58F542B82594B00E31882 /* MainView.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
+				218281C82BB35F2400603436 /* ExerciseType.swift in Sources */,
 				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
 				210DA2FF2B826ABF00F96B75 /* ArticleCard.swift in Sources */,
 				21BFA5FC2B9E22820074F130 /* CacheEntry.swift in Sources */,
