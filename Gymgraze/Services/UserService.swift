@@ -275,4 +275,42 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
             
         }.resume()
   }
+    
+    func fetchExercisesForUser(completion: @escaping (Result<[ExerciseType], APIError>) -> Void) {
+        let token: String? = getToken()
+        
+        guard let url = URL(string: "http://localhost:3000/exercise_types") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 200:
+                    do {
+                        let exercises = try JSONDecoder().decode([ExerciseType].self, from: data)
+                        completion(.success(exercises))
+                    } catch let decodeError {
+                        print("Decoding failed with error: \(decodeError)")
+                        print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
+                        completion(.failure(APIError.invalidDataReturnedFromAPI))
+                    }
+                case 401:
+                    completion(.failure(APIError.invalidCredentials))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+    }
 }
