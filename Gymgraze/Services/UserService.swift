@@ -314,7 +314,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
         }.resume()
     }
     
-    func createExerciseType(name: String, type: String, compeltion: @escaping (Result<ExerciseType, APIError>) -> Void) {
+    func createExerciseType(name: String, category: String, compeltion: @escaping (Result<ExerciseType, APIError>) -> Void) {
         let token: String? = getToken()
         
         guard let url = URL(string: "http://localhost:3000/exercise_types") else {
@@ -322,7 +322,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
             return
         }
         
-        let body = ["name": name, "type": type]
+        let body = ["name": name, "exercise_category": category]
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

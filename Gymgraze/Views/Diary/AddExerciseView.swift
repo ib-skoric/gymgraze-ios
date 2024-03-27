@@ -57,12 +57,12 @@ struct AddExerciseView: View {
                 AddExerciseTypeDropdown(isAddStrengthExerciseShown: $showAddStrengthExerciseType, isAddCardioExerciseShown: $showAddCardioExerciseType)
             }
             .alert("🏋️‍♂️", isPresented: $showAddStrengthExerciseType, actions: {
-                AddExerciseTypeAlert(newExerciseName: $newExerciseName, type: "strength")
+                AddExerciseTypeAlert(newExerciseName: $newExerciseName, category: "strength", viewModel: viewModel)
             }, message: {
                 Text("Create new strength exercise")
             })
             .alert("🏃‍♂️", isPresented: $showAddCardioExerciseType, actions: {
-                AddExerciseTypeAlert(newExerciseName: $newExerciseName, type: "cardio")
+                AddExerciseTypeAlert(newExerciseName: $newExerciseName, category: "cardio", viewModel: viewModel)
             }, message: {
                 Text("Create new cardio exercise")
             })
