@@ -11,8 +11,8 @@ struct SetRepRow: View {
     
     @State private var repWeight: String = ""
     @State private var repCount: String = ""
-    @State var exerciseId: Int
     @State var set: Exercise.ExerciseSet
+    @State var exerciseId: Int
     @State var completed: Bool = false
     
     var completedSetColor: Color {
@@ -38,6 +38,9 @@ struct SetRepRow: View {
                 .foregroundColor(completedSetColor)
             
             Button(action: {
+                set.reps = Int(repCount) ?? 0
+                set.weight = Double(repWeight) ?? 0.0
+                print(set)
                 completed.toggle()
             }, label: {
                 Image(systemName: "checkmark")
@@ -48,5 +51,5 @@ struct SetRepRow: View {
 }
 
 #Preview {
-    SetRepRow(exerciseId: 1, set: Exercise.ExerciseSet())
+    SetRepRow(set: Exercise.ExerciseSet(), exerciseId: 1)
 }
