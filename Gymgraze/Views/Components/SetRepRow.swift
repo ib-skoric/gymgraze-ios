@@ -12,6 +12,7 @@ struct SetRepRow: View {
     @State private var repWeight: String = ""
     @State private var repCount: String = ""
     @State var exerciseId: Int
+    @State var set: Exercise.ExerciseSet
     @State var completed: Bool = false
     
     var completedSetColor: Color {
@@ -47,5 +48,5 @@ struct SetRepRow: View {
 }
 
 #Preview {
-    SetRepRow(exerciseId: 1)
+    SetRepRow(exerciseId: 1, set: Exercise.ExerciseSet())
 }

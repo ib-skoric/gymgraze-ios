@@ -35,6 +35,13 @@ class Exercise: Codable, Identifiable, ObservableObject {
             case weight
         }
         
+        init() {
+            id = 0
+            exerciseId = 0
+            weight = 0.0
+            reps = 0
+        }
+        
         init(id: Int, exerciseId: Int, weight: Double, reps: Int) {
             self.id = id
             self.exerciseId = exerciseId
