@@ -20,35 +20,20 @@ struct AddExerciseView: View {
     var body: some View {
         NavigationStack {
             List(viewModel.exercisesTypes, id: \.id) { exerciseType in
+                let isCardio = exerciseType.exerciseCategory == "cardio"
+                let isExerciseInWorkout = viewModel.workoutExercies.contains(where: { $0.exerciseTypeId == exerciseType.id })
+                
                 HStack {
-                    if (exerciseType.exerciseCategory == "cardio") {
-                        Image(systemName: "figure.run")
-                            .foregroundColor(.red)
-                    } else {
-                        Image(systemName: "dumbbell.fill")
-                            .foregroundColor(.orange)
-                    }
-                    
+                    exerciseTypeImage(isCardio: isCardio)
                     Text(exerciseType.name)
-                    
                     Spacer()
-                    
-                    if viewModel.workoutExercies.contains(where: { $0.exerciseTypeId == exerciseType.id }) {
+                    if isExerciseInWorkout {
                         Image(systemName: "checkmark")
                             .foregroundColor(.orange)
                     }
-                    
                 }
                 .onTapGesture {
-                    
-                    if viewModel.workoutExercies.contains(where: { $0.exerciseTypeId == exerciseType.id }) {
-                        viewModel.workoutExercies.removeAll(where: { $0.exerciseTypeId == exerciseType.id })
-                    } else {
-                        viewModel.workoutExercies.append(Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil))
-                        print(viewModel.workoutExercies)
-                    }
-                    
-                    dismiss()
+                    handleTapOnExercise(exerciseType: exerciseType, isExerciseInWorkout: isExerciseInWorkout)
                 }
                 
             }
@@ -71,6 +56,26 @@ struct AddExerciseView: View {
             viewModel.fetchExercises()
         }
         .accentColor(.orange)
+    }
+    
+    private func exerciseTypeImage(isCardio: Bool) -> some View {
+        if isCardio {
+            return Image(systemName: "figure.run")
+                .foregroundColor(.red)
+        } else {
+            return Image(systemName: "dumbbell.fill")
+                .foregroundColor(.orange)
+        }
+    }
+    
+    private func handleTapOnExercise(exerciseType: ExerciseType, isExerciseInWorkout: Bool) {
+        if isExerciseInWorkout {
+            viewModel.workoutExercies.removeAll(where: { $0.exerciseTypeId == exerciseType.id })
+        } else {
+            let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
+            viewModel.workoutExercies.append(newExercise)
+        }
+        dismiss()
     }
 }
 

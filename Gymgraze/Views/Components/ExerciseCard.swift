@@ -33,6 +33,8 @@ struct ExerciseCard: View {
                         Text("Add set")
                             .foregroundColor(.orange)
                     })
+                } else {
+                    DurationInput(exercise: exercise)
                 }
             }
             
@@ -53,10 +55,9 @@ struct ExerciseCard: View {
                 }
                 .padding(.bottom)
             }
-            
-            
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+        .padding(.bottom)
     }
 }
 

@@ -11,7 +11,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
     let id: Int
     let name: String
     let exerciseTypeId: Int
-    let duration: Int
+    var duration: Int
     let exerciseCategory: String
     @Published var exerciseSets: [ExerciseSet]?
     
@@ -95,6 +95,7 @@ struct ExerciseToAPI: Encodable {
     var name: String
     var exercise_category: String
     var exercise_type_id: Int
+    var duration: Int
     var workout_id: Int
     var exercise_sets_attributes: [ExerciseSetToAPI]
     
@@ -107,6 +108,7 @@ struct ExerciseToAPI: Encodable {
     init(exercise: Exercise, workoutId: Int) {
         self.name = exercise.name
         self.exercise_category = exercise.exerciseCategory
+        self.duration = exercise.duration
         self.exercise_type_id = exercise.exerciseTypeId
         self.workout_id = workoutId
         self.exercise_sets_attributes = []
