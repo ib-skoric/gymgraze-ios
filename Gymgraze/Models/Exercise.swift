@@ -11,12 +11,14 @@ class Exercise: Codable, Identifiable, ObservableObject {
     let id: Int
     let name: String
     let exerciseTypeId: Int
+    var duration: Int
     let exerciseCategory: String
     @Published var exerciseSets: [ExerciseSet]?
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case duration
         case exerciseTypeId = "exercise_type_id"
         case exerciseCategory = "exercise_category"
         case exerciseSets = "exercise_sets"
@@ -53,6 +55,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
+        duration = try container.decode(Int.self, forKey: .duration)
         name = try container.decode(String.self, forKey: .name)
         exerciseTypeId = try container.decode(Int.self, forKey: .exerciseTypeId)
         exerciseCategory = try container.decode(String.self, forKey: .exerciseCategory)
@@ -62,6 +65,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
     func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
             try container.encode(id, forKey: .id)
+            try container.encode(duration, forKey: .duration)
             try container.encode(name, forKey: .name)
             try container.encode(exerciseTypeId, forKey: .exerciseTypeId)
             try container.encode(exerciseCategory, forKey: .exerciseCategory)
@@ -70,15 +74,17 @@ class Exercise: Codable, Identifiable, ObservableObject {
     
     init() {
         id = 0
+        duration = 0
         name = ""
         exerciseTypeId = 0
         exerciseCategory = ""
         exerciseSets = []
     }
     
-    init(id: Int, name: String, exerciseTypeId: Int, exerciseCategory: String, exerciseSets: [ExerciseSet]?) {
+    init(id: Int, name: String, duration: Int, exerciseTypeId: Int, exerciseCategory: String, exerciseSets: [ExerciseSet]?) {
         self.id = id
         self.name = name
+        self.duration = duration
         self.exerciseTypeId = exerciseTypeId
         self.exerciseCategory = exerciseCategory
         self.exerciseSets = exerciseSets
@@ -89,6 +95,7 @@ struct ExerciseToAPI: Encodable {
     var name: String
     var exercise_category: String
     var exercise_type_id: Int
+    var duration: Int
     var workout_id: Int
     var exercise_sets_attributes: [ExerciseSetToAPI]
     
@@ -101,6 +108,7 @@ struct ExerciseToAPI: Encodable {
     init(exercise: Exercise, workoutId: Int) {
         self.name = exercise.name
         self.exercise_category = exercise.exerciseCategory
+        self.duration = exercise.duration
         self.exercise_type_id = exercise.exerciseTypeId
         self.workout_id = workoutId
         self.exercise_sets_attributes = []
