@@ -8,11 +8,18 @@ struct DiaryView: View {
     @State private var selectedWorkout: Workout?
     @State private var isAddFoodViewPresented: Bool = false
     @State private var isAddWorkoutViewPresented: Bool = false
+    @State var selectedDate: Date?
     
     var foodsByMeal: [Int: [Food]] {
         Dictionary(grouping: diaryVM.diaryFoods) { $0.meal.id }
     }
     
+    init(selectedDate: Date? = nil) {
+        if selectedDate != nil {
+            diaryVM.selectedDate = selectedDate!
+        }
+    }
+
     var body: some View {
         ZStack {
             VStack {
@@ -26,6 +33,7 @@ struct DiaryView: View {
                             }
                             .onChange(of: diaryVM.selectedDate) { newValue, oldValue in
                                 if newValue != oldValue {
+                                    selectedDate = newValue
                                     diaryVM.fetchFoodDiary()
                                     diaryVM.fetchWorkoutDiary()
                                 }
@@ -36,6 +44,12 @@ struct DiaryView: View {
                     }
                     .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
                     .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch workout diary when the view appears
+                    .onReceive(diaryVM.$workoutAdded) { _ in
+                        if diaryVM.workoutFetchCompleted {
+                            diaryVM.fetchWorkoutDiary()
+                            diaryVM.workoutFetchCompleted = false  // Reset it to false after fetching
+                        }
+                    }
                     
                     VStack {
                         if diaryVM.isLoading {
@@ -111,10 +125,11 @@ struct DiaryView: View {
                         }
                     }
                     .navigationDestination(isPresented: $isAddFoodViewPresented) {
-                        AddToFoodDiaryView()
+                        AddToFoodDiaryView(date: diaryVM.selectedDate)
                     }
                     .navigationDestination(isPresented: $isAddWorkoutViewPresented) {
-                        AddToWorkoutDiaryView()
+                        AddWorkoutView(date: $diaryVM.selectedDate)
+                            .environmentObject(diaryVM)
                     }
                 }
             }

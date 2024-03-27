@@ -31,12 +31,17 @@
 		21729B292B94DC63009091B0 /* DataScannerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */; };
 		21729B2B2B94DC7F009091B0 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */; };
 		21729B2D2B9503C4009091B0 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B2C2B9503C4009091B0 /* ProductView.swift */; };
-		2176078F2BAE2F85007C76BF /* AddToWokroutDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176078E2BAE2F85007C76BF /* AddToWokroutDiaryView.swift */; };
+		2176078F2BAE2F85007C76BF /* AddWokroutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176078E2BAE2F85007C76BF /* AddWokroutView.swift */; };
 		217607912BAE306F007C76BF /* AddToDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217607902BAE306F007C76BF /* AddToDropdown.swift */; };
 		217607972BAEF64D007C76BF /* AddToFoodDiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217607962BAEF64D007C76BF /* AddToFoodDiaryViewModel.swift */; };
 		217607992BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217607982BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift */; };
 		2176079B2BAEF73A007C76BF /* FoodItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176079A2BAEF73A007C76BF /* FoodItemRow.swift */; };
 		2177A8062BA0FB950042ABA8 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2177A8052BA0FB950042ABA8 /* DiaryService.swift */; };
+		218281C82BB35F2400603436 /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218281C72BB35F2400603436 /* ExerciseType.swift */; };
+		219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461672BB076C700B57AA3 /* SetRepRow.swift */; };
+		2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461692BB07E2400B57AA3 /* AddExerciseView.swift */; };
+		2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */; };
+		2194616E2BB08A2200B57AA3 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */; };
 		21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */; };
 		21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */; };
 		21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */; };
@@ -89,12 +94,17 @@
 		21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerRepresentable.swift; sourceTree = "<group>"; };
 		21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
 		21729B2C2B9503C4009091B0 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
-		2176078E2BAE2F85007C76BF /* AddToWokroutDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToWokroutDiaryView.swift; sourceTree = "<group>"; };
+		2176078E2BAE2F85007C76BF /* AddWokroutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWokroutView.swift; sourceTree = "<group>"; };
 		217607902BAE306F007C76BF /* AddToDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDropdown.swift; sourceTree = "<group>"; };
 		217607962BAEF64D007C76BF /* AddToFoodDiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFoodDiaryViewModel.swift; sourceTree = "<group>"; };
 		217607982BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsSearchResult.swift; sourceTree = "<group>"; };
 		2176079A2BAEF73A007C76BF /* FoodItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemRow.swift; sourceTree = "<group>"; };
 		2177A8052BA0FB950042ABA8 /* DiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryService.swift; sourceTree = "<group>"; };
+		218281C72BB35F2400603436 /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
+		219461672BB076C700B57AA3 /* SetRepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepRow.swift; sourceTree = "<group>"; };
+		219461692BB07E2400B57AA3 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
+		2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewModel.swift; sourceTree = "<group>"; };
+		2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetView.swift; sourceTree = "<group>"; };
 		21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDiaryRow.swift; sourceTree = "<group>"; };
@@ -140,9 +150,10 @@
 				21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */,
 				214087762BA25929004E0B51 /* FoodDetailView.swift */,
 				2109EFB42BA398D300DC303C /* AddToFoodDiaryView.swift */,
-				2176078E2BAE2F85007C76BF /* AddToWokroutDiaryView.swift */,
+				2176078E2BAE2F85007C76BF /* AddWokroutView.swift */,
 				21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */,
 				21729B2C2B9503C4009091B0 /* ProductView.swift */,
+				219461692BB07E2400B57AA3 /* AddExerciseView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -215,11 +226,11 @@
 		21D67E862B2B4587005FAC79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2109EFB32BA398B400DC303C /* Diary */,
-				214087782BA2F18F004E0B51 /* RegAndAuth */,
 				21E58F532B82594B00E31882 /* MainView.swift */,
 				210DA2F82B825B5000F96B75 /* TrendsView.swift */,
 				210DA2FA2B825B6200F96B75 /* ProfileView.swift */,
+				2109EFB32BA398B400DC303C /* Diary */,
+				214087782BA2F18F004E0B51 /* RegAndAuth */,
 				21D67E8F2B2B45D8005FAC79 /* Components */,
 			);
 			path = Views;
@@ -251,6 +262,8 @@
 				2132124C2BA8A1A2006548D3 /* NutritionalInfoTable.swift */,
 				217607902BAE306F007C76BF /* AddToDropdown.swift */,
 				2176079A2BAEF73A007C76BF /* FoodItemRow.swift */,
+				219461672BB076C700B57AA3 /* SetRepRow.swift */,
+				2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -269,6 +282,7 @@
 				2109EFB82BA39E9F00DC303C /* Workout.swift */,
 				2109EFBA2BA39EB500DC303C /* Exercise.swift */,
 				217607982BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift */,
+				218281C72BB35F2400603436 /* ExerciseType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,6 +293,7 @@
 				21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */,
 				21BFA5FF2B9E2A8E0074F130 /* DiaryViewModel.swift */,
 				217607962BAEF64D007C76BF /* AddToFoodDiaryViewModel.swift */,
+				2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -368,6 +383,7 @@
 				21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */,
 				2177A8062BA0FB950042ABA8 /* DiaryService.swift in Sources */,
 				21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */,
+				2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */,
 				21BF71B12BA7630E0000F573 /* WorkoutDetailView.swift in Sources */,
 				21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
@@ -381,15 +397,17 @@
 				21DE9BC72B936FA700F086EB /* SetGoalsView.swift in Sources */,
 				217607992BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift in Sources */,
 				2109EFBB2BA39EB500DC303C /* Exercise.swift in Sources */,
+				2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */,
 				210DA2F72B825B3B00F96B75 /* DiaryView.swift in Sources */,
 				2109EFB92BA39E9F00DC303C /* Workout.swift in Sources */,
 				21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */,
 				210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */,
+				219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */,
 				214087772BA25929004E0B51 /* FoodDetailView.swift in Sources */,
 				217607912BAE306F007C76BF /* AddToDropdown.swift in Sources */,
 				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
 				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
-				2176078F2BAE2F85007C76BF /* AddToWokroutDiaryView.swift in Sources */,
+				2176078F2BAE2F85007C76BF /* AddWokroutView.swift in Sources */,
 				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
 				21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */,
 				21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */,
@@ -397,6 +415,7 @@
 				215D54322B757B1C00A07029 /* Registration.swift in Sources */,
 				21E58F542B82594B00E31882 /* MainView.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
+				218281C82BB35F2400603436 /* ExerciseType.swift in Sources */,
 				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
 				210DA2FF2B826ABF00F96B75 /* ArticleCard.swift in Sources */,
 				21BFA5FC2B9E22820074F130 /* CacheEntry.swift in Sources */,
@@ -405,6 +424,7 @@
 				217607972BAEF64D007C76BF /* AddToFoodDiaryViewModel.swift in Sources */,
 				2109E91E2B84992100F2E596 /* FoodDiaryRow.swift in Sources */,
 				216604932B7D254A0097C73E /* ServiceModels.swift in Sources */,
+				2194616E2BB08A2200B57AA3 /* ExerciseCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

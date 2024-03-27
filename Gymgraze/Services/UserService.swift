@@ -15,7 +15,7 @@ class UserService {
         var token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/user") else {
+        guard let url = URL(string: "http://localhost:3000/user") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<User, APIError>)
             return
@@ -69,7 +69,7 @@ class UserService {
 func requestPasswordReset(email: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         
         // construct the URL
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/request_password_reset") else {
+        guard let url = URL(string: "http://localhost:3000/request_password_reset") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return
@@ -119,7 +119,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
     
     func validatePasswordResetCode(token: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         // construct the URL
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/validate_password_reset_token") else {
+        guard let url = URL(string: "http://localhost:3000/validate_password_reset_token") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return
@@ -169,7 +169,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
     
     func resetPsasword(token: String, password: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         // construct the URL
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/reset_password") else {
+        guard let url = URL(string: "http://localhost:3000/reset_password") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return
@@ -223,7 +223,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
       let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/goals") else {
+        guard let url = URL(string: "http://localhost:3000/goals") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Goal, APIError>)
             return
@@ -275,4 +275,42 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
             
         }.resume()
   }
+    
+    func fetchExercisesForUser(completion: @escaping (Result<[ExerciseType], APIError>) -> Void) {
+        let token: String? = getToken()
+        
+        guard let url = URL(string: "http://localhost:3000/exercise_types") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 200:
+                    do {
+                        let exercises = try JSONDecoder().decode([ExerciseType].self, from: data)
+                        completion(.success(exercises))
+                    } catch let decodeError {
+                        print("Decoding failed with error: \(decodeError)")
+                        print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
+                        completion(.failure(APIError.invalidDataReturnedFromAPI))
+                    }
+                case 401:
+                    completion(.failure(APIError.invalidCredentials))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+    }
 }

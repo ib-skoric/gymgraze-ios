@@ -13,6 +13,7 @@ struct AddToFoodDiaryView: View {
     @State var isBarcodeScannerPresented: Bool = false
     @State var selectedFood: FoodItem.Product?
     @StateObject var viewModel = AddToFoodDiaryViewModel()
+    @State var date: Date
     
     var body: some View {
         NavigationStack {
@@ -73,7 +74,7 @@ struct AddToFoodDiaryView: View {
                             }
                     }
                     .sheet(item: $selectedFood) { foodItem in
-                        ProductView(barcode: String(foodItem.id))
+                        ProductView(barcode: String(foodItem.id), selectedDate: date)
                     }
                 }
                     
@@ -81,7 +82,7 @@ struct AddToFoodDiaryView: View {
         }
     }
 }
-
-#Preview {
-    AddToFoodDiaryView()
-}
+//
+//#Preview {
+//    AddToFoodDiaryView()
+//}

@@ -12,7 +12,11 @@ struct WorkoutDetailView: View {
     var workout: Workout
     
     var body: some View {
-        Text("This is a workout detail view")
+        Text(workout.date)
+        ForEach(workout.exercises) { exercise in
+            Text(exercise.name)
+            Text(exercise.exerciseCategory)
+        }
     }
 }
 
