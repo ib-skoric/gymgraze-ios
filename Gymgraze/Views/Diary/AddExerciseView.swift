@@ -11,7 +11,8 @@ struct AddExerciseView: View {
     
     @ObservedObject var viewModel: AddWorkoutViewModel
     @State var showWorkoutView: Bool = false
-    @State var showAddExerciseType: Bool = false
+    @State var showAddStrengthExerciseType: Bool = false
+    @State var showAddCardioExerciseType: Bool = false
     @State var newExerciseName: String = ""
     @State var newExerciseCategory: String = ""
     @Environment(\.dismiss) var dismiss
@@ -53,31 +54,23 @@ struct AddExerciseView: View {
             }
             .navigationTitle("Add exercise")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        showAddExerciseType = true
-                    }, label: {
-                        Image(systemName: "plus")
-                    })
-                }
+                AddExerciseTypeDropdown(isAddStrengthExerciseShown: $showAddStrengthExerciseType, isAddCardioExerciseShown: $showAddCardioExerciseType)
             }
-            .alert("Login", isPresented: $showAddExerciseType, actions: {
-                        
-                        TextField("Name", text: $newExerciseName)
-                        Picker("Category", selection: $newExerciseCategory) {
-                            Text("Cardio").tag("cardio")
-                            Text("Strength").tag("strength")
-                        }
-                
-                        Button("Add", action: {})
-                        Button("Cancel", role: .cancel, action: {})
-                    }, message: {
-                        Text("Create new exercise type")
-                    })
+            .alert("🏋️‍♂️", isPresented: $showAddStrengthExerciseType, actions: {
+                AddExerciseTypeAlert(newExerciseName: $newExerciseName, category: "strength", viewModel: viewModel)
+            }, message: {
+                Text("Create new strength exercise")
+            })
+            .alert("🏃‍♂️", isPresented: $showAddCardioExerciseType, actions: {
+                AddExerciseTypeAlert(newExerciseName: $newExerciseName, category: "cardio", viewModel: viewModel)
+            }, message: {
+                Text("Create new cardio exercise")
+            })
         }
         .onAppear {
             viewModel.fetchExercises()
         }
+        .accentColor(.orange)
     }
 }
 

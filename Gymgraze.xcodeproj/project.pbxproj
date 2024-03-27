@@ -28,6 +28,8 @@
 		216604982B7D27F30097C73E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604972B7D27F30097C73E /* Helpers.swift */; };
 		21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */; };
 		21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5C2B7EA92A00314DFE /* UserService.swift */; };
+		2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */; };
+		2170E8AB2BB4B86400599C16 /* AddExerciseTypeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170E8AA2BB4B86400599C16 /* AddExerciseTypeAlert.swift */; };
 		21729B292B94DC63009091B0 /* DataScannerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */; };
 		21729B2B2B94DC7F009091B0 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */; };
 		21729B2D2B9503C4009091B0 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21729B2C2B9503C4009091B0 /* ProductView.swift */; };
@@ -90,6 +92,8 @@
 		216604972B7D27F30097C73E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		21679B5C2B7EA92A00314DFE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseTypeDropdown.swift; sourceTree = "<group>"; };
+		2170E8AA2BB4B86400599C16 /* AddExerciseTypeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseTypeAlert.swift; sourceTree = "<group>"; };
 		21729B272B94DA69009091B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerRepresentable.swift; sourceTree = "<group>"; };
 		21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 				2176079A2BAEF73A007C76BF /* FoodItemRow.swift */,
 				219461672BB076C700B57AA3 /* SetRepRow.swift */,
 				2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */,
+				2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */,
+				2170E8AA2BB4B86400599C16 /* AddExerciseTypeAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				214087772BA25929004E0B51 /* FoodDetailView.swift in Sources */,
 				217607912BAE306F007C76BF /* AddToDropdown.swift in Sources */,
 				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
+				2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */,
 				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
 				2176078F2BAE2F85007C76BF /* AddWokroutView.swift in Sources */,
 				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
@@ -418,6 +425,7 @@
 				218281C82BB35F2400603436 /* ExerciseType.swift in Sources */,
 				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
 				210DA2FF2B826ABF00F96B75 /* ArticleCard.swift in Sources */,
+				2170E8AB2BB4B86400599C16 /* AddExerciseTypeAlert.swift in Sources */,
 				21BFA5FC2B9E22820074F130 /* CacheEntry.swift in Sources */,
 				2109E91C2B84980900F2E596 /* Heading.swift in Sources */,
 				21729B292B94DC63009091B0 /* DataScannerRepresentable.swift in Sources */,
