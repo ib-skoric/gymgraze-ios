@@ -18,7 +18,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
         case id
         case name
         case exerciseTypeId = "exercise_type_id"
-        case exerciseCategory
+        case exerciseCategory = "exercise_category"
         case exerciseSets = "exercise_sets"
     }
     
@@ -46,9 +46,9 @@ class Exercise: Codable, Identifiable, ObservableObject {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
-        name = try container.decode(String.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
         exerciseTypeId = try container.decode(Int.self, forKey: .exerciseTypeId)
-        exerciseCategory = try container.decode(String.self, forKey: .id)
+        exerciseCategory = try container.decode(String.self, forKey: .exerciseCategory)
         exerciseSets = try container.decodeIfPresent([ExerciseSet].self, forKey: .exerciseSets)
     }
     

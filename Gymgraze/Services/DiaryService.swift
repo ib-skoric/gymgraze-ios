@@ -39,11 +39,14 @@ class DiaryService {
             if let httpResonse = response as? HTTPURLResponse {
                 switch httpResonse.statusCode {
                 case 200...299:
-                    guard let diaryResponse = try? JSONDecoder().decode(T.self, from: data) else {
+                    do {
+                        let diaryResponse = try JSONDecoder().decode(T.self, from: data)
+                        // Continue with your logic using diaryResponse
+                        completion(.success(diaryResponse))
+                    } catch let error {
+                        print("Decoding failed with error: \(error)")
                         completion(.failure(APIError.invalidDataReturnedFromAPI))
-                        return
                     }
-                    completion(.success(diaryResponse))
                 case 401:
                     completion(.failure(APIError.invalidCredentials))
                 case 404:

@@ -11,6 +11,9 @@ struct AddExerciseView: View {
     
     @ObservedObject var viewModel: AddWorkoutViewModel
     @State var showWorkoutView: Bool = false
+    @State var showAddExerciseType: Bool = false
+    @State var newExerciseName: String = ""
+    @State var newExerciseCategory: String = ""
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -33,10 +36,10 @@ struct AddExerciseView: View {
                         Image(systemName: "checkmark")
                             .foregroundColor(.orange)
                     }
-
+                    
                 }
                 .onTapGesture {
-                
+                    
                     if viewModel.workoutExercies.contains(where: { $0.exerciseTypeId == exerciseType.id }) {
                         viewModel.workoutExercies.removeAll(where: { $0.exerciseTypeId == exerciseType.id })
                     } else {
@@ -49,6 +52,28 @@ struct AddExerciseView: View {
                 
             }
             .navigationTitle("Add exercise")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        showAddExerciseType = true
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                }
+            }
+            .alert("Login", isPresented: $showAddExerciseType, actions: {
+                        
+                        TextField("Name", text: $newExerciseName)
+                        Picker("Category", selection: $newExerciseCategory) {
+                            Text("Cardio").tag("cardio")
+                            Text("Strength").tag("strength")
+                        }
+                
+                        Button("Add", action: {})
+                        Button("Cancel", role: .cancel, action: {})
+                    }, message: {
+                        Text("Create new exercise type")
+                    })
         }
         .onAppear {
             viewModel.fetchExercises()
