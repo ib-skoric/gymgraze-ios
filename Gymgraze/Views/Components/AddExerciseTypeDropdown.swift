@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddExerciseTypeDropdown: View {
-    
     @Binding var isAddStrengthExerciseShown: Bool
     @Binding var isAddCardioExerciseShown: Bool
     
@@ -27,21 +26,13 @@ struct AddExerciseTypeDropdown: View {
             })
             
         } label: {
-            if type == "menu" {
-                Label("", systemImage: "plus")
-                    .font(.system(size: 25))
-                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
-            } else {
-                Button(action: {}, label: {
-                    Label("Add to diary", systemImage: "plus")
-                }).buttonStyle(CTAButton())
-                    .padding()
-            }
+            Label("", systemImage: "plus")
+                .font(.system(size: 25))
         }
         .padding(.trailing)
     }
 }
 
 #Preview {
-    AddExerciseTypeDropdown()
+    AddExerciseTypeDropdown(isAddStrengthExerciseShown: .constant(false), isAddCardioExerciseShown: .constant(false))
 }

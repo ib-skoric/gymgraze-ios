@@ -54,26 +54,23 @@ struct AddExerciseView: View {
             }
             .navigationTitle("Add exercise")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        showAddExerciseType = true
-                    }, label: {
-                        Image(systemName: "plus")
-                    })
-                }
+                AddExerciseTypeDropdown(isAddStrengthExerciseShown: $showAddStrengthExerciseType, isAddCardioExerciseShown: $showAddCardioExerciseType)
             }
-            .alert("Login", isPresented: $showAddStrengthExerciseType, actions: {
-                        
-                        TextField("Name", text: $newExerciseName)
-                        Button("Add", action: {})
-                        Button("Cancel", role: .cancel, action: {})
-                    }, message: {
-                        Text("🏋️‍♂️ Create new strength exercise type")
-                    })
+            .alert("🏋️‍♂️", isPresented: $showAddStrengthExerciseType, actions: {
+                AddExerciseTypeAlert(newExerciseName: $newExerciseName, type: "strength")
+            }, message: {
+                Text("Create new strength exercise")
+            })
+            .alert("🏃‍♂️", isPresented: $showAddCardioExerciseType, actions: {
+                AddExerciseTypeAlert(newExerciseName: $newExerciseName, type: "cardio")
+            }, message: {
+                Text("Create new cardio exercise")
+            })
         }
         .onAppear {
             viewModel.fetchExercises()
         }
+        .accentColor(.orange)
     }
 }
 
