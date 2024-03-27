@@ -313,4 +313,46 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
             }
         }.resume()
     }
+    
+    func createExerciseType(name: String, type: String, compeltion: @escaping (Result<ExerciseType, APIError>) -> Void) {
+        let token: String? = getToken()
+        
+        guard let url = URL(string: "http://localhost:3000/exercise_types") else {
+            compeltion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        let body = ["name": name, "type": type]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        request.httpBody = try? JSONEncoder().encode(body)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                compeltion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 201:
+                    do {
+                        let exercise = try JSONDecoder().decode(ExerciseType.self, from: data)
+                        compeltion(.success(exercise))
+                    } catch let decodeError {
+                        print("Decoding failed with error: \(decodeError)")
+                        print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
+                        compeltion(.failure(APIError.invalidDataReturnedFromAPI))
+                    }
+                case 401:
+                    compeltion(.failure(APIError.invalidCredentials))
+                default:
+                    compeltion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+    }
 }
