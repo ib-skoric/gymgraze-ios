@@ -11,7 +11,8 @@ struct AddExerciseView: View {
     
     @ObservedObject var viewModel: AddWorkoutViewModel
     @State var showWorkoutView: Bool = false
-    @State var showAddExerciseType: Bool = false
+    @State var showAddStrengthExerciseType: Bool = false
+    @State var showAddCardioExerciseType: Bool = false
     @State var newExerciseName: String = ""
     @State var newExerciseCategory: String = ""
     @Environment(\.dismiss) var dismiss
@@ -61,18 +62,13 @@ struct AddExerciseView: View {
                     })
                 }
             }
-            .alert("Login", isPresented: $showAddExerciseType, actions: {
+            .alert("Login", isPresented: $showAddStrengthExerciseType, actions: {
                         
                         TextField("Name", text: $newExerciseName)
-                        Picker("Category", selection: $newExerciseCategory) {
-                            Text("Cardio").tag("cardio")
-                            Text("Strength").tag("strength")
-                        }
-                
                         Button("Add", action: {})
                         Button("Cancel", role: .cancel, action: {})
                     }, message: {
-                        Text("Create new exercise type")
+                        Text("🏋️‍♂️ Create new strength exercise type")
                     })
         }
         .onAppear {

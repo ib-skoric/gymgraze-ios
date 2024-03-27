@@ -55,6 +55,7 @@
 		21D67E7D2B2B4523005FAC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7C2B2B4523005FAC79 /* Assets.xcassets */; };
 		21D67E802B2B4523005FAC79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */; };
 		21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E8B2B2B45CA005FAC79 /* LoginView.swift */; };
+		21DB85F92BB4B63000049011 /* AddExerciseTypeDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DB85F82BB4B63000049011 /* AddExerciseTypeDropdown.swift */; };
 		21DE9BC72B936FA700F086EB /* SetGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DE9BC62B936FA700F086EB /* SetGoalsView.swift */; };
 		21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */; };
 		21E58F542B82594B00E31882 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E58F532B82594B00E31882 /* MainView.swift */; };
@@ -119,6 +120,7 @@
 		21D67E7C2B2B4523005FAC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21D67E7F2B2B4523005FAC79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		21D67E8B2B2B45CA005FAC79 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		21DB85F82BB4B63000049011 /* AddExerciseTypeDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseTypeDropdown.swift; sourceTree = "<group>"; };
 		21DE9BC62B936FA700F086EB /* SetGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalsView.swift; sourceTree = "<group>"; };
 		21E2B2692B74C7EA001BBBFA /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		21E58F532B82594B00E31882 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */,
 				2132124C2BA8A1A2006548D3 /* NutritionalInfoTable.swift */,
 				217607902BAE306F007C76BF /* AddToDropdown.swift */,
+				21DB85F82BB4B63000049011 /* AddExerciseTypeDropdown.swift */,
 				2176079A2BAEF73A007C76BF /* FoodItemRow.swift */,
 				219461672BB076C700B57AA3 /* SetRepRow.swift */,
 				2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */,
@@ -388,6 +391,7 @@
 				21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
 				210DA2FD2B825FE900F96B75 /* StatCard.swift in Sources */,
+				21DB85F92BB4B63000049011 /* AddExerciseTypeDropdown.swift in Sources */,
 				2109EFB72BA39E7B00DC303C /* WorkoutDiaryEntry.swift in Sources */,
 				21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */,
 				21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */,
