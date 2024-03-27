@@ -52,16 +52,8 @@ struct AddWorkoutView: View {
                     .font(.subheadline)
                 
                 ScrollView {
-                    
-                    if viewModel.workoutExercies.isEmpty {
-                        Text("No exercises added")
-                            .font(.title2)
-                            .fontWeight(.light)
-                            .padding()
-                    }
-                    
                     ForEach(viewModel.workoutExercies) { exercise in
-                        ExerciseCard(exercise: exercise)
+                        ExerciseCard(exercise: exercise, viewModel: viewModel)
                     }
                 
                 }

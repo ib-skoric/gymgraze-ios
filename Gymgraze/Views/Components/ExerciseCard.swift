@@ -10,10 +10,21 @@ import SwiftUI
 struct ExerciseCard: View {
     
     @ObservedObject var exercise: Exercise
+    @ObservedObject var viewModel: AddWorkoutViewModel
+    @State var isDeleteWorkoutAlertShown: Bool = false
     
     var body: some View {
         VStack {
             HStack {
+                Button(action: {
+                    isDeleteWorkoutAlertShown = true
+                }, label: {
+                    Image(systemName: "minus.circle.fill")
+                        .foregroundColor(.gray)
+                })
+                
+                Spacer()
+                
                 Text(exercise.name)
                     .fontWeight(.bold)
                 
@@ -38,10 +49,6 @@ struct ExerciseCard: View {
                 }
             }
             
-            if (exercise.exerciseSets?.isEmpty ?? true && exercise.exerciseCategory != "cardio") {
-                Text("No sets added")
-            }
-            
             ForEach(exercise.exerciseSets ?? [], id: \.id) { set in
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
                     Button(action: {
@@ -58,9 +65,14 @@ struct ExerciseCard: View {
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
         .padding(.bottom)
+        .alert(isPresented: $isDeleteWorkoutAlertShown) {
+            Alert(title: Text("Delete exercise"), message: Text("Are you sure you want to delete this exercise?"), primaryButton: .destructive(Text("Delete")) {
+                viewModel.workoutExercies.removeAll(where: { $0.id == exercise.id })
+            }, secondaryButton: .cancel())
+        }
     }
 }
 
-#Preview {
-    ExerciseCard(exercise: Exercise())
-}
+//#Preview {
+//    ExerciseCard(exercise: Exercise())
+//}
