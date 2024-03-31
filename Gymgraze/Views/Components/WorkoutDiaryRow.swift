@@ -10,6 +10,7 @@ import SwiftUI
 struct WorkoutDiaryRow: View {
     
     var workout: Workout
+//    var index: Int
     
     // TODO: Add actual data from the API to show truncated names of exercises that are part of this workout.
     var body: some View {

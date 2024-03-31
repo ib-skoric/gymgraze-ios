@@ -42,15 +42,11 @@ struct DiaryView: View {
                             AddToDropdown(isAddFoodViewPresented: $isAddFoodViewPresented, isAddWorkoutViewPresented: $isAddWorkoutViewPresented, type: "menu")
                         }
                     }
-                    .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
-                    .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch workout diary when the view appears
-                    .onReceive(diaryVM.$workoutAdded) { _ in
-                        if diaryVM.workoutFetchCompleted {
-                            diaryVM.fetchWorkoutDiary()
-                            diaryVM.workoutFetchCompleted = false  // Reset it to false after fetching
+                    .onAppear {
+                        DispatchQueue.main.async {
+                            diaryVM.refresh()
                         }
                     }
-                    
                     VStack {
                         if diaryVM.isLoading {
                             Spacer()
@@ -114,8 +110,7 @@ struct DiaryView: View {
                                                 }
                                         }
                                     }
-                                    // TODO: Remove this
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.orange)
                                     .sheet(item: $selectedWorkout) { workout in
                                         WorkoutDetailView(workout: workout)
                                     }

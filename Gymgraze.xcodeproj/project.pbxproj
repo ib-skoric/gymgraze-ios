@@ -53,6 +53,7 @@
 		21BFA5FC2B9E22820074F130 /* CacheEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FB2B9E22820074F130 /* CacheEntry.swift */; };
 		21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FD2B9E230B0074F130 /* Cache.swift */; };
 		21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFA5FF2B9E2A8E0074F130 /* DiaryViewModel.swift */; };
+		21C745AE2BB98AFF0085DC68 /* WorkoutExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C745AD2BB98AFF0085DC68 /* WorkoutExerciseCard.swift */; };
 		21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */; };
 		21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D67E7A2B2B4522005FAC79 /* ContentView.swift */; };
 		21D67E7D2B2B4523005FAC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D67E7C2B2B4523005FAC79 /* Assets.xcassets */; };
@@ -119,6 +120,7 @@
 		21BFA5FB2B9E22820074F130 /* CacheEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheEntry.swift; sourceTree = "<group>"; };
 		21BFA5FD2B9E230B0074F130 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		21BFA5FF2B9E2A8E0074F130 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
+		21C745AD2BB98AFF0085DC68 /* WorkoutExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseCard.swift; sourceTree = "<group>"; };
 		21D67E752B2B4522005FAC79 /* Gymgraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gymgraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D67E782B2B4522005FAC79 /* GymgrazeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymgrazeApp.swift; sourceTree = "<group>"; };
 		21D67E7A2B2B4522005FAC79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				217607902BAE306F007C76BF /* AddToDropdown.swift */,
 				2176079A2BAEF73A007C76BF /* FoodItemRow.swift */,
 				219461672BB076C700B57AA3 /* SetRepRow.swift */,
+				21C745AD2BB98AFF0085DC68 /* WorkoutExerciseCard.swift */,
 				2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */,
 				2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */,
 				2170E8AA2BB4B86400599C16 /* AddExerciseTypeAlert.swift */,
@@ -394,6 +397,7 @@
 				21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */,
 				2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */,
 				21BF71B12BA7630E0000F573 /* WorkoutDetailView.swift in Sources */,
+				21C745AE2BB98AFF0085DC68 /* WorkoutExerciseCard.swift in Sources */,
 				21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
 				210DA2FD2B825FE900F96B75 /* StatCard.swift in Sources */,

@@ -16,6 +16,11 @@ class DiaryViewModel: ObservableObject {
     @Published var workoutAdded: Bool = false
     @Published var workoutFetchCompleted: Bool = false
     
+    func refresh() {
+        self.fetchFoodDiary()
+        self.fetchWorkoutDiary()
+    }
+    
     func fetchFoodDiary() {
         self.isLoading = true
         
@@ -58,6 +63,7 @@ class DiaryViewModel: ObservableObject {
                 switch result {
                 case .success(let entry):
                     self.diaryWokrouts = entry.workouts
+                    print("Diary workouts after fetching: ", self.diaryWokrouts)
                     self.workoutAdded = true
                     self.isLoading = false
                 case .failure(let error):

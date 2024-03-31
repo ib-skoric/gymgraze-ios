@@ -58,7 +58,7 @@ struct ExerciseCard: View {
                             .foregroundColor(.gray)
                     })
                     
-                    SetRepRow(set: set, exerciseId: set.exerciseId)
+                    SetRepRow(set: set, exerciseId: set.exerciseId, readOnly: false)
                 }
                 .padding(.bottom)
             }

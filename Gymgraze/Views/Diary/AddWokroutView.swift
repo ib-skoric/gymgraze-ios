@@ -64,9 +64,15 @@ struct AddWorkoutView: View {
                 
                 Button(action: {
                     viewModel.date = date
-                    diaryVM.workoutAdded = true
-                    viewModel.saveWorkout()
-                    self.isWorkoutFinished = true
+                    viewModel.saveWorkout() { result in
+                        switch result {
+                        case .success(_):
+                            diaryVM.refresh()
+                            self.isWorkoutFinished = true
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
                 }) {
                     Text("Finish workout")
                 }
