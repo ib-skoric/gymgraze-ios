@@ -107,15 +107,14 @@ struct DiaryView: View {
                                 
                                 if !diaryVM.diaryWokrouts.isEmpty {
                                     Section("Workout Diary") {
-                                        ForEach(diaryVM.diaryWokrouts, id: \.id) { workout in
-                                            WorkoutDiaryRow(workout: workout)
+                                        ForEach(Array(diaryVM.diaryWokrouts.enumerated()), id: \.1.id) { index, workout in
+                                            WorkoutDiaryRow(workout: workout, index: index)
                                                 .onTapGesture {
                                                     selectedWorkout = workout
                                                 }
                                         }
                                     }
-                                    // TODO: Remove this
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.orange)
                                     .sheet(item: $selectedWorkout) { workout in
                                         WorkoutDetailView(workout: workout)
                                     }

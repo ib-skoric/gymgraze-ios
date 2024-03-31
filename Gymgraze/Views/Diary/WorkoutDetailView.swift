@@ -12,6 +12,15 @@ struct WorkoutDetailView: View {
     var workout: Workout
     
     var body: some View {
+        VStack {
+            Text(workout.date)
+                .font(.title)
+                .fontWeight(.bold)
+                .padding()
+            Spacer()
+        }
+        .padding()
+        
         Text(workout.date)
         ForEach(workout.exercises) { exercise in
             Text(exercise.name)
