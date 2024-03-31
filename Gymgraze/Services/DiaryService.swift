@@ -47,6 +47,10 @@ class DiaryService {
         }.resume()
     }
     
+    func fetchWorkout(workoutId: Int, completion: @escaping (Result<Workout, APIError>) -> Void) {
+        fetch(urlString: "http://localhost:3000/workouts/\(workoutId)", completion: completion)
+    }
+    
     func fetchFoodItem(foodId: Int, completion: @escaping (Result<Food, APIError>) -> Void) {
         fetch(urlString: "http://localhost:3000/foods/\(foodId)", completion: completion)
     }
@@ -352,7 +356,7 @@ class DiaryService {
         
     }
     
-    func saveWorkout(date: Date, exercises: [Exercise], completion: @escaping (Result<Workout, APIError>) -> Void) {
+    func saveWorkout(date: Date, exercises: [Exercise], duration: Int, completion: @escaping (Result<Workout, APIError>) -> Void) {
         let token: String? = getToken()
         var workoutDiaryEntryID: String?
         
@@ -380,9 +384,10 @@ class DiaryService {
                 struct WorkoutToAPI: Encodable {
                     var workout_diary_entry_id: String
                     var date: String
+                    var duration: Int
                 }
                 
-                let workout = WorkoutToAPI(workout_diary_entry_id: workoutDiaryEntryID ?? "0", date: dateString)
+                let workout = WorkoutToAPI(workout_diary_entry_id: workoutDiaryEntryID ?? "0", date: dateString, duration: duration)
                 
                 do {
                     workoutRequest.httpBody = try JSONEncoder().encode(workout)

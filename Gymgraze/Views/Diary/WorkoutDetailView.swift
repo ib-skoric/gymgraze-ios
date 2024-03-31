@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
     
-    var workout: Workout
+    @State var workout: Workout = Workout()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,7 +21,7 @@ struct WorkoutDetailView: View {
                 .font(.subheadline)
                 .fontWeight(.light)
                 .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-            Text("Duration: \(workout.date)")
+            Text("Duration: \(workout.duration) min")
                 .font(.subheadline)
                 .fontWeight(.light)
                 .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)

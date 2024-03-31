@@ -36,7 +36,6 @@ struct WorkoutExerciseCard: View {
                 }
                 
                 Divider()
-                    .padding([.leading, .trailing, .top])
                 
             } else {
                 HStack {
@@ -46,7 +45,6 @@ struct WorkoutExerciseCard: View {
                     Text("\(exercise.duration) min")
                 }
                 Divider()
-                    .padding([.leading, .trailing, .top])
             }
         }
     }

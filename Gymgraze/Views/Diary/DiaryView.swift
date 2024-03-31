@@ -45,8 +45,11 @@ struct DiaryView: View {
                     .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
                     .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch workout diary when the view appears
                     .onReceive(diaryVM.$workoutAdded) { _ in
+                        print("Workout addded signal received")
                         if diaryVM.workoutFetchCompleted {
                             diaryVM.fetchWorkoutDiary()
+                            print("Finished fetching workout diary on update")
+                            print("Wokout diary after update: ", diaryVM.diaryWokrouts)
                             diaryVM.workoutFetchCompleted = false  // Reset it to false after fetching
                         }
                     }
@@ -107,8 +110,8 @@ struct DiaryView: View {
                                 
                                 if !diaryVM.diaryWokrouts.isEmpty {
                                     Section("Workout Diary") {
-                                        ForEach(Array(diaryVM.diaryWokrouts.enumerated()), id: \.1.id) { index, workout in
-                                            WorkoutDiaryRow(workout: workout, index: index)
+                                        ForEach(diaryVM.diaryWokrouts, id: \.id) { workout in
+                                            WorkoutDiaryRow(workout: workout)
                                                 .onTapGesture {
                                                     selectedWorkout = workout
                                                 }

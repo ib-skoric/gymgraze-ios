@@ -55,16 +55,13 @@ struct SetRepRow: View {
                     Text(String(format: "%.1f", set.weight))
                         .font(.subheadline)
                         .fontWeight(.light)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(completedSetColor)
-                    
+                        .multilineTextAlignment(.center)                    
                     Spacer()
                     
                     Text("\(set.reps)")
                         .font(.subheadline)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(completedSetColor)
                 }
             }
         }
