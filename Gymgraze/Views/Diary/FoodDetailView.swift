@@ -40,7 +40,7 @@ struct FoodDetailView: View {
                 VStack {
                     NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: $amount)
                     HStack {
-                        Text("Amount (g):")
+                        Text("Amount (g/ml):")
                             .font(.subheadline)
                             .fontWeight(.bold)
                         

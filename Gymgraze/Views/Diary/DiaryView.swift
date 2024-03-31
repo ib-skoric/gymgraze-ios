@@ -91,10 +91,10 @@ struct DiaryView: View {
                                                 Spacer()
                                                 
                                                 HStack {
-                                                    Text("**Kcal**: \(foodsByMeal[mealId]!.reduce(0) { $0 + $1.nutritionalInfo.kcal })")
-                                                    Text("**C**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.nutritionalInfo.carbs }))")
-                                                    Text("**P**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.nutritionalInfo.protein }))")
-                                                    Text("**F**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.nutritionalInfo.fat }))")
+                                                    Text("**Kcal**: \(foodsByMeal[mealId]!.reduce(0) { $0 + $1.totalNutrition.kcal })")
+                                                    Text("**C**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.totalNutrition.carbs }))")
+                                                    Text("**P**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.totalNutrition.protein }))")
+                                                    Text("**F**: \(String(format: "%.1f", foodsByMeal[mealId]!.reduce(0) { $0 + $1.totalNutrition.fat }))")
                                                 }
                                             }
                                         }

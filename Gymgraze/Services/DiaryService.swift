@@ -272,7 +272,7 @@ class DiaryService {
     }
     
     
-    func addFoodToDiary(food: FoodItem, amount: Int, date: String, mealId: Int, nutritionalInfo: FoodItem.Nutriments, completion: @escaping (Result<Food, APIError>) -> Void) {
+    func addFoodToDiary(food: FoodItem, amount: Double, date: String, mealId: Int, nutritionalInfo: FoodItem.Nutriments, completion: @escaping (Result<Food, APIError>) -> Void) {
         let token: String? = getToken()
         
         guard let url = URL(string: "http://localhost:3000/foods") else {
@@ -288,7 +288,7 @@ class DiaryService {
         struct FoodToAPI: Encodable {
             var name: String
             var barcode: String
-            var amount: Int
+            var amount: Double
             var food_diary_entry_id: Int
             var meal_id: Int
             var nutritional_info_attributes: NutritionalInfoToAPI

@@ -14,7 +14,9 @@ struct NutritionalInfoTable: View {
     
     var body: some View {
         
-        let calories = nutritionalInfo.kcal * (Int(amount) ?? 0) / 100
+        let calories_calc = Double(nutritionalInfo.kcal) * (Double(amount) ?? 0) / 100
+        // round up calories calculated so that inputting 50 and 50.5 will yield slightly different results
+        let calories = Int(ceil(calories_calc))
         let protein = nutritionalInfo.protein * (Double(amount) ?? 0) / 100
         let carbs = nutritionalInfo.carbs * (Double(amount) ?? 0) / 100
         let fat = nutritionalInfo.fat * (Double(amount) ?? 0) / 100
