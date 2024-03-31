@@ -30,10 +30,9 @@ struct WorkoutDetailView: View {
         .padding()
 
         ForEach(workout.exercises) { exercise in
-            Text(exercise.name)
-            Text(exercise.exerciseCategory)
+            WorkoutExerciseCard(exercise: exercise)
+                .padding()
         }
-        
         Spacer()
     }
 }

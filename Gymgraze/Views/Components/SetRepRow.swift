@@ -14,42 +14,63 @@ struct SetRepRow: View {
     @State var set: Exercise.ExerciseSet
     @State var exerciseId: Int
     @State var completed: Bool = false
+    @State var readOnly: Bool
     
     var completedSetColor: Color {
         completed ? .green : .primary
     }
     
     var body: some View {
-        HStack(alignment: .center) {
-            TextField("Weight", text: $repWeight)
-                .font(.subheadline)
-                .fontWeight(.light)
-                .multilineTextAlignment(.center)
-                .keyboardType(.numberPad)
-                .textFieldStyle(.roundedBorder)
-                .foregroundColor(completedSetColor)
-            
-            TextField("Reps", text: $repCount)
-                .font(.subheadline)
-                .fontWeight(.light)
-                .multilineTextAlignment(.center)
-                .keyboardType(.numberPad)
-                .textFieldStyle(.roundedBorder)
-                .foregroundColor(completedSetColor)
-            
-            Button(action: {
-                set.reps = Int(repCount) ?? 0
-                set.weight = Double(repWeight) ?? 0.0
-                print(set)
-                completed.toggle()
-            }, label: {
-                Image(systemName: "checkmark")
-                    .foregroundColor(.orange)
-            })
+        if readOnly == false {
+            HStack(alignment: .center) {
+                TextField("Weight", text: $repWeight)
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.center)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(.roundedBorder)
+                    .foregroundColor(completedSetColor)
+                
+                TextField("Reps", text: $repCount)
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.center)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(.roundedBorder)
+                    .foregroundColor(completedSetColor)
+                
+                Button(action: {
+                    set.reps = Int(repCount) ?? 0
+                    set.weight = Double(repWeight) ?? 0.0
+                    print(set)
+                    completed.toggle()
+                }, label: {
+                    Image(systemName: "checkmark")
+                        .foregroundColor(.orange)
+                })
+            }
+        } else {
+            VStack {
+                HStack {
+                    Text(String(format: "%.1f", set.weight))
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(completedSetColor)
+                    
+                    Spacer()
+                    
+                    Text("\(set.reps)")
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(completedSetColor)
+                }
+            }
         }
     }
 }
 
 #Preview {
-    SetRepRow(set: Exercise.ExerciseSet(), exerciseId: 1)
+    SetRepRow(set: Exercise.ExerciseSet(), exerciseId: 1, readOnly: true)
 }
