@@ -31,11 +31,8 @@ class AddWorkoutViewModel: ObservableObject {
     }
     
     func saveWorkout(completion: @escaping (Result<Bool, APIError>) -> Void) {
-        print("Start time: \(startTime)")
         var endTime = Date()
-        print("End time: \(endTime)")
-        var duration = Int(endTime.timeIntervalSince(startTime))
-        print("Duration: \(duration) min")
+        var duration = Int(endTime.timeIntervalSince(startTime)) / 60
         
         DiaryService().saveWorkout(date: date, exercises: workoutExercies, duration: duration) { result in
             switch result {
