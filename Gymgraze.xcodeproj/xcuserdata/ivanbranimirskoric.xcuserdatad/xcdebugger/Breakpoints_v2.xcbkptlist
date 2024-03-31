@@ -50,36 +50,6 @@
             endingLineNumber = "411"
             landmarkName = "saveWorkout(date:exercises:duration:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "30E0562D-D40D-4E96-9BAD-57C359952BE4 - bce8b50de12ef722"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Gymgraze.WorkoutDiaryEntry, Gymgraze.APIError&gt;) -&gt; () in Gymgraze.DiaryService.saveWorkout(date: Foundation.Date, exercises: Swift.Array&lt;Gymgraze.Exercise&gt;, duration: Swift.Int, completion: (Swift.Result&lt;Gymgraze.Workout, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/DiaryService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "411"
-                  endingLineNumber = "411">
-               </Location>
-               <Location
-                  uuid = "30E0562D-D40D-4E96-9BAD-57C359952BE4 - 469113b2dbc7ef6e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.Bool, Gymgraze.APIError&gt;) -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Gymgraze.WorkoutDiaryEntry, Gymgraze.APIError&gt;) -&gt; () in Gymgraze.DiaryService.saveWorkout(date: Foundation.Date, exercises: Swift.Array&lt;Gymgraze.Exercise&gt;, duration: Swift.Int, completion: (Swift.Result&lt;Gymgraze.Workout, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/Services/DiaryService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "413"
-                  endingLineNumber = "413">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -92,8 +62,8 @@
             filePath = "Gymgraze/ViewModels/DiaryViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "fetchWorkoutDiary()"
             landmarkType = "7">
          </BreakpointContent>

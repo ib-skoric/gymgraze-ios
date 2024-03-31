@@ -42,18 +42,11 @@ struct DiaryView: View {
                             AddToDropdown(isAddFoodViewPresented: $isAddFoodViewPresented, isAddWorkoutViewPresented: $isAddWorkoutViewPresented, type: "menu")
                         }
                     }
-                    .onAppear(perform: diaryVM.fetchFoodDiary) // Fetch food diary when the view appears
-                    .onAppear(perform: diaryVM.fetchWorkoutDiary) // Fetch workout diary when the view appears
-                    .onReceive(diaryVM.$workoutAdded) { _ in
-                        print("Workout addded signal received")
-                        if diaryVM.workoutFetchCompleted {
-                            diaryVM.fetchWorkoutDiary()
-                            print("Finished fetching workout diary on update")
-                            print("Wokout diary after update: ", diaryVM.diaryWokrouts)
-                            diaryVM.workoutFetchCompleted = false  // Reset it to false after fetching
+                    .onAppear {
+                        DispatchQueue.main.async {
+                            diaryVM.refresh()
                         }
                     }
-                    
                     VStack {
                         if diaryVM.isLoading {
                             Spacer()

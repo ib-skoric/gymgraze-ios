@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class AddWorkoutViewModel: ObservableObject {
     
@@ -29,8 +30,7 @@ class AddWorkoutViewModel: ObservableObject {
         }
     }
     
-    func saveWorkout() {
-        
+    func saveWorkout(completion: @escaping (Result<Bool, APIError>) -> Void) {
         print("Start time: \(startTime)")
         var endTime = Date()
         print("End time: \(endTime)")
@@ -40,10 +40,11 @@ class AddWorkoutViewModel: ObservableObject {
         DiaryService().saveWorkout(date: date, exercises: workoutExercies, duration: duration) { result in
             switch result {
             case .success(_):
-                print("Workout saved")
                 self.workoutAdded = true
+                completion(.success(true))
             case .failure(let error):
                 print(error)
+                completion(.failure(error))
             }
         }
     }
