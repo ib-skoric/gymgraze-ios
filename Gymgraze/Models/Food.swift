@@ -12,7 +12,7 @@ struct Food: Codable, Identifiable {
     var id: Int
     var barcode: String
     var name: String
-    var amount: Int
+    var amount: Double
     var nutritionalInfo: NutritionalInfo
     var totalNutrition: NutritionalInfo
     var meal: Meal

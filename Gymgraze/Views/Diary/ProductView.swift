@@ -132,7 +132,7 @@ struct ProductView: View {
         
         let dateString = dateFormatter.string(from: selectedDate)
         
-        diaryService.addFoodToDiary(food: foodItem, amount: Int(amount) ?? 0, date: dateString, mealId: meal.id, nutritionalInfo: foodItem.product.nutriments) { result in
+        diaryService.addFoodToDiary(food: foodItem, amount: Double(amount) ?? 0, date: dateString, mealId: meal.id, nutritionalInfo: foodItem.product.nutriments) { result in
             switch result {
             case .success(let response):
                 print(response)
