@@ -13,7 +13,7 @@ struct AddToFoodDiaryView: View {
     @State var isBarcodeScannerPresented: Bool = false
     @State var selectedFood: FoodItem.Product?
     @StateObject var viewModel = AddToFoodDiaryViewModel()
-    @State var date: Date
+    @Binding var date: Date
     
     var body: some View {
         NavigationStack {

@@ -12,20 +12,33 @@ struct AddToDropdown: View {
     @Binding var isAddFoodViewPresented: Bool
     @Binding var isAddWorkoutViewPresented: Bool
     var type: String
+    @Binding var date: Date
     
     var body: some View {
         Menu {
-            Button(action: {
-                isAddFoodViewPresented = true
-            }, label: {
+            NavigationLink {
+                AddToFoodDiaryView(date: $date)
+            } label: {
                 Label("Add food", systemImage: "fork.knife")
-            })
+            }
+//
+//            Button(action: {
+//                isAddFoodViewPresented = true
+//            }, label: {
+//                Label("Add food", systemImage: "fork.knife")
+//            })
             
-            Button(action: {
-                isAddWorkoutViewPresented = true
-            }, label: {
+            NavigationLink {
+                AddWorkoutView(date: $date)
+            } label: {
                 Label("Add workout", systemImage: "figure.run")
-            })
+            }
+            
+//            Button(action: {
+//                isAddWorkoutViewPresented = true
+//            }, label: {
+//                Label("Add workout", systemImage: "figure.run")
+//            })
             
         } label: {
             if type == "menu" {
@@ -43,6 +56,6 @@ struct AddToDropdown: View {
     }
 }
 
-#Preview {
-    AddToDropdown(isAddFoodViewPresented: .constant(false), isAddWorkoutViewPresented: .constant(false), type: "menu")
-}
+//#Preview {
+//    AddToDropdown(isAddFoodViewPresented: .constant(false), isAddWorkoutViewPresented: .constant(false), type: "menu", date: Date())
+//}
