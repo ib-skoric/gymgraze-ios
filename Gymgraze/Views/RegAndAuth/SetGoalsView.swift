@@ -89,9 +89,8 @@ struct SetGoalsView: View {
             }).buttonStyle(CTAButton())
                 .padding()
                 .accessibilityLabel("Finish set up button")
-                .navigationDestination(isPresented: $showContentView) {
-                    ContentView()
-                        .navigationBarBackButtonHidden(true)
+                .background {
+                    NavigationLink(destination: ContentView().navigationBarBackButtonHidden(true), isActive: $showContentView) {}
                 }
             
         }

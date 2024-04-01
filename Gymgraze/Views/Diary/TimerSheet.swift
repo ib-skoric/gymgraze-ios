@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TimerSheet: View {
+    @Environment(\.dismiss) private var dismiss
     @Binding var timerValue: Int
-    @State private var offset = CGSize.zero
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         Text("This is the timer view")

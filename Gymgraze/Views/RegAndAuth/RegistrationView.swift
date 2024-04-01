@@ -114,10 +114,13 @@ struct RegistrationView: View {
                 }).buttonStyle(CTAButton())
                     .padding()
                     .accessibilityLabel("Sign up button")
-                    .navigationDestination(isPresented: $showEmailConfirmationView) {
-                        ConfirmationCodeInputView(confirmationType: "email")
-                            .navigationBarBackButtonHidden(true)
+                    .background {
+                        NavigationLink(destination: ConfirmationCodeInputView(confirmationType: "email").navigationBarBackButtonHidden(true), isActive: $showEmailConfirmationView) {}
                     }
+//                    .navigationDestination(isPresented: $showEmailConfirmationView) {
+//                        ConfirmationCodeInputView(confirmationType: "email")
+//                            .navigationBarBackButtonHidden(true)
+//                    }
             }
         }
     }
