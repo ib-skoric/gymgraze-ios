@@ -358,6 +358,7 @@ class DiaryService {
     
     func saveWorkout(date: Date, exercises: [Exercise], duration: Int, completion: @escaping (Result<Workout, APIError>) -> Void) {
         let token: String? = getToken()
+        print(token)
         var workoutDiaryEntryID: String?
         
         guard let workoutURL = URL(string: "http://localhost:3000/workouts") else {
@@ -404,6 +405,13 @@ class DiaryService {
                     if let httpResonse = response as? HTTPURLResponse {
                         switch httpResonse.statusCode {
                         case 201:
+                            do {
+                                let workout = try JSONDecoder().decode(Workout.self, from: data)
+                            } catch {
+                                print("Error: \(error)")
+                                completion(.failure(APIError.invalidDataReturnedFromAPI))
+                            }
+                            // do catch block to print out errors
                             guard let workout = try? JSONDecoder().decode(Workout.self, from: data) else {
                                 completion(.failure(APIError.invalidDataReturnedFromAPI))
                                 return

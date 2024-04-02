@@ -11,7 +11,7 @@ struct Workout: Codable, Identifiable {
     let id: Int
     let date: String
     let workoutDiaryEntryId: Int
-    let duration: Int
+    let duration: Int?
     let exercises: [Exercise]
     
     enum CodingKeys: String, CodingKey {

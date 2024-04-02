@@ -13,7 +13,19 @@ struct TimerSheet: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        Text("This is the timer view")
+        Text("\(timerValue)")
+            .onReceive(timer, perform: { _ in
+                if timerValue > 0 {
+                    timerValue -= 1
+                }
+            })
+        
+        Button {
+            
+        } label: {
+            Text("Skip rest")
+        }
+        .buttonStyle(CTAButton())
     }
 }
 
