@@ -41,9 +41,14 @@ struct User: Codable {
         height = try container.decodeIfPresent(Int.self, forKey: .height)
         goal = try container.decodeIfPresent(Goal.self, forKey: .goal)
         meals = try container.decodeIfPresent([Meal].self, forKey: .meals)
+        meals = try container.decodeIfPresent([Meal].self, forKey: .meals)
         
         if let confirmedAtTimestamp = try container.decodeIfPresent(Double.self, forKey: .confirmedAt) {
-            confirmedAt = Date(timeIntervalSince1970: confirmedAtTimestamp)
+            if confirmedAtTimestamp == 0 {
+                confirmedAt = nil
+            } else {
+                confirmedAt = Date(timeIntervalSince1970: confirmedAtTimestamp)
+            }
         }
     }
 }

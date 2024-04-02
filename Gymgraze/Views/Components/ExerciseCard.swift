@@ -57,7 +57,6 @@ struct ExerciseCard: View {
                         Image(systemName: "minus.circle.fill")
                             .foregroundColor(.gray)
                     })
-                    
                     SetRepRow(set: set, exerciseId: set.exerciseId, readOnly: false)
                 }
                 .padding(.bottom)

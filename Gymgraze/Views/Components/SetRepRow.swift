@@ -15,10 +15,18 @@ struct SetRepRow: View {
     @State var exerciseId: Int
     @State var completed: Bool = false
     @State var readOnly: Bool
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var timeRemaining = 10
+    @State private var showTimerSheet = false
     
     var completedSetColor: Color {
         completed ? .green : .primary
     }
+    
+    var setRepEmpty: Bool {
+        repWeight.isEmpty || repCount.isEmpty
+    }
+    
     
     var body: some View {
         if readOnly == false {
@@ -44,10 +52,16 @@ struct SetRepRow: View {
                     set.weight = Double(repWeight) ?? 0.0
                     print(set)
                     completed.toggle()
+                    self.showTimerSheet.toggle()
                 }, label: {
                     Image(systemName: "checkmark")
-                        .foregroundColor(.orange)
+                        .foregroundColor(setRepEmpty ? .gray : .orange)
                 })
+                .sheet(isPresented: $showTimerSheet) {
+                    TimerSheet(timerValue: $timeRemaining)
+                        .interactiveDismissDisabled(timeRemaining > 0)
+                }
+                .disabled(repWeight.isEmpty || repCount.isEmpty)
             }
         } else {
             VStack {
@@ -68,6 +82,6 @@ struct SetRepRow: View {
     }
 }
 
-#Preview {
-    SetRepRow(set: Exercise.ExerciseSet(), exerciseId: 1, readOnly: true)
-}
+//#Preview {
+//    SetRepRow(set: Exercise.ExerciseSet(), exerciseId: 1, readOnly: true)
+//}
