@@ -16,7 +16,7 @@ struct SetRepRow: View {
     @State var completed: Bool = false
     @State var readOnly: Bool
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var timeRemaining = 5
+    @State private var timeRemaining = 250
     @State private var showTimerSheet = false
     
     var completedSetColor: Color {
@@ -60,7 +60,6 @@ struct SetRepRow: View {
                 .sheet(isPresented: $showTimerSheet) {
                     TimerSheet(timerValue: $timeRemaining)
                         .interactiveDismissDisabled(timeRemaining > 0)
-                        .padding()
                 }
                 .disabled(repWeight.isEmpty || repCount.isEmpty)
             }

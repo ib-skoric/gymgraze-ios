@@ -24,3 +24,18 @@ struct CTAButton: ButtonStyle {
             )
     }
 }
+
+struct CTAButtonSmall: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .foregroundColor(.primary)
+            .cornerRadius(10)
+        // give it rounded corners and a gradient border
+            .background(
+                // check if button is disabled
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom), lineWidth: 1)
+            )
+    }
+}
