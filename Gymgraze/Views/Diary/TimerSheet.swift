@@ -11,6 +11,12 @@ struct TimerSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var timerValue: Int
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var initialValue: Int
+    
+    init(timerValue: Binding<Int>) {
+            self._timerValue = timerValue
+            self._initialValue = State(initialValue: timerValue.wrappedValue)
+        }
     
     var body: some View {
         Text("\(timerValue)")
@@ -20,8 +26,11 @@ struct TimerSheet: View {
                 }
             })
         
+        Spacer()
+        
         Button {
-            
+            timerValue = initialValue
+            dismiss()
         } label: {
             Text("Skip rest")
         }
