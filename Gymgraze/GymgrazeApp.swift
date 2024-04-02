@@ -16,11 +16,14 @@ struct GymgrazeApp: App {
             if userVM.user != nil && userVM.isConfirmedEmailUser {
                 ContentView()
                     .environmentObject(userVM)
+                    .accentColor(Color(.orange))
             } else {
                 LoginView()
                     .environmentObject(userVM)
+                    .accentColor(Color(.orange))
             }
         }
+        
     }
 }
 
