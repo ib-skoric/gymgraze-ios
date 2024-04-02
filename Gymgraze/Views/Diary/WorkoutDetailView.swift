@@ -21,7 +21,7 @@ struct WorkoutDetailView: View {
                 .font(.subheadline)
                 .fontWeight(.light)
                 .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-            Text("Duration: \(workout.duration) min")
+            Text("Duration: \(workout.duration ?? 0) min")
                 .font(.subheadline)
                 .fontWeight(.light)
                 .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
