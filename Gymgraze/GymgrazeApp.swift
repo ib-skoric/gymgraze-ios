@@ -10,12 +10,15 @@ import SwiftUI
 @main
 struct GymgrazeApp: App {
     @StateObject var userVM = UserViewModel()
+    @StateObject var diaryVM = DiaryViewModel()
     
     var body: some Scene {
+        
         WindowGroup {
-            if userVM.user != nil && userVM.isConfirmedEmailUser {
+            if getToken() != nil && userVM.isConfirmedEmailUser {
                 ContentView()
                     .environmentObject(userVM)
+                    .environmentObject(diaryVM)
                     .accentColor(Color(.orange))
             } else {
                 LoginView()

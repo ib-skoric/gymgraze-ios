@@ -57,10 +57,10 @@ struct SetRepRow: View {
                     Image(systemName: "checkmark")
                         .foregroundColor(setRepEmpty ? .gray : .orange)
                 })
-                .sheet(isPresented: $showTimerSheet) {
-                    TimerSheet(timerValue: $timeRemaining)
-                        .interactiveDismissDisabled(timeRemaining > 0)
-                }
+//                .sheet(isPresented: $showTimerSheet) {
+//                    TimerSheet(timerValue: $timeRemaining)
+//                        .interactiveDismissDisabled(timeRemaining > 0)
+//                }
                 .disabled(repWeight.isEmpty || repCount.isEmpty)
             }
         } else {
