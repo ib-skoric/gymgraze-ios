@@ -61,6 +61,7 @@ struct DiaryView: View {
                                     .font(.title)
                                     .foregroundColor(.gray)
                                 AddToDropdown(isAddFoodViewPresented: $isAddFoodViewPresented, isAddWorkoutViewPresented: $isAddWorkoutViewPresented, type: "button", date: $diaryVM.selectedDate)
+                                    
                             }
                             .padding()
                             Spacer()
@@ -121,6 +122,7 @@ struct DiaryView: View {
                     }
                     .navigationDestination(isPresented: $isAddFoodViewPresented) {
                         AddToFoodDiaryView(date: $diaryVM.selectedDate)
+                            .environmentObject(diaryVM)
                     }
                     .navigationDestination(isPresented: $isAddWorkoutViewPresented) {
                         AddWorkoutView(date: $diaryVM.selectedDate)
