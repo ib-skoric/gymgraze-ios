@@ -32,10 +32,12 @@ struct DiaryView: View {
                                 EmptyView()
                             }
                             .onChange(of: diaryVM.selectedDate) { newValue, oldValue in
-                                if newValue != oldValue {
-                                    selectedDate = newValue
-                                    diaryVM.fetchFoodDiary()
-                                    diaryVM.fetchWorkoutDiary()
+                                DispatchQueue.main.async {
+                                    if newValue != oldValue {
+                                        selectedDate = newValue
+                                        diaryVM.fetchFoodDiary()
+                                        diaryVM.fetchWorkoutDiary()
+                                    }
                                 }
                             }
                             

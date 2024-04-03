@@ -69,11 +69,13 @@ struct AddExerciseView: View {
     }
     
     private func handleTapOnExercise(exerciseType: ExerciseType, isExerciseInWorkout: Bool) {
-        if isExerciseInWorkout {
-            viewModel.workoutExercies.removeAll(where: { $0.exerciseTypeId == exerciseType.id })
-        } else {
-            let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
-            viewModel.workoutExercies.append(newExercise)
+        DispatchQueue.main.async {
+            if isExerciseInWorkout {
+                viewModel.workoutExercies.removeAll(where: { $0.exerciseTypeId == exerciseType.id })
+            } else {
+                let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
+                viewModel.workoutExercies.append(newExercise)
+            }
         }
         dismiss()
     }

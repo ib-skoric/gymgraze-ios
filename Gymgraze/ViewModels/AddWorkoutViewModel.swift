@@ -20,13 +20,15 @@ class AddWorkoutViewModel: ObservableObject {
     func fetchExercises() {
         self.isLoading = true
         UserService().fetchExercisesForUser { result in
-            switch result {
-            case .success(let exerciseTypes):
-                self.exercisesTypes = exerciseTypes
-            case .failure(let error):
-                print(error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let exerciseTypes):
+                    self.exercisesTypes = exerciseTypes
+                case .failure(let error):
+                    print(error)
+                }
+                self.isLoading = false
             }
-            self.isLoading = false
         }
     }
     
