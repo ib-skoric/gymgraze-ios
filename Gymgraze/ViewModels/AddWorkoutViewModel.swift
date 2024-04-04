@@ -16,6 +16,12 @@ class AddWorkoutViewModel: ObservableObject {
     @Published var date: Date = Date()
     var startTime = Date()
     
+    func reset() {
+        workoutExercies = []
+        date = Date()
+        startTime = Date()
+    }
+    
     func fetchExercises() {
         self.isLoading = true
         UserService().fetchExercisesForUser { result in
