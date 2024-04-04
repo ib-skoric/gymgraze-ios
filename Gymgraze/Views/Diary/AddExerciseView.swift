@@ -35,7 +35,6 @@ struct AddExerciseView: View {
                 .onTapGesture {
                     handleTapOnExercise(exerciseType: exerciseType, isExerciseInWorkout: isExerciseInWorkout)
                 }
-                
             }
             .navigationTitle("Add exercise")
             .toolbar {
@@ -69,15 +68,33 @@ struct AddExerciseView: View {
     }
     
     private func handleTapOnExercise(exerciseType: ExerciseType, isExerciseInWorkout: Bool) {
-        DispatchQueue.main.async {
-            if isExerciseInWorkout {
-                viewModel.workoutExercies.removeAll(where: { $0.exerciseTypeId == exerciseType.id })
-            } else {
-                let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
+        handleHistoricalData(exerciseType: exerciseType)
+    }
+    
+    func handleHistoricalData(exerciseType: ExerciseType) {
+        if !exerciseType.historicalSetRepData.isEmpty {
+            // create the same number of exercise sets as before
+            let exerciseSets = exerciseType.historicalSetRepData.map { setRepData in
+                // create an 'empty' exercise sets (no weight or reps) 
+                Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exerciseType.id)
+            }
+            
+            // create new exercise with that amount of set/reps
+            let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: exerciseSets)
+            
+            DispatchQueue.main.async {
                 viewModel.workoutExercies.append(newExercise)
+                dismiss()
+            }
+
+        } else {
+            let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
+            viewModel.workoutExercies.append(newExercise)
+            
+            DispatchQueue.main.async {
+                dismiss()
             }
         }
-        dismiss()
     }
 }
 
