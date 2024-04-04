@@ -12,8 +12,6 @@ class DiaryViewModel: ObservableObject {
     @Published var diaryFoods: [Food] = FoodDiaryEntry().foods
     @Published var diaryWokrouts: [Workout] = WorkoutDiaryEntry().workouts
     @Published var isLoading = false
-    
-    @Published var workoutAdded: Bool = false
     @Published var workoutFetchCompleted: Bool = false
     
     func refresh() {
@@ -64,7 +62,6 @@ class DiaryViewModel: ObservableObject {
                 case .success(let entry):
                     self.diaryWokrouts = entry.workouts
                     print("Diary workouts after fetching: ", self.diaryWokrouts)
-                    self.workoutAdded = true
                     self.isLoading = false
                 case .failure(let error):
                     if case APIError.entryNotFound = error {

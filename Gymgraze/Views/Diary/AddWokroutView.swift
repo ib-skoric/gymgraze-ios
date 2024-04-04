@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddWorkoutView: View {
     
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var diaryVM: DiaryViewModel
     @State private var startedAt: Date = Date.now
     @State private var repWeight: String = ""
@@ -63,24 +64,25 @@ struct AddWorkoutView: View {
                 Spacer()
                 
                 Button(action: {
-                    viewModel.date = date
-                    viewModel.saveWorkout() { result in
-                        switch result {
-                        case .success(_):
-                            diaryVM.refresh()
-                            self.isWorkoutFinished = true
-                        case .failure(let error):
-                            print(error)
+                        viewModel.date = date
+                        viewModel.saveWorkout() { result in
+                            switch result {
+                            case .success(_):
+                                DispatchQueue.main.async {
+                                    print("successfully saved workout")
+                                    self.isWorkoutFinished = true
+                                    self.dismiss()
+                                }
+                            case .failure(let error):
+                                print(error)
+                            }
                         }
-                    }
                 }) {
                     Text("Finish workout")
                 }
                     .buttonStyle(CTAButton())
                     .padding()
-                    .navigationDestination(isPresented: $isWorkoutFinished) {
-                        DiaryView(selectedDate: date).navigationBarBackButtonHidden(true)
-                    }
+
             }
         }
     }

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct AddToDropdown: View {
     
-    @Binding var isAddFoodViewPresented: Bool
-    @Binding var isAddWorkoutViewPresented: Bool
+//    @Binding var isAddFoodViewPresented: Bool
+//    @Binding var isAddWorkoutViewPresented: Bool
     var type: String
     @Binding var date: Date
     
@@ -21,25 +21,11 @@ struct AddToDropdown: View {
             } label: {
                 Label("Add food", systemImage: "fork.knife")
             }
-//
-//            Button(action: {
-//                isAddFoodViewPresented = true
-//            }, label: {
-//                Label("Add food", systemImage: "fork.knife")
-//            })
-            
             NavigationLink {
                 AddWorkoutView(date: $date)
             } label: {
                 Label("Add workout", systemImage: "figure.run")
             }
-            
-//            Button(action: {
-//                isAddWorkoutViewPresented = true
-//            }, label: {
-//                Label("Add workout", systemImage: "figure.run")
-//            })
-            
         } label: {
             if type == "menu" {
                 Label("", systemImage: "plus")

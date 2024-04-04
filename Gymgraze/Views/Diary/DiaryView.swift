@@ -41,7 +41,7 @@ struct DiaryView: View {
                                 }
                             }
                             
-                            AddToDropdown(isAddFoodViewPresented: $isAddFoodViewPresented, isAddWorkoutViewPresented: $isAddWorkoutViewPresented, type: "menu", date: $diaryVM.selectedDate)
+                            AddToDropdown(type: "menu", date: $diaryVM.selectedDate)
                         }
                     }
                     .onAppear {
@@ -62,8 +62,7 @@ struct DiaryView: View {
                                 Text("No entries for this date.")
                                     .font(.title)
                                     .foregroundColor(.gray)
-                                AddToDropdown(isAddFoodViewPresented: $isAddFoodViewPresented, isAddWorkoutViewPresented: $isAddWorkoutViewPresented, type: "button", date: $diaryVM.selectedDate)
-                                    
+                                AddToDropdown(type: "button", date: $diaryVM.selectedDate)
                             }
                             .padding()
                             Spacer()
@@ -121,14 +120,6 @@ struct DiaryView: View {
                                 
                             }
                         }
-                    }
-                    .navigationDestination(isPresented: $isAddFoodViewPresented) {
-                        AddToFoodDiaryView(date: $diaryVM.selectedDate)
-                            .environmentObject(diaryVM)
-                    }
-                    .navigationDestination(isPresented: $isAddWorkoutViewPresented) {
-                        AddWorkoutView(date: $diaryVM.selectedDate)
-                            .environmentObject(diaryVM)
                     }
                 }
             }
