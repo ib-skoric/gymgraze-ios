@@ -18,7 +18,6 @@ struct SetRepRow: View {
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timeRemaining = 250
     @State private var showTimerSheet = false
-    @State var exerciseTypes: [ExerciseType]?
     
     var completedSetColor: Color {
         completed ? .green : .primary
