@@ -18,6 +18,7 @@ struct SetRepRow: View {
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timeRemaining = 250
     @State private var showTimerSheet = false
+    @State var exerciseTypes: [ExerciseType]?
     
     var completedSetColor: Color {
         completed ? .green : .primary
@@ -30,53 +31,61 @@ struct SetRepRow: View {
     
     var body: some View {
         if readOnly == false {
-            HStack(alignment: .center) {
-                TextField("Weight", text: $repWeight)
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .foregroundColor(completedSetColor)
-                
-                TextField("Reps", text: $repCount)
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .foregroundColor(completedSetColor)
-                
-                Button(action: {
-                    set.reps = Int(repCount) ?? 0
-                    set.weight = Double(repWeight) ?? 0.0
-                    print(set)
-                    completed.toggle()
-                    self.showTimerSheet.toggle()
-                }, label: {
-                    Image(systemName: "checkmark")
-                        .foregroundColor(setRepEmpty ? .gray : .orange)
-                })
-                .sheet(isPresented: $showTimerSheet) {
-                    TimerSheet(timerValue: $timeRemaining)
-                        .interactiveDismissDisabled(timeRemaining > 0)
-                }
-                .disabled(repWeight.isEmpty || repCount.isEmpty)
-            }
+            editableView
         } else {
-            VStack {
-                HStack {
-                    Text(String(format: "%.1f", set.weight))
-                        .font(.subheadline)
-                        .fontWeight(.light)
-                        .multilineTextAlignment(.center)                    
-                    Spacer()
-                    
-                    Text("\(set.reps)")
-                        .font(.subheadline)
-                        .fontWeight(.light)
-                        .multilineTextAlignment(.center)
-                }
+            readOnlyView
+        }
+    }
+    
+    private var editableView: some View {
+        HStack(alignment: .center) {
+            TextField("Weight", text: $repWeight)
+                .font(.subheadline)
+                .fontWeight(.light)
+                .multilineTextAlignment(.center)
+                .keyboardType(.numberPad)
+                .textFieldStyle(.roundedBorder)
+                .foregroundColor(completedSetColor)
+            
+            TextField("Reps", text: $repCount)
+                .font(.subheadline)
+                .fontWeight(.light)
+                .multilineTextAlignment(.center)
+                .keyboardType(.numberPad)
+                .textFieldStyle(.roundedBorder)
+                .foregroundColor(completedSetColor)
+            
+            Button(action: {
+                set.reps = Int(repCount) ?? 0
+                set.weight = Double(repWeight) ?? 0.0
+                print(set)
+                completed.toggle()
+                self.showTimerSheet.toggle()
+            }, label: {
+                Image(systemName: "checkmark")
+                    .foregroundColor(setRepEmpty ? .gray : .orange)
+            })
+            .sheet(isPresented: $showTimerSheet) {
+                TimerSheet(timerValue: $timeRemaining)
+                    .interactiveDismissDisabled(timeRemaining > 0)
+            }
+            .disabled(repWeight.isEmpty || repCount.isEmpty)
+        }
+    }
+    
+    private var readOnlyView: some View {
+        VStack {
+            HStack {
+                Text(String(format: "%.1f", set.weight ?? 0.0))
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.center)
+                Spacer()
+                
+                Text("\(set.reps)")
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.center)
             }
         }
     }
