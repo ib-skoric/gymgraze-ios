@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WorkoutTemplate {
+struct WorkoutTemplate: Codable, Identifiable {
     let id: Int
     let name: String
     let createdAt: Date
@@ -35,7 +35,7 @@ struct WorkoutTemplate {
     }
 }
 
-struct TemplateExercise {
+struct TemplateExercise: Codable, Identifiable {
     let id: Int
     let name: String
     let exerciseTypeId: Int
