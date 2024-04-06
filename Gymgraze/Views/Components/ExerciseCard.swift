@@ -69,7 +69,9 @@ struct ExerciseCard: View {
                     })
                     
                     Text(returnCurrentExerciseSetHistoricalData(index: index))
-                        .padding(.leading)
+                        .padding([.leading, .trailing])
+                        .fontWeight(.light)
+                        .foregroundColor(.gray)
                     
                     SetRepRow(set: set, exerciseId: set.exerciseId, readOnly: false)
                 }
