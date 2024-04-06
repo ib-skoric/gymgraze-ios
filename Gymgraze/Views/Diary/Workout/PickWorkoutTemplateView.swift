@@ -8,19 +8,43 @@
 import SwiftUI
 
 struct PickWorkoutTemplateView: View {
-    @Environment(\.dismiss) var dismiss
         @Binding var date: Date
         @Binding var isAddWorkoutViewPresented: Bool
+        @ObservedObject var viewModel = WorkoutTemplatesViewModel()
 
-        var body: some View {
-            // Your existing code...
-            Button(action: {
-                isAddWorkoutViewPresented.toggle()
-                print("\(isAddWorkoutViewPresented)")
-            }, label: {
-                Text("Pick template")
-            })
+    var body: some View {
+        VStack {
+            HStack {
+                Heading(text: "Pick workout template")
+                
+                Spacer()
+                
+                Button(action: {
+                    
+                }, label: {
+                    Label("", systemImage: "plus")
+                        .font(.system(size: 25))
+                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+                })
+                .padding(.trailing)
+            }
+            
+            Spacer()
+            
+            List(viewModel.workoutTemplates) { template in
+                WorkoutTemplateRow(workoutTemplate: template)
+            }
+            
+//            Button(action: {
+//                isAddWorkoutViewPresented.toggle()
+//                print("\(isAddWorkoutViewPresented)")
+//            }, label: {
+//                Text("Pick template")
+//            })
+        }.onAppear {
+            viewModel.fetchWorkoutTemplates()
         }
+    }
     }
 
 #Preview {

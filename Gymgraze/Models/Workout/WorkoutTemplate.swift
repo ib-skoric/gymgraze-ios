@@ -10,17 +10,17 @@ import Foundation
 struct WorkoutTemplate: Codable, Identifiable {
     let id: Int
     let name: String
-    let createdAt: Date
+    let createdAt: String
     let templateExercises: [TemplateExercise]
     
     init() {
         id = 0
         name = ""
         templateExercises = []
-        createdAt = Date()
+        createdAt = ""
     }
     
-    init(id: Int, name: String, createdAt: Date, templateExercises: [TemplateExercise]) {
+    init(id: Int, name: String, createdAt: String, templateExercises: [TemplateExercise]) {
         self.id = id
         self.name = name
         self.createdAt = createdAt
