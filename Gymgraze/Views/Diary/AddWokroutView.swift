@@ -71,6 +71,7 @@ struct AddWorkoutView: View {
                                 DispatchQueue.main.async {
                                     print("successfully saved workout")
                                     self.isWorkoutFinished = true
+                                    viewModel.reset()
                                     self.dismiss()
                                 }
                             case .failure(let error):

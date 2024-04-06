@@ -27,8 +27,8 @@ class Exercise: Codable, Identifiable, ObservableObject {
     class ExerciseSet: Codable, Identifiable {
         let id: Int
         let exerciseId: Int
-        var weight: Double
-        var reps: Int
+        var weight: Double?
+        var reps: Int?
         
         enum CodingKeys: String, CodingKey {
             case id
@@ -40,8 +40,13 @@ class Exercise: Codable, Identifiable, ObservableObject {
         init() {
             id = 0
             exerciseId = 0
-            weight = 0.0
-            reps = 0
+            weight = nil
+            reps = nil
+        }
+        
+        init(id: Int, exerciseId: Int) {
+            self.id = id
+            self.exerciseId = exerciseId
         }
         
         init(id: Int, exerciseId: Int, weight: Double, reps: Int) {
@@ -114,7 +119,7 @@ struct ExerciseToAPI: Encodable {
         self.exercise_sets_attributes = []
         
         for set in exercise.exerciseSets ?? []{
-            let exerciseSet = ExerciseSetToAPI(reps: set.reps, weight: set.weight, workout_id: workoutId)
+            let exerciseSet = ExerciseSetToAPI(reps: set.reps ?? 0, weight: set.weight ?? 0.0, workout_id: workoutId)
             self.exercise_sets_attributes.append(exerciseSet)
         }
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
     
-    @State var workout: Workout = Workout()
+    @State var workout: Workout
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -17,17 +17,19 @@ struct WorkoutDetailView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-            Text("Date: \(workout.date)")
+                .padding(.bottom)
+            Text("**Date:** \(workout.date)")
                 .font(.subheadline)
                 .fontWeight(.light)
                 .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-            Text("Duration: \(workout.duration ?? 0) min")
+            Text("**Duration:** \(workout.duration ?? 0) min")
                 .font(.subheadline)
                 .fontWeight(.light)
                 .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
         .padding()
+        .padding(.top)
 
         ForEach(workout.exercises) { exercise in
             WorkoutExerciseCard(exercise: exercise)

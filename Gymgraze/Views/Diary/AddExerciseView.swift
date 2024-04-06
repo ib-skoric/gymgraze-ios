@@ -35,7 +35,6 @@ struct AddExerciseView: View {
                 .onTapGesture {
                     handleTapOnExercise(exerciseType: exerciseType, isExerciseInWorkout: isExerciseInWorkout)
                 }
-                
             }
             .navigationTitle("Add exercise")
             .toolbar {
@@ -68,16 +67,34 @@ struct AddExerciseView: View {
         }
     }
     
-    private func handleTapOnExercise(exerciseType: ExerciseType, isExerciseInWorkout: Bool) {
-        DispatchQueue.main.async {
-            if isExerciseInWorkout {
-                viewModel.workoutExercies.removeAll(where: { $0.exerciseTypeId == exerciseType.id })
-            } else {
-                let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
-                viewModel.workoutExercies.append(newExercise)
+  
+    
+    func handleTapOnExercise(exerciseType: ExerciseType, isExerciseInWorkout: Bool) {
+        if !exerciseType.historicalSetRepData.isEmpty {
+            DispatchQueue.global(qos: .userInitiated).async {
+                var exerciseSets: [Exercise.ExerciseSet]
+                let numberOfExerciseSets = exerciseType.historicalSetRepData.count
+                
+                // create that many exercise sets
+                exerciseSets = (0..<numberOfExerciseSets).map { _ in
+                    Exercise.ExerciseSet(id: Int.random(in: 1...999999999), exerciseId: exerciseType.id, weight: 0.0, reps: 0)
+                }
+                
+                // create new exercise with that amount of set/reps
+                let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: exerciseSets)
+                
+                DispatchQueue.main.async {
+                    viewModel.workoutExercies.append(newExercise)
+                    dismiss()
+                }
+                
             }
+        } else {
+            let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
+            viewModel.workoutExercies.append(newExercise)
+            
+            dismiss()
         }
-        dismiss()
     }
 }
 
