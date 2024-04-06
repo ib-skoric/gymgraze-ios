@@ -44,8 +44,6 @@ struct AddWorkoutView: View {
                 // loop over historical set rep data and create new set rep data
                 for historicalSetRepData in templateExercise.historicalSetRepData {
                     let setRepData = Exercise.ExerciseSet()
-                    setRepData.weight = Double(historicalSetRepData.weight)
-                    setRepData.reps = historicalSetRepData.reps
                     exerciseSets.append(setRepData)
                 }
                 
@@ -107,6 +105,7 @@ struct AddWorkoutView: View {
                                     print("successfully saved workout")
                                     self.isWorkoutFinished = true
                                     viewModel.reset()
+                                    diaryVM.refresh()
                                     self.dismiss()
                                 }
                             case .failure(let error):
@@ -119,6 +118,9 @@ struct AddWorkoutView: View {
                     .buttonStyle(CTAButton())
                     .padding()
 
+            }
+            .onDisappear {
+                diaryVM.refresh()
             }
         }
     }

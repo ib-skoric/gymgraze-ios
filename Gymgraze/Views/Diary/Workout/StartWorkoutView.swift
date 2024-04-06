@@ -11,6 +11,7 @@ struct StartWorkoutView: View {
     @State var date: Date = Date()
     @State var isAddWorkoutViewPresented: Bool = false
     @State var selectedTemplate: WorkoutTemplate?
+    @EnvironmentObject var diaryVM: DiaryViewModel
     
     var body: some View {
         ZStack {

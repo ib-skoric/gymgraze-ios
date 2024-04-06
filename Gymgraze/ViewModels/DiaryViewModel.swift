@@ -15,8 +15,10 @@ class DiaryViewModel: ObservableObject {
     @Published var workoutFetchCompleted: Bool = false
     
     func refresh() {
+        self.isLoading = true
         self.fetchFoodDiary()
         self.fetchWorkoutDiary()
+        self.isLoading = false
     }
     
     func fetchFoodDiary() {
