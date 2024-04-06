@@ -10,18 +10,28 @@ import Foundation
 struct WorkoutTemplate {
     let id: Int
     let name: String
+    let createdAt: Date
     let templateExercises: [TemplateExercise]
     
     init() {
         id = 0
         name = ""
         templateExercises = []
+        createdAt = Date()
     }
     
-    init(id: Int, name: String, description: String, templateExercises: [TemplateExercise]) {
+    init(id: Int, name: String, createdAt: Date, templateExercises: [TemplateExercise]) {
         self.id = id
         self.name = name
+        self.createdAt = createdAt
         self.templateExercises = templateExercises
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case createdAt = "created_at"
+        case templateExercises = "template_exercises"
     }
 }
 
@@ -43,5 +53,12 @@ struct TemplateExercise {
         self.name = name
         self.exerciseTypeId = exerciseTypeId
         self.historicalSetRepData = historicalSetRepData
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case exerciseTypeId = "exercise_type_id"
+        case historicalSetRepData = "historical_set_rep_data"
     }
 }
