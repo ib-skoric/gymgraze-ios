@@ -81,7 +81,7 @@ struct SetRepRow: View {
                     .multilineTextAlignment(.center)
                 Spacer()
                 
-                Text("\(set.reps)")
+                Text("\(set.reps ?? 0)")
                     .font(.subheadline)
                     .fontWeight(.light)
                     .multilineTextAlignment(.center)
