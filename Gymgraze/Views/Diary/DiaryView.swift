@@ -74,11 +74,8 @@ struct DiaryView: View {
                                         }
                                     }
                                 }
-                                .sheet(item: $selectedFood) { food in
-                                    FoodDetailView(food: food)
-                                        .environmentObject(diaryVM)
-                                }
                             }
+                            
                             
                             if !diaryVM.diaryWokrouts.isEmpty {
                                 Section("Workout Diary") {
@@ -94,10 +91,15 @@ struct DiaryView: View {
                                     }
                                 }
                                 .foregroundColor(.orange)
-                                .sheet(item: $selectedWorkout) { workout in
-                                    WorkoutDetailView(workout: workout)
-                                }
+                                
                             }
+                        }
+                        .sheet(item: $selectedFood) { food in
+                            FoodDetailView(food: food)
+                                .environmentObject(diaryVM)
+                        }
+                        .sheet(item: $selectedWorkout) { workout in
+                            WorkoutDetailView(workout: workout)
                         }
                     }
                 }
