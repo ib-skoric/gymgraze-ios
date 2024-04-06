@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct PickWorkoutTemplateView: View {
-        @Binding var date: Date
-        @Binding var isAddWorkoutViewPresented: Bool
-        @ObservedObject var viewModel = WorkoutTemplatesViewModel()
-
+    @Binding var date: Date
+    @Binding var isAddWorkoutViewPresented: Bool
+    @ObservedObject var viewModel = WorkoutTemplatesViewModel()
+    @Binding var selectedTemplate: WorkoutTemplate?
+    
     var body: some View {
         VStack {
             HStack {
@@ -33,20 +34,17 @@ struct PickWorkoutTemplateView: View {
             
             List(viewModel.workoutTemplates) { template in
                 WorkoutTemplateRow(workoutTemplate: template)
+                    .onTapGesture {
+                        selectedTemplate = template
+                        isAddWorkoutViewPresented.toggle()
+                    }
             }
-            
-//            Button(action: {
-//                isAddWorkoutViewPresented.toggle()
-//                print("\(isAddWorkoutViewPresented)")
-//            }, label: {
-//                Text("Pick template")
-//            })
         }.onAppear {
             viewModel.fetchWorkoutTemplates()
         }
     }
-    }
-
-#Preview {
-    PickWorkoutTemplateView(date: .constant(Date()), isAddWorkoutViewPresented: .constant(false))
 }
+
+//#Preview {
+//    PickWorkoutTemplateView(date: .constant(Date()), isAddWorkoutViewPresented: .constant(false))
+//}

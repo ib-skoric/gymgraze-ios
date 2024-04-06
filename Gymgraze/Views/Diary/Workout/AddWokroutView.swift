@@ -17,6 +17,7 @@ struct AddWorkoutView: View {
     @State private var showAddExerciseView: Bool = false
     @State private var isWorkoutFinished: Bool = false
     @Binding var date: Date
+    @Binding var selectedTemplate: WorkoutTemplate?
     @ObservedObject var viewModel = AddWorkoutViewModel()
 
     func formatDate(date: Date) -> String {
@@ -26,6 +27,37 @@ struct AddWorkoutView: View {
         
         return dateFormatter.string(from: date)
     }
+    
+    func handleTemplate() {
+        if let template = selectedTemplate {
+            
+            var exercises: [Exercise] = []
+            var exerciseSets: [Exercise.ExerciseSet] = []
+            
+            // loop over template exercises and create new exercises
+            for templateExercise in template.templateExercises {
+                let exercise = Exercise()
+                exercise.id = Int.random(in: 1...999999999)
+                exercise.name = templateExercise.name
+                exercise.exerciseTypeId = templateExercise.exerciseTypeId
+                exercise.exerciseSets = exerciseSets
+                // loop over historical set rep data and create new set rep data
+                for historicalSetRepData in templateExercise.historicalSetRepData {
+                    let setRepData = Exercise.ExerciseSet()
+                    setRepData.weight = Double(historicalSetRepData.weight)
+                    setRepData.reps = historicalSetRepData.reps
+                    exerciseSets.append(setRepData)
+                }
+                
+                exercise.exerciseSets = exerciseSets
+                exercises.append(exercise)
+            }
+            
+            viewModel.workoutExercies = exercises
+            print("View model exercises: \(viewModel.workoutExercies)")
+        }
+    }
+
     
     var body: some View {
         NavigationStack {
@@ -60,6 +92,9 @@ struct AddWorkoutView: View {
                 }
                 .padding()
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                .onAppear() {
+                    handleTemplate()
+                }
                 
                 Spacer()
                 

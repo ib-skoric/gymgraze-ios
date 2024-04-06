@@ -8,9 +8,9 @@
 import Foundation
 
 class Exercise: Codable, Identifiable, ObservableObject {
-    let id: Int
-    let name: String
-    let exerciseTypeId: Int
+    var id: Int
+    var name: String
+    var exerciseTypeId: Int
     var duration: Int
     let exerciseCategory: String
     @Published var exerciseSets: [ExerciseSet]?
@@ -92,6 +92,15 @@ class Exercise: Codable, Identifiable, ObservableObject {
         self.duration = duration
         self.exerciseTypeId = exerciseTypeId
         self.exerciseCategory = exerciseCategory
+        self.exerciseSets = exerciseSets
+    }
+    
+    init(templateExercise: TemplateExercise, exerciseSets: [ExerciseSet]) {
+        self.id = templateExercise.id
+        self.name = templateExercise.name
+        self.duration = 0
+        self.exerciseTypeId = templateExercise.exerciseTypeId
+        self.exerciseCategory = ""
         self.exerciseSets = exerciseSets
     }
 }
