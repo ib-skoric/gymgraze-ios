@@ -29,16 +29,19 @@ struct TemplateExercise {
     let id: Int
     let name: String
     let exerciseTypeId: Int
+    var historicalSetRepData: [SetRepData]
     
     init() {
         id = 0
         name = ""
         exerciseTypeId = 0
+        historicalSetRepData = []
     }
     
-    init(id: Int, name: String, exerciseTypeId: Int) {
+    init(id: Int, name: String, exerciseTypeId: Int, historicalSetRepData: [SetRepData]) {
         self.id = id
         self.name = name
         self.exerciseTypeId = exerciseTypeId
+        self.historicalSetRepData = historicalSetRepData
     }
 }

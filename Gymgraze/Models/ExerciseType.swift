@@ -26,7 +26,3 @@ struct ExerciseType: Codable, Identifiable, Equatable {
     }
 }
 
-struct SetRepData: Codable {
-    var reps: Int
-    var weight: String
-}
