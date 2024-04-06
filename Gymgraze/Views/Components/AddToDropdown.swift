@@ -22,7 +22,7 @@ struct AddToDropdown: View {
                 Label("Add food", systemImage: "fork.knife")
             }
             NavigationLink {
-                AddWorkoutView(date: $date)
+                StartWorkoutView(date: date)
             } label: {
                 Label("Add workout", systemImage: "figure.run")
             }

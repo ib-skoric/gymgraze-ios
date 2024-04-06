@@ -48,6 +48,8 @@
 		21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */; };
 		21B595752BC180770018743B /* WorkoutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595742BC180770018743B /* WorkoutTemplate.swift */; };
 		21B595772BC1833C0018743B /* SetRepData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595762BC1833C0018743B /* SetRepData.swift */; };
+		21B595812BC186ED0018743B /* PickWorkoutTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595802BC186ED0018743B /* PickWorkoutTemplateView.swift */; };
+		21B595832BC18B020018743B /* StartWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595822BC18B020018743B /* StartWorkoutView.swift */; };
 		21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */; };
 		21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */; };
 		21BF71B12BA7630E0000F573 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */; };
@@ -118,6 +120,8 @@
 		21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		21B595742BC180770018743B /* WorkoutTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplate.swift; sourceTree = "<group>"; };
 		21B595762BC1833C0018743B /* SetRepData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepData.swift; sourceTree = "<group>"; };
+		21B595802BC186ED0018743B /* PickWorkoutTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickWorkoutTemplateView.swift; sourceTree = "<group>"; };
+		21B595822BC18B020018743B /* StartWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutView.swift; sourceTree = "<group>"; };
 		21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetView.swift; sourceTree = "<group>"; };
 		21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDiaryRow.swift; sourceTree = "<group>"; };
 		21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */,
 				219461692BB07E2400B57AA3 /* AddExerciseView.swift */,
 				21C745AF2BB9AF3D0085DC68 /* TimerSheet.swift */,
+				21B595802BC186ED0018743B /* PickWorkoutTemplateView.swift */,
+				21B595822BC18B020018743B /* StartWorkoutView.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -490,10 +496,12 @@
 				210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */,
 				219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */,
 				214087772BA25929004E0B51 /* FoodDetailView.swift in Sources */,
+				21B595832BC18B020018743B /* StartWorkoutView.swift in Sources */,
 				217607912BAE306F007C76BF /* AddToDropdown.swift in Sources */,
 				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
 				2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */,
 				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
+				21B595812BC186ED0018743B /* PickWorkoutTemplateView.swift in Sources */,
 				2170E8AD2BB4BECC00599C16 /* DurationInput.swift in Sources */,
 				2176078F2BAE2F85007C76BF /* AddWokroutView.swift in Sources */,
 				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
