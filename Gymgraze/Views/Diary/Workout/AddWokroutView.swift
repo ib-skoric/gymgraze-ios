@@ -18,8 +18,8 @@ struct AddWorkoutView: View {
     @State private var isWorkoutFinished: Bool = false
     @Binding var date: Date
     @Binding var selectedTemplate: WorkoutTemplate?
-    @ObservedObject var viewModel = AddWorkoutViewModel()
-
+    @StateObject var viewModel = AddWorkoutViewModel()
+    
     func formatDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -40,7 +40,7 @@ struct AddWorkoutView: View {
                 exercise.name = templateExercise.name
                 exercise.exerciseTypeId = templateExercise.exerciseTypeId
                 
-                var exerciseSets: [Exercise.ExerciseSet] = [] 
+                var exerciseSets: [Exercise.ExerciseSet] = []
                 
                 // loop over historical set rep data and create new set rep data
                 for historicalSetRepData in templateExercise.historicalSetRepData {
@@ -56,8 +56,8 @@ struct AddWorkoutView: View {
             print("View model exercises: \(viewModel.workoutExercies)")
         }
     }
-
-
+    
+    
     
     var body: some View {
         NavigationStack {
@@ -88,44 +88,44 @@ struct AddWorkoutView: View {
                     ForEach(viewModel.workoutExercies) { exercise in
                         ExerciseCard(exercise: exercise, viewModel: viewModel)
                     }
-                
+                    
                 }
                 .onAppear() {
-                    handleTemplate()
+                    if viewModel.workoutExercies.isEmpty {
+                        handleTemplate()
+                    }
                 }
                 .padding()
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 
-                
                 Spacer()
                 
                 Button(action: {
-                        viewModel.date = date
-                        viewModel.saveWorkout() { result in
-                            switch result {
-                            case .success(_):
-                                DispatchQueue.main.async {
-                                    print("successfully saved workout")
-                                    self.isWorkoutFinished = true
-                                    viewModel.reset()
-                                    diaryVM.refresh()
-                                    selectedTemplate = nil
-                                    self.dismiss()
-                                }
-                            case .failure(let error):
-                                print(error)
+                    viewModel.date = date
+                    viewModel.saveWorkout() { result in
+                        switch result {
+                        case .success(_):
+                            DispatchQueue.main.async {
+                                print("successfully saved workout")
+                                self.isWorkoutFinished = true
+                                viewModel.reset()
+                                diaryVM.refresh()
+                                selectedTemplate = nil
+                                self.dismiss()
                             }
+                        case .failure(let error):
+                            print(error)
                         }
+                    }
                 }) {
                     Text("Finish workout")
                 }
-                    .buttonStyle(CTAButton())
-                    .padding()
-
+                .buttonStyle(CTAButton())
+                .padding()
+                
             }
             .onDisappear {
                 diaryVM.refresh()
-                
             }
         }
     }

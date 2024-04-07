@@ -30,6 +30,7 @@ struct ExerciseCard: View {
             return "-"
         }
     }
+
     
     var body: some View {
         VStack {
