@@ -52,6 +52,7 @@
 		21B595832BC18B020018743B /* StartWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595822BC18B020018743B /* StartWorkoutView.swift */; };
 		21B595852BC18C4A0018743B /* WorkoutTemplatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595842BC18C4A0018743B /* WorkoutTemplatesViewModel.swift */; };
 		21B595872BC18DFC0018743B /* WorkoutTemplateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595862BC18DFC0018743B /* WorkoutTemplateRow.swift */; };
+		21B5958B2BC31A6D0018743B /* CreateWorkoutTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B5958A2BC31A6D0018743B /* CreateWorkoutTemplateView.swift */; };
 		21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */; };
 		21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */; };
 		21BF71B12BA7630E0000F573 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */; };
@@ -126,6 +127,7 @@
 		21B595822BC18B020018743B /* StartWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutView.swift; sourceTree = "<group>"; };
 		21B595842BC18C4A0018743B /* WorkoutTemplatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplatesViewModel.swift; sourceTree = "<group>"; };
 		21B595862BC18DFC0018743B /* WorkoutTemplateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplateRow.swift; sourceTree = "<group>"; };
+		21B5958A2BC31A6D0018743B /* CreateWorkoutTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorkoutTemplateView.swift; sourceTree = "<group>"; };
 		21BE04262B937DD100ADCC8A /* RequestPasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetView.swift; sourceTree = "<group>"; };
 		21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDiaryRow.swift; sourceTree = "<group>"; };
 		21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				21C745AF2BB9AF3D0085DC68 /* TimerSheet.swift */,
 				21B595802BC186ED0018743B /* PickWorkoutTemplateView.swift */,
 				21B595822BC18B020018743B /* StartWorkoutView.swift */,
+				21B5958A2BC31A6D0018743B /* CreateWorkoutTemplateView.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				2109EFB92BA39E9F00DC303C /* Workout.swift in Sources */,
 				21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */,
 				210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */,
+				21B5958B2BC31A6D0018743B /* CreateWorkoutTemplateView.swift in Sources */,
 				219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */,
 				214087772BA25929004E0B51 /* FoodDetailView.swift in Sources */,
 				21B595832BC18B020018743B /* StartWorkoutView.swift in Sources */,

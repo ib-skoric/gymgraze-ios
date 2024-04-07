@@ -10,6 +10,7 @@ import SwiftUI
 struct PickWorkoutTemplateView: View {
     @Binding var date: Date
     @Binding var isAddWorkoutViewPresented: Bool
+    @State var isCreateTemplateViewPresented: Bool = false
     @ObservedObject var viewModel = WorkoutTemplatesViewModel()
     @Binding var selectedTemplate: WorkoutTemplate?
     
@@ -21,37 +22,40 @@ struct PickWorkoutTemplateView: View {
                 Spacer()
                 
                 Button(action: {
-                    
+                    isCreateTemplateViewPresented.toggle()
                 }, label: {
                     Label("", systemImage: "plus")
                         .font(.system(size: 25))
                         .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
                 })
                 .padding(.trailing)
+                .background {
+                    NavigationLink(destination: CreateWorkoutTemplateView(), isActive: $isCreateTemplateViewPresented) {}
+                }
             }
-            
-            Spacer()
-            
-            List(viewModel.workoutTemplates) { template in
-                WorkoutTemplateRow(workoutTemplate: template)
-                    .onTapGesture {
-                        selectedTemplate = template
-                        isAddWorkoutViewPresented.toggle()
-                    }
+                
+                Spacer()
+                
+                List(viewModel.workoutTemplates) { template in
+                    WorkoutTemplateRow(workoutTemplate: template)
+                        .onTapGesture {
+                            selectedTemplate = template
+                            isAddWorkoutViewPresented.toggle()
+                        }
+                }
+                
+                Button(action: {
+                    isAddWorkoutViewPresented.toggle()
+                }, label: {
+                    Text("Empty workout")
+                })
+                
+            }.onAppear {
+                viewModel.fetchWorkoutTemplates()
             }
-            
-            Button(action: {
-                isAddWorkoutViewPresented.toggle()
-            }, label: {
-                Text("Empty workout")
-            })
-            
-        }.onAppear {
-            viewModel.fetchWorkoutTemplates()
         }
     }
-}
-
-//#Preview {
-//    PickWorkoutTemplateView(date: .constant(Date()), isAddWorkoutViewPresented: .constant(false))
-//}
+    
+    //#Preview {
+    //    PickWorkoutTemplateView(date: .constant(Date()), isAddWorkoutViewPresented: .constant(false))
+    //}

@@ -14,6 +14,7 @@ class AddWorkoutViewModel: ObservableObject {
     @Published var workoutExercies: [Exercise] = []
     @Published var isLoading: Bool = false
     @Published var date: Date = Date()
+    @Published var templateName: String = ""
     var startTime = Date()
     
     func reset() {
@@ -42,6 +43,27 @@ class AddWorkoutViewModel: ObservableObject {
         var duration = Int(endTime.timeIntervalSince(startTime)) / 60
         
         DiaryService().saveWorkout(date: date, exercises: workoutExercies, duration: duration) { result in
+            switch result {
+            case .success(_):
+                completion(.success(true))
+            case .failure(let error):
+                print(error)
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func saveTemplate(completion: @escaping (Result<Bool, APIError>) -> Void) {
+        // create an array of TemplateExercise objects
+        var templateExercises: [TemplateExerciseToAPI] = []
+        
+        for exercise in workoutExercies {
+            templateExercises.append(TemplateExerciseToAPI(exercise_type_id: exercise.exerciseTypeId))
+        }
+        
+        var template = TemplateToAPI(name: templateName, template_exercises_attributes: templateExercises)
+        
+        UserService().saveWorkoutTemplate(workoutTemplate: template) { result in
             switch result {
             case .success(_):
                 completion(.success(true))

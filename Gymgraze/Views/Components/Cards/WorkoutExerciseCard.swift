@@ -20,7 +20,7 @@ struct WorkoutExerciseCard: View {
                 Spacer()
             }
             
-            if (exercise.exerciseCategory != "cardio") {
+            if (exercise.exerciseCategory == "strength") {
                 HStack {
                     Text("Weight")
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

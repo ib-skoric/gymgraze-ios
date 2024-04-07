@@ -10,7 +10,6 @@ import Foundation
 class WorkoutTemplatesViewModel: ObservableObject {
     @Published var workoutTemplates: [WorkoutTemplate] = []
     
-    
     func fetchWorkoutTemplates() {
         UserService().fetchWorkoutTemplates { result in
             switch result {

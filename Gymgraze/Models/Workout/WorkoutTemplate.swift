@@ -62,3 +62,12 @@ struct TemplateExercise: Codable, Identifiable {
         case historicalSetRepData = "historical_set_rep_data"
     }
 }
+
+struct TemplateExerciseToAPI: Codable {
+    let exercise_type_id: Int
+}
+
+struct TemplateToAPI: Codable {
+    let name: String
+    let template_exercises_attributes: [TemplateExerciseToAPI]
+}
