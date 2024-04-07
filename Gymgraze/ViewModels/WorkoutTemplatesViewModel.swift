@@ -10,11 +10,6 @@ import Foundation
 class WorkoutTemplatesViewModel: ObservableObject {
     @Published var workoutTemplates: [WorkoutTemplate] = []
     
-    init() {
-        DispatchQueue.main.async {
-            self.fetchWorkoutTemplates()
-        }
-    }
     
     func fetchWorkoutTemplates() {
         UserService().fetchWorkoutTemplates { result in

@@ -32,7 +32,6 @@ struct AddWorkoutView: View {
         if let template = selectedTemplate {
             
             var exercises: [Exercise] = []
-            var exerciseSets: [Exercise.ExerciseSet] = []
             
             // loop over template exercises and create new exercises
             for templateExercise in template.templateExercises {
@@ -40,13 +39,16 @@ struct AddWorkoutView: View {
                 exercise.id = Int.random(in: 1...999999999)
                 exercise.name = templateExercise.name
                 exercise.exerciseTypeId = templateExercise.exerciseTypeId
-                exercise.exerciseSets = exerciseSets
+                
+                var exerciseSets: [Exercise.ExerciseSet] = [] 
+                
                 // loop over historical set rep data and create new set rep data
                 for historicalSetRepData in templateExercise.historicalSetRepData {
                     let setRepData = Exercise.ExerciseSet()
                     exerciseSets.append(setRepData)
                 }
                 
+                exercise.exerciseSets = exerciseSets
                 exercises.append(exercise)
             }
             
@@ -54,6 +56,7 @@ struct AddWorkoutView: View {
             print("View model exercises: \(viewModel.workoutExercies)")
         }
     }
+
 
     
     var body: some View {
@@ -87,11 +90,12 @@ struct AddWorkoutView: View {
                     }
                 
                 }
-                .padding()
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 .onAppear() {
                     handleTemplate()
                 }
+                .padding()
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                
                 
                 Spacer()
                 
@@ -121,6 +125,7 @@ struct AddWorkoutView: View {
             }
             .onDisappear {
                 diaryVM.refresh()
+                
             }
         }
     }
