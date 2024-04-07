@@ -39,6 +39,13 @@ struct PickWorkoutTemplateView: View {
                         isAddWorkoutViewPresented.toggle()
                     }
             }
+            
+            Button(action: {
+                isAddWorkoutViewPresented.toggle()
+            }, label: {
+                Text("Empty workout")
+            })
+            
         }.onAppear {
             viewModel.fetchWorkoutTemplates()
         }

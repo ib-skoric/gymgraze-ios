@@ -67,11 +67,11 @@ struct AddExerciseView: View {
         }
     }
     
-  
+    
     
     func handleTapOnExercise(exerciseType: ExerciseType, isExerciseInWorkout: Bool) {
-        if !exerciseType.historicalSetRepData.isEmpty {
-            DispatchQueue.global(qos: .userInitiated).async {
+        if !isExerciseInWorkout {
+            if !exerciseType.historicalSetRepData.isEmpty {
                 var exerciseSets: [Exercise.ExerciseSet]
                 let numberOfExerciseSets = exerciseType.historicalSetRepData.count
                 
@@ -87,12 +87,15 @@ struct AddExerciseView: View {
                     viewModel.workoutExercies.append(newExercise)
                     dismiss()
                 }
+            } else {
+                let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
+                viewModel.workoutExercies.append(newExercise)
                 
+                dismiss()
             }
         } else {
-            let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
-            viewModel.workoutExercies.append(newExercise)
-            
+            let index = viewModel.workoutExercies.firstIndex { $0.exerciseTypeId == exerciseType.id }
+            viewModel.workoutExercies.remove(at: index!)
             dismiss()
         }
     }

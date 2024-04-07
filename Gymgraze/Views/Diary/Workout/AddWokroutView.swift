@@ -47,7 +47,6 @@ struct AddWorkoutView: View {
                     exerciseSets.append(setRepData)
                 }
                 
-                exercise.exerciseSets = exerciseSets
                 exercises.append(exercise)
             }
             
@@ -106,6 +105,7 @@ struct AddWorkoutView: View {
                                     self.isWorkoutFinished = true
                                     viewModel.reset()
                                     diaryVM.refresh()
+                                    selectedTemplate = nil
                                     self.dismiss()
                                 }
                             case .failure(let error):
