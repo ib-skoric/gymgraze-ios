@@ -12,7 +12,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
     var name: String
     var exerciseTypeId: Int
     var duration: Int
-    let exerciseCategory: String
+    var exerciseCategory: String
     @Published var exerciseSets: [ExerciseSet]?
     
     enum CodingKeys: String, CodingKey {

@@ -58,7 +58,7 @@ class AddWorkoutViewModel: ObservableObject {
         var templateExercises: [TemplateExerciseToAPI] = []
         
         for exercise in workoutExercies {
-            templateExercises.append(TemplateExerciseToAPI(exercise_type_id: exercise.exerciseTypeId))
+            templateExercises.append(TemplateExerciseToAPI(exercise_type_id: exercise.exerciseTypeId, exercise_category: exercise.exerciseCategory))
         }
         
         var template = TemplateToAPI(name: templateName, template_exercises_attributes: templateExercises)

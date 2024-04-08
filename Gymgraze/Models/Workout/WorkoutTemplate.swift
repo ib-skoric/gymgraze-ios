@@ -39,18 +39,21 @@ struct TemplateExercise: Codable, Identifiable {
     let id: Int
     let name: String
     let exerciseTypeId: Int
+    let exerciseCategory: String
     var historicalSetRepData: [SetRepData]
     
     init() {
         id = 0
         name = ""
+        exerciseCategory = ""
         exerciseTypeId = 0
         historicalSetRepData = []
     }
     
-    init(id: Int, name: String, exerciseTypeId: Int, historicalSetRepData: [SetRepData]) {
+    init(id: Int, name: String, exerciseCategory: String, exerciseTypeId: Int, historicalSetRepData: [SetRepData]) {
         self.id = id
         self.name = name
+        self.exerciseCategory = exerciseCategory
         self.exerciseTypeId = exerciseTypeId
         self.historicalSetRepData = historicalSetRepData
     }
@@ -58,6 +61,7 @@ struct TemplateExercise: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case exerciseCategory = "exercise_category"
         case exerciseTypeId = "exercise_type_id"
         case historicalSetRepData = "historical_set_rep_data"
     }
@@ -65,6 +69,7 @@ struct TemplateExercise: Codable, Identifiable {
 
 struct TemplateExerciseToAPI: Codable {
     let exercise_type_id: Int
+    let exercise_category: String
 }
 
 struct TemplateToAPI: Codable {
