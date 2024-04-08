@@ -68,7 +68,11 @@ struct CreateWorkoutTemplateView: View {
                         }
                     }
                 }, label: {
-                    Text("Save template")
+                    if viewModel.isLoading {
+                        ProgressView()
+                    } else {
+                        Text("Save template")
+                    }
                 })
                 .buttonStyle(CTAButton())
                 .padding()

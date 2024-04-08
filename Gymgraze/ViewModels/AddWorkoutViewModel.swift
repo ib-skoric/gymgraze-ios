@@ -54,6 +54,7 @@ class AddWorkoutViewModel: ObservableObject {
     }
     
     func saveTemplate(completion: @escaping (Result<Bool, APIError>) -> Void) {
+        self.isLoading = true
         // create an array of TemplateExercise objects
         var templateExercises: [TemplateExerciseToAPI] = []
         
@@ -66,9 +67,11 @@ class AddWorkoutViewModel: ObservableObject {
         UserService().saveWorkoutTemplate(workoutTemplate: template) { result in
             switch result {
             case .success(_):
+                self.isLoading = false
                 completion(.success(true))
             case .failure(let error):
                 print(error)
+                self.isLoading = false
                 completion(.failure(error))
             }
         }
