@@ -9,7 +9,12 @@ import SwiftUI
 
 struct EditGoalsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                Heading(text: "Edit goals")
+                Spacer()
+            }
+        }
     }
 }
 
