@@ -19,7 +19,8 @@ struct ProfileView: View {
             
             List {
                 NavigationLink {
-                    // TODO: Add a view here
+                    EditPersonalDetailsView()
+                        .environmentObject(userVM)
                 } label: {
                     HStack {
                         Image(systemName: "person")
@@ -29,7 +30,8 @@ struct ProfileView: View {
                 }
                 
                 NavigationLink {
-                    // TODO: Add a view here
+                    EditGoalsView()
+                        .environmentObject(userVM)
                 } label: {
                     HStack {
                         Image(systemName: "target")
@@ -39,7 +41,8 @@ struct ProfileView: View {
                 }
                 
                 NavigationLink {
-                    // TODO: Add a view here
+                    EditMealsview()
+                        .environmentObject(userVM)
                 } label: {
                     HStack {
                         Image(systemName: "fork.knife")
@@ -85,6 +88,6 @@ struct ProfileView: View {
     }
 }
 
-#Preview {
-    ProfileView()
-}
+//#Preview {
+//    ProfileView()
+//}
