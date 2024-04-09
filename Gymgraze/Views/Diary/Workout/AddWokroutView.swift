@@ -17,8 +17,9 @@ struct AddWorkoutView: View {
     @State private var showAddExerciseView: Bool = false
     @State private var isWorkoutFinished: Bool = false
     @Binding var date: Date
-    @ObservedObject var viewModel = AddWorkoutViewModel()
-
+    @Binding var selectedTemplate: WorkoutTemplate?
+    @StateObject var viewModel = AddWorkoutViewModel()
+    
     func formatDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -26,6 +27,38 @@ struct AddWorkoutView: View {
         
         return dateFormatter.string(from: date)
     }
+    
+    func handleTemplate() {
+        if let template = selectedTemplate {
+            
+            var exercises: [Exercise] = []
+            
+            // loop over template exercises and create new exercises
+            for templateExercise in template.templateExercises {
+                let exercise = Exercise()
+                exercise.id = Int.random(in: 1...999999999)
+                exercise.name = templateExercise.name
+                exercise.exerciseTypeId = templateExercise.exerciseTypeId
+                exercise.exerciseCategory = templateExercise.exerciseCategory
+                
+                var exerciseSets: [Exercise.ExerciseSet] = []
+                
+                // loop over historical set rep data and create new set rep data
+                for historicalSetRepData in templateExercise.historicalSetRepData {
+                    let setRepData = Exercise.ExerciseSet()
+                    exerciseSets.append(setRepData)
+                }
+                
+                exercise.exerciseSets = exerciseSets
+                exercises.append(exercise)
+            }
+            
+            viewModel.workoutExercies = exercises
+            print("View model exercises: \(viewModel.workoutExercies)")
+        }
+    }
+    
+    
     
     var body: some View {
         NavigationStack {
@@ -56,7 +89,12 @@ struct AddWorkoutView: View {
                     ForEach(viewModel.workoutExercies) { exercise in
                         ExerciseCard(exercise: exercise, viewModel: viewModel)
                     }
-                
+                    
+                }
+                .onAppear() {
+                    if viewModel.workoutExercies.isEmpty {
+                        handleTemplate()
+                    }
                 }
                 .padding()
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
@@ -64,26 +102,31 @@ struct AddWorkoutView: View {
                 Spacer()
                 
                 Button(action: {
-                        viewModel.date = date
-                        viewModel.saveWorkout() { result in
-                            switch result {
-                            case .success(_):
-                                DispatchQueue.main.async {
-                                    print("successfully saved workout")
-                                    self.isWorkoutFinished = true
-                                    viewModel.reset()
-                                    self.dismiss()
-                                }
-                            case .failure(let error):
-                                print(error)
+                    viewModel.date = date
+                    viewModel.saveWorkout() { result in
+                        switch result {
+                        case .success(_):
+                            DispatchQueue.main.async {
+                                print("successfully saved workout")
+                                self.isWorkoutFinished = true
+                                viewModel.reset()
+                                diaryVM.refresh()
+                                selectedTemplate = nil
+                                self.dismiss()
                             }
+                        case .failure(let error):
+                            print(error)
                         }
+                    }
                 }) {
                     Text("Finish workout")
                 }
-                    .buttonStyle(CTAButton())
-                    .padding()
-
+                .buttonStyle(CTAButton())
+                .padding()
+                
+            }
+            .onDisappear {
+                diaryVM.refresh()
             }
         }
     }

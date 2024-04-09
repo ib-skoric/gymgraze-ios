@@ -20,12 +20,17 @@ struct ExerciseCard: View {
         // get historical set/rep data for that type
         let historicalData = exerciseType?.historicalSetRepData
         
-        // get the current set/rep data
-        let currentSetRepData = historicalData?[index]
-        
-        // return the data as string
-        return "\(currentSetRepData?.weight ?? "null")kg x \(currentSetRepData?.reps ?? 0)"
+        if let historicalData = historicalData, index < historicalData.count {
+            // get the current set/rep data
+            let currentSetRepData = historicalData[index]
+            
+            // return the data as string
+            return "\(currentSetRepData.weight ?? "null")kg x \(currentSetRepData.reps ?? 0)"
+        } else {
+            return "-"
+        }
     }
+
     
     var body: some View {
         VStack {
@@ -38,6 +43,9 @@ struct ExerciseCard: View {
             Alert(title: Text("Delete exercise"), message: Text("Are you sure you want to delete this exercise?"), primaryButton: .destructive(Text("Delete")) {
                 viewModel.workoutExercies.removeAll(where: { $0.id == exercise.id })
             }, secondaryButton: .cancel())
+        }
+        .onAppear {
+            viewModel.fetchExercises()
         }
     }
     

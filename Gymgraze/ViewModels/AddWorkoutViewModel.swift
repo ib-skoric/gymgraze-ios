@@ -14,6 +14,7 @@ class AddWorkoutViewModel: ObservableObject {
     @Published var workoutExercies: [Exercise] = []
     @Published var isLoading: Bool = false
     @Published var date: Date = Date()
+    @Published var templateName: String = ""
     var startTime = Date()
     
     func reset() {
@@ -47,6 +48,30 @@ class AddWorkoutViewModel: ObservableObject {
                 completion(.success(true))
             case .failure(let error):
                 print(error)
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func saveTemplate(completion: @escaping (Result<Bool, APIError>) -> Void) {
+        self.isLoading = true
+        // create an array of TemplateExercise objects
+        var templateExercises: [TemplateExerciseToAPI] = []
+        
+        for exercise in workoutExercies {
+            templateExercises.append(TemplateExerciseToAPI(exercise_type_id: exercise.exerciseTypeId, exercise_category: exercise.exerciseCategory))
+        }
+        
+        var template = TemplateToAPI(name: templateName, template_exercises_attributes: templateExercises)
+        
+        UserService().saveWorkoutTemplate(workoutTemplate: template) { result in
+            switch result {
+            case .success(_):
+                self.isLoading = false
+                completion(.success(true))
+            case .failure(let error):
+                print(error)
+                self.isLoading = false
                 completion(.failure(error))
             }
         }

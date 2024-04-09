@@ -10,18 +10,17 @@ import SwiftUI
 struct WorkoutDiaryRow: View {
     
     var workout: Workout
-//    var index: Int
-    
-    // TODO: Add actual data from the API to show truncated names of exercises that are part of this workout.
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text("Workout")
                     .font(.headline)
-                Text("Running, bench press, squats...")
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .foregroundStyle(.gray)
+                ForEach(workout.exercises) { exercise in
+                    Text(exercise.name)
+                        .fontWeight(.light)
+                        .foregroundStyle(.gray)
+                }
             }
             Spacer()
         }

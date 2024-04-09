@@ -66,7 +66,7 @@ class UserService {
         
     }
     
-func requestPasswordReset(email: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
+    func requestPasswordReset(email: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/request_password_reset") else {
@@ -216,11 +216,11 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
             
         }.resume()
     }
-  
-  func setGoal(goal: GoalPayload, completion: @escaping (Result<Goal, APIError>) -> Void) {
+    
+    func setGoal(goal: GoalPayload, completion: @escaping (Result<Goal, APIError>) -> Void) {
         // fetch user from the back end
         // get the token for the currently logged in user
-      let token: String? = getToken()
+        let token: String? = getToken()
         
         // construct the URL
         guard let url = URL(string: "http://localhost:3000/goals") else {
@@ -274,7 +274,7 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
             }
             
         }.resume()
-  }
+    }
     
     func fetchExercisesForUser(completion: @escaping (Result<[ExerciseType], APIError>) -> Void) {
         let token: String? = getToken()
@@ -351,6 +351,84 @@ func requestPasswordReset(email: String, completion: @escaping (Result<Bool, API
                     compeltion(.failure(APIError.invalidCredentials))
                 default:
                     compeltion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+    }
+    
+    func fetchWorkoutTemplates(completion: @escaping (Result<[WorkoutTemplate], APIError>) -> Void) {
+        let token: String? = getToken()
+        
+        guard let url = URL(string: "http://localhost:3000/workout_templates") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 200:
+                    do {
+                        let workoutTemplates = try JSONDecoder().decode([WorkoutTemplate].self, from: data)
+                        completion(.success(workoutTemplates))
+                    } catch let decodeError {
+                        print("Decoding failed with error: \(decodeError)")
+                        print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
+                        completion(.failure(APIError.invalidDataReturnedFromAPI))
+                    }
+                case 401:
+                    completion(.failure(APIError.invalidCredentials))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+    }
+    
+    func saveWorkoutTemplate(workoutTemplate: TemplateToAPI, completion: @escaping (Result<WorkoutTemplate, APIError>) -> Void) {
+        let token: String? = getToken()
+        
+        guard let url = URL(string: "http://localhost:3000/workout_templates") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-type")
+        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        request.httpBody = try? JSONEncoder().encode(workoutTemplate)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 201:
+                    do {
+                        let workoutTemplate = try JSONDecoder().decode(WorkoutTemplate.self, from: data)
+                        completion(.success(workoutTemplate))
+                    } catch let decodeError {
+                        print("Decoding failed with error: \(decodeError)")
+                        print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
+                        completion(.failure(APIError.invalidDataReturnedFromAPI))
+                    }
+                case 401:
+                    completion(.failure(APIError.invalidCredentials))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
                 }
             }
         }.resume()
