@@ -52,3 +52,9 @@ struct User: Codable {
         }
     }
 }
+
+struct PersonalDetails: Codable {
+    var name: String
+    var age: Int
+    var height: Int
+}
