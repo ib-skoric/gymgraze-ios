@@ -44,5 +44,6 @@ struct Meal: Codable, Hashable, Identifiable {
 }
 
 struct MealToAPI: Codable {
+    var id: Int?
     var name: String
 }

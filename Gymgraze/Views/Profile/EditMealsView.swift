@@ -12,6 +12,7 @@ struct EditMealsview: View {
     @EnvironmentObject var userVM: UserViewModel
     @State var isAddMealModalShown: Bool = false
     @State var newMealName: String = ""
+    @State var meals: [Meal] = []
     
     var body: some View {
         NavigationView {
@@ -31,16 +32,32 @@ struct EditMealsview: View {
 
                 }
                 
-                List(userVM.user?.meals ?? []) { meal in
+                List(meals.indices, id: \.self) { index in
                     HStack {
-                        TextField(meal.name, text: .constant(meal.name))
+                        TextField("Meal Name", text: $meals[index].name)
                     }
+                }
+                .onAppear {
+                    self.meals = userVM.user?.meals ?? []
                 }
                 
                 Spacer()
                 
                 Button(action: {
-                    // TODO: Add action code here
+                    
+                    let mealsToAPI: [MealToAPI]
+                    
+                    mealsToAPI = meals.map { MealToAPI(id: $0.id, name: $0.name) }
+
+                    // save changes
+                    userVM.updateMeals(meals: mealsToAPI) { result in
+                        switch result {
+                        case .success(let user):
+                            userVM.fetchUser()
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
                 }, label: {
                     Text("Save changes")
                 })

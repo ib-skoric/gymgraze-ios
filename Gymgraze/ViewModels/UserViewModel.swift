@@ -112,75 +112,90 @@ class UserViewModel: ObservableObject {
                 }
             }
         }
-}
-
-func setGoal(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
-    UserService().setGoal(goal: goal) { (result) in
-        DispatchQueue.main.async {
-            switch result {
-            case .success(let goal):
-                self.hasSetGoals = true
-                self.user?.goal = goal
-                completion(.success("Goal set successfully"))
-            case .failure(let error):
-                print("Oops something went wrong \(error)")
+    }
+    
+    func setGoal(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
+        UserService().setGoal(goal: goal) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let goal):
+                    self.hasSetGoals = true
+                    self.user?.goal = goal
+                    completion(.success("Goal set successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong \(error)")
+                }
             }
         }
     }
-}
-
-func checkEmailConfirmed() -> Bool {
-    return user?.confirmedAt != nil
-}
-
-func requestPasswordRest(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-    UserService().requestPasswordReset(email: email) { (result) in
-        DispatchQueue.main.async {
-            switch result {
-            case .success(let string):
-                self.hasSuccessfullyRequestedPasswordReset = true
-                completion(.success(true))
-            case .failure(let error):
-                print("Oops something went wrong requesting password reset email: \(error)")
-                completion(.failure(error))
+    
+    func checkEmailConfirmed() -> Bool {
+        return user?.confirmedAt != nil
+    }
+    
+    func requestPasswordRest(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        UserService().requestPasswordReset(email: email) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let string):
+                    self.hasSuccessfullyRequestedPasswordReset = true
+                    completion(.success(true))
+                case .failure(let error):
+                    print("Oops something went wrong requesting password reset email: \(error)")
+                    completion(.failure(error))
+                }
             }
         }
     }
-}
-
-func updatePersonalDetails(name: String, age: Int, height: Int, completion: @escaping (Result<String, Error>) -> Void) {
     
-    let personalDetails = PersonalDetails(name: name, age: age, height: height)
-    
-    UserService().updatePersonalDetails(personalDetails: personalDetails) { (result) in
-        DispatchQueue.main.async {
-            switch result {
-            case .success(let user):
-                self.user = user
-                completion(.success("User updated successfully"))
-            case .failure(let error):
-                print("Oops something went wrong updating user: \(error)")
-                completion(.failure(error))
+    func updatePersonalDetails(name: String, age: Int, height: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let personalDetails = PersonalDetails(name: name, age: age, height: height)
+        
+        UserService().updatePersonalDetails(personalDetails: personalDetails) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    self.user = user
+                    completion(.success("User updated successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong updating user: \(error)")
+                    completion(.failure(error))
+                }
             }
         }
     }
-}
-
-func updateGoals(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
     
-    print("Goal: ", goal)
-    
-    UserService().setGoal(goal: goal) { (result) in
-        DispatchQueue.main.async {
-            switch result {
-            case .success(let goal):
-                self.user?.goal = goal
-                completion(.success("Goal updated successfully"))
-            case .failure(let error):
-                print("Oops something went wrong updating goal: \(error)")
-                completion(.failure(error))
+    func updateGoals(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        print("Goal: ", goal)
+        
+        UserService().setGoal(goal: goal) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let goal):
+                    self.user?.goal = goal
+                    completion(.success("Goal updated successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong updating goal: \(error)")
+                    completion(.failure(error))
+                }
             }
         }
     }
-}
+    
+    func updateMeals(meals: [MealToAPI], completion: @escaping (Result<String, Error>) -> Void) {
+        UserService().updateMeals(meals: meals) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let meals):
+                    self.user?.meals = meals
+                    completion(.success("Meals updated successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong updating meals: \(error)")
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }
