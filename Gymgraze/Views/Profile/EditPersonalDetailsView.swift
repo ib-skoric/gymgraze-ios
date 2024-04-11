@@ -30,26 +30,21 @@ struct EditPersonalDetailsView: View {
                 }
                 
                 Spacer()
-                
-                Button(action: {
-                    userVM.updatePersonalDetails(name: name, age: Int(age) ?? 0, height: Int(height) ?? 0) { result in
-                        switch result {
-                        case .success:
-                            print("Successfully updated personal details")
-                        case .failure:
-                            print("Failed to update personal details")
-                        } 
-                    }
-                }, label: {
-                    Text("Save changes")
-                })
-                .buttonStyle(CTAButton())
-                .padding()
             }
             .onAppear {
                 self.name = userVM.user?.name ?? ""
                 self.age = String(userVM.user?.age ?? 0)
                 self.height = String(userVM.user?.height ?? 0)
+            }
+            .onDisappear {
+                userVM.updatePersonalDetails(name: name, age: Int(age) ?? 0, height: Int(height) ?? 0) { result in
+                    switch result {
+                    case .success:
+                        print("Successfully updated personal details")
+                    case .failure:
+                        print("Failed to update personal details")
+                    }
+                }
             }
         }
     }

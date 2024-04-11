@@ -12,6 +12,7 @@ struct EditMealsview: View {
     @EnvironmentObject var userVM: UserViewModel
     @State var isAddMealModalShown: Bool = false
     @State var newMealName: String = ""
+    @State var meals: [Meal] = []
     
     var body: some View {
         NavigationView {
@@ -31,21 +32,20 @@ struct EditMealsview: View {
 
                 }
                 
-                List(userVM.user?.meals ?? []) { meal in
-                    HStack {
-                        TextField(meal.name, text: .constant(meal.name))
+                List {
+                    ForEach(meals.indices, id: \.self) { index in
+                        HStack {
+                            TextField("Meal Name", text: $meals[index].name)
+                        }
                     }
+                    .onDelete(perform: deleteMeal)
+                }
+                .onAppear {
+                    self.meals = userVM.user?.meals ?? []
                 }
                 
-                Spacer()
                 
-                Button(action: {
-                    // TODO: Add action code here
-                }, label: {
-                    Text("Save changes")
-                })
-                .buttonStyle(CTAButton())
-                .padding()
+                Spacer()
             }
             .alert("🍏 Add meal", isPresented: $isAddMealModalShown, actions: {
                 TextField("Meal name", text: $newMealName)
@@ -66,6 +66,44 @@ struct EditMealsview: View {
             }, message: {
                 Text("Create new cardio exercise")
             })
+            .onDisappear {
+                handleMealsUpdate()
+            }
+        }
+    }
+    
+    func handleMealsUpdate() {
+        let mealsToAPI: [MealToAPI]
+        
+        mealsToAPI = meals.map { MealToAPI(id: $0.id, name: $0.name) }
+
+        // save changes
+        userVM.updateMeals(meals: mealsToAPI) { result in
+            switch result {
+            case .success(let user):
+                userVM.fetchUser()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func deleteMeal(at offsets: IndexSet) {
+        guard let index = offsets.first else {
+            print("No meal to delete")
+            return
+        }
+        
+        let mealId = meals[index].id
+        meals.remove(atOffsets: offsets)
+        
+        userVM.deleteMeal(id: mealId) { result in
+            switch result {
+            case .success:
+                userVM.fetchUser()
+            case .failure:
+                print("Failed to delete meal")
+            }
         }
     }
 }

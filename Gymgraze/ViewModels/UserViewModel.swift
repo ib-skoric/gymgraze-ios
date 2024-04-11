@@ -68,31 +68,47 @@ class UserViewModel: ObservableObject {
     }
     
     func fetchUser() {
-        Task {
-            if let user = await self.cache.value(forKey: String(describing: user?.id)) {
-                print("Found cached user - using that data")
-                DispatchQueue.main.async {
+        //        Task {
+        //            if let user = await self.cache.value(forKey: String(describing: user?.id)) {
+        //                print("Found cached user - using that data")
+        //                DispatchQueue.main.async {
+        //                    self.user = user
+        //                }
+        //                return
+        //            } else {
+        //                print("Could not find any cached user, fetching from API...")
+        //                UserService().fetchUser { (result) in
+        //                    DispatchQueue.main.async {
+        //                        switch result {
+        //                        case .success(let user):
+        //                            self.cache.setValue(user, forKey: String(describing: user.id))
+        //                            // set the user data to the property
+        //                            self.user = user
+        //                            // check if email is confirmed
+        //                            self.isConfirmedEmailUser = self.checkEmailConfirmed()
+        //                            // print the user
+        //                            print(user)
+        //                            // stop the loading
+        //                        case .failure(let error):
+        //                            print("Error fetching user: \(error)")
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        UserService().fetchUser { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    // set the user data to the property
                     self.user = user
-                }
-                return
-            } else {
-                print("Could not find any cached user, fetching from API...")
-                UserService().fetchUser { (result) in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(let user):
-                            self.cache.setValue(user, forKey: String(describing: user.id))
-                            // set the user data to the property
-                            self.user = user
-                            // check if email is confirmed
-                            self.isConfirmedEmailUser = self.checkEmailConfirmed()
-                            // print the user
-                            print(user)
-                            // stop the loading
-                        case .failure(let error):
-                            print("Error fetching user: \(error)")
-                        }
-                    }
+                    // check if email is confirmed
+                    self.isConfirmedEmailUser = self.checkEmailConfirmed()
+                    // print the user
+                    print(user)
+                    // stop the loading
+                case .failure(let error):
+                    print("Error fetching user: \(error)")
                 }
             }
         }
@@ -162,6 +178,36 @@ class UserViewModel: ObservableObject {
                     completion(.success("Goal updated successfully"))
                 case .failure(let error):
                     print("Oops something went wrong updating goal: \(error)")
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    func updateMeals(meals: [MealToAPI], completion: @escaping (Result<String, Error>) -> Void) {
+        UserService().updateMeals(meals: meals) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let meals):
+                    self.user?.meals = meals
+                    completion(.success("Meals updated successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong updating meals: \(error)")
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    func deleteMeal(id: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        UserService().deleteMeal(id: id) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let meals):
+                    self.user?.meals = meals
+                    completion(.success("Meal deleted successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong deleting meal: \(error)")
                     completion(.failure(error))
                 }
             }

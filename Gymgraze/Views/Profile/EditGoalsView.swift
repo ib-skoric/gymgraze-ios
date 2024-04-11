@@ -26,19 +26,14 @@ struct EditGoalsView: View {
                 InputField(data: $calories, title: "🍏 Calories to consume per day (kcal)")
                 
                 Spacer()
-                
-                Button(action: {
-                    handleGoalUpdate()
-                }, label: {
-                    Text("Save changes")
-                })
-                .buttonStyle(CTAButton())
-                .padding()
             }
             .onAppear {
                 self.stepsCount = String(userVM.user?.goal?.steps ?? 0)
                 self.exerciseMinutes = String(userVM.user?.goal?.exercise ?? 0)
                 self.calories = String(userVM.user?.goal?.kcal ?? 0)
+            }
+            .onDisappear {
+                handleGoalUpdate()
             }
         }
     }
