@@ -68,103 +68,119 @@ class UserViewModel: ObservableObject {
     }
     
     func fetchUser() {
-        Task {
-            if let user = await self.cache.value(forKey: String(describing: user?.id)) {
-                print("Found cached user - using that data")
-                DispatchQueue.main.async {
-                    self.user = user
-                }
-                return
-            } else {
-                print("Could not find any cached user, fetching from API...")
-                UserService().fetchUser { (result) in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(let user):
-                            self.cache.setValue(user, forKey: String(describing: user.id))
-                            // set the user data to the property
-                            self.user = user
-                            // check if email is confirmed
-                            self.isConfirmedEmailUser = self.checkEmailConfirmed()
-                            // print the user
-                            print(user)
-                            // stop the loading
-                        case .failure(let error):
-                            print("Error fetching user: \(error)")
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func setGoal(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
-        UserService().setGoal(goal: goal) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let goal):
-                    self.hasSetGoals = true
-                    self.user?.goal = goal
-                    completion(.success("Goal set successfully"))
-                case .failure(let error):
-                    print("Oops something went wrong \(error)")
-                }
-            }
-        }
-    }
-    
-    func checkEmailConfirmed() -> Bool {
-        return user?.confirmedAt != nil
-    }
-    
-    func requestPasswordRest(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        UserService().requestPasswordReset(email: email) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let string):
-                    self.hasSuccessfullyRequestedPasswordReset = true
-                    completion(.success(true))
-                case .failure(let error):
-                    print("Oops something went wrong requesting password reset email: \(error)")
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-    
-    func updatePersonalDetails(name: String, age: Int, height: Int, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        let personalDetails = PersonalDetails(name: name, age: age, height: height)
-        
-        UserService().updatePersonalDetails(personalDetails: personalDetails) { (result) in
+        //        Task {
+        //            if let user = await self.cache.value(forKey: String(describing: user?.id)) {
+        //                print("Found cached user - using that data")
+        //                DispatchQueue.main.async {
+        //                    self.user = user
+        //                }
+        //                return
+        //            } else {
+        //                print("Could not find any cached user, fetching from API...")
+        //                UserService().fetchUser { (result) in
+        //                    DispatchQueue.main.async {
+        //                        switch result {
+        //                        case .success(let user):
+        //                            self.cache.setValue(user, forKey: String(describing: user.id))
+        //                            // set the user data to the property
+        //                            self.user = user
+        //                            // check if email is confirmed
+        //                            self.isConfirmedEmailUser = self.checkEmailConfirmed()
+        //                            // print the user
+        //                            print(user)
+        //                            // stop the loading
+        //                        case .failure(let error):
+        //                            print("Error fetching user: \(error)")
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        UserService().fetchUser { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let user):
+                    // set the user data to the property
                     self.user = user
-                    completion(.success("User updated successfully"))
+                    // check if email is confirmed
+                    self.isConfirmedEmailUser = self.checkEmailConfirmed()
+                    // print the user
+                    print(user)
+                    // stop the loading
                 case .failure(let error):
-                    print("Oops something went wrong updating user: \(error)")
-                    completion(.failure(error))
+                    print("Error fetching user: \(error)")
                 }
             }
         }
+}
+
+func setGoal(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
+    UserService().setGoal(goal: goal) { (result) in
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let goal):
+                self.hasSetGoals = true
+                self.user?.goal = goal
+                completion(.success("Goal set successfully"))
+            case .failure(let error):
+                print("Oops something went wrong \(error)")
+            }
+        }
     }
+}
+
+func checkEmailConfirmed() -> Bool {
+    return user?.confirmedAt != nil
+}
+
+func requestPasswordRest(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    UserService().requestPasswordReset(email: email) { (result) in
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let string):
+                self.hasSuccessfullyRequestedPasswordReset = true
+                completion(.success(true))
+            case .failure(let error):
+                print("Oops something went wrong requesting password reset email: \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
+}
+
+func updatePersonalDetails(name: String, age: Int, height: Int, completion: @escaping (Result<String, Error>) -> Void) {
     
-    func updateGoals(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        print("Goal: ", goal)
-        
-        UserService().setGoal(goal: goal) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let goal):
-                    self.user?.goal = goal
-                    completion(.success("Goal updated successfully"))
-                case .failure(let error):
-                    print("Oops something went wrong updating goal: \(error)")
-                    completion(.failure(error))
-                }
+    let personalDetails = PersonalDetails(name: name, age: age, height: height)
+    
+    UserService().updatePersonalDetails(personalDetails: personalDetails) { (result) in
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let user):
+                self.user = user
+                completion(.success("User updated successfully"))
+            case .failure(let error):
+                print("Oops something went wrong updating user: \(error)")
+                completion(.failure(error))
             }
         }
     }
+}
+
+func updateGoals(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
+    
+    print("Goal: ", goal)
+    
+    UserService().setGoal(goal: goal) { (result) in
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let goal):
+                self.user?.goal = goal
+                completion(.success("Goal updated successfully"))
+            case .failure(let error):
+                print("Oops something went wrong updating goal: \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
+}
 }
