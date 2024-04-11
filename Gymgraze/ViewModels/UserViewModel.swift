@@ -131,4 +131,40 @@ class UserViewModel: ObservableObject {
             }
         }
     }
+    
+    func updatePersonalDetails(name: String, age: Int, height: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let personalDetails = PersonalDetails(name: name, age: age, height: height)
+        
+        UserService().updatePersonalDetails(personalDetails: personalDetails) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    self.user = user
+                    completion(.success("User updated successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong updating user: \(error)")
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    func updateGoals(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        print("Goal: ", goal)
+        
+        UserService().setGoal(goal: goal) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let goal):
+                    self.user?.goal = goal
+                    completion(.success("Goal updated successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong updating goal: \(error)")
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }

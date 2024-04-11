@@ -1,0 +1,68 @@
+//
+//  EditGoalsView.swift
+//  Gymgraze
+//
+//  Created by Ivan Branimir Skoric on 09/04/2024.
+//
+
+import SwiftUI
+
+struct EditGoalsView: View {
+    
+    @State var stepsCount: String = ""
+    @State var exerciseMinutes: String = ""
+    @State var calories: String = ""
+    @EnvironmentObject var userVM: UserViewModel
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Heading(text: "Edit goals")
+                
+                InputField(data: $stepsCount, title: "👟 Target step count per day")
+                
+                InputField(data: $exerciseMinutes, title: "🏋️‍♂️ Target exercise daily (in minutes)")
+                
+                InputField(data: $calories, title: "🍏 Calories to consume per day (kcal)")
+                
+                Spacer()
+                
+                Button(action: {
+                    handleGoalUpdate()
+                }, label: {
+                    Text("Save changes")
+                })
+                .buttonStyle(CTAButton())
+                .padding()
+            }
+            .onAppear {
+                self.stepsCount = String(userVM.user?.goal?.steps ?? 0)
+                self.exerciseMinutes = String(userVM.user?.goal?.exercise ?? 0)
+                self.calories = String(userVM.user?.goal?.kcal ?? 0)
+            }
+        }
+    }
+    
+    func handleGoalUpdate() {
+        let goalPayload =
+            GoalPayload(
+                kcal: Int(calories) ?? 0,
+                steps: Int(stepsCount) ?? 0,
+                exercise: Int(exerciseMinutes) ?? 0
+            )
+        userVM.updateGoals(goal: goalPayload) { result in
+            
+            switch result {
+            case .success:
+                print("Successfully updated goals")
+            case .failure:
+                print("Failed to update goals")
+            }
+        }
+    }
+}
+
+
+#Preview {
+    EditGoalsView()
+}
