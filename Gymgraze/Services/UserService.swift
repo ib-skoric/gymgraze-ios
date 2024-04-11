@@ -434,8 +434,10 @@ class UserService {
         }.resume()
     }
     
-    func editPersonalDetails(personalDetails: PersonalDetails, completion: @escaping (Result<User, APIError>) -> Void) {
+    func updatePersonalDetails(personalDetails: PersonalDetails, completion: @escaping (Result<User, APIError>) -> Void) {
         let token: String? = getToken()
+        
+        print("Personal details: ", personalDetails)
         
         guard let url = URL(string: "http://localhost:3000/update_profile") else {
             completion(.failure(APIError.invalidURL))
@@ -456,7 +458,7 @@ class UserService {
             
             if let httpResonse = response as? HTTPURLResponse {
                 switch httpResonse.statusCode {
-                case 200:
+                case 202:
                     do {
                         let user = try JSONDecoder().decode(User.self, from: data)
                         completion(.success(user))

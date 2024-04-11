@@ -131,4 +131,22 @@ class UserViewModel: ObservableObject {
             }
         }
     }
+    
+    func updatePersonalDetails(name: String, age: Int, height: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let personalDetails = PersonalDetails(name: name, age: age, height: height)
+        
+        UserService().updatePersonalDetails(personalDetails: personalDetails) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    self.user = user
+                    completion(.success("User updated successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong updating user: \(error)")
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }

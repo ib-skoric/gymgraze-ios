@@ -10,6 +10,8 @@ import SwiftUI
 struct EditPersonalDetailsView: View {
     
     @State var name: String = ""
+    @State var age: String = ""
+    @State var height: String = ""
     @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
@@ -17,31 +19,37 @@ struct EditPersonalDetailsView: View {
             VStack {
                 Heading(text: "Edit personal information")
                 
-                if let name = userVM.user?.name {
-                    InputField(data: .constant(name), title: "Email")
+                InputField(data: $name, title: "Name")
+                
+                HStack(alignment: .center) {
+                    InputField(data: $age, title: "Age (years)")
                 }
                 
-                if let age = userVM.user?.age {
-                    HStack(alignment: .center) {
-                        InputField(data: .constant(String(age)), title: "Age (years)")
-                    }
-                }
-                
-                if let height = userVM.user?.height {
-                    HStack(alignment: .center) {
-                        InputField(data: .constant(String(height)), title: "Height (cm)")
-                    }
+                HStack(alignment: .center) {
+                    InputField(data: $height, title: "Height (cm)")
                 }
                 
                 Spacer()
                 
                 Button(action: {
-                    // TODO: Add action code here
+                    userVM.updatePersonalDetails(name: name, age: Int(age) ?? 0, height: Int(height) ?? 0) { result in
+                        switch result {
+                        case .success:
+                            print("Successfully updated personal details")
+                        case .failure:
+                            print("Failed to update personal details")
+                        }
+                    }
                 }, label: {
                     Text("Save changes")
                 })
                 .buttonStyle(CTAButton())
                 .padding()
+            }
+            .onAppear {
+                self.name = userVM.user?.name ?? ""
+                self.age = String(userVM.user?.age ?? 0)
+                self.height = String(userVM.user?.height ?? 0)
             }
         }
     }
