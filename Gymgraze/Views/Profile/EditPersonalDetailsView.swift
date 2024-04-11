@@ -38,7 +38,7 @@ struct EditPersonalDetailsView: View {
                             print("Successfully updated personal details")
                         case .failure:
                             print("Failed to update personal details")
-                        }
+                        } 
                     }
                 }, label: {
                     Text("Save changes")

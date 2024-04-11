@@ -9,6 +9,9 @@ import SwiftUI
 
 struct EditGoalsView: View {
     
+    @State var stepsCount: String = ""
+    @State var exerciseMinutes: String = ""
+    @State var calories: String = ""
     @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
@@ -16,31 +19,49 @@ struct EditGoalsView: View {
             VStack {
                 Heading(text: "Edit goals")
                 
-                if let stepsCount = userVM.user?.goal?.steps {
-                    InputField(data: .constant(String(stepsCount)), title: "👟 Target step count per day")
-                }
+                InputField(data: $stepsCount, title: "👟 Target step count per day")
                 
-                if let exerciseMinutes = userVM.user?.goal?.exercise {
-                    InputField(data: .constant(String(exerciseMinutes)), title: "🏋️‍♂️ Target exercise daily (in minutes)")
-                }
+                InputField(data: $exerciseMinutes, title: "🏋️‍♂️ Target exercise daily (in minutes)")
                 
-                if let calories = userVM.user?.goal?.kcal {
-                    InputField(data: .constant(String(calories)), title: "🍏 Calories to consume per day (kcal)")
-                }
+                InputField(data: $calories, title: "🍏 Calories to consume per day (kcal)")
                 
                 Spacer()
                 
                 Button(action: {
-                    // TODO: Add action code here
+                    handleGoalUpdate()
                 }, label: {
                     Text("Save changes")
                 })
                 .buttonStyle(CTAButton())
                 .padding()
             }
+            .onAppear {
+                self.stepsCount = String(userVM.user?.goal?.steps ?? 0)
+                self.exerciseMinutes = String(userVM.user?.goal?.exercise ?? 0)
+                self.calories = String(userVM.user?.goal?.kcal ?? 0)
+            }
+        }
+    }
+    
+    func handleGoalUpdate() {
+        let goalPayload =
+            GoalPayload(
+                kcal: Int(calories) ?? 0,
+                steps: Int(stepsCount) ?? 0,
+                exercise: Int(exerciseMinutes) ?? 0
+            )
+        userVM.updateGoals(goal: goalPayload) { result in
+            
+            switch result {
+            case .success:
+                print("Successfully updated goals")
+            case .failure:
+                print("Failed to update goals")
+            }
         }
     }
 }
+
 
 #Preview {
     EditGoalsView()

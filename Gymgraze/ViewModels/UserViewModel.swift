@@ -149,4 +149,22 @@ class UserViewModel: ObservableObject {
             }
         }
     }
+    
+    func updateGoals(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        print("Goal: ", goal)
+        
+        UserService().setGoal(goal: goal) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let goal):
+                    self.user?.goal = goal
+                    completion(.success("Goal updated successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong updating goal: \(error)")
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }
