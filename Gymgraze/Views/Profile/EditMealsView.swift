@@ -27,6 +27,7 @@ struct EditMealsview: View {
                             .font(.system(size: 20))
                             .foregroundColor(.orange)
                     }
+                    .padding(.trailing)
 
                 }
                 
