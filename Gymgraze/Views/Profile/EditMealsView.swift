@@ -42,27 +42,6 @@ struct EditMealsview: View {
                 }
                 
                 Spacer()
-                
-                Button(action: {
-                    
-                    let mealsToAPI: [MealToAPI]
-                    
-                    mealsToAPI = meals.map { MealToAPI(id: $0.id, name: $0.name) }
-
-                    // save changes
-                    userVM.updateMeals(meals: mealsToAPI) { result in
-                        switch result {
-                        case .success(let user):
-                            userVM.fetchUser()
-                        case .failure(let error):
-                            print(error)
-                        }
-                    }
-                }, label: {
-                    Text("Save changes")
-                })
-                .buttonStyle(CTAButton())
-                .padding()
             }
             .alert("🍏 Add meal", isPresented: $isAddMealModalShown, actions: {
                 TextField("Meal name", text: $newMealName)
@@ -83,6 +62,21 @@ struct EditMealsview: View {
             }, message: {
                 Text("Create new cardio exercise")
             })
+            .onDisappear {
+                let mealsToAPI: [MealToAPI]
+                
+                mealsToAPI = meals.map { MealToAPI(id: $0.id, name: $0.name) }
+
+                // save changes
+                userVM.updateMeals(meals: mealsToAPI) { result in
+                    switch result {
+                    case .success(let user):
+                        userVM.fetchUser()
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
         }
     }
 }
