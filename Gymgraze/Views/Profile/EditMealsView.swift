@@ -32,14 +32,18 @@ struct EditMealsview: View {
 
                 }
                 
-                List(meals.indices, id: \.self) { index in
-                    HStack {
-                        TextField("Meal Name", text: $meals[index].name)
+                List {
+                    ForEach(meals.indices, id: \.self) { index in
+                        HStack {
+                            TextField("Meal Name", text: $meals[index].name)
+                        }
                     }
+                    .onDelete(perform: deleteMeal)
                 }
                 .onAppear {
                     self.meals = userVM.user?.meals ?? []
                 }
+                
                 
                 Spacer()
             }
@@ -63,19 +67,42 @@ struct EditMealsview: View {
                 Text("Create new cardio exercise")
             })
             .onDisappear {
-                let mealsToAPI: [MealToAPI]
-                
-                mealsToAPI = meals.map { MealToAPI(id: $0.id, name: $0.name) }
+                handleMealsUpdate()
+            }
+        }
+    }
+    
+    func handleMealsUpdate() {
+        let mealsToAPI: [MealToAPI]
+        
+        mealsToAPI = meals.map { MealToAPI(id: $0.id, name: $0.name) }
 
-                // save changes
-                userVM.updateMeals(meals: mealsToAPI) { result in
-                    switch result {
-                    case .success(let user):
-                        userVM.fetchUser()
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
+        // save changes
+        userVM.updateMeals(meals: mealsToAPI) { result in
+            switch result {
+            case .success(let user):
+                userVM.fetchUser()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func deleteMeal(at offsets: IndexSet) {
+        guard let index = offsets.first else {
+            print("No meal to delete")
+            return
+        }
+        
+        let mealId = meals[index].id
+        meals.remove(atOffsets: offsets)
+        
+        userVM.deleteMeal(id: mealId) { result in
+            switch result {
+            case .success:
+                userVM.fetchUser()
+            case .failure:
+                print("Failed to delete meal")
             }
         }
     }

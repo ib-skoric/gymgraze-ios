@@ -198,4 +198,19 @@ class UserViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteMeal(id: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        UserService().deleteMeal(id: id) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let meals):
+                    self.user?.meals = meals
+                    completion(.success("Meal deleted successfully"))
+                case .failure(let error):
+                    print("Oops something went wrong deleting meal: \(error)")
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }
