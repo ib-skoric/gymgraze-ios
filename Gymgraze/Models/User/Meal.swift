@@ -42,3 +42,7 @@ struct Meal: Codable, Hashable, Identifiable {
         updatedAt = nil
     }
 }
+
+struct MealToAPI: Codable {
+    var name: String
+}

@@ -10,11 +10,25 @@ import SwiftUI
 struct EditMealsview: View {
     
     @EnvironmentObject var userVM: UserViewModel
+    @State var isAddMealModalShown: Bool = false
+    @State var newMealName: String = ""
     
     var body: some View {
         NavigationView {
             VStack {
-                Heading(text: "Edit meals")
+                HStack {
+                    Heading(text: "Edit meals")
+                    
+                    Button {
+                        // show the add meal modal
+                        isAddMealModalShown.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 20))
+                            .foregroundColor(.orange)
+                    }
+
+                }
                 
                 List(userVM.user?.meals ?? []) { meal in
                     HStack {
@@ -32,6 +46,25 @@ struct EditMealsview: View {
                 .buttonStyle(CTAButton())
                 .padding()
             }
+            .alert("🍏 Add meal", isPresented: $isAddMealModalShown, actions: {
+                TextField("Meal name", text: $newMealName)
+                Button("Add", action: {
+                    
+                    let meal = MealToAPI(name: newMealName)
+                    
+                    UserService().createMeal(meal: meal) { result in
+                        switch result {
+                        case .success(let meal):
+                            userVM.fetchUser()
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                })
+                Button("Cancel", role: .cancel, action: {})
+            }, message: {
+                Text("Create new cardio exercise")
+            })
         }
     }
 }
