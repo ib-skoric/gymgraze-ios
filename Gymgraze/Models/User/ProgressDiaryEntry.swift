@@ -11,10 +11,10 @@ struct ProgressDiaryEntry: Codable, Identifiable {
     var id: Int
     var date: String
     var weight: Double
-    var armMeasurement: Double
-    var waistMeasurement: Double
-    var bodyFatPercentage: Double
-    var chestMeasurement: Double
+    var armMeasurement: Double?
+    var waistMeasurement: Double?
+    var bodyFatPercentage: Double?
+    var chestMeasurement: Double?
     
     init() {
         id = 0

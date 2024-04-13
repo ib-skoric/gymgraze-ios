@@ -18,10 +18,18 @@ struct ProgressDiaryRow: View {
                     .font(.headline)
                 VStack(alignment: .leading) {
                     Text("**Weight:** \(String(format: "%.1f", progressDiaryEntry.weight))kg")
-                    Text("**Body Fat Percentage:** \(String(format: "%.1f", progressDiaryEntry.bodyFatPercentage))%")
-                    Text("**Arm:** \(String(format: "%.1f", progressDiaryEntry.armMeasurement))cm")
-                    Text("**Waist:** \(String(format: "%.1f", progressDiaryEntry.waistMeasurement))cm")
-                    Text("**Chest:** \(String(format: "%.1f", progressDiaryEntry.chestMeasurement))cm")
+                    if progressDiaryEntry.bodyFatPercentage != nil {
+                        Text("**Body Fat Percentage:** \(String(format: "%.1f", progressDiaryEntry.bodyFatPercentage ?? "No data"))%")
+                    }
+                    if progressDiaryEntry.armMeasurement != nil {
+                        Text("**Arm:** \(String(format: "%.1f", progressDiaryEntry.armMeasurement ?? "No data"))cm")
+                    }
+                    if progressDiaryEntry.waistMeasurement != nil {
+                        Text("**Waist:** \(String(format: "%.1f", progressDiaryEntry.waistMeasurement ?? "No data"))cm")
+                    }
+                    if progressDiaryEntry.chestMeasurement != nil {
+                        Text("**Chest:** \(String(format: "%.1f", progressDiaryEntry.chestMeasurement ?? "No data"))cm")
+                    }
                 }
                     .font( .subheadline)
                     .fontWeight(.light)
