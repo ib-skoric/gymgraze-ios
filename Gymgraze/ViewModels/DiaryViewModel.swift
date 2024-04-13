@@ -11,6 +11,7 @@ class DiaryViewModel: ObservableObject {
     @Published var selectedDate: Date = Date()
     @Published var diaryFoods: [Food] = FoodDiaryEntry().foods
     @Published var diaryWokrouts: [Workout] = WorkoutDiaryEntry().workouts
+    @Published var diaryProgressEntry: ProgressDiaryEntry = ProgressDiaryEntry()
     @Published var isLoading = false
     @Published var workoutFetchCompleted: Bool = false
     
@@ -78,5 +79,29 @@ class DiaryViewModel: ObservableObject {
         }
     }
     
-    
+    func fetchProgressDiary() {
+        self.isLoading = true
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let dateString = dateFormatter.string(from: selectedDate)
+        
+        DiaryService().fetchProgressDiaryEntry(date: dateString) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let entry):
+                    self.diaryProgressEntry = entry
+                    self.isLoading = false
+                case .failure(let error):
+                    if case APIError.entryNotFound = error {
+                        print("Ran into 404 error, returning empty array...")
+                    } else {
+                        print(error)
+                    }
+                    self.isLoading = false
+                }
+            }
+        }
+    }
 }

@@ -16,6 +16,16 @@ struct ProgressDiaryEntry: Codable, Identifiable {
     var hipMeasurement: Double
     var chestMeasurement: Double
     
+    init() {
+        id = 0
+        date = ""
+        weight = 0
+        armMeasurement = 0
+        waistMeasurement = 0
+        hipMeasurement = 0
+        chestMeasurement = 0
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case date
