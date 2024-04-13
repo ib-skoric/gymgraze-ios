@@ -25,45 +25,54 @@ struct Trends: Codable, Identifiable {
 }
 
 struct Weight: Codable {
+    var id: Int
     var date: String
     var weight: Double
 }
 
 struct BodyFatPercentage: Codable {
+    var id: Int
     var date: String
-    var bodyFatPercentage: Double
+    var bodyFatPercentage: Double?
     
     enum CodingKeys: String, CodingKey {
+        case id
         case date
         case bodyFatPercentage = "body_fat_percentage"
     }
 }
 
 struct ArmMeasurement: Codable {
+    var id: Int
     var date: String
-    var armMeasurement: Double
+    var armMeasurement: Double?
     
     enum CodingKeys: String, CodingKey {
+        case id
         case date
         case armMeasurement = "arm_measurement"
     }
 }
 
 struct WaistMeasurement: Codable {
+    var id: Int
     var date: String
-    var waistMeasurement: Double
+    var waistMeasurement: Double?
     
     enum CodingKeys: String, CodingKey {
+        case id
         case date
         case waistMeasurement = "waist_measurement"
     }
 }
 
 struct ChestMeasurement: Codable {
+    var id: Int
     var date: String
-    var chestMeasurement: Double
+    var chestMeasurement: Double?
     
     enum CodingKeys: String, CodingKey {
+        case id
         case date
         case chestMeasurement = "chest_measurement"
     }
