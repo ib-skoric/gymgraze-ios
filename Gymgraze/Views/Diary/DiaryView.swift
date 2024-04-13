@@ -132,6 +132,7 @@ struct DiaryView: View {
             }
             
             AddToDropdown(type: "menu", date: $diaryVM.selectedDate)
+                .environmentObject(diaryVM)
         }
     }
     
