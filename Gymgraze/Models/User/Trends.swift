@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Trends {
+struct Trends: Codable {
     var weights: [Double]
     var bodyFatPercentages: [Double]
     var armMeasurements: [Double]

@@ -78,7 +78,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "397"
             endingLineNumber = "397"
-            landmarkName = "fetchWorkoutTemplates(completion:)"
+            landmarkName = "saveWorkoutTemplate(workoutTemplate:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

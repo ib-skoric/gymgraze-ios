@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct TrendsView: View {
+    
+    @StateObject var trendsVM = TrendsViewModel()
+    
     var body: some View {
         NavigationStack {
             Heading(text: "📊 Trends")
+        }
+        .onAppear {
+            
         }
     }
 }
