@@ -32,6 +32,7 @@
 		216693322BCA80F5003CD93E /* ProgressDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693312BCA80F5003CD93E /* ProgressDiaryEntry.swift */; };
 		216693342BCABADB003CD93E /* ProgressDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693332BCABADB003CD93E /* ProgressDiaryRow.swift */; };
 		216693372BCAC176003CD93E /* AddProgressLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693362BCAC176003CD93E /* AddProgressLogView.swift */; };
+		2166933B2BCAE148003CD93E /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2166933A2BCAE148003CD93E /* Trends.swift */; };
 		21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */; };
 		21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5C2B7EA92A00314DFE /* UserService.swift */; };
 		2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */; };
@@ -112,6 +113,7 @@
 		216693312BCA80F5003CD93E /* ProgressDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDiaryEntry.swift; sourceTree = "<group>"; };
 		216693332BCABADB003CD93E /* ProgressDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDiaryRow.swift; sourceTree = "<group>"; };
 		216693362BCAC176003CD93E /* AddProgressLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProgressLogView.swift; sourceTree = "<group>"; };
+		2166933A2BCAE148003CD93E /* Trends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trends.swift; sourceTree = "<group>"; };
 		21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		21679B5C2B7EA92A00314DFE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseTypeDropdown.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				21EC13C92B62FD8900CF0814 /* Meal.swift */,
 				215D54312B757B1C00A07029 /* Registration.swift */,
 				216693312BCA80F5003CD93E /* ProgressDiaryEntry.swift */,
+				2166933A2BCAE148003CD93E /* Trends.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */,
 				21BF71B12BA7630E0000F573 /* WorkoutDetailView.swift in Sources */,
 				21C745AE2BB98AFF0085DC68 /* WorkoutExerciseCard.swift in Sources */,
+				2166933B2BCAE148003CD93E /* Trends.swift in Sources */,
 				21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
 				210DA2FD2B825FE900F96B75 /* StatCard.swift in Sources */,
