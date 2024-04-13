@@ -468,7 +468,7 @@ class DiaryService {
         } catch {
             print("Error encoding JSON: \(error)")
         }
-
+        
         
         URLSession.shared.dataTask(with: exerciseRequest) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -487,6 +487,9 @@ class DiaryService {
                 }
             }
         }.resume()
-        
+    }
+    
+    func fetchProgressDiaryEntry(date: String, completion: @escaping (Result<ProgressDiaryEntry, APIError>) -> Void) {
+        fetch(urlString: "http://localhost:3000/progress_diary_entries/\(date)", completion: completion)
     }
 }
