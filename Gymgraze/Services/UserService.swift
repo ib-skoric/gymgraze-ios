@@ -15,7 +15,7 @@ class UserService {
         var token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/user") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/user") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<User, APIError>)
             return
@@ -69,7 +69,7 @@ class UserService {
     func requestPasswordReset(email: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/request_password_reset") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/request_password_reset") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return
@@ -119,7 +119,7 @@ class UserService {
     
     func validatePasswordResetCode(token: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/validate_password_reset_token") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/validate_password_reset_token") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return
@@ -169,7 +169,7 @@ class UserService {
     
     func resetPsasword(token: String, password: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/reset_password") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/reset_password") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Bool, APIError>)
             return
@@ -223,7 +223,7 @@ class UserService {
         let token: String? = getToken()
         
         // construct the URL
-        guard let url = URL(string: "http://localhost:3000/goals") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/goals") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<Goal, APIError>)
             return
@@ -279,7 +279,7 @@ class UserService {
     func fetchExercisesForUser(completion: @escaping (Result<[ExerciseType], APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/exercise_types") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/exercise_types") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -317,7 +317,7 @@ class UserService {
     func createExerciseType(name: String, category: String, compeltion: @escaping (Result<ExerciseType, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/exercise_types") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/exercise_types") else {
             compeltion(.failure(APIError.invalidURL))
             return
         }
@@ -359,7 +359,7 @@ class UserService {
     func fetchWorkoutTemplates(completion: @escaping (Result<[WorkoutTemplate], APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/workout_templates") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/workout_templates") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -397,7 +397,7 @@ class UserService {
     func saveWorkoutTemplate(workoutTemplate: TemplateToAPI, completion: @escaping (Result<WorkoutTemplate, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/workout_templates") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/workout_templates") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -441,7 +441,7 @@ class UserService {
         
         print("Personal details: ", personalDetails)
         
-        guard let url = URL(string: "http://localhost:3000/update_profile") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/update_profile") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -481,7 +481,7 @@ class UserService {
     func createMeal(meal: MealToAPI, completion: @escaping (Result<Meal, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/meals") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/meals") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -521,7 +521,7 @@ class UserService {
     func updateMeals(meals: [MealToAPI], completion: @escaping (Result<[Meal], APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/update_all_meals") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/update_all_meals") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -564,7 +564,7 @@ class UserService {
     func deleteMeal(id: Int, completion: @escaping (Result<[Meal], APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/meals/\(id)") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/meals/\(id)") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -602,7 +602,7 @@ class UserService {
     func fetchTrends(completion: @escaping (Result<Trends, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/trends") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/trends") else {
             completion(.failure(APIError.invalidURL))
             return
         }

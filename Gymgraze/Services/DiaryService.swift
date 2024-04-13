@@ -48,17 +48,17 @@ class DiaryService {
     }
     
     func fetchWorkout(workoutId: Int, completion: @escaping (Result<Workout, APIError>) -> Void) {
-        fetch(urlString: "http://localhost:3000/workouts/\(workoutId)", completion: completion)
+        fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/workouts/\(workoutId)", completion: completion)
     }
     
     func fetchFoodItem(foodId: Int, completion: @escaping (Result<Food, APIError>) -> Void) {
-        fetch(urlString: "http://localhost:3000/foods/\(foodId)", completion: completion)
+        fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/foods/\(foodId)", completion: completion)
     }
     
     func updateFoodAmount(foodId: Int, amount: Int, completion: @escaping (Result<Food, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/foods/\(foodId)") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/foods/\(foodId)") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -104,7 +104,7 @@ class DiaryService {
     func removeFoodItem(foodId: Int, completion: @escaping (Result<Bool, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/foods/\(foodId)") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/foods/\(foodId)") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -138,7 +138,7 @@ class DiaryService {
     func createFoodDiaryEntry(date: String, completion: @escaping (Result<FoodDiaryEntry, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/food_diary_entries") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/food_diary_entries") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -185,7 +185,7 @@ class DiaryService {
     func createWorkoutDiaryEntry(date: String, completion: @escaping (Result<WorkoutDiaryEntry, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/workout_diary_entries") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/workout_diary_entries") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -229,7 +229,7 @@ class DiaryService {
     }
     
     func fetchFoodDiaryEntry(date: String, completion: @escaping (Result<FoodDiaryEntry, APIError>) -> Void) {
-        fetch(urlString: "http://localhost:3000/food_diary_entries/\(date)") { (result: Result<FoodDiaryEntry, APIError>) in
+        fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/food_diary_entries/\(date)") { (result: Result<FoodDiaryEntry, APIError>) in
             switch result {
             case .success(let foodDiaryEntry):
                 completion(.success(foodDiaryEntry))
@@ -252,7 +252,7 @@ class DiaryService {
     }
     
     func fetchWorkoutDiaryEntry(date: String, completion: @escaping (Result<WorkoutDiaryEntry, APIError>) -> Void) {
-        fetch(urlString: "http://localhost:3000/workout_diary_entries/\(date)") { (result: Result<WorkoutDiaryEntry, APIError>) in
+        fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/workout_diary_entries/\(date)") { (result: Result<WorkoutDiaryEntry, APIError>) in
             switch result {
             case .success(let workoutDiaryEntry):
                 print(workoutDiaryEntry)
@@ -279,7 +279,7 @@ class DiaryService {
     func addFoodToDiary(food: FoodItem, amount: Double, date: String, mealId: Int, nutritionalInfo: FoodItem.Nutriments, completion: @escaping (Result<Food, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "http://localhost:3000/foods") else {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/foods") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -361,7 +361,7 @@ class DiaryService {
         print(token)
         var workoutDiaryEntryID: String?
         
-        guard let workoutURL = URL(string: "http://localhost:3000/workouts") else {
+        guard let workoutURL = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/workouts") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -442,7 +442,7 @@ class DiaryService {
     func createExercises(workoutId: Int, exercises: [Exercise], completion: @escaping (Result<Bool, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let exerciseURL = URL(string: "http://localhost:3000/exercises") else {
+        guard let exerciseURL = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/exercises") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -490,7 +490,7 @@ class DiaryService {
     }
     
     func fetchProgressDiaryEntry(date: String, completion: @escaping (Result<ProgressDiaryEntry, APIError>) -> Void) {
-        fetch(urlString: "http://localhost:3000/progress_diary_entries/\(date)", completion: completion)
+        fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/progress_diary_entries/\(date)", completion: completion)
     }
     
     
@@ -499,7 +499,7 @@ class DiaryService {
     func addToProgressDiary(progressDiaryEntry: ProgressDiaryEntryToAPI, completion: @escaping (Result<ProgressDiaryEntry, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let progressDiaryURL = URL(string: "http://localhost:3000/progress_diary_entries") else {
+        guard let progressDiaryURL = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/progress_diary_entries") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -543,7 +543,7 @@ class DiaryService {
     func deleteProgressEntry(id: Int, completion: @escaping (Result<Bool, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let progressDiaryURL = URL(string: "http://localhost:3000/progress_diary_entries/\(id)") else {
+        guard let progressDiaryURL = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/progress_diary_entries/\(id)") else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -576,7 +576,7 @@ class DiaryService {
     func deleteWorkoutEntry(id: Int, completion: @escaping (Result<Bool, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let workoutURL = URL(string: "http://localhost:3000/workouts/\(id)") else {
+        guard let workoutURL = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/workouts/\(id)") else {
             completion(.failure(APIError.invalidURL))
             return
         }

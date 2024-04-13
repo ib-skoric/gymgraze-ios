@@ -11,6 +11,7 @@ struct StatCard: View {
     
     var type: String
     var goal: Int?
+    var currentValue: Double?
     
     var colour: Color {
         switch type {
@@ -30,7 +31,7 @@ struct StatCard: View {
         case "calories":
             return "Calories consumed today"
         case "workouts":
-            return "Workout minutes done today"
+            return "Exercise minutes done today"
         case "steps":
             return "Steps taken so far"
         default:
@@ -64,7 +65,7 @@ struct StatCard: View {
                 VStack {
                     Text(text)
                         .fontWeight(.light)
-                    Text("500/\(goal ?? 0)")
+                    Text("\(String(format: "%.0f", currentValue ?? 0))/\(goal ?? 0)")
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 }
