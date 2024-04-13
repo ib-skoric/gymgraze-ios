@@ -26,6 +26,11 @@ struct AddToDropdown: View {
             } label: {
                 Label("Add workout", systemImage: "figure.run")
             }
+            NavigationLink {
+                AddProgressLogView(date: date)
+            } label: {
+                Label("Add progress log", systemImage: "square.and.pencil")
+            }
         } label: {
             if type == "menu" {
                 Label("", systemImage: "plus")
