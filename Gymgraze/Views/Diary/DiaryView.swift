@@ -45,9 +45,14 @@ struct DiaryView: View {
                         Spacer()
                     } else {
                         List {
-                            if diaryVM.diaryProgressEntry != nil {
+                            if !(diaryVM.diaryProgressEntry?.isEmpty ?? true) {
                                 Section() {
-                                    ProgressDiaryRow(progressDiaryEntry: diaryVM.diaryProgressEntry ?? ProgressDiaryEntry())
+                                    ForEach(diaryVM.diaryProgressEntry!, id: \.id) { entry in
+                                        ProgressDiaryRow(progressDiaryEntry: entry)
+                                    }
+                                    .onDelete(perform: { indexSet in
+                                        deleteProgressEntry()
+                                    })
                                 }
                             }
                             
@@ -159,6 +164,20 @@ struct DiaryView: View {
                 diaryVM.fetchFoodDiary()
             case .failure(let error):
                 print("Error deleting food \(error)")
+            }
+        }
+    }
+    
+    func deleteProgressEntry() {
+        let entryToDelete = diaryVM.diaryProgressEntry![0].id
+        
+        DiaryService().deleteProgressEntry(id: Int(entryToDelete)) { result in
+            switch result {
+            case .success(_):
+                print("deleted progress entry")
+                diaryVM.fetchProgressDiary()
+            case .failure(let error):
+                print("Error deleting progress entry \(error)")
             }
         }
     }
