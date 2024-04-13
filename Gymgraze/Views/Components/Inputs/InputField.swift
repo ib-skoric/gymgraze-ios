@@ -43,7 +43,7 @@ struct InputField: View {
                             .stroke(Color.gray, lineWidth: 1)
                     )
                 
-            case "Age", "Weight", "Height", "Steps", "Exercise", "Calories (kcal)":
+            case "Age", "Weight", "Height", "Steps", "Exercise", "Calories (kcal)", "👟 Target step count per day", "🏋️‍♂️ Target exercise daily (in minutes)", "🍏 Calories to consume per day (kcal)":
                 TextField("", text: $data)
                     .keyboardType(.numberPad)
                     .padding()
