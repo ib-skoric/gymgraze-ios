@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct AddProgressLogView: View {
+    @Environment(\.dismiss) var dismiss
     @State var date: Date = Date()
+    @EnvironmentObject var diaryVM: DiaryViewModel
+    @State var weight: String = ""
+    @State var bodyFatPercentage: String = ""
+    @State var armMeasurement: String = ""
+    @State var waistMeasurement: String = ""
+    @State var chestMeasurement: String = ""
     
     var body: some View {
-        
-        @State var weight: String = ""
-        @State var bodyFatPercentage: String = ""
-        @State var armMeasurement: String = ""
-        @State var waistMeasurement: String = ""
-        @State var chestMeasurement: String = ""
         
         NavigationView {
             VStack {
@@ -33,7 +34,11 @@ struct AddProgressLogView: View {
                 Button {
                     handleAddProgressLog()
                 } label: {
-                    Text("Add progress log")
+                    if diaryVM.isLoading {
+                        ProgressView()
+                    } else {
+                        Text("Add progress log")
+                    }
                 }
                 .buttonStyle(CTAButton())
                 .padding()
@@ -42,6 +47,16 @@ struct AddProgressLogView: View {
     }
     
     func handleAddProgressLog() {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let dateString = dateFormatter.string(from: date)
+        
+        var dataToAPI = ProgressDiaryEntryToAPI(date: dateString, weight: Double(weight) ?? 0.0, body_fat_percentage: Double(bodyFatPercentage), arm_measurement: Double(armMeasurement), waist_measurement: Double(waistMeasurement), chest_measurement: Double(chestMeasurement))
+        
+        diaryVM.addToProgressDiary(progressDiaryEntry: dataToAPI)
+        dismiss()
         
     }
 }

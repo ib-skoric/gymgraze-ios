@@ -124,6 +124,7 @@ struct DiaryView: View {
                 DispatchQueue.main.async {
                     if newValue != oldValue {
                         selectedDate = newValue
+                        print("Selected diaryVM date: \(diaryVM.selectedDate)")
                         diaryVM.fetchFoodDiary()
                         diaryVM.fetchWorkoutDiary()
                         diaryVM.fetchProgressDiary()

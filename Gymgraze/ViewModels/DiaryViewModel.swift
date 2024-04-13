@@ -81,6 +81,7 @@ class DiaryViewModel: ObservableObject {
     }
     
     func fetchProgressDiary() {
+        self.diaryProgressEntry = nil
         self.isLoading = true
         
         let dateFormatter = DateFormatter()
@@ -101,6 +102,22 @@ class DiaryViewModel: ObservableObject {
                     } else {
                         print(error)
                     }
+                    self.isLoading = false
+                }
+            }
+        }
+    }
+    
+    func addToProgressDiary(progressDiaryEntry: ProgressDiaryEntryToAPI) {
+        self.isLoading = true
+        
+        DiaryService().addToProgressDiary(progressDiaryEntry: progressDiaryEntry) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.isLoading = false
+                case .failure(let error):
+                    print(error)
                     self.isLoading = false
                 }
             }

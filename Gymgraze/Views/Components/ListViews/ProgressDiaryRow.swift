@@ -18,16 +18,16 @@ struct ProgressDiaryRow: View {
                     .font(.headline)
                 VStack(alignment: .leading) {
                     Text("**Weight:** \(String(format: "%.1f", progressDiaryEntry.weight))kg")
-                    if progressDiaryEntry.bodyFatPercentage != nil {
+                    if progressDiaryEntry.bodyFatPercentage != 0.0 {
                         Text("**Body Fat Percentage:** \(String(format: "%.1f", progressDiaryEntry.bodyFatPercentage ?? "No data"))%")
                     }
-                    if progressDiaryEntry.armMeasurement != nil {
+                    if progressDiaryEntry.armMeasurement != 0.0 {
                         Text("**Arm:** \(String(format: "%.1f", progressDiaryEntry.armMeasurement ?? "No data"))cm")
                     }
-                    if progressDiaryEntry.waistMeasurement != nil {
+                    if progressDiaryEntry.waistMeasurement != 0.0 {
                         Text("**Waist:** \(String(format: "%.1f", progressDiaryEntry.waistMeasurement ?? "No data"))cm")
                     }
-                    if progressDiaryEntry.chestMeasurement != nil {
+                    if progressDiaryEntry.chestMeasurement != 0.0 {
                         Text("**Chest:** \(String(format: "%.1f", progressDiaryEntry.chestMeasurement ?? "No data"))cm")
                     }
                 }

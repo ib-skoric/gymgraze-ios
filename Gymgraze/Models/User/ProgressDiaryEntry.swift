@@ -36,3 +36,12 @@ struct ProgressDiaryEntry: Codable, Identifiable {
         case chestMeasurement = "chest_measurement"
     }
 }
+
+struct ProgressDiaryEntryToAPI: Encodable {
+    var date: String
+    var weight: Double
+    var body_fat_percentage: Double?
+    var arm_measurement: Double?
+    var waist_measurement: Double?
+    var chest_measurement: Double?
+}
