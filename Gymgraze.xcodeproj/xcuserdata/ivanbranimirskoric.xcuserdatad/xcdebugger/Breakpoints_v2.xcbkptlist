@@ -34,36 +34,6 @@
             endingLineNumber = "67"
             landmarkName = "saveTemplate(completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "339D0BD7-14DD-461D-8973-0B07C69D08E2 - 9af3913dd63658d0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.AddWorkoutViewModel.saveTemplate(completion: (Swift.Result&lt;Swift.Bool, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/ViewModels/AddWorkoutViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67">
-               </Location>
-               <Location
-                  uuid = "339D0BD7-14DD-461D-8973-0B07C69D08E2 - d2961c84784ece6a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Gymgraze.WorkoutTemplate, Gymgraze.APIError&gt;) -&gt; () in Gymgraze.AddWorkoutViewModel.saveTemplate(completion: (Swift.Result&lt;Swift.Bool, Gymgraze.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/ViewModels/AddWorkoutViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -78,7 +48,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "397"
             endingLineNumber = "397"
-            landmarkName = "fetchWorkoutTemplates(completion:)"
+            landmarkName = "saveWorkoutTemplate(workoutTemplate:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -96,6 +66,22 @@
             endingLineNumber = "359"
             landmarkName = "fetchWorkoutTemplates(completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13C3D105-7DF1-4CC2-9415-7DAAAC201DB1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gymgraze/Views/TrendsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
