@@ -11,7 +11,7 @@ class DiaryViewModel: ObservableObject {
     @Published var selectedDate: Date = Date()
     @Published var diaryFoods: [Food] = FoodDiaryEntry().foods
     @Published var diaryWokrouts: [Workout] = WorkoutDiaryEntry().workouts
-    @Published var diaryProgressEntry: ProgressDiaryEntry = ProgressDiaryEntry()
+    @Published var diaryProgressEntry: ProgressDiaryEntry? = nil
     @Published var isLoading = false
     @Published var workoutFetchCompleted: Bool = false
     
@@ -19,6 +19,7 @@ class DiaryViewModel: ObservableObject {
         self.isLoading = true
         self.fetchFoodDiary()
         self.fetchWorkoutDiary()
+        self.fetchProgressDiary()
         self.isLoading = false
     }
     

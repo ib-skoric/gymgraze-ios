@@ -7,62 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A62029C4-3E6F-4547-88DD-E1A7E239D6CC"
+            uuid = "E1B3633C-B745-4094-BB31-1B915A54918E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Gymgraze/ViewModels/UserViewModel.swift"
+            filePath = "Gymgraze/ViewModels/DiaryViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "updatePersonalDetails(name:age:height:completion:)"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "refresh()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A62029C4-3E6F-4547-88DD-E1A7E239D6CC - 31befb97485c0f56"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Gymgraze.UserViewModel.updatePersonalDetails(name: Swift.String, age: Swift.Int, height: Swift.Int, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/ViewModels/UserViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155">
-               </Location>
-               <Location
-                  uuid = "A62029C4-3E6F-4547-88DD-E1A7E239D6CC - 992b26f448e6dea3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Gymgraze.User, Gymgraze.APIError&gt;) -&gt; () in Gymgraze.UserViewModel.updatePersonalDetails(name: Swift.String, age: Swift.Int, height: Swift.Int, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Gymgraze"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanbranimirskoric/College/Final%20Project/gymgraze-ios/Gymgraze/ViewModels/UserViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "156"
-                  endingLineNumber = "156">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "797AF4B0-0559-43F4-AFE7-28ACD34AFB3E"
+            uuid = "6C4A1661-7E6A-4CD4-9514-07E1479DB53E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Gymgraze/Views/Profile/EditMealsView.swift"
+            filePath = "Gymgraze/ViewModels/DiaryViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "deleteMeal(at:)"
+            landmarkName = "fetchProgressDiary()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6BB5D4BD-FD17-46AE-A06A-3B2E7FA465E3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gymgraze/ViewModels/DiaryViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "fetchProgressDiary()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6DB6904C-A642-47CE-9240-E99B0CD80267"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gymgraze/Services/DiaryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
+            landmarkName = "fetchProgressDiaryEntry(date:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

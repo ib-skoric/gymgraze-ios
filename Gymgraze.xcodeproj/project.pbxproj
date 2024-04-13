@@ -30,6 +30,7 @@
 		216604952B7D25770097C73E /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604942B7D25770097C73E /* AuthenticationService.swift */; };
 		216604982B7D27F30097C73E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604972B7D27F30097C73E /* Helpers.swift */; };
 		216693322BCA80F5003CD93E /* ProgressDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693312BCA80F5003CD93E /* ProgressDiaryEntry.swift */; };
+		216693342BCABADB003CD93E /* ProgressDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693332BCABADB003CD93E /* ProgressDiaryRow.swift */; };
 		21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */; };
 		21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5C2B7EA92A00314DFE /* UserService.swift */; };
 		2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */; };
@@ -108,6 +109,7 @@
 		216604942B7D25770097C73E /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		216604972B7D27F30097C73E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		216693312BCA80F5003CD93E /* ProgressDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDiaryEntry.swift; sourceTree = "<group>"; };
+		216693332BCABADB003CD93E /* ProgressDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDiaryRow.swift; sourceTree = "<group>"; };
 		21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		21679B5C2B7EA92A00314DFE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseTypeDropdown.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */,
 				2176079A2BAEF73A007C76BF /* FoodItemRow.swift */,
 				21B595862BC18DFC0018743B /* WorkoutTemplateRow.swift */,
+				216693332BCABADB003CD93E /* ProgressDiaryRow.swift */,
 			);
 			path = ListViews;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				2109EFB72BA39E7B00DC303C /* WorkoutDiaryEntry.swift in Sources */,
 				21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */,
 				21B595852BC18C4A0018743B /* WorkoutTemplatesViewModel.swift in Sources */,
+				216693342BCABADB003CD93E /* ProgressDiaryRow.swift in Sources */,
 				21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */,
 				21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */,
 				21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */,

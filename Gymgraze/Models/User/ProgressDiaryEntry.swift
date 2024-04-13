@@ -13,7 +13,7 @@ struct ProgressDiaryEntry: Codable, Identifiable {
     var weight: Double
     var armMeasurement: Double
     var waistMeasurement: Double
-    var hipMeasurement: Double
+    var bodyFatPercentage: Double
     var chestMeasurement: Double
     
     init() {
@@ -22,7 +22,7 @@ struct ProgressDiaryEntry: Codable, Identifiable {
         weight = 0
         armMeasurement = 0
         waistMeasurement = 0
-        hipMeasurement = 0
+        bodyFatPercentage = 0
         chestMeasurement = 0
     }
     
@@ -32,7 +32,7 @@ struct ProgressDiaryEntry: Codable, Identifiable {
         case weight
         case armMeasurement = "arm_measurement"
         case waistMeasurement = "waist_measurement"
-        case hipMeasurement = "hip_measurement"
+        case bodyFatPercentage = "body_fat_percentage"
         case chestMeasurement = "chest_measurement"
     }
 }
