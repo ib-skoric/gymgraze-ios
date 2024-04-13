@@ -493,8 +493,9 @@ class DiaryService {
         fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/progress_diary_entries/\(date)", completion: completion)
     }
     
-    
-    
+    func fetchFoodSummary(completion: @escaping (Result<FoodSummary, APIError>) -> Void) {
+        fetch(urlString: "http://rattler-amusing-explicitly.ngrok-free.app/food_summary", completion: completion)
+    }
     
     func addToProgressDiary(progressDiaryEntry: ProgressDiaryEntryToAPI, completion: @escaping (Result<ProgressDiaryEntry, APIError>) -> Void) {
         let token: String? = getToken()

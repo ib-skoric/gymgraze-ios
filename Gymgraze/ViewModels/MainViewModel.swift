@@ -12,6 +12,7 @@ class MainViewModel: ObservableObject {
     @Published var healthStore = HKHealthStore()
     @Published var steps: Double = 0
     @Published var exerciseMinutes: Double = 0
+    @Published var totalKcal: Double = 0
 
     var stepsQuantityType: HKQuantityType {
         return HKQuantityType.quantityType(forIdentifier: .stepCount)!
@@ -50,6 +51,17 @@ class MainViewModel: ObservableObject {
                 // Execute the queries
                 self.healthStore.execute(stepsQuery)
                 self.healthStore.execute(exerciseMinutesQuery)
+            }
+        }
+    }
+    
+    func fetchFoodSummary() {
+        DiaryService().fetchFoodSummary { result in
+            switch result {
+            case .success(let foodSummary):
+                self.totalKcal = foodSummary.kcal
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

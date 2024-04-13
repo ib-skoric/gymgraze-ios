@@ -160,12 +160,14 @@ struct DiaryView: View {
     
     func deleteFood(mealId: Int) {
         let foodToDelete = foodsByMeal[mealId]![0].id
-        
+
         DiaryService().removeFoodItem(foodId: Int(foodToDelete)) { result in
             switch result {
             case .success(_):
                 print("deleted food")
-                diaryVM.fetchFoodDiary()
+                DispatchQueue.main.async {
+                    diaryVM.fetchFoodDiary()
+                }
             case .failure(let error):
                 print("Error deleting food \(error)")
             }
