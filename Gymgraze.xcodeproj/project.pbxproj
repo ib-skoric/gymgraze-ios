@@ -34,6 +34,7 @@
 		216693372BCAC176003CD93E /* AddProgressLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693362BCAC176003CD93E /* AddProgressLogView.swift */; };
 		2166933B2BCAE148003CD93E /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2166933A2BCAE148003CD93E /* Trends.swift */; };
 		2166933D2BCAE225003CD93E /* TrendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2166933C2BCAE225003CD93E /* TrendsViewModel.swift */; };
+		216693432BCB16D2003CD93E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693422BCB16D2003CD93E /* MainViewModel.swift */; };
 		21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */; };
 		21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5C2B7EA92A00314DFE /* UserService.swift */; };
 		2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */; };
@@ -116,6 +117,8 @@
 		216693362BCAC176003CD93E /* AddProgressLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProgressLogView.swift; sourceTree = "<group>"; };
 		2166933A2BCAE148003CD93E /* Trends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trends.swift; sourceTree = "<group>"; };
 		2166933C2BCAE225003CD93E /* TrendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsViewModel.swift; sourceTree = "<group>"; };
+		216693422BCB16D2003CD93E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		216693442BCB1862003CD93E /* Gymgraze.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gymgraze.entitlements; sourceTree = "<group>"; };
 		21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		21679B5C2B7EA92A00314DFE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseTypeDropdown.swift; sourceTree = "<group>"; };
@@ -349,6 +352,7 @@
 		21D67E772B2B4522005FAC79 /* Gymgraze */ = {
 			isa = PBXGroup;
 			children = (
+				216693442BCB1862003CD93E /* Gymgraze.entitlements */,
 				21729B282B94DC63009091B0 /* DataScannerRepresentable.swift */,
 				21729B272B94DA69009091B0 /* Info.plist */,
 				21EC13C22B62FAE500CF0814 /* ViewModels */,
@@ -434,6 +438,7 @@
 				2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */,
 				21B595842BC18C4A0018743B /* WorkoutTemplatesViewModel.swift */,
 				2166933C2BCAE225003CD93E /* TrendsViewModel.swift */,
+				216693422BCB16D2003CD93E /* MainViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				21B595872BC18DFC0018743B /* WorkoutTemplateRow.swift in Sources */,
 				2132124D2BA8A1A2006548D3 /* NutritionalInfoTable.swift in Sources */,
 				21021E742B7E56B500A1195A /* ConfirmationCodeInputView.swift in Sources */,
+				216693432BCB16D2003CD93E /* MainViewModel.swift in Sources */,
 				21BF71B32BA851AD0000F573 /* OpenFoodFactsService.swift in Sources */,
 				21729B2B2B94DC7F009091B0 /* BarcodeScannerView.swift in Sources */,
 				21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */,
@@ -715,6 +721,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Gymgraze/Gymgraze.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -748,6 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Gymgraze/Gymgraze.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

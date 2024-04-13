@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @EnvironmentObject var userVM: UserViewModel
+    @ObservedObject var mainVM = MainViewModel()
     
     var body: some View {
         NavigationStack {
@@ -18,8 +19,8 @@ struct MainView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     StatCard(type: "calories", goal: userVM.user?.goal?.kcal)
-                    StatCard(type: "steps", goal: userVM.user?.goal?.steps)
-                    StatCard(type: "workouts", goal: userVM.user?.goal?.exercise)
+                    StatCard(type: "steps", goal: userVM.user?.goal?.steps, currentValue: mainVM.steps)
+                    StatCard(type: "workouts", goal: userVM.user?.goal?.exercise, currentValue: mainVM.exerciseMinutes)
                 }
                 .frame(height: 200)
             }
@@ -39,9 +40,11 @@ struct MainView: View {
             .padding([.top, .leading, .trailing])
             
             Spacer()
-            }
+        }.onAppear {
+            mainVM.fetchData()
         }
     }
+}
 
 #Preview {
     MainView().environmentObject(UserViewModel())
