@@ -38,16 +38,17 @@ struct TrendsView: View {
                 }
                 .padding(.trailing)
                 .popover(isPresented: $showPopover) {
-                    VStack {
-                        ForEach(Array(trendsVM.trendsGraphsVisible.keys), id: \.self) { key in
-                            Button {
-                                trendsVM.trendsGraphsVisible[key]!.toggle()
-                            } label: {
-                                Label(key.capitalized, systemImage: trendsVM.trendsGraphsVisible[key]! ? "checkmark" : "")
-                            }
+                    Heading(text: "Pick trends to show")
+                        .padding([.leading, .top])
+                    List(Array(trendsVM.trendsGraphsVisible.keys), id: \.self) { key in
+                        Button {
+                            trendsVM.trendsGraphsVisible[key]!.toggle()
+                        } label: {
+                            Label(key.capitalized, systemImage: trendsVM.trendsGraphsVisible[key]! ? "checkmark" : "")
+                                .foregroundColor(.orange)
                         }
                     }
-                    .padding()
+                    Spacer()
                 }
             }
             ScrollView {
