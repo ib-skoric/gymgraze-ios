@@ -100,6 +100,9 @@ struct DiaryView: View {
                                                 }
                                             }
                                     }
+                                    .onDelete(perform: { indexSet in
+                                        deleteWorkout(indexSet: indexSet)
+                                    })
                                 }
                                 .foregroundColor(.orange)
                                 
@@ -149,6 +152,7 @@ struct DiaryView: View {
                 .font(.title)
                 .foregroundColor(.gray)
             AddToDropdown(type: "button", date: $diaryVM.selectedDate)
+                .environmentObject(diaryVM)
         }
         .padding()
     }
@@ -178,6 +182,21 @@ struct DiaryView: View {
                 diaryVM.fetchProgressDiary()
             case .failure(let error):
                 print("Error deleting progress entry \(error)")
+            }
+        }
+    }
+    
+    func deleteWorkout(indexSet: IndexSet) {
+        
+        let workoutToDelete = diaryVM.diaryWokrouts[indexSet.first!].id
+        
+        DiaryService().deleteWorkoutEntry(id: Int(workoutToDelete)) { result in
+            switch result {
+            case .success(_):
+                print("deleted workout")
+                diaryVM.fetchWorkoutDiary()
+            case .failure(let error):
+                print("Error deleting workout \(error)")
             }
         }
     }

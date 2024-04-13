@@ -572,4 +572,37 @@ class DiaryService {
             }
         }.resume()
     }
+    
+    func deleteWorkoutEntry(id: Int, completion: @escaping (Result<Bool, APIError>) -> Void) {
+        let token: String? = getToken()
+        
+        guard let workoutURL = URL(string: "http://localhost:3000/workouts/\(id)") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var workoutRequest = URLRequest(url: workoutURL)
+        
+        workoutRequest.httpMethod = "DELETE"
+        workoutRequest.addValue("application/json", forHTTPHeaderField: "Content-type")
+        workoutRequest.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: workoutRequest) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 204:
+                    completion(.success(true))
+                case 401:
+                    completion(.failure(APIError.invalidCredentials))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+    }
 }
