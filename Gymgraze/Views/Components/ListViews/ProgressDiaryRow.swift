@@ -16,7 +16,13 @@ struct ProgressDiaryRow: View {
             VStack(alignment: .leading) {
                 Text("Progress log")
                     .font(.headline)
-                Text("**Weight:** \(String(format: "%.1f", progressDiaryEntry.weight))kg\n**Chest Measurement:** \(String(format: "%.1f", progressDiaryEntry.chestMeasurement))cm\n**Arm Measurement:** \(String(format: "%.1f", progressDiaryEntry.armMeasurement))cm\n**Waist Measurement:** \(String(format: "%.1f", progressDiaryEntry.waistMeasurement))cm\n**Body Fat Percentage:** \(String(format: "%.1f", progressDiaryEntry.bodyFatPercentage))%")
+                VStack(alignment: .leading) {
+                    Text("**Weight:** \(String(format: "%.1f", progressDiaryEntry.weight))kg")
+                    Text("**Body Fat Percentage:** \(String(format: "%.1f", progressDiaryEntry.bodyFatPercentage))%")
+                    Text("**Arm:** \(String(format: "%.1f", progressDiaryEntry.armMeasurement))cm")
+                    Text("**Waist:** \(String(format: "%.1f", progressDiaryEntry.waistMeasurement))cm")
+                    Text("**Chest:** \(String(format: "%.1f", progressDiaryEntry.chestMeasurement))cm")
+                }
                     .font( .subheadline)
                     .fontWeight(.light)
                     .foregroundStyle(.gray)
