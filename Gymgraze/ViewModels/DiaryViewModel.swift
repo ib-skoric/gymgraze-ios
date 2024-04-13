@@ -96,7 +96,8 @@ class DiaryViewModel: ObservableObject {
                     self.isLoading = false
                 case .failure(let error):
                     if case APIError.entryNotFound = error {
-                        print("Ran into 404 error, returning empty array...")
+                        self.diaryProgressEntry = nil
+                        print("Ran into 404 error, returning empty array of progress...")
                     } else {
                         print(error)
                     }
