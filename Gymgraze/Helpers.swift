@@ -55,10 +55,3 @@ func getAndSetTokenInKeychain(email: String, password: String, completion: @esca
         }
     }
 }
-
-func checkTrendsCountSufficient(trend: [Double]) -> Bool {
-    if trend.count >= 5 {
-        return true
-    }
-    return false
-}

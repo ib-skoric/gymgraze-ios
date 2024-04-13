@@ -30,13 +30,10 @@ struct TrendsView: View {
         
         NavigationStack {
             Heading(text: "📊 Trends")
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        Text("Body weight trends")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .padding(.bottom)
-                        
+            ScrollView {
+                GroupBox("Body weight trends") {
+                    // check that no value is set to 0
+                    if !trendsVM.trends.weights.contains { $0.weight == 0 } {
                         Chart(trendsVM.trends.weights, id: \.id) { dataPoint in
                             LineMark(x: .value("Date", dataPoint.date), y: .value("Weight", dataPoint.weight))
                                 .interpolationMethod(.catmullRom)
@@ -47,17 +44,19 @@ struct TrendsView: View {
                                 .foregroundStyle(curGradient)
                                 .interpolationMethod(.catmullRom)
                         }
-                        .foregroundStyle(.linearGradient(colors: [.orange, .purple], startPoint: .top, endPoint: .bottom))
-                        .padding()
-                    }
-                    .frame(height: 300)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Body weight trends")
+                    } else {
+                        Text("Not enough data available")
                             .font(.title2)
-                            .fontWeight(.bold)
+                            .foregroundStyle(.secondary)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                             .padding(.bottom)
-                        
+                    }
+                }
+                .frame(height: 300)
+                .padding()
+                
+                GroupBox("Body fat percentage trends") {
+                    if !trendsVM.trends.bodyFatPercentages.contains(where: { $0.bodyFatPercentage == 0 }) {
                         Chart(trendsVM.trends.bodyFatPercentages, id: \.id) { dataPoint in
                             LineMark(x: .value("Date", dataPoint.date), y: .value("Body fat percentage", dataPoint.bodyFatPercentage ?? 0))
                                 .interpolationMethod(.catmullRom)
@@ -68,17 +67,21 @@ struct TrendsView: View {
                                 .foregroundStyle(curGradient)
                                 .interpolationMethod(.catmullRom)
                         }
-                        .foregroundStyle(.linearGradient(colors: [.orange, .purple], startPoint: .top, endPoint: .bottom))
-                        .padding()
                     }
-                    .frame(height: 300)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Arm measurement trends")
+                    else {
+                        Text("Not enough data available")
                             .font(.title2)
-                            .fontWeight(.bold)
+                            .foregroundStyle(.secondary)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                             .padding(.bottom)
-                        
+                    }
+                }
+                .frame(height: 300)
+                .padding()
+                
+                GroupBox("Arm measurement trends") {
+                    
+                    if !trendsVM.trends.armMeasurements.contains(where: { $0.armMeasurement == 0 }) {
                         Chart(trendsVM.trends.armMeasurements, id: \.id) { dataPoint in
                             LineMark(x: .value("Date", dataPoint.date), y: .value("Arm measurements", dataPoint.armMeasurement ?? 0))
                                 .interpolationMethod(.catmullRom)
@@ -89,11 +92,65 @@ struct TrendsView: View {
                                 .foregroundStyle(curGradient)
                                 .interpolationMethod(.catmullRom)
                         }
-                        .foregroundStyle(.linearGradient(colors: [.orange, .purple], startPoint: .top, endPoint: .bottom))
-                        .padding()
+                    } else {
+                        Text("Not enough data available")
+                            .font(.title2)
+                            .foregroundStyle(.secondary)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .padding(.bottom)
                     }
-                    .frame(height: 300)
                 }
+                .frame(height: 300)
+                .padding()
+                
+                GroupBox("Waist measurement trends") {
+                    
+                    if !trendsVM.trends.waistMeasurements.contains(where: { $0.waistMeasurement == 0 }) {
+                        Chart(trendsVM.trends.waistMeasurements, id: \.id) { dataPoint in
+                            LineMark(x: .value("Date", dataPoint.date), y: .value("Waist measurements", dataPoint.waistMeasurement ?? 0))
+                                .interpolationMethod(.catmullRom)
+                            
+                            PointMark(x: .value("", dataPoint.date), y: .value("", dataPoint.waistMeasurement ?? 0))
+                            
+                            AreaMark(x: .value("", dataPoint.date), y: .value("", dataPoint.waistMeasurement ?? 0))
+                                .foregroundStyle(curGradient)
+                                .interpolationMethod(.catmullRom)
+                        }
+                    } else {
+                        Text("Not enough data available")
+                            .font(.title2)
+                            .foregroundStyle(.secondary)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .padding(.bottom)
+                    }
+                }
+                .frame(height: 300)
+                .padding()
+                
+                GroupBox("Chest measurement trends") {
+                    
+                    if !trendsVM.trends.chestMeasurements.contains(where: { $0.chestMeasurement == 0 }) {
+                        Chart(trendsVM.trends.chestMeasurements, id: \.id) { dataPoint in
+                            LineMark(x: .value("Date", dataPoint.date), y: .value("Chest measurements", dataPoint.chestMeasurement ?? 0))
+                                .interpolationMethod(.catmullRom)
+                            
+                            PointMark(x: .value("", dataPoint.date), y: .value("", dataPoint.chestMeasurement ?? 0))
+                            
+                            AreaMark(x: .value("", dataPoint.date), y: .value("", dataPoint.chestMeasurement ?? 0))
+                                .foregroundStyle(curGradient)
+                                .interpolationMethod(.catmullRom)
+                        }
+                    } else {
+                        Text("Not enough data available")
+                            .font(.title2)
+                            .foregroundStyle(.secondary)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .padding(.bottom)
+                    }
+                }
+                .frame(height: 300)
+                .padding()
+            }
         }
         .onAppear {
             trendsVM.fetchTrends()
