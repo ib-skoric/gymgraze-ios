@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct TrendsView: View {
     
@@ -14,9 +15,14 @@ struct TrendsView: View {
     var body: some View {
         NavigationStack {
             Heading(text: "📊 Trends")
+            
+            VStack {
+                
+            }
+            Spacer()
         }
         .onAppear {
-            
+            trendsVM.fetchTrends()
         }
     }
 }
