@@ -18,7 +18,7 @@ struct MainView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    StatCard(type: "calories", goal: userVM.user?.goal?.kcal)
+                    StatCard(type: "calories", goal: userVM.user?.goal?.kcal, currentValue: mainVM.totalKcal)
                     StatCard(type: "steps", goal: userVM.user?.goal?.steps, currentValue: mainVM.steps)
                     StatCard(type: "workouts", goal: userVM.user?.goal?.exercise, currentValue: mainVM.exerciseMinutes)
                 }
@@ -42,6 +42,7 @@ struct MainView: View {
             Spacer()
         }.onAppear {
             mainVM.fetchData()
+            mainVM.fetchFoodSummary()
         }
     }
 }

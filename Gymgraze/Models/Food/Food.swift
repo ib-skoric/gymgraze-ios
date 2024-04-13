@@ -158,3 +158,7 @@ struct FoodItem: Codable, Identifiable {
         product = Product()
     }
 }
+
+struct FoodSummary: Codable {
+    var kcal: Double
+}
