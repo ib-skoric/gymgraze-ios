@@ -13,8 +13,11 @@ struct AddToDropdown: View {
 //    @Binding var isAddWorkoutViewPresented: Bool
     var type: String
     @Binding var date: Date
+    @EnvironmentObject var diaryVM: DiaryViewModel
+
     
     var body: some View {
+        
         Menu {
             NavigationLink {
                 AddToFoodDiaryView(date: $date)
@@ -25,6 +28,14 @@ struct AddToDropdown: View {
                 StartWorkoutView(date: date)
             } label: {
                 Label("Add workout", systemImage: "figure.run")
+            }
+            if diaryVM.diaryProgressEntry == nil {
+                NavigationLink {
+                    AddProgressLogView(date: date)
+                } label: {
+                    Label("Add progress log", systemImage: "square.and.pencil")
+                        .environmentObject(diaryVM)
+                }
             }
         } label: {
             if type == "menu" {

@@ -29,6 +29,9 @@
 		216604932B7D254A0097C73E /* ServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604922B7D254A0097C73E /* ServiceModels.swift */; };
 		216604952B7D25770097C73E /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604942B7D25770097C73E /* AuthenticationService.swift */; };
 		216604982B7D27F30097C73E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216604972B7D27F30097C73E /* Helpers.swift */; };
+		216693322BCA80F5003CD93E /* ProgressDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693312BCA80F5003CD93E /* ProgressDiaryEntry.swift */; };
+		216693342BCABADB003CD93E /* ProgressDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693332BCABADB003CD93E /* ProgressDiaryRow.swift */; };
+		216693372BCAC176003CD93E /* AddProgressLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216693362BCAC176003CD93E /* AddProgressLogView.swift */; };
 		21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */; };
 		21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21679B5C2B7EA92A00314DFE /* UserService.swift */; };
 		2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */; };
@@ -106,6 +109,9 @@
 		216604922B7D254A0097C73E /* ServiceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModels.swift; sourceTree = "<group>"; };
 		216604942B7D25770097C73E /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		216604972B7D27F30097C73E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		216693312BCA80F5003CD93E /* ProgressDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDiaryEntry.swift; sourceTree = "<group>"; };
+		216693332BCABADB003CD93E /* ProgressDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDiaryRow.swift; sourceTree = "<group>"; };
+		216693362BCAC176003CD93E /* AddProgressLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProgressLogView.swift; sourceTree = "<group>"; };
 		21679B5A2B7EA8DA00314DFE /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		21679B5C2B7EA92A00314DFE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseTypeDropdown.swift; sourceTree = "<group>"; };
@@ -176,6 +182,7 @@
 		2109EFB32BA398B400DC303C /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				216693352BCAC167003CD93E /* Progress */,
 				21B595792BC186430018743B /* Food */,
 				21B595782BC186310018743B /* Workout */,
 				210DA2F62B825B3B00F96B75 /* DiaryView.swift */,
@@ -205,6 +212,14 @@
 				215E46E92BC5D3B3008A6EA3 /* EditMealsView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		216693352BCAC167003CD93E /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				216693362BCAC176003CD93E /* AddProgressLogView.swift */,
+			);
+			path = Progress;
 			sourceTree = "<group>";
 		};
 		21B595782BC186310018743B /* Workout */ = {
@@ -260,6 +275,7 @@
 				21BF71AE2BA75F480000F573 /* WorkoutDiaryRow.swift */,
 				2176079A2BAEF73A007C76BF /* FoodItemRow.swift */,
 				21B595862BC18DFC0018743B /* WorkoutTemplateRow.swift */,
+				216693332BCABADB003CD93E /* ProgressDiaryRow.swift */,
 			);
 			path = ListViews;
 			sourceTree = "<group>";
@@ -271,6 +287,7 @@
 				21EC13C72B62FD2A00CF0814 /* Goal.swift */,
 				21EC13C92B62FD8900CF0814 /* Meal.swift */,
 				215D54312B757B1C00A07029 /* Registration.swift */,
+				216693312BCA80F5003CD93E /* ProgressDiaryEntry.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -510,9 +527,11 @@
 				2109EFB72BA39E7B00DC303C /* WorkoutDiaryEntry.swift in Sources */,
 				21EC13D02B62FEB500CF0814 /* FoodDiaryEntry.swift in Sources */,
 				21B595852BC18C4A0018743B /* WorkoutTemplatesViewModel.swift in Sources */,
+				216693342BCABADB003CD93E /* ProgressDiaryRow.swift in Sources */,
 				21D67E8C2B2B45CA005FAC79 /* LoginView.swift in Sources */,
 				21EC13CA2B62FD8900CF0814 /* Meal.swift in Sources */,
 				21D67E7B2B2B4522005FAC79 /* ContentView.swift in Sources */,
+				216693372BCAC176003CD93E /* AddProgressLogView.swift in Sources */,
 				210DA2FB2B825B6200F96B75 /* ProfileView.swift in Sources */,
 				21DE9BC72B936FA700F086EB /* SetGoalsView.swift in Sources */,
 				217607992BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift in Sources */,
@@ -554,6 +573,7 @@
 				21729B292B94DC63009091B0 /* DataScannerRepresentable.swift in Sources */,
 				215E46E82BC5D3A9008A6EA3 /* EditGoalsView.swift in Sources */,
 				217607972BAEF64D007C76BF /* AddToFoodDiaryViewModel.swift in Sources */,
+				216693322BCA80F5003CD93E /* ProgressDiaryEntry.swift in Sources */,
 				2109E91E2B84992100F2E596 /* FoodDiaryRow.swift in Sources */,
 				216604932B7D254A0097C73E /* ServiceModels.swift in Sources */,
 				2194616E2BB08A2200B57AA3 /* ExerciseCard.swift in Sources */,

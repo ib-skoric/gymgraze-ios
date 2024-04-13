@@ -468,7 +468,7 @@ class DiaryService {
         } catch {
             print("Error encoding JSON: \(error)")
         }
-
+        
         
         URLSession.shared.dataTask(with: exerciseRequest) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -487,6 +487,56 @@ class DiaryService {
                 }
             }
         }.resume()
+    }
+    
+    func fetchProgressDiaryEntry(date: String, completion: @escaping (Result<ProgressDiaryEntry, APIError>) -> Void) {
+        fetch(urlString: "http://localhost:3000/progress_diary_entries/\(date)", completion: completion)
+    }
+    
+    
+    
+    
+    func addToProgressDiary(progressDiaryEntry: ProgressDiaryEntryToAPI, completion: @escaping (Result<ProgressDiaryEntry, APIError>) -> Void) {
+        let token: String? = getToken()
         
+        guard let progressDiaryURL = URL(string: "http://localhost:3000/progress_diary_entries") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var progressDiaryRequest = URLRequest(url: progressDiaryURL)
+        
+        progressDiaryRequest.httpMethod = "POST"
+        progressDiaryRequest.addValue("application/json", forHTTPHeaderField: "Content-type")
+        progressDiaryRequest.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        
+               
+        do {
+            progressDiaryRequest.httpBody = try JSONEncoder().encode(progressDiaryEntry)
+        } catch {
+            print("Error encoding JSON: \(error)")
+        }
+        
+        URLSession.shared.dataTask(with: progressDiaryRequest) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 201:
+                    guard let progressDiaryEntry = try? JSONDecoder().decode(ProgressDiaryEntry.self, from: data) else {
+                        completion(.failure(APIError.invalidDataReturnedFromAPI))
+                        return
+                    }
+                    completion(.success(progressDiaryEntry))
+                case 401:
+                    completion(.failure(APIError.invalidCredentials))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
     }
 }

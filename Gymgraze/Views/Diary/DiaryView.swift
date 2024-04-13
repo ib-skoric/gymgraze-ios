@@ -39,12 +39,18 @@ struct DiaryView: View {
                             ProgressView()
                         }
                         Spacer()
-                    } else if diaryVM.diaryFoods.isEmpty && diaryVM.diaryWokrouts.isEmpty {
+                    } else if diaryVM.diaryFoods.isEmpty && diaryVM.diaryWokrouts.isEmpty && diaryVM.diaryProgressEntry == nil {
                         Spacer()
                         noEtriesView
                         Spacer()
                     } else {
                         List {
+                            if diaryVM.diaryProgressEntry != nil {
+                                Section() {
+                                    ProgressDiaryRow(progressDiaryEntry: diaryVM.diaryProgressEntry ?? ProgressDiaryEntry())
+                                }
+                            }
+                            
                             if !diaryVM.diaryFoods.isEmpty {
                                 ForEach(foodsByMeal.keys.sorted(), id: \.self) { mealId in
                                     Section() {
@@ -78,7 +84,7 @@ struct DiaryView: View {
                             
                             
                             if !diaryVM.diaryWokrouts.isEmpty {
-                                Section("Workout Diary") {
+                                Section() {
                                     ForEach(diaryVM.diaryWokrouts, id: \.id) { workout in
                                         WorkoutDiaryRow(workout: workout)
                                             .onTapGesture {
@@ -118,13 +124,16 @@ struct DiaryView: View {
                 DispatchQueue.main.async {
                     if newValue != oldValue {
                         selectedDate = newValue
+                        print("Selected diaryVM date: \(diaryVM.selectedDate)")
                         diaryVM.fetchFoodDiary()
                         diaryVM.fetchWorkoutDiary()
+                        diaryVM.fetchProgressDiary()
                     }
                 }
             }
             
             AddToDropdown(type: "menu", date: $diaryVM.selectedDate)
+                .environmentObject(diaryVM)
         }
     }
     
