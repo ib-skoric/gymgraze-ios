@@ -40,7 +40,7 @@ struct TemplateExercise: Codable, Identifiable {
     let name: String
     let exerciseTypeId: Int
     let exerciseCategory: String
-    var historicalSetRepData: [SetRepData]
+    var historicalSetRepData: [SetRepData]?
     
     init() {
         id = 0

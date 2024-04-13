@@ -423,6 +423,8 @@ class UserService {
                     } catch let decodeError {
                         print("Decoding failed with error: \(decodeError)")
                         print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
+                        // Debug block
+                        debugPrint("Data that was returned from the API: \(String(data: data, encoding: .utf8) ?? "N/A")")
                         completion(.failure(APIError.invalidDataReturnedFromAPI))
                     }
                 case 401:

@@ -44,7 +44,7 @@ struct AddWorkoutView: View {
                 var exerciseSets: [Exercise.ExerciseSet] = []
                 
                 // loop over historical set rep data and create new set rep data
-                for historicalSetRepData in templateExercise.historicalSetRepData {
+                for data in templateExercise.historicalSetRepData ?? [] {
                     let setRepData = Exercise.ExerciseSet()
                     exerciseSets.append(setRepData)
                 }
