@@ -15,7 +15,6 @@ struct AddToDropdown: View {
     @Binding var date: Date
     @EnvironmentObject var diaryVM: DiaryViewModel
 
-    
     var body: some View {
         
         Menu {

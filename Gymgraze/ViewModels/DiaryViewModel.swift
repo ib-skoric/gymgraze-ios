@@ -11,7 +11,7 @@ class DiaryViewModel: ObservableObject {
     @Published var selectedDate: Date = Date()
     @Published var diaryFoods: [Food] = FoodDiaryEntry().foods
     @Published var diaryWokrouts: [Workout] = WorkoutDiaryEntry().workouts
-    @Published var diaryProgressEntry: ProgressDiaryEntry? = nil
+    @Published var diaryProgressEntry: [ProgressDiaryEntry]? = nil
     @Published var isLoading = false
     @Published var workoutFetchCompleted: Bool = false
     
@@ -93,7 +93,7 @@ class DiaryViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let entry):
-                    self.diaryProgressEntry = entry
+                    self.diaryProgressEntry = [entry]
                     self.isLoading = false
                 case .failure(let error):
                     if case APIError.entryNotFound = error {

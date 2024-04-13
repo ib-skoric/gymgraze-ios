@@ -45,9 +45,14 @@ struct DiaryView: View {
                         Spacer()
                     } else {
                         List {
-                            if diaryVM.diaryProgressEntry != nil {
+                            if !(diaryVM.diaryProgressEntry?.isEmpty ?? true) {
                                 Section() {
-                                    ProgressDiaryRow(progressDiaryEntry: diaryVM.diaryProgressEntry ?? ProgressDiaryEntry())
+                                    ForEach(diaryVM.diaryProgressEntry!, id: \.id) { entry in
+                                        ProgressDiaryRow(progressDiaryEntry: entry)
+                                    }
+                                    .onDelete(perform: { indexSet in
+                                        deleteProgressEntry()
+                                    })
                                 }
                             }
                             
@@ -95,6 +100,9 @@ struct DiaryView: View {
                                                 }
                                             }
                                     }
+                                    .onDelete(perform: { indexSet in
+                                        deleteWorkout(indexSet: indexSet)
+                                    })
                                 }
                                 .foregroundColor(.orange)
                                 
@@ -144,6 +152,7 @@ struct DiaryView: View {
                 .font(.title)
                 .foregroundColor(.gray)
             AddToDropdown(type: "button", date: $diaryVM.selectedDate)
+                .environmentObject(diaryVM)
         }
         .padding()
     }
@@ -159,6 +168,35 @@ struct DiaryView: View {
                 diaryVM.fetchFoodDiary()
             case .failure(let error):
                 print("Error deleting food \(error)")
+            }
+        }
+    }
+    
+    func deleteProgressEntry() {
+        let entryToDelete = diaryVM.diaryProgressEntry![0].id
+        
+        DiaryService().deleteProgressEntry(id: Int(entryToDelete)) { result in
+            switch result {
+            case .success(_):
+                print("deleted progress entry")
+                diaryVM.fetchProgressDiary()
+            case .failure(let error):
+                print("Error deleting progress entry \(error)")
+            }
+        }
+    }
+    
+    func deleteWorkout(indexSet: IndexSet) {
+        
+        let workoutToDelete = diaryVM.diaryWokrouts[indexSet.first!].id
+        
+        DiaryService().deleteWorkoutEntry(id: Int(workoutToDelete)) { result in
+            switch result {
+            case .success(_):
+                print("deleted workout")
+                diaryVM.fetchWorkoutDiary()
+            case .failure(let error):
+                print("Error deleting workout \(error)")
             }
         }
     }
