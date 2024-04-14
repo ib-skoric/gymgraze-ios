@@ -581,7 +581,7 @@ class UserService {
             
             if let httpResonse = response as? HTTPURLResponse {
                 switch httpResonse.statusCode {
-                case 200:
+                case 204:
                     do {
                         let meals = try JSONDecoder().decode([Meal].self, from: data)
                         completion(.success(meals))

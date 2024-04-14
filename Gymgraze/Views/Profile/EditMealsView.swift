@@ -38,7 +38,7 @@ struct EditMealsview: View {
                             TextField("Meal Name", text: $meals[index].name)
                         }
                     }
-                    .onDelete(perform: deleteMeal)
+                    .onDelete(perform: meals.count > 1 ? deleteMeal : nil)
                 }
                 .onAppear {
                     self.meals = userVM.user?.meals ?? []
