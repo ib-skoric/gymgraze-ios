@@ -178,10 +178,23 @@ struct TrendsView: View {
                     .frame(height: 300)
                     .padding()
                 }
+                
+                if trendsVM.trendsGraphsVisible["Steps trend"] == true {
+                    GroupBox("Steps trend") {
+                        Chart(trendsVM.stepsPerDay, id: \.id) { dataPoint in
+                            BarMark(x: .value("Date", dataPoint.date), y: .value("", dataPoint.steps))
+                                .cornerRadius(10)
+
+                            }
+                    }
+                    .frame(height: 300)
+                    .padding()
+                }
             }
         }
         .onAppear {
             trendsVM.fetchTrends()
+            trendsVM.fetchAppleHealthKitStepData()
         }
     }
 }

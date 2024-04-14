@@ -77,3 +77,9 @@ struct ChestMeasurement: Codable {
         case chestMeasurement = "chest_measurement"
     }
 }
+
+struct StepTrend: Codable {
+    var id = UUID()
+    var date: Date
+    var steps: Double
+}
