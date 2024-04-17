@@ -102,6 +102,7 @@ class UserViewModel: ObservableObject {
                 case .success(let user):
                     // set the user data to the property
                     self.user = user
+                    self.user?.meals = user.meals
                     // check if email is confirmed
                     self.isConfirmedEmailUser = self.checkEmailConfirmed()
                     // print the user

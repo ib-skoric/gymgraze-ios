@@ -33,9 +33,9 @@ struct EditMealsview: View {
                 }
                 
                 List {
-                    ForEach(meals.indices, id: \.self) { index in
+                    ForEach(userVM.user?.meals ?? [], id: \.self) { meal in
                         HStack {
-                            TextField("Meal Name", text: $meals[index].name)
+                            TextField("Meal Name", text: .constant(meal.name))
                         }
                     }
                     .onDelete(perform: meals.count > 1 ? deleteMeal : nil)
