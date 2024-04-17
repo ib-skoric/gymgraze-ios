@@ -561,7 +561,7 @@ class UserService {
         }.resume()
     }
     
-    func deleteMeal(id: Int, completion: @escaping (Result<[Meal], APIError>) -> Void) {
+    func deleteMeal(id: Int, completion: @escaping (Result<Bool, APIError>) -> Void) {
         let token: String? = getToken()
         
         guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/meals/\(id)") else {
@@ -582,14 +582,7 @@ class UserService {
             if let httpResonse = response as? HTTPURLResponse {
                 switch httpResonse.statusCode {
                 case 204:
-                    do {
-                        let meals = try JSONDecoder().decode([Meal].self, from: data)
-                        completion(.success(meals))
-                    } catch let decodeError {
-                        print("Decoding failed with error: \(decodeError)")
-                        print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
-                        completion(.failure(APIError.invalidDataReturnedFromAPI))
-                    }
+                    completion(.success(true))
                 case 401:
                     completion(.failure(APIError.invalidCredentials))
                 default:

@@ -102,6 +102,7 @@ class UserViewModel: ObservableObject {
                 case .success(let user):
                     // set the user data to the property
                     self.user = user
+                    self.user?.meals = user.meals
                     // check if email is confirmed
                     self.isConfirmedEmailUser = self.checkEmailConfirmed()
                     // print the user
@@ -203,8 +204,7 @@ class UserViewModel: ObservableObject {
         UserService().deleteMeal(id: id) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let meals):
-                    self.user?.meals = meals
+                case .success(let status):
                     completion(.success("Meal deleted successfully"))
                 case .failure(let error):
                     print("Oops something went wrong deleting meal: \(error)")
