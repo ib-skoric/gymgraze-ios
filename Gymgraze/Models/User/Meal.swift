@@ -41,11 +41,6 @@ struct Meal: Codable, Hashable, Identifiable {
         createdAt = nil
         updatedAt = nil
     }
-    
-    init (name: String) {
-        self.id = 9999
-        self.name = name
-    }
 }
 
 struct MealToAPI: Codable {
