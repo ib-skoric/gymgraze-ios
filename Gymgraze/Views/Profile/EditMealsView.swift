@@ -94,8 +94,8 @@ struct EditMealsview: View {
             return
         }
         
-        let mealId = meals[index].id
-        meals.remove(atOffsets: offsets)
+        let mealId = userVM.user?.meals?[index].id ?? 0
+        userVM.user?.meals?.remove(atOffsets: offsets)
         
         userVM.deleteMeal(id: mealId) { result in
             switch result {

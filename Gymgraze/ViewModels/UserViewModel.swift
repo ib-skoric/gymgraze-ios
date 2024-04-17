@@ -204,8 +204,7 @@ class UserViewModel: ObservableObject {
         UserService().deleteMeal(id: id) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let meals):
-                    self.user?.meals = meals
+                case .success(let status):
                     completion(.success("Meal deleted successfully"))
                 case .failure(let error):
                     print("Oops something went wrong deleting meal: \(error)")
