@@ -7,33 +7,28 @@
 
 import SwiftUI
 
-struct ArticleCard: View {
+struct ArticleCardView: View {
     
-    var image: String
-    var title: String
-    var subheading: String
-    var description: String
+    @State var card: ArticleCard
     
     var body: some View {
-        VStack {
-            Image("\(image)")
+        GroupBox {
+            Image("\(card.image)")
                 .resizable()
-                .aspectRatio(contentMode: .fill)
                 .frame(height: 175)
-                .clipped()
             VStack(alignment: .leading) {
-                Text("\(title)")
-                    .font(.title)
+                Text("\(card.title)")
+                    .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
-                Text("\(subheading)")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
                     .foregroundColor(.gray)
-                Text("\(description)")
+                    .multilineTextAlignment(.leading)
+                    .padding(.bottom, 5)
+                Text("\(card.body)")
                     .font(.subheadline)
                     .foregroundColor(.gray)
-                    .lineLimit(3)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
@@ -43,6 +38,6 @@ struct ArticleCard: View {
     }
 }
 
-#Preview {
-    ArticleCard(image: "test", title: "Top 5 testing title", subheading: "Hello world", description: "Hello world again" ).frame(height: 350)
-}
+//#Preview {
+//    ArticleCard(image: "test", title: "Top 5 testing title", subheading: "Hello world", description: "Hello world again" ).frame(height: 350)
+//}
