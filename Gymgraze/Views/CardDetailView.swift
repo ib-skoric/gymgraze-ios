@@ -12,25 +12,19 @@ struct CardDetailView: View {
     @State var card: ArticleCard
     
     var body: some View {
-        VStack {
+        NavigationStack {
             Image("\(card.image)")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(height: 175)
                 .clipped()
-            VStack(alignment: .leading) {
-                Text("\(card.title)")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                Text("\(card.subheading)")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                Text("\(card.body)")
-                    .font(.body)
-            }
+            Text("\(card.body)")
+                .font(.body)
+                .padding()
+            
+            Spacer()
         }
+        .navigationTitle(card.title)
     }
 }
 

@@ -33,7 +33,6 @@ struct MainView: View {
                     NavigationLink(destination: CardDetailView(card: card)) {
                         ArticleCardView(card: card)
                             .frame(height: 350)
-                            .padding(.bottom)
                     }
                 }
             }
