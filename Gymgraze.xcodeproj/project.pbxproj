@@ -52,6 +52,8 @@
 		2176079B2BAEF73A007C76BF /* FoodItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176079A2BAEF73A007C76BF /* FoodItemRow.swift */; };
 		2177A8062BA0FB950042ABA8 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2177A8052BA0FB950042ABA8 /* DiaryService.swift */; };
 		218281C82BB35F2400603436 /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218281C72BB35F2400603436 /* ExerciseType.swift */; };
+		218D71AC2BD3DE1E004C46B9 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D71AB2BD3DE1E004C46B9 /* OpenAIService.swift */; };
+		218D71AE2BD3E0F5004C46B9 /* OpenAIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D71AD2BD3E0F5004C46B9 /* OpenAIModels.swift */; };
 		219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461672BB076C700B57AA3 /* SetRepRow.swift */; };
 		2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461692BB07E2400B57AA3 /* AddExerciseView.swift */; };
 		2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */; };
@@ -139,6 +141,8 @@
 		2176079A2BAEF73A007C76BF /* FoodItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemRow.swift; sourceTree = "<group>"; };
 		2177A8052BA0FB950042ABA8 /* DiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryService.swift; sourceTree = "<group>"; };
 		218281C72BB35F2400603436 /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
+		218D71AB2BD3DE1E004C46B9 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		218D71AD2BD3E0F5004C46B9 /* OpenAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIModels.swift; sourceTree = "<group>"; };
 		219461672BB076C700B57AA3 /* SetRepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepRow.swift; sourceTree = "<group>"; };
 		219461692BB07E2400B57AA3 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewModel.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */,
 				21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */,
 				217607982BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift */,
+				218D71AD2BD3E0F5004C46B9 /* OpenAIModels.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				21679B5C2B7EA92A00314DFE /* UserService.swift */,
 				2177A8052BA0FB950042ABA8 /* DiaryService.swift */,
 				21BF71B22BA851AD0000F573 /* OpenFoodFactsService.swift */,
+				218D71AB2BD3DE1E004C46B9 /* OpenAIService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -560,6 +566,7 @@
 				210DA2F72B825B3B00F96B75 /* DiaryView.swift in Sources */,
 				2109EFB92BA39E9F00DC303C /* Workout.swift in Sources */,
 				21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */,
+				218D71AC2BD3DE1E004C46B9 /* OpenAIService.swift in Sources */,
 				210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */,
 				21B5958B2BC31A6D0018743B /* CreateWorkoutTemplateView.swift in Sources */,
 				219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */,
@@ -582,6 +589,7 @@
 				215D54322B757B1C00A07029 /* Registration.swift in Sources */,
 				21E58F542B82594B00E31882 /* MainView.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
+				218D71AE2BD3E0F5004C46B9 /* OpenAIModels.swift in Sources */,
 				218281C82BB35F2400603436 /* ExerciseType.swift in Sources */,
 				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
 				210DA2FF2B826ABF00F96B75 /* ArticleCardView.swift in Sources */,
