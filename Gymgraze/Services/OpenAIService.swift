@@ -75,7 +75,9 @@ class OpenAIService {
             "messages": [
                 {
                     "role": "system",
-                    "content": "You are a dietitian. Your client is a bodybuilder who wants to know the best recipe for a meal with the following macros: \(macros.calories) kcal, \(macros.protein)g protein, \(macros.carbs)g carbs, \(macros.fat)g fat."
+                    "content": "Your name is GenieAI. You take inputs in form of calories (in kcal) and macros (carbs, protein, fat in grams) and your job is to come up with a recipe to fit these requirements. \(macros.calories) kcal, \(macros.protein)g protein, \(macros.carbs)g carbs, \(macros.fat)g fat.
+                        Your response must include the ingredients and the instructions for the recipe.
+                    "
                 }
             ],
             "temperature": 1,
