@@ -26,10 +26,22 @@ struct TimerSheet: View {
             Text("\(timerValue / 60):\(String(format: "%02d", timerValue % 60))")
                 .onReceive(timer, perform: { _ in
                     if timerValue > 0 {
-                        timerValue -= 1
+                        withAnimation {
+                            timerValue -= 1
+                        }
+                    }
+                    if timerValue == 0 {
+                        dismiss()
                     }
                 })
-                .font(.custom("SF Pro", size: 75, relativeTo: .largeTitle))
+                .font(.system(size: 80))
+            
+            ProgressView(value: Double(initialValue - timerValue), total: Double(initialValue))
+                .progressViewStyle(GradientProgressViewStyle())
+                    .scaleEffect(x: 1, y: 4, anchor: .center)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .frame(height: 20)
+                    .padding()
             
             Spacer()
             
