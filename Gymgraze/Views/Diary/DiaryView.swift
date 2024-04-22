@@ -9,6 +9,7 @@ struct DiaryView: View {
     @State private var isAddFoodViewPresented: Bool = false
     @State private var isAddWorkoutViewPresented: Bool = false
     @State private var isWorkoutDetailsActive: Bool = false
+    @State private var isGenieActive: Bool = false
     @State var selectedDate: Date?
     
     var foodsByMeal: [Int: [Food]] {
@@ -125,6 +126,7 @@ struct DiaryView: View {
         HStack {
             Heading(text: "📒 Diary")
             Spacer()
+            
             DatePicker(selection: $diaryVM.selectedDate, displayedComponents: .date) {
                 EmptyView()
             }
@@ -140,8 +142,20 @@ struct DiaryView: View {
                 }
             }
             
+            Button(action: {
+                print("GenieAI button presses")
+                self.isGenieActive.toggle()
+            }) {
+                Image(systemName: "wand.and.stars")
+            }
+            .font(.system(size: 20))
+            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+            
             AddToDropdown(type: "menu", date: $diaryVM.selectedDate)
                 .environmentObject(diaryVM)
+        }
+        .sheet(isPresented: $isGenieActive) {
+            GenieAIView()
         }
     }
     

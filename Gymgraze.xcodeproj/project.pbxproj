@@ -52,6 +52,10 @@
 		2176079B2BAEF73A007C76BF /* FoodItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176079A2BAEF73A007C76BF /* FoodItemRow.swift */; };
 		2177A8062BA0FB950042ABA8 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2177A8052BA0FB950042ABA8 /* DiaryService.swift */; };
 		218281C82BB35F2400603436 /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218281C72BB35F2400603436 /* ExerciseType.swift */; };
+		218D71AC2BD3DE1E004C46B9 /* GenieAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D71AB2BD3DE1E004C46B9 /* GenieAIService.swift */; };
+		218D71AE2BD3E0F5004C46B9 /* OpenAIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D71AD2BD3E0F5004C46B9 /* OpenAIModels.swift */; };
+		218D71B02BD3E4F8004C46B9 /* GenieAIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D71AF2BD3E4F8004C46B9 /* GenieAIView.swift */; };
+		218D71B22BD3E5AE004C46B9 /* GenieAIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D71B12BD3E5AE004C46B9 /* GenieAIViewModel.swift */; };
 		219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461672BB076C700B57AA3 /* SetRepRow.swift */; };
 		2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461692BB07E2400B57AA3 /* AddExerciseView.swift */; };
 		2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */; };
@@ -139,6 +143,10 @@
 		2176079A2BAEF73A007C76BF /* FoodItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemRow.swift; sourceTree = "<group>"; };
 		2177A8052BA0FB950042ABA8 /* DiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryService.swift; sourceTree = "<group>"; };
 		218281C72BB35F2400603436 /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
+		218D71AB2BD3DE1E004C46B9 /* GenieAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenieAIService.swift; sourceTree = "<group>"; };
+		218D71AD2BD3E0F5004C46B9 /* OpenAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIModels.swift; sourceTree = "<group>"; };
+		218D71AF2BD3E4F8004C46B9 /* GenieAIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenieAIView.swift; sourceTree = "<group>"; };
+		218D71B12BD3E5AE004C46B9 /* GenieAIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenieAIViewModel.swift; sourceTree = "<group>"; };
 		219461672BB076C700B57AA3 /* SetRepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepRow.swift; sourceTree = "<group>"; };
 		219461692BB07E2400B57AA3 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewModel.swift; sourceTree = "<group>"; };
@@ -324,6 +332,7 @@
 				21EC13CD2B62FE6200CF0814 /* NutritionalInfo.swift */,
 				21EC13CF2B62FEB500CF0814 /* FoodDiaryEntry.swift */,
 				217607982BAEF6DC007C76BF /* OpenFoodFactsSearchResult.swift */,
+				218D71AD2BD3E0F5004C46B9 /* OpenAIModels.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -391,6 +400,7 @@
 				214087782BA2F18F004E0B51 /* RegAndAuth */,
 				21D67E8F2B2B45D8005FAC79 /* Components */,
 				2150C1602BD064FA00B4097F /* CardDetailView.swift */,
+				218D71AF2BD3E4F8004C46B9 /* GenieAIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -404,6 +414,7 @@
 				21679B5C2B7EA92A00314DFE /* UserService.swift */,
 				2177A8052BA0FB950042ABA8 /* DiaryService.swift */,
 				21BF71B22BA851AD0000F573 /* OpenFoodFactsService.swift */,
+				218D71AB2BD3DE1E004C46B9 /* GenieAIService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -445,6 +456,7 @@
 				21B595842BC18C4A0018743B /* WorkoutTemplatesViewModel.swift */,
 				2166933C2BCAE225003CD93E /* TrendsViewModel.swift */,
 				216693422BCB16D2003CD93E /* MainViewModel.swift */,
+				218D71B12BD3E5AE004C46B9 /* GenieAIViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -560,6 +572,7 @@
 				210DA2F72B825B3B00F96B75 /* DiaryView.swift in Sources */,
 				2109EFB92BA39E9F00DC303C /* Workout.swift in Sources */,
 				21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */,
+				218D71AC2BD3DE1E004C46B9 /* GenieAIService.swift in Sources */,
 				210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */,
 				21B5958B2BC31A6D0018743B /* CreateWorkoutTemplateView.swift in Sources */,
 				219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */,
@@ -568,6 +581,7 @@
 				21B595832BC18B020018743B /* StartWorkoutView.swift in Sources */,
 				217607912BAE306F007C76BF /* AddToDropdown.swift in Sources */,
 				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
+				218D71B02BD3E4F8004C46B9 /* GenieAIView.swift in Sources */,
 				2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */,
 				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
 				215E46E62BC5D3A1008A6EA3 /* EditPersonalDetailsView.swift in Sources */,
@@ -576,12 +590,14 @@
 				2176078F2BAE2F85007C76BF /* AddWokroutView.swift in Sources */,
 				21EC13C82B62FD2A00CF0814 /* Goal.swift in Sources */,
 				21BE04272B937DD100ADCC8A /* RequestPasswordResetView.swift in Sources */,
+				218D71B22BD3E5AE004C46B9 /* GenieAIViewModel.swift in Sources */,
 				21BF71AF2BA75F480000F573 /* WorkoutDiaryRow.swift in Sources */,
 				21729B2D2B9503C4009091B0 /* ProductView.swift in Sources */,
 				21C745B02BB9AF3D0085DC68 /* TimerSheet.swift in Sources */,
 				215D54322B757B1C00A07029 /* Registration.swift in Sources */,
 				21E58F542B82594B00E31882 /* MainView.swift in Sources */,
 				21D67E792B2B4522005FAC79 /* GymgrazeApp.swift in Sources */,
+				218D71AE2BD3E0F5004C46B9 /* OpenAIModels.swift in Sources */,
 				218281C82BB35F2400603436 /* ExerciseType.swift in Sources */,
 				21679B5B2B7EA8DA00314DFE /* UserViewModel.swift in Sources */,
 				210DA2FF2B826ABF00F96B75 /* ArticleCardView.swift in Sources */,

@@ -39,7 +39,7 @@ struct AddToDropdown: View {
         } label: {
             if type == "menu" {
                 Label("", systemImage: "plus")
-                    .font(.system(size: 25))
+                    .font(.system(size: 20))
                     .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
             } else {
                 Button(action: {}, label: {
