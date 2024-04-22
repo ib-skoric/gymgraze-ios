@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class GenieAIViewModel: ObservableObject {
     @Published var totalDayKcal: Double = 0
@@ -25,7 +26,9 @@ class GenieAIViewModel: ObservableObject {
     }
     
     func getRecipe(method: String, kcal: String, protein: String, carbs: String, fat: String) {
-        self.isLoading = true
+        withAnimation {
+            self.isLoading = true
+        }
         
         let kcalDouble = Double(kcal) ?? 0
         let proteinDouble = Double(protein) ?? 0
@@ -36,11 +39,15 @@ class GenieAIViewModel: ObservableObject {
             switch result {
             case .success(let recipe):
                 self.latestRecipe = recipe
-                self.isLoading = false
-                self.fetchComplete = true
+                withAnimation {
+                    self.isLoading = false
+                    self.fetchComplete = true
+                }
             case .failure(let error):
                 print(error.localizedDescription)
-                self.isLoading = false
+                withAnimation {
+                    self.isLoading = false
+                }
             }
         }
     }

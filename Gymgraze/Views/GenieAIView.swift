@@ -22,7 +22,7 @@ struct GenieAIView: View {
             if genieAIVM.isLoading {
                 VStack(alignment: .center) {
                     Text("🧞‍♂️")
-                        .font(.system(size: 60))
+                        .font(.system(size: 80))
                     
                     Text("Cooking up a storm...")
                     ProgressView()
@@ -31,8 +31,10 @@ struct GenieAIView: View {
             } else if genieAIVM.fetchComplete == true {
                 VStack {
                     Heading(text: "🧞‍♂️ Genie's Recipe")
-                    Text(genieAIVM.latestRecipe)
-                        .padding([.bottom, .leading, .trailing])
+                    ScrollView {
+                        Text(genieAIVM.latestRecipe)
+                            .padding([.bottom, .leading, .trailing])
+                    }
                     Spacer()
                     Button("Another recipe", systemImage: "arrow.counterclockwise") {
                         genieAIVM.getRecipe(method: "retry", kcal: kcal, protein: protein, carbs: carbs, fat: fat)
@@ -42,9 +44,11 @@ struct GenieAIView: View {
                 }
             } else {
                 VStack {
+                    Spacer()
+                    
                     VStack {
                         Text("🧞‍♂️")
-                            .font(.system(size: 60))
+                            .font(.system(size: 80))
                             .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
 
                         Text("GenieAI")
@@ -108,13 +112,15 @@ struct GenieAIView: View {
                     }
                     .padding()
                     
+                    Spacer()
+                    
                     Button {
                         genieAIVM.getRecipe(method: "initial", kcal: kcal, protein: protein, carbs: carbs, fat: fat)
                     } label: {
                         Text("Get recipe")
                     }
-                    .buttonStyle(CTAButtonSmall())
-                    .padding(.top)
+                    .buttonStyle(CTAButton())
+                    .padding()
                 }
                 
                 .onAppear {
