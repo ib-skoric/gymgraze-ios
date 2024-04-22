@@ -24,7 +24,7 @@ class GenieAIViewModel: ObservableObject {
     
     func getRecipe() {
         self.isLoading = true
-        OpenAIService().getOpenAIResponse(kcal: totalDayKcal) { result in
+        OpenAIService().getOpenAIResponse(kcal: self.totalDayKcal) { result in
             switch result {
             case .success(let recipe):
                 print(recipe)

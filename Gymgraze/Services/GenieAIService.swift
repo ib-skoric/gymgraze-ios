@@ -75,7 +75,7 @@ class OpenAIService {
             "messages": [
                 {
                     "role": "system",
-                    "content": "Your name is GenieAI. You take inputs in form of calories (in kcal) and your job is to come up with a recipe to fit these requirements. Your meal suggestion should be protein-rich and healthy. Total kcal that you have at your disposal is 500 Your response must include the ingredients and the instructions for the recipe."
+                    "content": "Your name is GenieAI. You take inputs in form of calories (in kcal) and your job is to come up with a recipe to fit these requirements. Your meal suggestion should be protein-rich and healthy. Total kcal that you have at your disposal is \(kcal) Your response must include the ingredients and the instructions for the recipe."
                 }
             ],
             "temperature": 1,
@@ -115,8 +115,6 @@ class OpenAIService {
                         print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
                         completion(.failure(.invalidDataReturnedFromAPI))
                     }
-                case 400:
-                    print(response)
                 case 401:
                     completion(.failure(.invalidCredentials))
                 default:
