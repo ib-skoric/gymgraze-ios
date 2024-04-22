@@ -16,8 +16,24 @@ struct GenieAIView: View {
         let goalKcal = userVM.user?.goal?.kcal ?? 0
         let totalKcal = genieAIVM.totalDayKcal
         
-        Text("Your current remaining kcal: \(goalKcal - Int(totalKcal))")
+        VStack {
+            if genieAIVM.isLoading {
+                VStack(alignment: .center) {
+                    Text("🧞‍♂️")
+                        .font(.system(size: 60))
+                    
+                    Text("Thinking...")
+                    ProgressView()
+                }
+                .padding(.top)
+                
+            }
+        }
+        .onAppear {
+            genieAIVM.fetchFoodSummary()
+        }
     }
+    
 }
 
 #Preview {

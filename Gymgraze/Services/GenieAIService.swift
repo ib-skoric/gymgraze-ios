@@ -124,49 +124,4 @@ class OpenAIService {
             }
         }.resume()
     }
-    
-    func getRemainingMacros(date: Date, completion: @escaping (Result<Macros, APIError>) -> Void) {
-        let token: String? = getToken()
-        
-        // TODO: Edit this
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/macros?date=\(date)") else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-type")
-        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
-        
-        struct Response: Codable {
-            let protein: Int
-            let carbs: Int
-            let fat: Int
-        }
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data, error == nil else {
-                completion(.failure(.serverDown))
-                return
-            }
-            
-            if let httpResonse = response as? HTTPURLResponse {
-                switch httpResonse.statusCode {
-                case 200:
-                    do {
-                        let response = try JSONDecoder().decode(Response.self, from: data)
-                        completion(.success(Macros(protein: response.protein, carbs: response.carbs, fat: response.fat)))
-                    } catch let decodeError {
-                        print("Decoding failed with error: \(decodeError)")
-                        print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
-                        completion(.failure(.invalidDataReturnedFromAPI))
-                    }
-                case 401:
-                    completion(.failure(.invalidCredentials))
-                default:
-                    completion(.failure(.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
-                }
-            }
-        }.resume()
-    }
 }
