@@ -24,7 +24,7 @@ class GenieAIViewModel: ObservableObject {
         }
     }
     
-    func getRecipe(kcal: String, protein: String, carbs: String, fat: String) {
+    func getRecipe(method: String, kcal: String, protein: String, carbs: String, fat: String) {
         self.isLoading = true
         
         let kcalDouble = Double(kcal) ?? 0
@@ -32,7 +32,7 @@ class GenieAIViewModel: ObservableObject {
         let carbsDouble = Double(carbs) ?? 0
         let fatDouble = Double(fat) ?? 0
         
-        OpenAIService().getOpenAIResponse(kcal: kcalDouble, protein: proteinDouble, carbs: carbsDouble, fat: fatDouble) { result in
+        OpenAIService().getOpenAIResponse(method: method, kcal: kcalDouble, protein: proteinDouble, carbs: carbsDouble, fat: fatDouble) { result in
             switch result {
             case .success(let recipe):
                 self.latestRecipe = recipe

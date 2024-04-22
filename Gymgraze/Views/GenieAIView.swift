@@ -17,8 +17,6 @@ struct GenieAIView: View {
     @State var fat: String = ""
     
     var body: some View {
-        let goalKcal = userVM.user?.goal?.kcal ?? 0
-        let totalKcal = genieAIVM.totalDayKcal
         
         VStack {
             if genieAIVM.isLoading {
@@ -26,17 +24,39 @@ struct GenieAIView: View {
                     Text("🧞‍♂️")
                         .font(.system(size: 60))
                     
-                    Text("Thinking...")
+                    Text("Cooking up a storm...")
                     ProgressView()
                 }
                 .padding(.top)
             } else if genieAIVM.fetchComplete == true {
-                Text(genieAIVM.latestRecipe)
+                VStack {
+                    Heading(text: "🧞‍♂️ Genie's Recipe")
+                    Text(genieAIVM.latestRecipe)
+                        .padding([.bottom, .leading, .trailing])
+                    Spacer()
+                    Button("Another recipe", systemImage: "arrow.counterclockwise") {
+                        genieAIVM.getRecipe(method: "retry", kcal: kcal, protein: protein, carbs: carbs, fat: fat)
+                    }
+                    .buttonStyle(CTAButton())
                     .padding()
-                Spacer()
+                }
             } else {
                 VStack {
-                    Text("Tell Genie what calories/macros you'd like your recipe to contain")
+                    VStack {
+                        Text("🧞‍♂️")
+                            .font(.system(size: 60))
+                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+
+                        Text("GenieAI")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+                    }
+                    
+                    Text("Tell Genie how many calories you'd like your recipe to contain")
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
+                        .padding()
                     
                     TextField(text: $kcal) {
                         Text("Calories (kcal)")
@@ -44,52 +64,57 @@ struct GenieAIView: View {
                     .font(.subheadline)
                     .fontWeight(.light)
                     .multilineTextAlignment(.center)
-                    .frame(width: 300)
+                    .frame(width: 250)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
+                    .padding()
                     
                     
-                    Text("And one of the following...")
+                    Text("And pick one of the following...")
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
+                        .padding()
                     
-                    TextField(text: $carbs) {
-                        Text("Carbs (g)")
+                    HStack {
+                        TextField(text: $carbs) {
+                            Text("Carbs (g)")
+                        }
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                        .disabled(!protein.isEmpty || !fat.isEmpty)
+                        
+                        TextField(text: $protein) {
+                            Text("Protein (g)")
+                        }
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                        .disabled(!carbs.isEmpty || !fat.isEmpty)
+                        
+                        TextField(text: $fat) {
+                            Text("Fat (g)")
+                        }
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                        .disabled(!carbs.isEmpty || !protein.isEmpty)
                     }
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 300)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .disabled(!protein.isEmpty || !fat.isEmpty)
-                    
-                    TextField(text: $protein) {
-                        Text("Protein (g)")
-                    }
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 300)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .disabled(!carbs.isEmpty || !fat.isEmpty)
-                    
-                    TextField(text: $fat) {
-                        Text("Fat (g)")
-                    }
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 300)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                    .disabled(!carbs.isEmpty || !protein.isEmpty)
+                    .padding()
                     
                     Button {
-                        genieAIVM.getRecipe(kcal: kcal, protein: protein, carbs: carbs, fat: fat)
+                        genieAIVM.getRecipe(method: "initial", kcal: kcal, protein: protein, carbs: carbs, fat: fat)
                     } label: {
                         Text("Get recipe")
                     }
                     .buttonStyle(CTAButtonSmall())
+                    .padding(.top)
                 }
                 
                 .onAppear {
