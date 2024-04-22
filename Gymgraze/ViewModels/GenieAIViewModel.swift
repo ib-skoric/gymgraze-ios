@@ -10,6 +10,8 @@ import Foundation
 class GenieAIViewModel: ObservableObject {
     @Published var totalDayKcal: Double = 0
     @Published var isLoading: Bool = false
+    @Published var latestRecipe: String = ""
+    @Published var fetchComplete: Bool = false
     
     func fetchFoodSummary() {
         DiaryService().fetchFoodSummary { result in
@@ -33,8 +35,9 @@ class GenieAIViewModel: ObservableObject {
         OpenAIService().getOpenAIResponse(kcal: kcalDouble, protein: proteinDouble, carbs: carbsDouble, fat: fatDouble) { result in
             switch result {
             case .success(let recipe):
-                print(recipe)
+                self.latestRecipe = recipe
                 self.isLoading = false
+                self.fetchComplete = true
             case .failure(let error):
                 print(error.localizedDescription)
                 self.isLoading = false

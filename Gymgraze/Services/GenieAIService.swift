@@ -75,7 +75,7 @@ class OpenAIService {
             "messages": [
                 {
                     "role": "system",
-                    "content": "Your name is GenieAI. You take inputs in form of calories (in kcal) and macros. Your job is to come up with a recipe to fit these requirements. Your meal suggestion should be protein-rich and healthy. Total kcal that you have at your disposal is \(kcal) and the following macros: Protein: \(protein) grams, Carbs: \(carbs) grams, Fat: \(fat) grams. Two of these three values will always be 0, you are to ignore the zeros and come up with the recipe based on the value that is not 0. That beein said, the meal itself SHOULD CONTAIN THESE macronutrients, they should NOT be 0. Your response must include the ingredients and the instructions for the recipe. For every ingredient, you must provide the approximate number of calories and macros in grams (carbs, fat, protein)."
+                    "content": "Your name is GenieAI. You take inputs in form of calories (in kcal) and macros. Your job is to come up with a recipe to fit these requirements. Total kcal that you have at your disposal is \(kcal) and the following macros: Protein: \(protein) grams, Carbs: \(carbs) grams, Fat: \(fat) grams. Two of these three values will always be 0, you are to ignore the zeros and come up with the recipe based on the value that is not 0. That beein said, the meal itself SHOULD CONTAIN THESE macronutrients, they should NOT be 0. For every ingredient, you must provide the approximate number of calories and macros in grams (carbs, fat, protein). For every response, provide a title for the recipt followed by 2 line breaks (do not mention word title explicitly in your response). Then, always reply with a heading ingredients followed by a list of ingredients. After the ingredients, add two line breaks and then add the Instructions heading and instructions for preparing the recipe. Make sure NOT to use any text formatting like markdown or HTML. Reply with plain text and line breaks as instructed"
                 }
             ],
             "temperature": 1,
@@ -109,7 +109,11 @@ class OpenAIService {
                 case 200:
                     do {
                         let response = try JSONDecoder().decode(OpenAIResponse.self, from: data)
-                        completion(.success(response.choices[0].message.content))
+                                    if let attributedString = try? String(response.choices[0].message.content) {
+                                        completion(.success(attributedString))
+                                    } else {
+                                        completion(.failure(.invalidDataReturnedFromAPI))
+                                    }
                     } catch let decodeError {
                         print("Decoding failed with error: \(decodeError)")
                         print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
