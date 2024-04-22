@@ -9,7 +9,7 @@ import Foundation
 
 class OpenAIService {
     
-    func getOpenAIKey(completion: @escaping (Result<String, APIError>) -> Void) {
+    func getOpenAIResponse(kcal: Double, completion: @escaping (Result<String, APIError>) -> Void) {
         let token: String? = getToken()
         
         guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/openai") else {
@@ -22,7 +22,7 @@ class OpenAIService {
         request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
         
         struct Response: Codable {
-            let api_token: String
+            let api_key: String
         }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -36,7 +36,18 @@ class OpenAIService {
                 case 200:
                     do {
                         let response = try JSONDecoder().decode(Response.self, from: data)
-                        completion(.success(response.api_token))
+                        let apiKey = response.api_key
+                        
+                        self.getRecipe(token: apiKey, kcal: kcal) { result in
+                            switch result {
+                            case .success(let recipe):
+                                completion(.success(recipe))
+                                print(recipe)
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
+                        }
+                        
                     } catch let decodeError {
                         print("Decoding failed with error: \(decodeError)")
                         print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
@@ -51,18 +62,7 @@ class OpenAIService {
         }.resume()
     }
     
-    func getRecipe(macros: Macros, completion: @escaping (Result<String, APIError>) -> Void) {
-        var token: String?
-        
-        getOpenAIKey { result in
-            switch result {
-            case .success(let key):
-                token = key
-            case .failure(let error):
-                completion(.failure(.invalidCredentials))
-            }
-        }
-        
+    func getRecipe(token: String, kcal: Double, completion: @escaping (Result<String, APIError>) -> Void) {
         guard let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
             completion(.failure(.invalidURL))
             return
@@ -75,9 +75,7 @@ class OpenAIService {
             "messages": [
                 {
                     "role": "system",
-                    "content": "Your name is GenieAI. You take inputs in form of calories (in kcal) and macros (carbs, protein, fat in grams) and your job is to come up with a recipe to fit these requirements. \(macros.calories) kcal, \(macros.protein)g protein, \(macros.carbs)g carbs, \(macros.fat)g fat.
-                        Your response must include the ingredients and the instructions for the recipe.
-                    "
+                    "content": "Your name is GenieAI. You take inputs in form of calories (in kcal) and your job is to come up with a recipe to fit these requirements. Your meal suggestion should be protein-rich and healthy. Total kcal that you have at your disposal is 500 Your response must include the ingredients and the instructions for the recipe."
                 }
             ],
             "temperature": 1,
@@ -91,10 +89,11 @@ class OpenAIService {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-type")
-        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         // try to encode the body as JSON
         do {
-            request.httpBody = try JSONEncoder().encode(payload)
+            request.httpBody = payload.data(using: .utf8)
         } catch {
             print("Error encoding JSON: \(error)")
         }
@@ -116,6 +115,8 @@ class OpenAIService {
                         print("Failed to decode data: \(String(data: data, encoding: .utf8) ?? "N/A")")
                         completion(.failure(.invalidDataReturnedFromAPI))
                     }
+                case 400:
+                    print(response)
                 case 401:
                     completion(.failure(.invalidCredentials))
                 default:

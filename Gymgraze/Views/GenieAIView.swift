@@ -26,14 +26,13 @@ struct GenieAIView: View {
                     ProgressView()
                 }
                 .padding(.top)
-                
             }
         }
         .onAppear {
             genieAIVM.fetchFoodSummary()
+            genieAIVM.getRecipe()
         }
     }
-    
 }
 
 #Preview {
