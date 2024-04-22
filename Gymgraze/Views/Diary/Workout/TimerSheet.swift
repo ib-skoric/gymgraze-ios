@@ -28,8 +28,11 @@ struct TimerSheet: View {
                     if timerValue > 0 {
                         timerValue -= 1
                     }
+                    if timerValue == 0 {
+                        dismiss()
+                    }
                 })
-                .font(.custom("SF Pro", size: 75, relativeTo: .largeTitle))
+                .font(.system(size: 80))
             
             Spacer()
             
