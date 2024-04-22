@@ -81,7 +81,7 @@ struct GenieAIView: View {
             .disabled(!carbs.isEmpty || !protein.isEmpty)
             
             Button {
-                genieAIVM.getRecipe()
+                genieAIVM.getRecipe(kcal: kcal, protein: protein, carbs: carbs, fat: fat)
             } label: {
                 Text("Get recipe")
             }

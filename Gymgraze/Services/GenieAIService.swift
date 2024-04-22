@@ -9,7 +9,7 @@ import Foundation
 
 class OpenAIService {
     
-    func getOpenAIResponse(kcal: Double, completion: @escaping (Result<String, APIError>) -> Void) {
+    func getOpenAIResponse(kcal: Double, protein: Double, carbs: Double, fat: Double, completion: @escaping (Result<String, APIError>) -> Void) {
         let token: String? = getToken()
         
         guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/openai") else {
@@ -38,7 +38,7 @@ class OpenAIService {
                         let response = try JSONDecoder().decode(Response.self, from: data)
                         let apiKey = response.api_key
                         
-                        self.getRecipe(token: apiKey, kcal: kcal) { result in
+                        self.getRecipe(token: apiKey, kcal: kcal, protein: protein, carbs: carbs, fat: fat) { result in
                             switch result {
                             case .success(let recipe):
                                 completion(.success(recipe))
@@ -62,7 +62,7 @@ class OpenAIService {
         }.resume()
     }
     
-    func getRecipe(token: String, kcal: Double, completion: @escaping (Result<String, APIError>) -> Void) {
+    func getRecipe(token: String, kcal: Double, protein: Double, carbs: Double, fat: Double,  completion: @escaping (Result<String, APIError>) -> Void) {
         guard let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
             completion(.failure(.invalidURL))
             return
@@ -75,7 +75,7 @@ class OpenAIService {
             "messages": [
                 {
                     "role": "system",
-                    "content": "Your name is GenieAI. You take inputs in form of calories (in kcal) and your job is to come up with a recipe to fit these requirements. Your meal suggestion should be protein-rich and healthy. Total kcal that you have at your disposal is \(kcal) Your response must include the ingredients and the instructions for the recipe."
+                    "content": "Your name is GenieAI. You take inputs in form of calories (in kcal) and macros. Your job is to come up with a recipe to fit these requirements. Your meal suggestion should be protein-rich and healthy. Total kcal that you have at your disposal is \(kcal) and the following macros: Protein: \(protein) grams, Carbs: \(carbs) grams, Fat: \(fat) grams. Two of these three values will always be 0, you are to ignore the zeros and come up with the recipe based on the value that is not 0. That beein said, the meal itself SHOULD CONTAIN THESE macronutrients, they should NOT be 0. Your response must include the ingredients and the instructions for the recipe. For every ingredient, you must provide the approximate number of calories and macros in grams (carbs, fat, protein)."
                 }
             ],
             "temperature": 1,
