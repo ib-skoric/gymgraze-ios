@@ -16,11 +16,13 @@ struct ExerciseType: Codable, Identifiable, Equatable {
     var id: Int
     var name: String
     var exerciseCategory: String
+    var timer: Int
     var historicalSetRepData: [SetRepData]
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case timer
         case exerciseCategory = "exercise_category"
         case historicalSetRepData = "historical_set_rep_data"
     }

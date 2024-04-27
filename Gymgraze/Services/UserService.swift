@@ -322,7 +322,7 @@ class UserService {
             return
         }
         
-        let body = ["name": name, "exercise_category": category]
+        let body = ["name": name, "exercise_category": category, "timer": "90"]
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
