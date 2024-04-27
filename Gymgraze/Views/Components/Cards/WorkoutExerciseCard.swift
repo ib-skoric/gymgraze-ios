@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkoutExerciseCard: View {
     
-    @State var exercise: Exercise
+    @ObservedObject var exercise: Exercise
     
     var body: some View {
         VStack {
@@ -31,7 +31,7 @@ struct WorkoutExerciseCard: View {
                 
                 ForEach(exercise.exerciseSets ?? [], id: \.id) { set in
                     HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-                        SetRepRow(set: set, exerciseId: set.exerciseId, readOnly: true)
+                        SetRepRow(set: set, exerciseId: set.exerciseId, readOnly: true, exercise: exercise)
                     }
                 }
                 

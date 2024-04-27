@@ -16,8 +16,9 @@ struct SetRepRow: View {
     @State var completed: Bool = false
     @State var readOnly: Bool
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var timeRemaining = 60
+    @State private var timeRemaining = 0
     @State private var showTimerSheet = false
+    @ObservedObject var exercise: Exercise
     
     var completedSetColor: Color {
         completed ? .green : .primary
@@ -69,6 +70,14 @@ struct SetRepRow: View {
                     .interactiveDismissDisabled(timeRemaining > 0)
             }
             .disabled(repWeight.isEmpty || repCount.isEmpty)
+        }
+        .onAppear {
+            self.timeRemaining = exercise.timer ?? 90
+        }
+        .onChange(of: exercise.timer ?? 0) { oldValue, newValue in
+            if oldValue != newValue {
+                self.timeRemaining = newValue
+            }
         }
     }
     
