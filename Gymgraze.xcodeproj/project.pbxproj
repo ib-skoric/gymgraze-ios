@@ -61,6 +61,7 @@
 		2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */; };
 		2194616E2BB08A2200B57AA3 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */; };
 		219FAFD82BD6FBF700567EDA /* TimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFD72BD6FBF700567EDA /* TimerProgressBar.swift */; };
+		219FAFDA2BDD327100567EDA /* FavouriteFoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFD92BDD327100567EDA /* FavouriteFoodsViewModel.swift */; };
 		21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */; };
 		21B595752BC180770018743B /* WorkoutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595742BC180770018743B /* WorkoutTemplate.swift */; };
 		21B595772BC1833C0018743B /* SetRepData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595762BC1833C0018743B /* SetRepData.swift */; };
@@ -153,6 +154,7 @@
 		2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewModel.swift; sourceTree = "<group>"; };
 		2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		219FAFD72BD6FBF700567EDA /* TimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressBar.swift; sourceTree = "<group>"; };
+		219FAFD92BDD327100567EDA /* FavouriteFoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteFoodsViewModel.swift; sourceTree = "<group>"; };
 		21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		21B595742BC180770018743B /* WorkoutTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplate.swift; sourceTree = "<group>"; };
 		21B595762BC1833C0018743B /* SetRepData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepData.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				2166933C2BCAE225003CD93E /* TrendsViewModel.swift */,
 				216693422BCB16D2003CD93E /* MainViewModel.swift */,
 				218D71B12BD3E5AE004C46B9 /* GenieAIViewModel.swift */,
+				219FAFD92BDD327100567EDA /* FavouriteFoodsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */,
 				210DA2F72B825B3B00F96B75 /* DiaryView.swift in Sources */,
 				2109EFB92BA39E9F00DC303C /* Workout.swift in Sources */,
+				219FAFDA2BDD327100567EDA /* FavouriteFoodsViewModel.swift in Sources */,
 				21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */,
 				218D71AC2BD3DE1E004C46B9 /* GenieAIService.swift in Sources */,
 				210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */,

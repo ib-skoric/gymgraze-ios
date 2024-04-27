@@ -10,6 +10,7 @@ import SwiftUI
 struct FoodItemRow: View {
     
     var food: FoodItem.Product
+    @ObservedObject var viewModel = FavouriteFoodsViewModel()
     
     var body: some View {
         HStack {
@@ -21,11 +22,26 @@ struct FoodItemRow: View {
                     .fontWeight(.light)
                     .foregroundStyle(.gray)
             }
+            Spacer()
+            // add icon if the food is a favourite
+            if food.id != "" && viewModel.favouriteFoods.contains(food.id) {
+                Image(systemName: "star.fill")
+                    .foregroundColor(.orange)
+                    .onTapGesture {
+                        viewModel.handleFavourite(foodId: food.id)
+                    }
+            } else {
+                Image(systemName: "star")
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                        viewModel.handleFavourite(foodId: food.id)
+                    }
+            }
         }
         .padding()
     }
 }
 
-//#Preview {
-//    FoodItemRow(food: FoodItem.Product())
-//}
+#Preview {
+    FoodItemRow(food: FoodItem.Product())
+}
