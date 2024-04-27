@@ -52,7 +52,7 @@ struct FoodItem: Codable, Identifiable {
         enum CodingKeys: String, CodingKey {
             case id = "_id"
             case productName = "product_name"
-            case imageURL = "image_thumb_url"
+            case imageURL = "image_url"
             case nutriments
             case servingSize = "serving_size"
         }
