@@ -9,39 +9,51 @@ import Foundation
 
 class FavouriteFoodsViewModel: ObservableObject {
     
-    @Published var favouriteFoods: [String] = []
+    @Published var favouriteFoodsIds: [String] = []
+    @Published var favouriteFoods: [FoodItem.Product] = []
+    @Published var isLoading: Bool = false
     private let userDefaults = UserDefaults.standard
     
     init() {
-        favouriteFoods = userDefaults.stringArray(forKey: "favouriteFoods") ?? []
+        favouriteFoodsIds = self.userDefaults.stringArray(forKey: "favouriteFoodsIds") ?? []
+        if let favouriteFoodsData = userDefaults.object(forKey: "favouriteFoods") as? Data {
+            do {
+                favouriteFoods = try JSONDecoder().decode([FoodItem.Product].self, from: favouriteFoodsData)
+            } catch {
+                print("Error decoding favourite foods: \(error)")
+            }
+        }
     }
+
     
     func handleFavourite(foodId: String) {
-        if favouriteFoods.contains(foodId) {
-            let index = favouriteFoods.firstIndex(of: foodId)
-            favouriteFoods.remove(at: index!)
+        self.isLoading = true
+        if favouriteFoodsIds.contains(foodId) || favouriteFoods.contains(where: { $0.id == foodId }) {
+            let index = favouriteFoodsIds.firstIndex(of: foodId)
+            favouriteFoodsIds.remove(at: index!)
+            let foodIndex = favouriteFoods.firstIndex { $0.id == foodId }
+            favouriteFoods.remove(at: foodIndex!)
+            self.isLoading = false
         } else {
-            favouriteFoods.append(foodId)
+            favouriteFoodsIds.append(foodId)
+            var foodItem = FoodItem.Product()
+            
+            OpenFoodFactsService().fetchFoodItem(barcode: foodId) { result in
+                switch result {
+                case .success(let food):
+                    foodItem = food.product
+                    self.favouriteFoods.append(foodItem)
+                    // set it to user defaults
+                    let favouriteFoodsData = try? JSONEncoder().encode(self.favouriteFoods)
+                    self.userDefaults.set(favouriteFoodsData, forKey: "favouriteFoods")
+                case .failure(let error):
+                    print("Error fetching food item: \(error)")
+                }
+                self.isLoading = false
+            }
         }
         
-        userDefaults.set(favouriteFoods, forKey: "favouriteFoods")
-        print("Favourite foods: \(favouriteFoods)")
+        userDefaults.set(favouriteFoodsIds, forKey: "favouriteFoodsIds")
+        print("Favourite foods: \(favouriteFoodsIds)")
     }
-    
-//    func fetchFavouriteFoods() {
-//        self.isLoading = true
-//            for foodId in favouriteFoodIds {
-//                OpenFoodFactsService().fetchFoodItem(barcode: foodId) { result in
-//                    switch result {
-//                    case .success(let food):
-//                        DispatchQueue.main.async {
-//                            self.favouriteFoods.append(food.product)
-//                        }
-//                    case .failure(let error):
-//                        print("Error fetching food item: \(error)")
-//                    }
-//                    self.isLoading = false
-//                }
-//            }
-//        }
 }

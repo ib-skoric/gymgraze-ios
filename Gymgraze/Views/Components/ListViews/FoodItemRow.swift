@@ -24,13 +24,15 @@ struct FoodItemRow: View {
             }
             Spacer()
             // add icon if the food is a favourite
-            if food.id != "" && viewModel.favouriteFoods.contains(food.id) {
+            if viewModel.isLoading {
+                ProgressView()
+            } else if food.id != "" && viewModel.favouriteFoodsIds.contains(food.id) || viewModel.favouriteFoods.contains(where: { $0.id == food.id }) {
                 Image(systemName: "star.fill")
                     .foregroundColor(.orange)
                     .onTapGesture {
                         viewModel.handleFavourite(foodId: food.id)
                     }
-            } else {
+            } else if food.id != "" && !viewModel.favouriteFoodsIds.contains(food.id) {
                 Image(systemName: "star")
                     .foregroundColor(.gray)
                     .onTapGesture {
