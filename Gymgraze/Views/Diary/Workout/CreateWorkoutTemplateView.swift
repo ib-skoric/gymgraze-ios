@@ -12,6 +12,7 @@ struct CreateWorkoutTemplateView: View {
     @State private var showAddExerciseView: Bool = false
     @StateObject var viewModel = AddWorkoutViewModel()
     @State private var isEditing: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         HStack {
@@ -67,6 +68,7 @@ struct CreateWorkoutTemplateView: View {
                             print("Error saving template: \(error)")
                         }
                     }
+                    dismiss()
                 }, label: {
                     if viewModel.isLoading {
                         ProgressView()
