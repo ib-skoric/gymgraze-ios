@@ -51,16 +51,6 @@ struct ProfileView: View {
                     }
                 }
                 
-                NavigationLink {
-                    // TODO: Add a view here
-                } label: {
-                    HStack {
-                        Image(systemName: "heart.text.square.fill")
-                            .foregroundColor(.gray)
-                        Text("Apple Health data")
-                    }
-                }
-                
                 Button(action: {
                     logout()
                 }, label: {
