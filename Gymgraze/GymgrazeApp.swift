@@ -15,11 +15,14 @@ struct GymgrazeApp: App {
     var body: some Scene {
         
         WindowGroup {
+            
             if getToken() != nil && userVM.isConfirmedEmailUser {
                 ContentView()
                     .environmentObject(userVM)
                     .environmentObject(diaryVM)
                     .accentColor(Color(.orange))
+            } else if userVM.isLoading {
+                SplashScreen()
             } else {
                 LoginView()
                     .environmentObject(userVM)
