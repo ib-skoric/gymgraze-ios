@@ -59,14 +59,6 @@ struct ProfileView: View {
                 .navigationDestination(isPresented: $userLoggedOut) {
                     LoginView().navigationBarBackButtonHidden(true)
                 }
-                
-                Button(action: {
-                    Task.init {
-                        userVM.fetchUser()
-                    }
-                }, label: {
-                        Text("Fetch user details")
-                    })
             }
         }
     }
