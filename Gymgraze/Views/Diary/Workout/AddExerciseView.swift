@@ -81,14 +81,14 @@ struct AddExerciseView: View {
                 }
                 
                 // create new exercise with that amount of set/reps
-                let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: exerciseSets)
+                let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, timer: exerciseType.timer, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: exerciseSets)
                 
                 DispatchQueue.main.async {
                     viewModel.workoutExercies.append(newExercise)
                     dismiss()
                 }
             } else {
-                let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
+                let newExercise = Exercise(id: Int.random(in: 1...999999999), name: exerciseType.name, duration: 0, timer: exerciseType.timer, exerciseTypeId: exerciseType.id, exerciseCategory: exerciseType.exerciseCategory, exerciseSets: nil)
                 viewModel.workoutExercies.append(newExercise)
                 
                 dismiss()

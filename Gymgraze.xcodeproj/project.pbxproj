@@ -63,6 +63,8 @@
 		219FAFD82BD6FBF700567EDA /* TimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFD72BD6FBF700567EDA /* TimerProgressBar.swift */; };
 		219FAFDA2BDD327100567EDA /* FavouriteFoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFD92BDD327100567EDA /* FavouriteFoodsViewModel.swift */; };
 		219FAFDC2BDD592900567EDA /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFDB2BDD592900567EDA /* SplashScreen.swift */; };
+		219FAFDE2BDD7B7400567EDA /* RestTimerPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFDD2BDD7B7400567EDA /* RestTimerPill.swift */; };
+		219FAFE02BDD80F100567EDA /* EditTimerAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFDF2BDD80F100567EDA /* EditTimerAlert.swift */; };
 		21B0AEAD2B9A62A5003C5142 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */; };
 		21B595752BC180770018743B /* WorkoutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595742BC180770018743B /* WorkoutTemplate.swift */; };
 		21B595772BC1833C0018743B /* SetRepData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B595762BC1833C0018743B /* SetRepData.swift */; };
@@ -157,6 +159,8 @@
 		219FAFD72BD6FBF700567EDA /* TimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressBar.swift; sourceTree = "<group>"; };
 		219FAFD92BDD327100567EDA /* FavouriteFoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteFoodsViewModel.swift; sourceTree = "<group>"; };
 		219FAFDB2BDD592900567EDA /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		219FAFDD2BDD7B7400567EDA /* RestTimerPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimerPill.swift; sourceTree = "<group>"; };
+		219FAFDF2BDD80F100567EDA /* EditTimerAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimerAlert.swift; sourceTree = "<group>"; };
 		21B0AEAC2B9A62A5003C5142 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		21B595742BC180770018743B /* WorkoutTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplate.swift; sourceTree = "<group>"; };
 		21B595762BC1833C0018743B /* SetRepData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepData.swift; sourceTree = "<group>"; };
@@ -439,6 +443,8 @@
 				2170E8A82BB4B7C400599C16 /* AddExerciseTypeDropdown.swift */,
 				2170E8AA2BB4B86400599C16 /* AddExerciseTypeAlert.swift */,
 				219FAFD72BD6FBF700567EDA /* TimerProgressBar.swift */,
+				219FAFDD2BDD7B7400567EDA /* RestTimerPill.swift */,
+				219FAFDF2BDD80F100567EDA /* EditTimerAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -556,6 +562,7 @@
 				21EC13D42B6306A400CF0814 /* CTAButton.swift in Sources */,
 				216604952B7D25770097C73E /* AuthenticationService.swift in Sources */,
 				21679B5D2B7EA92A00314DFE /* UserService.swift in Sources */,
+				219FAFE02BDD80F100567EDA /* EditTimerAlert.swift in Sources */,
 				2150C1612BD064FA00B4097F /* CardDetailView.swift in Sources */,
 				2177A8062BA0FB950042ABA8 /* DiaryService.swift in Sources */,
 				21E2B26A2B74C7EA001BBBFA /* RegistrationView.swift in Sources */,
@@ -594,6 +601,7 @@
 				21EC13C62B62FB1B00CF0814 /* User.swift in Sources */,
 				218D71B02BD3E4F8004C46B9 /* GenieAIView.swift in Sources */,
 				2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */,
+				219FAFDE2BDD7B7400567EDA /* RestTimerPill.swift in Sources */,
 				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
 				215E46E62BC5D3A1008A6EA3 /* EditPersonalDetailsView.swift in Sources */,
 				21B595812BC186ED0018743B /* PickWorkoutTemplateView.swift in Sources */,

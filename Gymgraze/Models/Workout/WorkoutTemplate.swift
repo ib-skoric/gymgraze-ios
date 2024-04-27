@@ -38,6 +38,7 @@ struct WorkoutTemplate: Codable, Identifiable {
 struct TemplateExercise: Codable, Identifiable {
     let id: Int
     let name: String
+    let timer: Int?
     let exerciseTypeId: Int
     let exerciseCategory: String
     var historicalSetRepData: [SetRepData]?
@@ -45,14 +46,16 @@ struct TemplateExercise: Codable, Identifiable {
     init() {
         id = 0
         name = ""
+        timer = 0
         exerciseCategory = ""
         exerciseTypeId = 0
         historicalSetRepData = []
     }
     
-    init(id: Int, name: String, exerciseCategory: String, exerciseTypeId: Int, historicalSetRepData: [SetRepData]) {
+    init(id: Int, name: String, timer: Int, exerciseCategory: String, exerciseTypeId: Int, historicalSetRepData: [SetRepData]) {
         self.id = id
         self.name = name
+        self.timer = timer
         self.exerciseCategory = exerciseCategory
         self.exerciseTypeId = exerciseTypeId
         self.historicalSetRepData = historicalSetRepData
@@ -61,6 +64,7 @@ struct TemplateExercise: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case timer
         case exerciseCategory = "exercise_category"
         case exerciseTypeId = "exercise_type_id"
         case historicalSetRepData = "historical_set_rep_data"

@@ -39,6 +39,7 @@ struct AddWorkoutView: View {
                 exercise.id = Int.random(in: 1...999999999)
                 exercise.name = templateExercise.name
                 exercise.exerciseTypeId = templateExercise.exerciseTypeId
+                exercise.timer = templateExercise.timer
                 exercise.exerciseCategory = templateExercise.exerciseCategory
                 
                 var exerciseSets: [Exercise.ExerciseSet] = []

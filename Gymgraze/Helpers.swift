@@ -55,3 +55,11 @@ func getAndSetTokenInKeychain(email: String, password: String, completion: @esca
         }
     }
 }
+
+func convertSecondsToMinutesAndSeconds(seconds: Int) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.minute, .second]
+    formatter.zeroFormattingBehavior = .pad
+    let formattedString = formatter.string(from: TimeInterval(seconds))!
+    return formattedString
+}
