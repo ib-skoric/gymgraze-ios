@@ -11,6 +11,7 @@ class AddToFoodDiaryViewModel: ObservableObject {
     
     @Published var foodItems: [FoodItem.Product] = []
     @Published var isLoading: Bool = false
+    @Published var searchCompleted: Bool = false
     
     func searchForFood(searchTerm: String) {
         self.isLoading = true
@@ -18,6 +19,7 @@ class AddToFoodDiaryViewModel: ObservableObject {
             switch result {
             case .success(let foodItems):
                 self.foodItems = foodItems
+                self.searchCompleted = true
             case .failure(let error):
                 print(error)
             }

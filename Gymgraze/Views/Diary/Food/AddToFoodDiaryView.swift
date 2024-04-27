@@ -13,6 +13,7 @@ struct AddToFoodDiaryView: View {
     @State var isBarcodeScannerPresented: Bool = false
     @State var selectedFood: FoodItem.Product?
     @StateObject var viewModel = AddToFoodDiaryViewModel()
+    @StateObject var favouriteFoodsViewModel = FavouriteFoodsViewModel()
     @Binding var date: Date
     
     var body: some View {
@@ -68,7 +69,7 @@ struct AddToFoodDiaryView: View {
                     EmptyView()
                 } else {
                     List(viewModel.foodItems) { foodItem in
-                        FoodItemRow(food: foodItem)
+                        FoodItemRow(food: foodItem, viewModel: favouriteFoodsViewModel)
                             .onTapGesture {
                                 selectedFood = foodItem
                             }
@@ -77,7 +78,7 @@ struct AddToFoodDiaryView: View {
                         ProductView(barcode: String(foodItem.id), selectedDate: date)
                     }
                 }
-                    
+                
             }
         }
     }

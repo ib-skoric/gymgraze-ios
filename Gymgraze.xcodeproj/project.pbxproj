@@ -248,7 +248,6 @@
 		21B595782BC186310018743B /* Workout */ = {
 			isa = PBXGroup;
 			children = (
-				2109EFB42BA398D300DC303C /* AddToFoodDiaryView.swift */,
 				2176078E2BAE2F85007C76BF /* AddWokroutView.swift */,
 				21BF71B02BA7630E0000F573 /* WorkoutDetailView.swift */,
 				219461692BB07E2400B57AA3 /* AddExerciseView.swift */,
@@ -263,6 +262,7 @@
 		21B595792BC186430018743B /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				2109EFB42BA398D300DC303C /* AddToFoodDiaryView.swift */,
 				21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */,
 				214087762BA25929004E0B51 /* FoodDetailView.swift */,
 				21729B2C2B9503C4009091B0 /* ProductView.swift */,

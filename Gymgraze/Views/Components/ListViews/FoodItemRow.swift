@@ -10,7 +10,7 @@ import SwiftUI
 struct FoodItemRow: View {
     
     var food: FoodItem.Product
-    @ObservedObject var viewModel = FavouriteFoodsViewModel()
+    @ObservedObject var viewModel: FavouriteFoodsViewModel
     
     var body: some View {
         HStack {
@@ -42,6 +42,6 @@ struct FoodItemRow: View {
     }
 }
 
-#Preview {
-    FoodItemRow(food: FoodItem.Product())
-}
+//#Preview {
+//    FoodItemRow(food: FoodItem.Product())
+//}
