@@ -81,7 +81,7 @@ struct ExerciseCard: View {
                         .fontWeight(.light)
                         .foregroundColor(.gray)
                     
-                    SetRepRow(set: set, exerciseId: set.exerciseId, readOnly: false)
+                    SetRepRow(set: set, exerciseId: set.exerciseId, readOnly: false, exercise: exercise)
                 }
                 .padding(.bottom)
             }
@@ -105,7 +105,7 @@ struct ExerciseCard: View {
             Spacer()
             
             if (exercise.exerciseCategory != "cardio") {
-                RestTimerPill(restTimerValue: String(exercise.timer ?? 90), exerciseTypeId: exercise.exerciseTypeId)
+                RestTimerPill(restTimerValue: String(exercise.timer ?? 90), exerciseTypeId: exercise.exerciseTypeId, exercise: exercise)
                 addSetButton
             } else {
                 DurationInput(exercise: exercise)

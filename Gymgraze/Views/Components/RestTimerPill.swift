@@ -11,6 +11,7 @@ struct RestTimerPill: View {
     
     @State var restTimerValue: String
     @State var exerciseTypeId: Int
+    @ObservedObject var exercise: Exercise
     @State var isAlertPresented: Bool = false
     
     var body: some View {
@@ -30,7 +31,7 @@ struct RestTimerPill: View {
                 .fill(Color.orange)
         )
         .alert("⏳ Edit timer", isPresented: $isAlertPresented, actions: {
-            EditTimerAlert(restTimerValue: $restTimerValue, exerciseTypeId: exerciseTypeId)
+            EditTimerAlert(restTimerValue: $restTimerValue, exerciseTypeId: exerciseTypeId, exercise: exercise)
         }, message: {})
         
     }
