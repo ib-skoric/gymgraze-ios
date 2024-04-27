@@ -105,6 +105,7 @@ struct ExerciseCard: View {
             Spacer()
             
             if (exercise.exerciseCategory != "cardio") {
+                RestTimerPill(restTimerValue: String(exercise.timer ?? 90), exerciseTypeId: exercise.exerciseTypeId)
                 addSetButton
             } else {
                 DurationInput(exercise: exercise)

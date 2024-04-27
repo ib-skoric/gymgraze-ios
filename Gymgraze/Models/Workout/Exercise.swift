@@ -12,6 +12,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
     var name: String
     var exerciseTypeId: Int
     var duration: Int
+    var timer: Int?
     var exerciseCategory: String
     @Published var exerciseSets: [ExerciseSet]?
     
@@ -19,6 +20,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
         case id
         case name
         case duration
+        case timer
         case exerciseTypeId = "exercise_type_id"
         case exerciseCategory = "exercise_category"
         case exerciseSets = "exercise_sets"
@@ -86,9 +88,10 @@ class Exercise: Codable, Identifiable, ObservableObject {
         exerciseSets = []
     }
     
-    init(id: Int, name: String, duration: Int, exerciseTypeId: Int, exerciseCategory: String, exerciseSets: [ExerciseSet]?) {
+    init(id: Int, name: String, duration: Int, timer: Int, exerciseTypeId: Int, exerciseCategory: String, exerciseSets: [ExerciseSet]?) {
         self.id = id
         self.name = name
+        self.timer = timer
         self.duration = duration
         self.exerciseTypeId = exerciseTypeId
         self.exerciseCategory = exerciseCategory
@@ -98,6 +101,7 @@ class Exercise: Codable, Identifiable, ObservableObject {
     init(templateExercise: TemplateExercise, exerciseSets: [ExerciseSet]) {
         self.id = templateExercise.id
         self.name = templateExercise.name
+        self.timer = templateExercise.timer
         self.duration = 0
         self.exerciseTypeId = templateExercise.exerciseTypeId
         self.exerciseCategory = ""
