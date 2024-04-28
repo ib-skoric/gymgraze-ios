@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct WorkoutTemplate: Codable, Identifiable {
+struct WorkoutTemplate: Codable, Identifiable, Hashable {
+    static func == (lhs: WorkoutTemplate, rhs: WorkoutTemplate) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let id: Int
     let name: String
     let createdAt: String
