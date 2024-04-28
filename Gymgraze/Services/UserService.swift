@@ -712,10 +712,11 @@ class UserService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         var body = ["email": email]
         
-        request.httpBody = try? JSONEncoder().encode(body)
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
@@ -726,10 +727,10 @@ class UserService {
             if let httpResonse = response as? HTTPURLResponse {
                 switch httpResonse.statusCode {
                 case 200:
-                    completion(.success(true))
+                    completion(.success(false))
                 case 409:
                     print("User with that email already exists")
-                    completion(.success(false))
+                    completion(.failure(APIError.custom(errorMessage: "User with that email already exists")))
                 default:
                     completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
                 }
