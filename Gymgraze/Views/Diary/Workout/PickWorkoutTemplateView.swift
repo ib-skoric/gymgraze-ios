@@ -33,29 +33,35 @@ struct PickWorkoutTemplateView: View {
                     NavigationLink(destination: CreateWorkoutTemplateView(), isActive: $isCreateTemplateViewPresented) {}
                 }
             }
-                
-                Spacer()
-                
-                List(viewModel.workoutTemplates) { template in
+            
+            Spacer()
+            
+            List {
+                ForEach(viewModel.workoutTemplates, id: \.self) { template in
                     WorkoutTemplateRow(workoutTemplate: template)
                         .onTapGesture {
                             selectedTemplate = template
                             isAddWorkoutViewPresented.toggle()
                         }
                 }
+                .onDelete(perform: delete)
                 
                 Button(action: {
-                    isAddWorkoutViewPresented.toggle()
-                }, label: {
-                    Text("Empty workout")
-                })
-                
-            }.onAppear {
-                viewModel.fetchWorkoutTemplates()
+                        isAddWorkoutViewPresented.toggle()
+                    }, label: {
+                        Text("**Empty workout**")
+                            .foregroundColor(.orange)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity)
+                    })
             }
+        }.onAppear {
+            viewModel.fetchWorkoutTemplates()
         }
     }
     
-    //#Preview {
-    //    PickWorkoutTemplateView(date: .constant(Date()), isAddWorkoutViewPresented: .constant(false))
-    //}
+    func delete(at offsets: IndexSet) {
+        viewModel.deleteWorkoutTemplate(id: viewModel.workoutTemplates[offsets.first!].id)
+        viewModel.workoutTemplates.remove(atOffsets: offsets)
+    }
+}
