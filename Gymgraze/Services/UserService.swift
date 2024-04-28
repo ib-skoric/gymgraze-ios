@@ -703,4 +703,37 @@ class UserService {
             }
         }.resume()
     }
+    
+    func checkEmailExists(email: String, completion: @escaping (Result<Bool, APIError>) -> Void) {
+        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/check_email_exists") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        var body = ["email": email]
+        
+        request.httpBody = try? JSONEncoder().encode(body)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 200:
+                    completion(.success(true))
+                case 409:
+                    print("User with that email already exists")
+                    completion(.success(false))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+    }
 }
