@@ -45,14 +45,16 @@ struct PickWorkoutTemplateView: View {
                         }
                 }
                 .onDelete(perform: delete)
+                
+                Button(action: {
+                        isAddWorkoutViewPresented.toggle()
+                    }, label: {
+                        Text("**Empty workout**")
+                            .foregroundColor(.orange)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity)
+                    })
             }
-            
-            Button(action: {
-                isAddWorkoutViewPresented.toggle()
-            }, label: {
-                Text("Empty workout")
-            })
-            
         }.onAppear {
             viewModel.fetchWorkoutTemplates()
         }
@@ -62,8 +64,4 @@ struct PickWorkoutTemplateView: View {
         viewModel.deleteWorkoutTemplate(id: viewModel.workoutTemplates[offsets.first!].id)
         viewModel.workoutTemplates.remove(atOffsets: offsets)
     }
-    
-    //#Preview {
-    //    PickWorkoutTemplateView(date: .constant(Date()), isAddWorkoutViewPresented: .constant(false))
-    //}
 }
