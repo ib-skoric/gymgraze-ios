@@ -21,4 +21,16 @@ class WorkoutTemplatesViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteWorkoutTemplate(id: Int) {
+        UserService().deleteWorkoutTemplate(id: id) { result in
+            switch result {
+                case .success(let workoutTemplate):
+                    self.fetchWorkoutTemplates()
+                    print(workoutTemplate)
+                case .failure(let error):
+                    print(error)
+            }
+        }
+    }
 }
