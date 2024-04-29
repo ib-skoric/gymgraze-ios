@@ -74,6 +74,7 @@ struct RegistrationView: View {
                         Text(steps[step].error.wrappedValue)
                             .font(.caption)
                             .foregroundColor(.red)
+                            .padding()
                     }
                 }
                 .transition(.push(from: .trailing))
@@ -117,10 +118,10 @@ struct RegistrationView: View {
                     .background {
                         NavigationLink(destination: ConfirmationCodeInputView(confirmationType: "email").navigationBarBackButtonHidden(true), isActive: $showEmailConfirmationView) {}
                     }
-//                    .navigationDestination(isPresented: $showEmailConfirmationView) {
-//                        ConfirmationCodeInputView(confirmationType: "email")
-//                            .navigationBarBackButtonHidden(true)
-//                    }
+                //                    .navigationDestination(isPresented: $showEmailConfirmationView) {
+                //                        ConfirmationCodeInputView(confirmationType: "email")
+                //                            .navigationBarBackButtonHidden(true)
+                //                    }
             }
         }
     }
@@ -146,13 +147,18 @@ struct RegistrationView: View {
         
         // validates email field
         if field == "Email" {
-            if emailTest.evaluate(with: value) {
-                steps[step].error.wrappedValue = ""
-                isValid = true
-            } else {
-                steps[step].error.wrappedValue = "This email address is not valid"
-                isValid = false
+            let semaphore = DispatchSemaphore(value: 0)
+            validateEmail(email: value) { result in
+                if result {
+                    // Move to the next step
+                    isValid = true
+                } else {
+                    // Show an error message
+                    isValid = false
+                }
+                semaphore.signal()
             }
+            semaphore.wait()
         }
         
         // validates password field
@@ -169,7 +175,6 @@ struct RegistrationView: View {
         if field == "Age" || field == "Height" || field == "Weight" {
             let intValue = Int(value) ?? nil
             
-            // TODO: I am assuming that noone will be 18kg or 18cm which is acceptable for the time being
             if intValue != nil && intValue! <= 18 {
                 steps[step].error.wrappedValue = "Value must be positive and you must be over 18 years of age"
                 isValid = false
@@ -228,9 +233,37 @@ struct RegistrationView: View {
             }
         }
     }
+    
+    func checkEmailExists(email: String, completion: @escaping (Bool) -> Void) {
+        UserService().checkEmailExists(email: email) { result in
+            switch result {
+            case .success(let exists):
+                completion(false)
+            case .failure(let error):
+                completion(true)
+            }
+        }
+    }
+    
+    func validateEmail(email: String, completion: @escaping (Bool) -> Void) {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        
+            checkEmailExists(email: email) { result in
+                if result {
+                    steps[step].error.wrappedValue = "User with this email already exists."
+                    completion(false)
+                } else if emailTest.evaluate(with: email) {
+                    steps[step].error.wrappedValue = ""
+                    completion(true)
+                } else {
+                    steps[step].error.wrappedValue = "This email address is not valid"
+                    completion(false)
+                }
+            }
+    }
+
 }
-
-
 #Preview {
     RegistrationView()
 }
