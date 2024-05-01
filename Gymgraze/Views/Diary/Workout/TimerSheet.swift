@@ -31,6 +31,7 @@ struct TimerSheet: View {
                         }
                     }
                     if timerValue == 0 {
+                        sendLocalNotification()
                         dismiss()
                     }
                 })
@@ -87,6 +88,16 @@ struct TimerSheet: View {
             .buttonStyle(CTAButton())
         }
         .padding()
+    }
+    
+    func sendLocalNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Time's up"
+        content.subtitle = "It's time to get back to work 💪"
+        content.sound = UNNotificationSound.default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
     }
 }
 
