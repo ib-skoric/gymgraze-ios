@@ -60,7 +60,9 @@ struct SetRepRow: View {
                 set.weight = Double(repWeight) ?? 0.0
                 print(set)
                 completed.toggle()
-                self.showTimerSheet.toggle()
+                if completed {
+                    self.showTimerSheet.toggle()
+                }
             }, label: {
                 Image(systemName: "checkmark")
                     .foregroundColor(setRepEmpty ? .gray : .orange)
