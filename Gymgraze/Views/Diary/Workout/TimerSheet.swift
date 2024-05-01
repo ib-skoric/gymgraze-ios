@@ -93,7 +93,7 @@ struct TimerSheet: View {
     func sendLocalNotification() {
         let content = UNMutableNotificationContent()
         content.title = "Time's up"
-        content.subtitle = "It's time to get back to work 💪"
+        content.body = "It's time to get back to work 💪"
         content.sound = UNNotificationSound.default
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
