@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var userVM: UserViewModel
     @State var selectedTab = 0
     
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             MainView()
@@ -36,6 +37,19 @@ struct ContentView: View {
                 }.tag(4)
         }
         .accentColor(Color(.orange))
+        .onAppear(perform: {
+            requestPermissions()
+        })
+    }
+    
+    func requestPermissions() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, error in
+            if success {
+                print("Notification permisssion granted!")
+            } else if let error {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
