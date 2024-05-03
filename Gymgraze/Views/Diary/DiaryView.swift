@@ -11,15 +11,17 @@ struct DiaryView: View {
     @State private var isWorkoutDetailsActive: Bool = false
     @State private var isGenieActive: Bool = false
     @State var selectedDate: Date?
-    
+    @State private var notification: InAppNotification? = nil
+
     var foodsByMeal: [Int: [Food]] {
         Dictionary(grouping: diaryVM.diaryFoods) { $0.meal.id }
     }
     
-    init(selectedDate: Date? = nil) {
+    init(selectedDate: Date? = nil, notification: State<InAppNotification?>) {
         if selectedDate != nil {
             diaryVM.selectedDate = selectedDate!
         }
+        self._notification = notification
     }
     
     var body: some View {
@@ -110,7 +112,7 @@ struct DiaryView: View {
                             }
                         }
                         .sheet(item: $selectedFood) { food in
-                            FoodDetailView(food: food)
+                            FoodDetailView(food: food, notification: $notification)
                                 .environmentObject(diaryVM)
                         }
                         .sheet(item: $selectedWorkout) { workout in

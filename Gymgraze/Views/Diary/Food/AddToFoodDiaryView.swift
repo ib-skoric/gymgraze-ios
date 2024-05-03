@@ -15,6 +15,7 @@ struct AddToFoodDiaryView: View {
     @StateObject var viewModel = AddToFoodDiaryViewModel()
     @StateObject var favouriteFoodsViewModel = FavouriteFoodsViewModel()
     @Binding var date: Date
+    @State private var notification: InAppNotification? = nil
     
     var body: some View {
         NavigationStack {
@@ -32,11 +33,8 @@ struct AddToFoodDiaryView: View {
                 }
                 
             }
-            .onAppear {
-                print("-------------- FAVOURITE FOOD IDS ----------------", $favouriteFoodsViewModel.favouriteFoodsIds)
-                print("-------------- FAVOURITE FOODS ----------------", $favouriteFoodsViewModel.favouriteFoods)
-            }
         }
+        .inAppNotificationView(notification: $notification)
     }
     
     var viewHeading: some View {
@@ -94,7 +92,7 @@ struct AddToFoodDiaryView: View {
                 }
         }
         .sheet(item: $selectedFood) { foodItem in
-            ProductView(barcode: String(foodItem.id), selectedDate: date)
+            ProductView(barcode: String(foodItem.id), selectedDate: date, notification: $notification)
         }
     }
     
@@ -113,7 +111,7 @@ struct AddToFoodDiaryView: View {
                         }
                 }
                 .sheet(item: $selectedFood) { foodItem in
-                    ProductView(barcode: String(foodItem.id), selectedDate: date)
+                    ProductView(barcode: String(foodItem.id), selectedDate: date, notification: $notification)
                 }
             }
         }

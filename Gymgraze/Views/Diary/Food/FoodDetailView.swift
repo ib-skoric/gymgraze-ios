@@ -15,6 +15,7 @@ struct FoodDetailView: View {
     @State var foodImageURL: String = ""
     @State private var amount: String = ""
     @EnvironmentObject var diaryVM: DiaryViewModel
+    @Binding var notification: InAppNotification?
     
     var body: some View {
         VStack {
@@ -63,6 +64,7 @@ struct FoodDetailView: View {
                         print("Save button tapped")
                         updateFoodAmount()
                         dismiss()
+                        notification = InAppNotification(style: .success, message: "Food item updated in diary")
                     }, label: {
                         Text("Save item")
                     })
@@ -125,6 +127,6 @@ struct FoodDetailView: View {
     
 }
 
-#Preview {
-    FoodDetailView(food: Food(), foodImageURL: "")
-}
+//#Preview {
+//    FoodDetailView(food: Food(), foodImageURL: "")
+//}

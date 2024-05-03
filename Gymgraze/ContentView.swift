@@ -19,7 +19,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }.tag(0)
-            DiaryView()
+            DiaryView(notification: _notification)
                 .tabItem {
                     Label("Diary", systemImage: "book.pages.fill")
                 }.tag(1)

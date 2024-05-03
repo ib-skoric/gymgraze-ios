@@ -18,6 +18,7 @@ struct ProductView: View {
     @EnvironmentObject var userVM: UserViewModel
     @State var selectedDate: Date
     @State private var meal: Meal = Meal()
+    @Binding var notification: InAppNotification?
     
     var body: some View {
         VStack {
@@ -135,6 +136,7 @@ struct ProductView: View {
         diaryService.addFoodToDiary(food: foodItem, amount: Double(amount) ?? 0, date: dateString, mealId: meal.id, nutritionalInfo: foodItem.product.nutriments) { result in
             switch result {
             case .success(let response):
+                notification = InAppNotification(style: .success, message: "Food item added to your diary")
                 print(response)
             case .failure(let error):
                 print(error)
@@ -143,7 +145,7 @@ struct ProductView: View {
     }
 }
 
-#Preview {
-    ProductView(barcode: "4543435454534", selectedDate: Date())
-        .environmentObject(UserViewModel())
-}
+//#Preview {
+//    ProductView(barcode: "4543435454534", selectedDate: Date())
+//        .environmentObject(UserViewModel())
+//}
