@@ -28,7 +28,7 @@ struct InAppNotificationView: View {
                   onCanceled()
               } label: {
                 Image(systemName: "xmark")
-                  .foregroundColor(style.colour)
+                      .foregroundColor(.primary)
               }
             }
             .padding()

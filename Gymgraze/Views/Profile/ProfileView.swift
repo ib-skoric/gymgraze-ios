@@ -10,16 +10,16 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject var userVM: UserViewModel
-    
     @State private var userLoggedOut: Bool = false
-    
+    @State private var notification: InAppNotification? = nil
+
     var body: some View {
         NavigationStack {
             Heading(text: "🧑 Profile")
             
             List {
                 NavigationLink {
-                    EditPersonalDetailsView()
+                    EditPersonalDetailsView(notification: $notification)
                         .environmentObject(userVM)
                 } label: {
                     HStack {
@@ -30,7 +30,7 @@ struct ProfileView: View {
                 }
                 
                 NavigationLink {
-                    EditGoalsView()
+                    EditGoalsView(notification: $notification)
                         .environmentObject(userVM)
                 } label: {
                     HStack {
@@ -41,7 +41,7 @@ struct ProfileView: View {
                 }
                 
                 NavigationLink {
-                    EditMealsview()
+                    EditMealsview(notification: $notification)
                         .environmentObject(userVM)
                 } label: {
                     HStack {
@@ -61,6 +61,7 @@ struct ProfileView: View {
                 }
             }
         }
+        .inAppNotificationView(notification: $notification)
     }
     
     func logout() {

@@ -13,6 +13,7 @@ struct EditPersonalDetailsView: View {
     @State var age: String = ""
     @State var height: String = ""
     @EnvironmentObject var userVM: UserViewModel
+    @Binding var notification: InAppNotification?
     
     var body: some View {
         NavigationView {
@@ -40,6 +41,7 @@ struct EditPersonalDetailsView: View {
                 userVM.updatePersonalDetails(name: name, age: Int(age) ?? 0, height: Int(height) ?? 0) { result in
                     switch result {
                     case .success:
+                        notification = InAppNotification(style: .success, message: "Personal details updated!")
                         print("Successfully updated personal details")
                     case .failure:
                         print("Failed to update personal details")
@@ -50,6 +52,6 @@ struct EditPersonalDetailsView: View {
     }
 }
 
-#Preview {
-    EditPersonalDetailsView()
-}
+//#Preview {
+//    EditPersonalDetailsView()
+//}

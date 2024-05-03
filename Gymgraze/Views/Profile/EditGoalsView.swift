@@ -12,6 +12,7 @@ struct EditGoalsView: View {
     @State var stepsCount: String = ""
     @State var exerciseMinutes: String = ""
     @State var calories: String = ""
+    @Binding var notification: InAppNotification?
     @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
@@ -49,6 +50,7 @@ struct EditGoalsView: View {
             
             switch result {
             case .success:
+                notification = InAppNotification(style: .success, message: "Goals successfully updated!")
                 print("Successfully updated goals")
             case .failure:
                 print("Failed to update goals")
@@ -58,6 +60,6 @@ struct EditGoalsView: View {
 }
 
 
-#Preview {
-    EditGoalsView()
-}
+//#Preview {
+//    EditGoalsView()
+//}
