@@ -69,6 +69,7 @@ class UserViewModel: ObservableObject {
     }
     
     func fetchUser() {
+        self.authenticationError = false
         self.isLoading = true
         UserService().fetchUser { (result) in
             DispatchQueue.main.async {
@@ -83,6 +84,7 @@ class UserViewModel: ObservableObject {
                     print(user)
                     // stop the loading
                 case .failure(let error):
+                    self.authenticationError = true
                     print("Error fetching user: \(error)")
                 }
                 self.isLoading = false

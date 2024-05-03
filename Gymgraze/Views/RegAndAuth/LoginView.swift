@@ -14,6 +14,7 @@ struct LoginView: View {
     
     @State var isLoading: Bool = false
     @State var isAuthenticatedAndConfirmedUser = false
+    @State private var notification: InAppNotification? = nil
     
     var body: some View {
         NavigationStack {
@@ -38,6 +39,12 @@ struct LoginView: View {
                     .background {
                         NavigationLink(destination: ContentView().navigationBarBackButtonHidden(true), isActive: $userVM.isConfirmedEmailUser) {}
                     }
+            }
+            .inAppNotificationView(notification: $notification)
+            .onAppear {
+                if userVM.authenticationError {
+                    notification = InAppNotification(style: .error, message: "Ooops, something went wrong authenticating you. Please try again later")
+                }
             }
             NavigationLink(destination: RequestPasswordResetView()) {
                 Text("🔒 Forgot password? Let's reset it")

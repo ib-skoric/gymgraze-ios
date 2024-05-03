@@ -14,11 +14,10 @@ struct InAppNotificationView: View {
     var width: CGFloat = .infinity
     var onCanceled: (() -> Void)
     
-    
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
               Image(systemName: style.icon)
-                .foregroundColor(style.colour)
+                .foregroundColor(.primary)
               Text(message)
                 .font(Font.caption)
                 .foregroundColor(.primary)
@@ -34,11 +33,11 @@ struct InAppNotificationView: View {
             }
             .padding()
             .frame(minWidth: 0, maxWidth: width)
-            .background(.ultraThinMaterial)
+            .background(style.colour)
             .cornerRadius(8)
             .overlay(
               RoundedRectangle(cornerRadius: 8)
-                .opacity(0.6)
+                .opacity(0.05)
             )
             .padding(.horizontal, 16)
           }
