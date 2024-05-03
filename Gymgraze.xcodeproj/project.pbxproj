@@ -60,6 +60,9 @@
 		2194616A2BB07E2400B57AA3 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219461692BB07E2400B57AA3 /* AddExerciseView.swift */; };
 		2194616C2BB080B500B57AA3 /* AddWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */; };
 		2194616E2BB08A2200B57AA3 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */; };
+		219547BF2BE579EC00B4C219 /* InAppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219547BE2BE579EC00B4C219 /* InAppNotification.swift */; };
+		219547C22BE57A5900B4C219 /* InAppNotificationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219547C12BE57A5900B4C219 /* InAppNotificationStyle.swift */; };
+		219547C42BE57AC500B4C219 /* InAppNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219547C32BE57AC500B4C219 /* InAppNotificationView.swift */; };
 		219FAFD82BD6FBF700567EDA /* TimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFD72BD6FBF700567EDA /* TimerProgressBar.swift */; };
 		219FAFDA2BDD327100567EDA /* FavouriteFoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFD92BDD327100567EDA /* FavouriteFoodsViewModel.swift */; };
 		219FAFDC2BDD592900567EDA /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219FAFDB2BDD592900567EDA /* SplashScreen.swift */; };
@@ -156,6 +159,9 @@
 		219461692BB07E2400B57AA3 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		2194616B2BB080B500B57AA3 /* AddWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewModel.swift; sourceTree = "<group>"; };
 		2194616D2BB08A2200B57AA3 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
+		219547BE2BE579EC00B4C219 /* InAppNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppNotification.swift; sourceTree = "<group>"; };
+		219547C12BE57A5900B4C219 /* InAppNotificationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppNotificationStyle.swift; sourceTree = "<group>"; };
+		219547C32BE57AC500B4C219 /* InAppNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppNotificationView.swift; sourceTree = "<group>"; };
 		219FAFD72BD6FBF700567EDA /* TimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressBar.swift; sourceTree = "<group>"; };
 		219FAFD92BDD327100567EDA /* FavouriteFoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteFoodsViewModel.swift; sourceTree = "<group>"; };
 		219FAFDB2BDD592900567EDA /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -249,6 +255,15 @@
 				216693362BCAC176003CD93E /* AddProgressLogView.swift */,
 			);
 			path = Progress;
+			sourceTree = "<group>";
+		};
+		219547C02BE57A4600B4C219 /* InAppNotification */ = {
+			isa = PBXGroup;
+			children = (
+				219547C12BE57A5900B4C219 /* InAppNotificationStyle.swift */,
+				219547C32BE57AC500B4C219 /* InAppNotificationView.swift */,
+			);
+			path = InAppNotification;
 			sourceTree = "<group>";
 		};
 		21B595782BC186310018743B /* Workout */ = {
@@ -433,6 +448,7 @@
 		21D67E8F2B2B45D8005FAC79 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				219547C02BE57A4600B4C219 /* InAppNotification */,
 				21B5957C2BC186820018743B /* ListViews */,
 				21B5957B2BC186660018743B /* Inputs */,
 				21B5957A2BC1865A0018743B /* Cards */,
@@ -456,6 +472,7 @@
 				21B5957E2BC186AC0018743B /* Workout */,
 				21B5957D2BC1869E0018743B /* User */,
 				2150C1642BD0667B00B4097F /* ArticleCard.swift */,
+				219547BE2BE579EC00B4C219 /* InAppNotification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -571,6 +588,7 @@
 				21C745AE2BB98AFF0085DC68 /* WorkoutExerciseCard.swift in Sources */,
 				2166933B2BCAE148003CD93E /* Trends.swift in Sources */,
 				21BFA5FE2B9E230B0074F130 /* Cache.swift in Sources */,
+				219547BF2BE579EC00B4C219 /* InAppNotification.swift in Sources */,
 				21EC13D22B63003900CF0814 /* InputField.swift in Sources */,
 				210DA2FD2B825FE900F96B75 /* StatCard.swift in Sources */,
 				2109EFB72BA39E7B00DC303C /* WorkoutDiaryEntry.swift in Sources */,
@@ -592,6 +610,7 @@
 				21BFA6002B9E2A8E0074F130 /* DiaryViewModel.swift in Sources */,
 				218D71AC2BD3DE1E004C46B9 /* GenieAIService.swift in Sources */,
 				210DA2F92B825B5000F96B75 /* TrendsView.swift in Sources */,
+				219547C22BE57A5900B4C219 /* InAppNotificationStyle.swift in Sources */,
 				21B5958B2BC31A6D0018743B /* CreateWorkoutTemplateView.swift in Sources */,
 				219461682BB076C700B57AA3 /* SetRepRow.swift in Sources */,
 				214087772BA25929004E0B51 /* FoodDetailView.swift in Sources */,
@@ -628,6 +647,7 @@
 				215E46EA2BC5D3B3008A6EA3 /* EditMealsView.swift in Sources */,
 				21729B292B94DC63009091B0 /* DataScannerRepresentable.swift in Sources */,
 				215E46E82BC5D3A9008A6EA3 /* EditGoalsView.swift in Sources */,
+				219547C42BE57AC500B4C219 /* InAppNotificationView.swift in Sources */,
 				2150C1652BD0667B00B4097F /* ArticleCard.swift in Sources */,
 				217607972BAEF64D007C76BF /* AddToFoodDiaryViewModel.swift in Sources */,
 				219FAFD82BD6FBF700567EDA /* TimerProgressBar.swift in Sources */,
