@@ -69,3 +69,9 @@ struct InAppNotificationModifier: ViewModifier {
         dispatchWorkItem = nil
     }
 }
+
+extension View {
+    func inAppNotification(notification: Binding<InAppNotification?>) -> some View {
+        self.modifier(InAppNotificationModifier(notification: notification))
+    }
+}
