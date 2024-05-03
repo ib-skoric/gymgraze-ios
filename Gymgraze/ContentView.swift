@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @EnvironmentObject var userVM: UserViewModel
     @State var selectedTab = 0
-    
+    @State private var notification: InAppNotification? = nil
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -36,8 +36,10 @@ struct ContentView: View {
                     Label("Profile", systemImage: "person")
                 }.tag(4)
         }
+        .inAppNotificationView(notification: $notification)
         .accentColor(Color(.orange))
         .onAppear(perform: {
+            notification = InAppNotification(style: .success, message: "Welcome back, good to have you here!")
             requestPermissions()
         })
     }

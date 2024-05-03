@@ -34,7 +34,7 @@ struct InAppNotificationView: View {
             }
             .padding()
             .frame(minWidth: 0, maxWidth: width)
-            .background(.thinMaterial)
+            .background(.ultraThinMaterial)
             .cornerRadius(8)
             .overlay(
               RoundedRectangle(cornerRadius: 8)

@@ -71,7 +71,7 @@ struct InAppNotificationModifier: ViewModifier {
 }
 
 extension View {
-    func inAppNotification(notification: Binding<InAppNotification?>) -> some View {
+    func inAppNotificationView(notification: Binding<InAppNotification?>) -> some View {
         self.modifier(InAppNotificationModifier(notification: notification))
     }
 }
