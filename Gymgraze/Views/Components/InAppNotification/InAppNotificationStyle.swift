@@ -11,6 +11,7 @@ import SwiftUI
 enum InAppNotificationStyle {
     case error
     case success
+    case networkError
 }
 
 extension InAppNotificationStyle {
@@ -20,6 +21,8 @@ extension InAppNotificationStyle {
             return Color.red
         case .success:
             return Color.green
+        case .networkError:
+            return Color.red
         }
     }
     
@@ -29,6 +32,8 @@ extension InAppNotificationStyle {
             return "xmark.octagon.fill"
         case .success:
             return "checkmark.circle.fill"
+        case .networkError:
+            return "wifi.slash"
         }
     }
 }
