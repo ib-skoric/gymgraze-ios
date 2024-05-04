@@ -13,23 +13,36 @@ struct GymgrazeApp: App {
     @StateObject var userVM = UserViewModel()
     @StateObject var diaryVM = DiaryViewModel()
     
+    @State private var isActive: Bool = false
+    
     var body: some Scene {
-        
         WindowGroup {
-            
-            if getToken() != nil && userVM.isConfirmedEmailUser {
-                ContentView()
-                    .environmentObject(userVM)
-                    .environmentObject(diaryVM)
-                    .accentColor(Color(.orange))
-//            } else if $userVM.isLoading {
-//                SplashScreen()
-            } else {
-                LoginView()
-                    .environmentObject(userVM)
-                    .accentColor(Color(.orange))
+            VStack {
+                if self.isActive {
+                    if getToken() != nil && userVM.isConfirmedEmailUser {
+                        ContentView()
+                            .environmentObject(userVM)
+                            .environmentObject(diaryVM)
+                            .accentColor(Color(.orange))
+                    } else {
+                        LoginView()
+                            .environmentObject(userVM)
+                            .accentColor(Color(.orange))
+                    }
+                } else {
+                    // SplashView is your custom splash screen view
+                    SplashScreen()
+                }
             }
-        }        
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    withAnimation {
+                        self.isActive = true
+                    }
+                }
+            }
+        }
     }
 }
+
 
