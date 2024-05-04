@@ -15,6 +15,7 @@ struct BarcodeScannerView: View {
     @State private var scannedText = ""
     @State var showProductView = false
     @State private var id = 0
+    @State private var notification: InAppNotification? = nil
     
     var body: some View {
         if DataScannerViewController.isSupported && DataScannerViewController.isAvailable {
@@ -28,7 +29,7 @@ struct BarcodeScannerView: View {
                     )
                     .id(id)
                     .sheet(isPresented: $showProductView) {
-                        ProductView(barcode: scannedText, selectedDate: Date())
+                        ProductView(barcode: scannedText, selectedDate: Date(), notification: $notification)
                     }
                 }
                 .onChange(of: showProductView) { isShowing in
@@ -41,9 +42,8 @@ struct BarcodeScannerView: View {
                         }
                     }
                 }
-
-
             }
+            .inAppNotificationView(notification: $notification)
         }
             
         else if !DataScannerViewController.isSupported {

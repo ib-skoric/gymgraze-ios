@@ -11,6 +11,7 @@ struct StartWorkoutView: View {
     @State var date: Date = Date()
     @State var isAddWorkoutViewPresented: Bool = false
     @State var selectedTemplate: WorkoutTemplate?
+    @Binding var notification: InAppNotification?
     @EnvironmentObject var diaryVM: DiaryViewModel
     
     var body: some View {
@@ -18,13 +19,13 @@ struct StartWorkoutView: View {
             if !isAddWorkoutViewPresented {
                 PickWorkoutTemplateView(date: $date, isAddWorkoutViewPresented: $isAddWorkoutViewPresented, selectedTemplate: $selectedTemplate)
             } else {
-                AddWorkoutView(date: $date, selectedTemplate: $selectedTemplate)
-                    .navigationBarBackButtonHidden(true)
+                AddWorkoutView(date: $date, selectedTemplate: $selectedTemplate, notification: $notification)
             }
         }
     }
 }
 
-#Preview {
-    StartWorkoutView()
-}
+//
+//#Preview {
+//    StartWorkoutView()
+//}

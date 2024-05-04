@@ -29,8 +29,7 @@ struct GymgrazeApp: App {
                     .environmentObject(userVM)
                     .accentColor(Color(.orange))
             }
-        }
-        
+        }        
     }
 }
 

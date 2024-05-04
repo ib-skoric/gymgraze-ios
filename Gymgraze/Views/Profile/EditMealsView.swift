@@ -12,6 +12,7 @@ struct EditMealsview: View {
     @EnvironmentObject var userVM: UserViewModel
     @State var isAddMealModalShown: Bool = false
     @State var newMealName: String = ""
+    @Binding var notification: InAppNotification?
     @State var meals: [Meal] = []
     
     var body: some View {
@@ -56,6 +57,7 @@ struct EditMealsview: View {
                     UserService().createMeal(meal: meal) { result in
                         switch result {
                         case .success(let meal):
+                            notification = InAppNotification(style: .success, message: "Meals successfully updated!")
                             userVM.fetchUser()
                         case .failure(let error):
                             print(error)
@@ -108,6 +110,6 @@ struct EditMealsview: View {
     }
 }
 
-#Preview {
-    EditMealsview()
-}
+//#Preview {
+//    EditMealsview()
+//}

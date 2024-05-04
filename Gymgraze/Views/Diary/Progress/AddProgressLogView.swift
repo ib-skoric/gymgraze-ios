@@ -16,6 +16,7 @@ struct AddProgressLogView: View {
     @State var armMeasurement: String = ""
     @State var waistMeasurement: String = ""
     @State var chestMeasurement: String = ""
+    @Binding var notification: InAppNotification?
     
     var body: some View {
         
@@ -56,11 +57,12 @@ struct AddProgressLogView: View {
         var dataToAPI = ProgressDiaryEntryToAPI(date: dateString, weight: Double(weight) ?? 0.0, body_fat_percentage: Double(bodyFatPercentage), arm_measurement: Double(armMeasurement), waist_measurement: Double(waistMeasurement), chest_measurement: Double(chestMeasurement))
         
         diaryVM.addToProgressDiary(progressDiaryEntry: dataToAPI)
+        notification = InAppNotification(style: .success, message: "Progress log added successfully")
         dismiss()
         
     }
 }
 
-#Preview {
-    AddProgressLogView()
-}
+//#Preview {
+//    AddProgressLogView()
+//}

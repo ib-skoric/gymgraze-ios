@@ -18,6 +18,7 @@ struct AddWorkoutView: View {
     @State private var isWorkoutFinished: Bool = false
     @Binding var date: Date
     @Binding var selectedTemplate: WorkoutTemplate?
+    @Binding var notification: InAppNotification?
     @StateObject var viewModel = AddWorkoutViewModel()
     
     func formatDate(date: Date) -> String {
@@ -113,6 +114,7 @@ struct AddWorkoutView: View {
                                 viewModel.reset()
                                 diaryVM.refresh()
                                 selectedTemplate = nil
+                                notification = InAppNotification(style: .success, message: "Workout has been saved successfully")
                                 self.dismiss()
                             }
                         case .failure(let error):
