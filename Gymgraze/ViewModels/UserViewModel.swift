@@ -9,6 +9,7 @@ import Foundation
 
 class UserViewModel: ObservableObject {
     
+    /// published properties used by different views to update UI
     @Published var user: User?
     @Published var email: String = ""
     @Published var password: String = ""
@@ -19,12 +20,12 @@ class UserViewModel: ObservableObject {
     @Published var hasSetGoals = false
     @Published var isLoading: Bool = true
     
-    private let cache = InMemoryCache<User>(expirationInterval: 1 * 60)
-    
+    /// Fetch user when this VM is intialised
     init() {
         fetchUser()
     }
     
+    /// Method for resetting when user is being logged out
     func reset() {
         user = nil
         email = ""
@@ -68,6 +69,7 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    /// Method for fetching user details from the API
     func fetchUser() {
         self.authenticationError = false
         self.isLoading = true
@@ -92,6 +94,7 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    /// Method for setting the user goal
     func setGoal(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
         UserService().setGoal(goal: goal) { (result) in
             DispatchQueue.main.async {
@@ -107,15 +110,17 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    /// Method for checking if user's email is confirmed
     func checkEmailConfirmed() -> Bool {
         return user?.confirmedAt != nil
     }
     
+    /// Method for requesting password reset email
     func requestPasswordRest(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         UserService().requestPasswordReset(email: email) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let string):
+                case .success(_):
                     self.hasSuccessfullyRequestedPasswordReset = true
                     completion(.success(true))
                 case .failure(let error):
@@ -126,10 +131,13 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    /// Method for updating personal details (name, age...)
     func updatePersonalDetails(name: String, age: Int, height: Int, completion: @escaping (Result<String, Error>) -> Void) {
         
+        // construct object
         let personalDetails = PersonalDetails(name: name, age: age, height: height)
         
+        // call user service and make the update call to the API
         UserService().updatePersonalDetails(personalDetails: personalDetails) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -144,10 +152,10 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    /// Method for updating user's goals
     func updateGoals(goal: GoalPayload, completion: @escaping (Result<String, Error>) -> Void) {
         
-        print("Goal: ", goal)
-        
+        // call user service and make the update call to the API
         UserService().setGoal(goal: goal) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -162,7 +170,9 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    /// Method for updating user's meals
     func updateMeals(meals: [MealToAPI], completion: @escaping (Result<String, Error>) -> Void) {
+        // call user service and make the update call to the API
         UserService().updateMeals(meals: meals) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -177,11 +187,14 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    
+    /// Method for deleting user's meal
     func deleteMeal(id: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        // call user service and make the update call to the API
         UserService().deleteMeal(id: id) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let status):
+                case .success(_):
                     completion(.success("Meal deleted successfully"))
                 case .failure(let error):
                     print("Oops something went wrong deleting meal: \(error)")
