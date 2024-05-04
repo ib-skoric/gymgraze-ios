@@ -13,7 +13,6 @@ class FavouriteFoodsViewModel: ObservableObject {
     /// Published properties used by different views to update UI
     @Published var favouriteFoodsIds: [String] = []
     @Published var favouriteFoods: [FoodItem.Product] = []
-    @Published var isLoading: Bool = false
     
     // User Defaults
     private let userDefaults = UserDefaults.standard
@@ -24,6 +23,7 @@ class FavouriteFoodsViewModel: ObservableObject {
         if let favouriteFoodsData = userDefaults.object(forKey: "favouriteFoods") as? Data {
             do {
                 favouriteFoods = try JSONDecoder().decode([FoodItem.Product].self, from: favouriteFoodsData)
+                print("Fave foods: ", favouriteFoods)
             } catch {
                 print("Error decoding favourite foods: \(error)")
             }
@@ -32,9 +32,6 @@ class FavouriteFoodsViewModel: ObservableObject {
 
     /// Method for handling favourite foods (removing and setting)
     func handleFavourite(foodId: String) {
-        withAnimation {
-            self.isLoading = true
-        }
     
         // if the food is already in favourites, remove it
         if favouriteFoodsIds.contains(foodId) || favouriteFoods.contains(where: { $0.id == foodId }) {
@@ -42,7 +39,9 @@ class FavouriteFoodsViewModel: ObservableObject {
             favouriteFoodsIds.remove(at: index!)
             let foodIndex = favouriteFoods.firstIndex { $0.id == foodId }
             favouriteFoods.remove(at: foodIndex!)
-            self.isLoading = false
+            
+            let favouriteFoodsData = try? JSONEncoder().encode(self.favouriteFoods)
+            self.userDefaults.set(favouriteFoodsData, forKey: "favouriteFoods")
         } else {
             // else add it
             favouriteFoodsIds.append(foodId)
@@ -60,7 +59,6 @@ class FavouriteFoodsViewModel: ObservableObject {
                 case .failure(let error):
                     print("Error fetching food item: \(error)")
                 }
-                self.isLoading = false
             }
         }
         
