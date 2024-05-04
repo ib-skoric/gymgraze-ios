@@ -182,11 +182,13 @@ struct DiaryView: View {
         DiaryService().removeFoodItem(foodId: Int(foodToDelete)) { result in
             switch result {
             case .success(_):
+                notification = InAppNotification(style: .success, message: "Food deleted successfully")
                 print("deleted food")
                 DispatchQueue.main.async {
                     diaryVM.fetchFoodDiary()
                 }
             case .failure(let error):
+                notification = InAppNotification(style: .networkError, message: "Something went wrong, try again later")
                 print("Error deleting food \(error)")
             }
         }
@@ -198,9 +200,11 @@ struct DiaryView: View {
         DiaryService().deleteProgressEntry(id: Int(entryToDelete)) { result in
             switch result {
             case .success(_):
+                notification = InAppNotification(style: .success, message: "Progress diary entry deleted successfully")
                 print("deleted progress entry")
                 diaryVM.fetchProgressDiary()
             case .failure(let error):
+                notification = InAppNotification(style: .networkError, message: "Something went wrong, try again later")
                 print("Error deleting progress entry \(error)")
             }
         }
@@ -213,9 +217,11 @@ struct DiaryView: View {
         DiaryService().deleteWorkoutEntry(id: Int(workoutToDelete)) { result in
             switch result {
             case .success(_):
+                notification = InAppNotification(style: .success, message: "Workout deleted successfully")
                 print("deleted workout")
                 diaryVM.fetchWorkoutDiary()
             case .failure(let error):
+                notification = InAppNotification(style: .networkError, message: "Something went wrong, try again later")
                 print("Error deleting workout \(error)")
             }
         }
