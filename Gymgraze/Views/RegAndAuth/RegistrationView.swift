@@ -254,7 +254,6 @@ struct RegistrationView: View {
                     steps[step].error.wrappedValue = "User with this email already exists."
                     completion(false)
                 } else if emailTest.evaluate(with: email) {
-                    steps[step].error.wrappedValue = ""
                     completion(true)
                 } else {
                     steps[step].error.wrappedValue = "This email address is not valid"

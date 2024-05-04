@@ -22,8 +22,8 @@ struct GymgrazeApp: App {
                     .environmentObject(userVM)
                     .environmentObject(diaryVM)
                     .accentColor(Color(.orange))
-            } else if userVM.isLoading {
-                SplashScreen()
+//            } else if $userVM.isLoading {
+//                SplashScreen()
             } else {
                 LoginView()
                     .environmentObject(userVM)
