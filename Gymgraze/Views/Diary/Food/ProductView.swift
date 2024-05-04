@@ -139,6 +139,7 @@ struct ProductView: View {
                 notification = InAppNotification(style: .success, message: "Food item added to your diary")
                 print(response)
             case .failure(let error):
+                notification = InAppNotification(style: .networkError, message: "Something went wrong, try again later")
                 print(error)
             }
         }

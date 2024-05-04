@@ -56,8 +56,14 @@ struct AddProgressLogView: View {
         
         var dataToAPI = ProgressDiaryEntryToAPI(date: dateString, weight: Double(weight) ?? 0.0, body_fat_percentage: Double(bodyFatPercentage), arm_measurement: Double(armMeasurement), waist_measurement: Double(waistMeasurement), chest_measurement: Double(chestMeasurement))
         
-        diaryVM.addToProgressDiary(progressDiaryEntry: dataToAPI)
-        notification = InAppNotification(style: .success, message: "Progress log added successfully")
+        diaryVM.addToProgressDiary(progressDiaryEntry: dataToAPI) { result in
+            switch result {
+            case .success(_):
+                notification = InAppNotification(style: .success, message: "Progress log added successfully")
+            case .failure(let error):
+                notification = InAppNotification(style: .networkError, message: "Something went wrong, try again later")
+            }
+        }
         dismiss()
         
     }

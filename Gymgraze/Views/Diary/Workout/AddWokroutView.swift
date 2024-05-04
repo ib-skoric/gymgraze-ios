@@ -118,6 +118,7 @@ struct AddWorkoutView: View {
                                 self.dismiss()
                             }
                         case .failure(let error):
+                            notification = InAppNotification(style: .networkError, message: "Something went wrong, try again later")
                             print(error)
                         }
                     }
