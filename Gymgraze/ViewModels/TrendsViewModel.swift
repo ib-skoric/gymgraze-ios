@@ -15,7 +15,7 @@ class TrendsViewModel: ObservableObject {
     @Published var stepsPerDay: [StepTrend] = []
     @Published var healthStore = HKHealthStore()
     
-    /// Initializer
+    /// Initialiser
     init() {
         trends = Trends(weights: [], bodyFatPercentages: [], armMeasurements: [], waistMeasurements: [], chestMeasurements: [])
         self.stepsPerDay = fetchAppleHealthKitStepData()
