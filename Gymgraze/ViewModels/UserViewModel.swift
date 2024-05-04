@@ -18,7 +18,6 @@ class UserViewModel: ObservableObject {
     @Published var isConfirmedEmailUser: Bool = false
     @Published var hasSuccessfullyRequestedPasswordReset = false
     @Published var hasSetGoals = false
-    @Published var isLoading: Bool = true
     
     /// Fetch user when this VM is intialised
     init() {
@@ -71,8 +70,6 @@ class UserViewModel: ObservableObject {
     
     /// Method for fetching user details from the API
     func fetchUser() {
-        self.authenticationError = false
-        self.isLoading = true
         UserService().fetchUser { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -86,10 +83,8 @@ class UserViewModel: ObservableObject {
                     print(user)
                     // stop the loading
                 case .failure(let error):
-                    self.authenticationError = true
                     print("Error fetching user: \(error)")
                 }
-                self.isLoading = false
             }
         }
     }
