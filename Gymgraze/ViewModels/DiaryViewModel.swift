@@ -108,16 +108,18 @@ class DiaryViewModel: ObservableObject {
         }
     }
     
-    func addToProgressDiary(progressDiaryEntry: ProgressDiaryEntryToAPI) {
+    func addToProgressDiary(progressDiaryEntry: ProgressDiaryEntryToAPI, completion: @escaping (Result<Bool, APIError>) -> Void) {
         self.isLoading = true
         
         DiaryService().addToProgressDiary(progressDiaryEntry: progressDiaryEntry) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):
+                    completion(.success(true))
                     self.isLoading = false
                 case .failure(let error):
                     print(error)
+                    completion(.failure(APIError.custom(errorMessage: "Something went wrong")))
                     self.isLoading = false
                 }
             }
