@@ -12,6 +12,7 @@ struct DiaryView: View {
     @State private var isGenieActive: Bool = false
     @State var selectedDate: Date?
     @State private var notification: InAppNotification? = nil
+    @State private var showNotification: Bool = false
 
     var foodsByMeal: [Int: [Food]] {
         Dictionary(grouping: diaryVM.diaryFoods) { $0.meal.id }
@@ -109,6 +110,7 @@ struct DiaryView: View {
                                 }
                                 .foregroundColor(.orange)
                                 
+                                
                             }
                         }
                         .sheet(item: $selectedFood) { food in
@@ -153,7 +155,7 @@ struct DiaryView: View {
             .font(.system(size: 20))
             .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
             
-            AddToDropdown(type: "menu", date: $diaryVM.selectedDate)
+            AddToDropdown(type: "menu", date: $diaryVM.selectedDate, notification: $notification)
                 .environmentObject(diaryVM)
         }
         .sheet(isPresented: $isGenieActive) {
@@ -167,7 +169,7 @@ struct DiaryView: View {
             Text("No entries for this date.")
                 .font(.title)
                 .foregroundColor(.gray)
-            AddToDropdown(type: "button", date: $diaryVM.selectedDate)
+            AddToDropdown(type: "button", date: $diaryVM.selectedDate, notification: $notification)
                 .environmentObject(diaryVM)
         }
         .padding()
