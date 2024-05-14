@@ -122,6 +122,7 @@ struct DiaryView: View {
                         }
                     }
                 }
+                .inAppNotificationView(notification: $notification)
             }
         }
     }

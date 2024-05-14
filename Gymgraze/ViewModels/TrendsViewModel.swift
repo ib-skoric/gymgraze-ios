@@ -9,18 +9,25 @@ import Foundation
 import HealthKit
 
 class TrendsViewModel: ObservableObject {
+    /// Published properties used by different views to update UI
     @Published var trends: Trends
     @Published var trendsGraphsVisible: [String: Bool] = ["Weight": true, "Body fat percentage": false, "Arm measurement": false, "Waist measurement": false, "Chest measurement": false, "Steps trend": false]
     @Published var stepsPerDay: [StepTrend] = []
     @Published var healthStore = HKHealthStore()
     
+    /// Initialiser
     init() {
         trends = Trends(weights: [], bodyFatPercentages: [], armMeasurements: [], waistMeasurements: [], chestMeasurements: [])
-        self.stepsPerDay = fetchAppleHealthKitStepData()
+        fetchAppleHealthKitStepData { stepsPerDay in
+            self.stepsPerDay = stepsPerDay
+        }
         print(self.stepsPerDay)
     }
     
+    /// Method for fetching trends
     func fetchTrends() {
+        
+        // call user service to fetch trends
         UserService().fetchTrends() { result in
             switch result {
             case .success(let trends):
@@ -31,15 +38,18 @@ class TrendsViewModel: ObservableObject {
         }
     }
     
+    // HealthKit quantity type for steps
     var stepsQuantityType: HKQuantityType {
         return HKQuantityType.quantityType(forIdentifier: .stepCount)!
     }
 
+    // HealthKit quantity type for exercise minutes
     var exerciseMinutesQuantityType: HKQuantityType {
         return HKQuantityType.quantityType(forIdentifier: .appleExerciseTime)!
     }
     
-    func fetchAppleHealthKitStepData() -> [StepTrend] {
+    /// Method for fetching step data from Apple HealthKit
+    func fetchAppleHealthKitStepData(completion: @escaping ([StepTrend]) -> Void) {
         // Check authorization status
         let dataTypes: Set = [stepsQuantityType]
 
@@ -69,14 +79,13 @@ class TrendsViewModel: ObservableObject {
                             }
                         }
                     }
+                    // Call the completion handler with the steps per day
+                    completion(self.stepsPerDay)
                 }
 
                 // Execute the query
                 self.healthStore.execute(stepsQuery)
             }
         }
-        
-        return stepsPerDay
     }
-
 }

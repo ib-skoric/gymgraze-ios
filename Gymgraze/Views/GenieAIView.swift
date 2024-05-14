@@ -122,10 +122,6 @@ struct GenieAIView: View {
                     .buttonStyle(CTAButton())
                     .padding()
                 }
-                
-                .onAppear {
-                    genieAIVM.fetchFoodSummary()
-                }
             }
         }
     }
