@@ -194,7 +194,6 @@ struct TrendsView: View {
         }
         .onAppear {
             trendsVM.fetchTrends()
-            trendsVM.fetchAppleHealthKitStepData()
         }
     }
 }

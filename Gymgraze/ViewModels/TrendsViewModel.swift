@@ -18,7 +18,9 @@ class TrendsViewModel: ObservableObject {
     /// Initialiser
     init() {
         trends = Trends(weights: [], bodyFatPercentages: [], armMeasurements: [], waistMeasurements: [], chestMeasurements: [])
-        self.stepsPerDay = fetchAppleHealthKitStepData()
+        fetchAppleHealthKitStepData { stepsPerDay in
+            self.stepsPerDay = stepsPerDay
+        }
         print(self.stepsPerDay)
     }
     
@@ -47,7 +49,7 @@ class TrendsViewModel: ObservableObject {
     }
     
     /// Method for fetching step data from Apple HealthKit
-    func fetchAppleHealthKitStepData() -> [StepTrend] {
+    func fetchAppleHealthKitStepData(completion: @escaping ([StepTrend]) -> Void) {
         // Check authorization status
         let dataTypes: Set = [stepsQuantityType]
 
@@ -77,15 +79,13 @@ class TrendsViewModel: ObservableObject {
                             }
                         }
                     }
+                    // Call the completion handler with the steps per day
+                    completion(self.stepsPerDay)
                 }
 
                 // Execute the query
                 self.healthStore.execute(stepsQuery)
             }
         }
-        
-        // return the steps per day
-        return stepsPerDay
     }
-
 }

@@ -212,9 +212,9 @@ struct RegistrationView: View {
                     // set user to userVM
                     userVM.user = user
                     // Start authentication process after successful registration
+                    userVM.logout()
                     userVM.email = email
                     userVM.password = password
-                    userVM.logout()
                     userVM.authenticate() { (result) in
                         switch result {
                         case .success:
