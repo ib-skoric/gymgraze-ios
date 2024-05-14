@@ -51,9 +51,11 @@ class MainViewModel: ObservableObject {
                 let calendar = Calendar.current
                 let startOfDay = calendar.startOfDay(for: Date())
                 let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: Date(), options: .strictStartDate)
+                let devicePredicate = HKQuery.predicateForObjects(from: [HKDevice.local()])
+                let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, devicePredicate])
 
                 // Define the query
-                let stepsQuery = HKSampleQuery(sampleType: self.stepsQuantityType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, results, error) in
+                let stepsQuery = HKSampleQuery(sampleType: self.stepsQuantityType, predicate: compoundPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, results, error) in
                     if let results = results as? [HKQuantitySample] {
                         let totalSteps = results.map { $0.quantity.doubleValue(for: HKUnit.count()) }.reduce(0, +)
                         self.steps = totalSteps
