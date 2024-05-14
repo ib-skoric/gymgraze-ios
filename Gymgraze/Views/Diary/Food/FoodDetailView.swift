@@ -126,7 +126,3 @@ struct FoodDetailView: View {
     }
     
 }
-
-//#Preview {
-//    FoodDetailView(food: Food(), foodImageURL: "")
-//}

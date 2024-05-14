@@ -145,8 +145,3 @@ struct ProductView: View {
         }
     }
 }
-
-//#Preview {
-//    ProductView(barcode: "4543435454534", selectedDate: Date())
-//        .environmentObject(UserViewModel())
-//}

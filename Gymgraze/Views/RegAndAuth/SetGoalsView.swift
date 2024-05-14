@@ -119,9 +119,7 @@ struct SetGoalsView: View {
         let stepsCountInt = Int(stepsCount) ?? 0
         let exerciseInt = Int(exercise) ?? 0
         let kcalInt = Int(kcal) ?? 0
-        // TODO: Create a goal object here
         let goal = GoalPayload(kcal: kcalInt, steps: stepsCountInt, exercise: exerciseInt)
-        // TODO: Add in method to set the goal here
         userVM.setGoal(goal: goal) { result in
             switch result {
             case .success(_):
