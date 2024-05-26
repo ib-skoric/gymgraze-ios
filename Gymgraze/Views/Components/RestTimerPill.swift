@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestTimerPill: View {
-    
+    // state and env variables to handle view updates
     @State var restTimerValue: String
     @State var exerciseTypeId: Int
     @ObservedObject var exercise: Exercise
@@ -24,6 +24,7 @@ struct RestTimerPill: View {
                 Text(convertSecondsToMinutesAndSeconds(seconds: Int(restTimerValue) ?? 0))
                     .foregroundStyle(.white)
             })
+            .accessibilityLabel("Edit timer button")
         }
         .padding(5)
         .background(

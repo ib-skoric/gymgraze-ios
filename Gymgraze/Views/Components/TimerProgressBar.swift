@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// make the progressview style
 struct GradientProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         GeometryReader { geometry in

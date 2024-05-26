@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct SplashScreen: View {
-    
+    // state variable
     @State private var scale: CGFloat = 0.7
     
     var body: some View {
         Spacer()
         VStack {
             VStack {
+                // show logo
                 Image("logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -23,6 +24,7 @@ struct SplashScreen: View {
                     .padding(.bottom)
             }.scaleEffect(0.7)
             
+            // show text and progress view
             Text("Loading your data...")
             ProgressView()
         }

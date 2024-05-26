@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct DurationInput: View {
-    
+    // state and env variables to handle view updates
     @State var exercise: Exercise
     @State var duration: String = ""
     @State var completed: Bool = false
     
     
     var body: some View {
-        
+        // check what colour to set it to
         var completedSetColor: Color {
             completed ? .green : .primary
         }
@@ -30,6 +30,7 @@ struct DurationInput: View {
                 .foregroundColor(completedSetColor)
                 .frame(width: 100)
                 .padding(.trailing)
+                .accessibilityLabel("Duration input field")
             
             Button(action: {
                 exercise.duration = Int(duration) ?? 0
@@ -38,6 +39,7 @@ struct DurationInput: View {
                 Image(systemName: "checkmark")
                     .foregroundColor(.orange)
             })
+            .accessibilityLabel("Confirm duration button")
         }
     }
 }

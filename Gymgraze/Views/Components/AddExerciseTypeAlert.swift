@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct AddExerciseTypeAlert: View {
-    
+    // state and env variables to handle view updates
     @Binding var newExerciseName: String
     var category: String
     @ObservedObject var viewModel: AddWorkoutViewModel
     
     var body: some View {
         TextField("Name", text: $newExerciseName)
+            .accessibilityLabel("Exercise name text field")
+        
+        // button to create exercise via API
         Button("Add", action: {
             UserService().createExerciseType(name: newExerciseName, category: category) { result in
                 switch result {

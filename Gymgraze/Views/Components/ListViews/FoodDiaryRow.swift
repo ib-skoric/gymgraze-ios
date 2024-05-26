@@ -9,11 +9,13 @@ import SwiftUI
 
 struct FoodDiaryRow: View {
     
+    // variables
     var food: Food
     var nutritionalInfo: NutritionalInfo
     
     var body: some View {
         HStack {
+            // show food name and nutrition
             VStack(alignment: .leading) {
                 Text("\(food.name)")
                     .font(.headline)
@@ -28,6 +30,7 @@ struct FoodDiaryRow: View {
             }
             Spacer()
             
+            // kcal text
             Text("\(food.totalNutrition.kcal)kcal")
                 .font(.headline)
                 .fontWeight(.light)
@@ -36,7 +39,3 @@ struct FoodDiaryRow: View {
         .padding()
     }
 }
-//
-//#Preview {
-//    FoodDiaryRow(foodName: "Apple", foodWeightInG: 150.0, nutritionalInfo: NutritionalInfo())
-//}

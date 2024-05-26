@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SetRepRow: View {
     
+    // state and env variables to handle view updates
     @State private var repWeight: String = ""
     @State private var repCount: String = ""
     @State var set: Exercise.ExerciseSet
@@ -20,7 +21,8 @@ struct SetRepRow: View {
     @State private var showTimerSheet = false
     @ObservedObject var exercise: Exercise
     
-    var completedSetColor: Color {
+    // check if completed to set colour to green
+    var completedSetColour: Color {
         completed ? .green : .primary
     }
     
@@ -28,8 +30,9 @@ struct SetRepRow: View {
         repWeight.isEmpty || repCount.isEmpty
     }
     
-    
+    // main view
     var body: some View {
+        // compute which view to show based on read only value
         if readOnly == false {
             editableView
         } else {
@@ -39,28 +42,33 @@ struct SetRepRow: View {
     
     private var editableView: some View {
         HStack(alignment: .center) {
+            // weight and reps input fields
             TextField("Weight", text: $repWeight)
                 .font(.subheadline)
                 .fontWeight(.light)
                 .multilineTextAlignment(.center)
-                .keyboardType(.numberPad)
+                .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
-                .foregroundColor(completedSetColor)
+                .foregroundColor(completedSetColour)
+                .accessibilityLabel("Weight input field")
             
             TextField("Reps", text: $repCount)
                 .font(.subheadline)
                 .fontWeight(.light)
                 .multilineTextAlignment(.center)
-                .keyboardType(.numberPad)
+                .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
-                .foregroundColor(completedSetColor)
+                .foregroundColor(completedSetColour)
+                .accessibilityLabel("Reps input field")
             
+            // button to complete set
             Button(action: {
+                // convert reps and sets into double/int
                 set.reps = Int(repCount) ?? 0
                 set.weight = Double(repWeight) ?? 0.0
-                print(set)
                 completed.toggle()
                 if completed {
+                    // show timer
                     self.showTimerSheet.toggle()
                 }
             }, label: {
@@ -71,7 +79,9 @@ struct SetRepRow: View {
                 TimerSheet(timerValue: $timeRemaining)
                     .interactiveDismissDisabled(timeRemaining > 0)
             }
+            // disable it if set/rep are empty
             .disabled(repWeight.isEmpty || repCount.isEmpty)
+            .accessibilityLabel("Complete set button")
         }
         .onAppear {
             self.timeRemaining = exercise.timer ?? 90
@@ -100,7 +110,3 @@ struct SetRepRow: View {
         }
     }
 }
-
-//#Preview {
-//    SetRepRow(set: Exercise.ExerciseSet(), exerciseId: 1, readOnly: true)
-//}

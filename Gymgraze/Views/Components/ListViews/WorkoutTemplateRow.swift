@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct WorkoutTemplateRow: View {
+    // variables
     @State var workoutTemplate: WorkoutTemplate
     
     var body: some View {
+        // show template name
         VStack(alignment: .leading) {
             Text("**\(workoutTemplate.name)**")
                 .foregroundStyle(.orange)
@@ -25,7 +27,3 @@ struct WorkoutTemplateRow: View {
         .padding()
     }
 }
-
-//#Preview {
-//    WorkoutTemplateRow()
-//}

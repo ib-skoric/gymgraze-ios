@@ -5,12 +5,12 @@
 //  Created by Ivan Branimir Skoric on 20/02/2024.
 //
 
-import SwiftUI // Make sure you import the SwiftUI framework
+import SwiftUI
 
 struct Heading: View {
     var text: String
-    var menuIcon: String?
-
+    
+    // make the heading based on title
     var body: some View {
         HStack {
             Text("\(text)")

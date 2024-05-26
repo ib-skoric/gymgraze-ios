@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddExerciseTypeDropdown: View {
+    // state and env variables to handle view updates
     @Binding var isAddStrengthExerciseShown: Bool
     @Binding var isAddCardioExerciseShown: Bool
     
@@ -18,12 +19,14 @@ struct AddExerciseTypeDropdown: View {
             }, label: {
                 Label("Add strength exercise", systemImage: "dumbbell.fill")
             })
+            .accessibilityLabel("Add strength exercise button")
             
             Button(action: {
                 isAddCardioExerciseShown = true
             }, label: {
                 Label("Add cardio exercise", systemImage: "figure.run")
             })
+            .accessibilityLabel("Add cardio exercise button")
             
         } label: {
             Label("", systemImage: "plus")

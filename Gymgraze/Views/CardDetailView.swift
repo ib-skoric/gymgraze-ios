@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct CardDetailView: View {
-    
+    // state variable to hold card data
     @State var card: ArticleCard
     
     var body: some View {
         NavigationStack {
+            // show image and text
             Image("\(card.image)")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -27,7 +28,3 @@ struct CardDetailView: View {
         .navigationTitle(card.title)
     }
 }
-
-//#Preview {
-//    CardDetailView()
-//}
