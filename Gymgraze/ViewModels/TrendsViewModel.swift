@@ -11,7 +11,7 @@ import HealthKit
 class TrendsViewModel: ObservableObject {
     /// Published properties used by different views to update UI
     @Published var trends: Trends
-    @Published var trendsGraphsVisible: [String: Bool] = ["Weight": true, "Body fat percentage": false, "Arm measurement": false, "Waist measurement": false, "Chest measurement": false, "Steps trend": false]
+    @Published var trendsGraphsVisible: [String: Bool] = ["Weight": false, "Body fat percentage": false, "Arm measurement": false, "Waist measurement": false, "Chest measurement": false, "Steps trend": true]
     @Published var stepsPerDay: [StepTrend] = []
     @Published var healthStore = HKHealthStore()
     

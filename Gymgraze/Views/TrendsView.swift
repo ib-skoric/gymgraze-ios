@@ -60,7 +60,9 @@ struct TrendsView: View {
                     GroupBox("Body weight trends") {
                         // check that no value is set to 0
                         if !trendsVM.trends.weights.contains { $0.weight == 0 } {
-                            Chart(trendsVM.trends.weights, id: \.id) { dataPoint in
+                            // Sort the weights array by date
+                            let sortedWeights = trendsVM.trends.weights.sorted { $0.date < $1.date }
+                            Chart(sortedWeights, id: \.id) { dataPoint in
                                 LineMark(x: .value("Date", dataPoint.date), y: .value("Weight", dataPoint.weight))
                                     .interpolationMethod(.catmullRom)
                                 
@@ -86,7 +88,9 @@ struct TrendsView: View {
                 if trendsVM.trendsGraphsVisible["Body fat percentage"] == true {
                     GroupBox("Body fat percentage trends") {
                         if !trendsVM.trends.bodyFatPercentages.contains(where: { $0.bodyFatPercentage == 0 }) {
-                            Chart(trendsVM.trends.bodyFatPercentages, id: \.id) { dataPoint in
+                            // Sort the body fat percentages array by date
+                            let sortedBfPercentages = trendsVM.trends.bodyFatPercentages.sorted { $0.date < $1.date }
+                            Chart(sortedBfPercentages, id: \.id) { dataPoint in
                                 LineMark(x: .value("Date", dataPoint.date), y: .value("Body fat percentage", dataPoint.bodyFatPercentage ?? 0))
                                     .interpolationMethod(.catmullRom)
                                 
@@ -113,7 +117,9 @@ struct TrendsView: View {
                 if trendsVM.trendsGraphsVisible["Arm measurement"] == true {
                     GroupBox("Arm measurement trends") {
                         if !trendsVM.trends.armMeasurements.contains(where: { $0.armMeasurement == 0 }) {
-                            Chart(trendsVM.trends.armMeasurements, id: \.id) { dataPoint in
+                            // Sort the arm measurements array by date
+                            let sortedArmMeasurements = trendsVM.trends.armMeasurements.sorted { $0.date < $1.date }
+                            Chart(sortedArmMeasurements, id: \.id) { dataPoint in
                                 LineMark(x: .value("Date", dataPoint.date), y: .value("Arm measurements", dataPoint.armMeasurement ?? 0))
                                     .interpolationMethod(.catmullRom)
                                 
@@ -139,7 +145,9 @@ struct TrendsView: View {
                 if trendsVM.trendsGraphsVisible["Waist measurement"] == true {
                     GroupBox("Waist measurement trends") {
                         if !trendsVM.trends.waistMeasurements.contains(where: { $0.waistMeasurement == 0 }) {
-                            Chart(trendsVM.trends.waistMeasurements, id: \.id) { dataPoint in
+                            // Sort the waist measurements array by date
+                            let sortedWaistMeasurements = trendsVM.trends.waistMeasurements.sorted { $0.date < $1.date }
+                            Chart(sortedWaistMeasurements, id: \.id) { dataPoint in
                                 LineMark(x: .value("Date", dataPoint.date), y: .value("Waist measurements", dataPoint.waistMeasurement ?? 0))
                                     .interpolationMethod(.catmullRom)
                                 
@@ -165,7 +173,9 @@ struct TrendsView: View {
                 if trendsVM.trendsGraphsVisible["Chest measurement"] == true {
                     GroupBox("Chest measurement trends") {
                         if !trendsVM.trends.chestMeasurements.contains(where: { $0.chestMeasurement == 0 }) {
-                            Chart(trendsVM.trends.chestMeasurements, id: \.id) { dataPoint in
+                            // Sort the chest measurements array by date
+                            let sortedChestMeasurements = trendsVM.trends.chestMeasurements.sorted { $0.date < $1.date }
+                            Chart(sortedChestMeasurements, id: \.id) { dataPoint in
                                 LineMark(x: .value("Date", dataPoint.date), y: .value("Chest measurements", dataPoint.chestMeasurement ?? 0))
                                     .interpolationMethod(.catmullRom)
                                 
