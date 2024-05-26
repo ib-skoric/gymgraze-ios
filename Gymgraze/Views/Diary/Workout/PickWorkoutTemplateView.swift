@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PickWorkoutTemplateView: View {
+    
+    // state and env variables to handle view updates
     @Binding var date: Date
     @Binding var isAddWorkoutViewPresented: Bool
     @State var isCreateTemplateViewPresented: Bool = false
@@ -16,23 +18,7 @@ struct PickWorkoutTemplateView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Heading(text: "Pick workout template")
-                
-                Spacer()
-                
-                Button(action: {
-                    isCreateTemplateViewPresented.toggle()
-                }, label: {
-                    Label("", systemImage: "plus")
-                        .font(.system(size: 25))
-                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
-                })
-                .padding(.trailing)
-                .background {
-                    NavigationLink(destination: CreateWorkoutTemplateView(), isActive: $isCreateTemplateViewPresented) {}
-                }
-            }
+            viewHeading
             
             Spacer()
             
@@ -55,11 +41,34 @@ struct PickWorkoutTemplateView: View {
                             .frame(maxWidth: .infinity)
                     })
             }
+            .accessibilityLabel("Start a blank workout button")
         }.onAppear {
             viewModel.fetchWorkoutTemplates()
         }
     }
     
+    var viewHeading: some View {
+        HStack {
+            Heading(text: "Pick workout template")
+            
+            Spacer()
+            
+            Button(action: {
+                isCreateTemplateViewPresented.toggle()
+            }, label: {
+                Label("", systemImage: "plus")
+                    .font(.system(size: 25))
+                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+            })
+            .padding(.trailing)
+            .accessibilityLabel("Create workout template button")
+            .background {
+                NavigationLink(destination: CreateWorkoutTemplateView(), isActive: $isCreateTemplateViewPresented) {}
+            }
+        }
+    }
+    
+    /// Delete workout template function at specific index
     func delete(at offsets: IndexSet) {
         viewModel.deleteWorkoutTemplate(id: viewModel.workoutTemplates[offsets.first!].id)
         viewModel.workoutTemplates.remove(atOffsets: offsets)

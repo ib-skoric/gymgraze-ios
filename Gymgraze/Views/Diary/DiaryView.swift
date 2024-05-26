@@ -2,6 +2,7 @@ import SwiftUI
 
 struct DiaryView: View {
     
+    // state and env variables to handle view updates
     @EnvironmentObject var userVM: UserViewModel
     @ObservedObject var diaryVM = DiaryViewModel()
     @State private var selectedFood: Food?
@@ -14,6 +15,7 @@ struct DiaryView: View {
     @State private var notification: InAppNotification? = nil
     @State private var showNotification: Bool = false
 
+    // computed property to get foods by meal
     var foodsByMeal: [Int: [Food]] {
         Dictionary(grouping: diaryVM.diaryFoods) { $0.meal.id }
     }
@@ -176,7 +178,7 @@ struct DiaryView: View {
         .padding()
     }
     
-    
+    /// function to delete food by sending a meal ID
     func deleteFood(mealId: Int) {
         let foodToDelete = foodsByMeal[mealId]![0].id
 
@@ -195,6 +197,7 @@ struct DiaryView: View {
         }
     }
     
+    /// function to delete progress entry
     func deleteProgressEntry() {
         let entryToDelete = diaryVM.diaryProgressEntry![0].id
         
@@ -211,6 +214,7 @@ struct DiaryView: View {
         }
     }
     
+    /// function to delete workout
     func deleteWorkout(indexSet: IndexSet) {
         
         let workoutToDelete = diaryVM.diaryWokrouts[indexSet.first!].id
