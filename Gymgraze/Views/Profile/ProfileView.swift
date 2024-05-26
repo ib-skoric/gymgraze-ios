@@ -28,6 +28,7 @@ struct ProfileView: View {
                         Text("Personal information")
                     }
                 }
+                .accessibilityLabel("Button to navigate to personal details settings")
                 
                 NavigationLink {
                     EditGoalsView(notification: $notification)
@@ -39,6 +40,7 @@ struct ProfileView: View {
                         Text("Goals")
                     }
                 }
+                .accessibilityLabel("Button to navigate to goal settings")
                 
                 NavigationLink {
                     EditMealsview(notification: $notification)
@@ -50,6 +52,7 @@ struct ProfileView: View {
                         Text("Meals")
                     }
                 }
+                .accessibilityLabel("Button to navigate to meals settings")
                 
                 Button(action: {
                     logout()
@@ -59,6 +62,7 @@ struct ProfileView: View {
                 .navigationDestination(isPresented: $userLoggedOut) {
                     LoginView().navigationBarBackButtonHidden(true)
                 }
+                .accessibilityLabel("Button to navigate to log out of the app")
             }
         }
         .inAppNotificationView(notification: $notification)

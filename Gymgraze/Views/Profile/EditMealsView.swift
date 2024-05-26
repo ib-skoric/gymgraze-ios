@@ -21,6 +21,7 @@ struct EditMealsview: View {
                 HStack {
                     Heading(text: "Edit meals")
                     
+                    // way to add meals
                     Button {
                         // show the add meal modal
                         isAddMealModalShown.toggle()
@@ -30,24 +31,28 @@ struct EditMealsview: View {
                             .foregroundColor(.orange)
                     }
                     .padding(.trailing)
+                    .accessibilityLabel("Add meal button")
 
                 }
                 
+                // list to display all meals for user
                 List {
                     ForEach(userVM.user?.meals ?? [], id: \.self) { meal in
                         HStack {
                             TextField("Meal Name", text: .constant(meal.name))
+                                .accessibilityLabel("Meal name input field")
                         }
                     }
                     .onDelete(perform: meals.count > 1 ? deleteMeal : nil)
                 }
+                // on appear get meals
                 .onAppear {
                     self.meals = userVM.user?.meals ?? []
                 }
                 
-                
                 Spacer()
             }
+            // alert to handle adding a meal
             .alert("🍏 Add meal", isPresented: $isAddMealModalShown, actions: {
                 TextField("Meal name", text: $newMealName)
                 Button("Add", action: {
@@ -65,8 +70,9 @@ struct EditMealsview: View {
                     }
                 })
                 Button("Cancel", role: .cancel, action: {})
+                    .accessibilityLabel("Cancel button")
             }, message: {
-                Text("Create new cardio exercise")
+                Text("Create new meal")
             })
             .onDisappear {
                 handleMealsUpdate()
@@ -109,7 +115,3 @@ struct EditMealsview: View {
         }
     }
 }
-
-//#Preview {
-//    EditMealsview()
-//}
