@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    // ----- Variables -----
+    // State variables
     @State var email: String = ""
     @State var password: String = ""
     @State var name: String = ""
@@ -118,14 +118,11 @@ struct RegistrationView: View {
                     .background {
                         NavigationLink(destination: ConfirmationCodeInputView(confirmationType: "email").navigationBarBackButtonHidden(true), isActive: $showEmailConfirmationView) {}
                     }
-                //                    .navigationDestination(isPresented: $showEmailConfirmationView) {
-                //                        ConfirmationCodeInputView(confirmationType: "email")
-                //                            .navigationBarBackButtonHidden(true)
-                //                    }
             }
         }
     }
     
+    /// function that validates field based on it's step ID
     func validateField(step: Int) -> Bool {
         let field = steps[step].placeholder
         let value = steps[step].binding.wrappedValue

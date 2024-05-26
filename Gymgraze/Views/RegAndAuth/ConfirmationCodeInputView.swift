@@ -23,6 +23,7 @@ struct ConfirmationCodeInputView: View {
     @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
+        // compute headings based on whether this is email confirmation of password reset view
         let heading: String = (confirmationType == "email") ? "Thank you for signing up!" : "Your password has been reset"
         let subheading: String = (confirmationType == "email") ? "We will just need to confirm your email..." : "We'll just need a code to confirm this..."
         
@@ -47,6 +48,7 @@ struct ConfirmationCodeInputView: View {
                 .padding()
             
             InputField(data: $token, title: "Email confirmation code")
+                .accessibilityLabel("Email confirmation code input field")
             
             if confirmationType == "email" {
                 Button(action: {
@@ -78,7 +80,7 @@ struct ConfirmationCodeInputView: View {
                 }
             }).buttonStyle(CTAButton())
                 .padding()
-                .accessibilityLabel("Confirm email")
+                .accessibilityLabel("Confirm email button")
                 .background {
                     if confirmationType == "email" {
                         NavigationLink(destination: SetGoalsView().navigationBarBackButtonHidden(true), isActive: self.$emailConfirmed) {}
@@ -92,6 +94,7 @@ struct ConfirmationCodeInputView: View {
         }
     }
     
+    /// func that starts the countdown for re-sending emails
     func startCountdown() {
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             countdownTimer -= 1
@@ -103,6 +106,7 @@ struct ConfirmationCodeInputView: View {
         }
     }
     
+    /// function that handles validating code and confirming email
     func validateCodeAndConfirmEmail() {
         RegistrationService().confirmEmail(confirmationToken: token) { (result) in
             DispatchQueue.main.async {
@@ -118,6 +122,7 @@ struct ConfirmationCodeInputView: View {
         }
     }
     
+    /// function that handles resending the email after time interval expired
     func resendConfirmationEmail() {
         RegistrationService().resendEmailConfirmation() {
             (result) in
@@ -132,6 +137,7 @@ struct ConfirmationCodeInputView: View {
         }
     }
     
+    /// function that handles validatiing password reset (as this view is re-used)
     func validatePasswordReset() {
         UserService().validatePasswordResetCode(token: token) {
             (result) in
