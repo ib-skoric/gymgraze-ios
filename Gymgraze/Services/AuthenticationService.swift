@@ -19,7 +19,7 @@ class AuthenticationService {
         print("Attempting to authenticate with email: \(email) and password: \(password)")
         
         // construct the URL
-        guard let url = URL(string: "http://rattler-amusing-explicitly.ngrok-free.app/authenticate") else {
+        guard let url = URL(string: "https://gymgraze-3e55f4cbb92e.herokuapp.com/authenticate") else {
             // if it's not valid, throw a invalid URL error
             completion(.failure(APIError.invalidURL) as Result<String, APIError>)
             return
