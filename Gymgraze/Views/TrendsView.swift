@@ -10,11 +10,12 @@ import Charts
 
 struct TrendsView: View {
     
+    // state object and state for pop over show
     @StateObject var trendsVM = TrendsViewModel()
     @State private var showPopover = false
     
     var body: some View {
-        
+        // some colour defaults
         let prevColor = Color(.purple)
         let curColor = Color(.orange)
         let curGradient = LinearGradient(
@@ -36,6 +37,7 @@ struct TrendsView: View {
                 Button("Filter") {
                     showPopover = true
                 }
+                .accessibilityLabel("Filter button")
                 .padding(.trailing)
                 .popover(isPresented: $showPopover) {
                     Heading(text: "Pick trends to show")
@@ -47,11 +49,13 @@ struct TrendsView: View {
                             Label(key.capitalized, systemImage: trendsVM.trendsGraphsVisible[key]! ? "checkmark" : "")
                                 .foregroundColor(.orange)
                         }
+                        .accessibilityLabel("Button to show/hide " + key.lowercased() + " trends")
                     }
                     Spacer()
                 }
             }
             ScrollView {
+                // check if weight graph is visible and if it has enough data
                 if trendsVM.trendsGraphsVisible["Weight"] == true {
                     GroupBox("Body weight trends") {
                         // check that no value is set to 0
@@ -78,6 +82,7 @@ struct TrendsView: View {
                     .padding()
                 }
                 
+                // check if Body fat percentage graph is visible and if it has enough data
                 if trendsVM.trendsGraphsVisible["Body fat percentage"] == true {
                     GroupBox("Body fat percentage trends") {
                         if !trendsVM.trends.bodyFatPercentages.contains(where: { $0.bodyFatPercentage == 0 }) {
@@ -104,6 +109,7 @@ struct TrendsView: View {
                     .padding()
                 }
                 
+                // check if Arm measurement graph is visible and if it has enough data
                 if trendsVM.trendsGraphsVisible["Arm measurement"] == true {
                     GroupBox("Arm measurement trends") {
                         if !trendsVM.trends.armMeasurements.contains(where: { $0.armMeasurement == 0 }) {
@@ -129,6 +135,7 @@ struct TrendsView: View {
                     .padding()
                 }
                 
+                // check if Waist measurement graph is visible and if it has enough data
                 if trendsVM.trendsGraphsVisible["Waist measurement"] == true {
                     GroupBox("Waist measurement trends") {
                         if !trendsVM.trends.waistMeasurements.contains(where: { $0.waistMeasurement == 0 }) {
@@ -154,6 +161,7 @@ struct TrendsView: View {
                     .padding()
                 }
                 
+                // check if Chest measurement graph is visible and if it has enough data
                 if trendsVM.trendsGraphsVisible["Chest measurement"] == true {
                     GroupBox("Chest measurement trends") {
                         if !trendsVM.trends.chestMeasurements.contains(where: { $0.chestMeasurement == 0 }) {
@@ -179,6 +187,7 @@ struct TrendsView: View {
                     .padding()
                 }
                 
+                // check if steps trend graph is visible
                 if trendsVM.trendsGraphsVisible["Steps trend"] == true {
                     GroupBox("Steps trend") {
                         Chart(trendsVM.stepsPerDay, id: \.id) { dataPoint in
@@ -192,6 +201,7 @@ struct TrendsView: View {
                 }
             }
         }
+        // on appear, fetch the trends
         .onAppear {
             trendsVM.fetchTrends()
         }
