@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FoodDetailView: View {
     
+    // state and env variables to handle view updates
     @Environment(\.dismiss) var dismiss
     @State private var isLoading: Bool = false
     @State var food: Food
@@ -19,46 +20,18 @@ struct FoodDetailView: View {
     
     var body: some View {
         VStack {
+            // if view is loading show progress view
             if isLoading {
                 ProgressView()
             } else {
-                HStack {
-                    AsyncImage(url: URL(string: foodImageURL)) { image in
-                        image.resizable()
-                            .scaledToFill()
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .frame(width: 150, height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    Text(food.name)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding()
-                    Spacer()
-                }
-                .padding()
-                VStack {
-                    NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: $amount)
-                    HStack {
-                        Text("Amount (g/ml):")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                        
-                        Spacer()
-                        
-                        TextField("100g", text: $amount)
-                            .font(.subheadline)
-                            .fontWeight(.light)
-                            .multilineTextAlignment(.trailing)
-                            .keyboardType(.numberPad)
-                            .frame(width: 100)
-                            .textFieldStyle(.roundedBorder)
-                            .onAppear {
-                                self.amount = String(food.amount)
-                            }
-                    }
+                // else show actual details of the food
+                viewHeading
                     .padding()
+                VStack {
+                    // table to show current nutritional values
+                    NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: $amount)
+                    editArea
+                        .padding()
                     Spacer()
                     Button(action: {
                         print("Save button tapped")
@@ -68,6 +41,7 @@ struct FoodDetailView: View {
                     }, label: {
                         Text("Save item")
                     })
+                    .accessibilityLabel("Save edits to food button")
                     .buttonStyle(CTAButton())
                     .padding()
                 }
@@ -75,12 +49,57 @@ struct FoodDetailView: View {
             }
             Spacer()
         }
+        // on appear fertch food item and image
         .onAppear() {
             fetchFoodItem(foodId: food.id)
             fetchImage()
         }
     }
     
+    var viewHeading: some View {
+        HStack {
+            AsyncImage(url: URL(string: foodImageURL)) { image in
+                image.resizable()
+                    .scaledToFill()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 150, height: 100)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .accessibilityLabel("\(food.name) image")
+            
+            Text(food.name)
+                .font(.title)
+                .fontWeight(.bold)
+                .padding()
+            Spacer()
+        }
+    }
+    
+    var editArea: some View {
+        HStack {
+            // inputs and labels to change the amount
+            Text("Amount (g/ml):")
+                .font(.subheadline)
+                .fontWeight(.bold)
+            
+            Spacer()
+            
+            TextField("100g", text: $amount)
+                .font(.subheadline)
+                .fontWeight(.light)
+                .multilineTextAlignment(.trailing)
+                .keyboardType(.numberPad)
+                .frame(width: 100)
+                .textFieldStyle(.roundedBorder)
+                .onAppear {
+                    self.amount = String(food.amount)
+                }
+                .accessibilityLabel("Amount input field")
+        }
+    }
+    
+    /// method for fetchign the food item using diary service
     func fetchFoodItem(foodId: Int) {
         let diaryService = DiaryService()
         diaryService.fetchFoodItem(foodId: foodId) { result in
@@ -94,6 +113,7 @@ struct FoodDetailView: View {
         }
     }
     
+    /// method for fetchign the food item using open food facts service
     func fetchImage() {
         let openFoodFactsService = OpenFoodFactsService()
         openFoodFactsService.fetchFoodItemImage(barcode: food.barcode) { result in
@@ -107,6 +127,7 @@ struct FoodDetailView: View {
         }
     }
     
+    /// function that handle supdating the food amount via the API
     func updateFoodAmount() {
         let diaryService = DiaryService()
         
