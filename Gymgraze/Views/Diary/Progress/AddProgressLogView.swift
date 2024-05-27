@@ -23,26 +23,32 @@ struct AddProgressLogView: View {
     var body: some View {
         
         NavigationView {
-            VStack {
+            ScrollView {
                 Heading(text: "Add progress log")
                 
                 // input fields for progress log
                 InputField(data: $weight, title: "Weight (kg)")
                     .accessibilityLabel("Weight input field")
-                
+                    .submitLabel(.done)
+
                 InputField(data: $bodyFatPercentage, title: "Body fat percentage (%)")
                     .accessibilityLabel("Body fat percentage input field")
+                    .submitLabel(.done)
 
                 InputField(data: $armMeasurement, title: "Arm measurement (cm)")
                     .accessibilityLabel("Arm measurement input field")
+                    .submitLabel(.done)
 
                 InputField(data: $waistMeasurement, title: "Waist measurement (cm)")
                     .accessibilityLabel("Waist measurement input field")
+                    .submitLabel(.done)
 
                 InputField(data: $chestMeasurement, title: "Chest measurement (cm)")
                     .accessibilityLabel("Chest measuremen input field")
-
+                    .submitLabel(.done)
+            
                 Spacer()
+                
                 Button {
                     handleAddProgressLog()
                 } label: {

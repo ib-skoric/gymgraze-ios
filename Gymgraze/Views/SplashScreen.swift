@@ -18,6 +18,7 @@ struct SplashScreen: View {
                 // show logo
                 Image("logo")
                     .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250, height: 250)
                     .scaleEffect(scale)
@@ -28,7 +29,7 @@ struct SplashScreen: View {
             Text("Loading your data...")
             ProgressView()
         }
-    
+        .background()
         Spacer()
     }
 }
