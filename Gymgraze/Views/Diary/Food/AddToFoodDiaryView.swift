@@ -12,6 +12,7 @@ struct AddToFoodDiaryView: View {
     // state and env variables to handle view updates
     @State var searchTerm: String = ""
     @State var isBarcodeScannerPresented: Bool = false
+    @State var isQuickAddPresented: Bool = false
     @State var selectedFood: FoodItem.Product?
     @StateObject var viewModel = AddToFoodDiaryViewModel()
     @StateObject var favouriteFoodsViewModel = FavouriteFoodsViewModel()
@@ -57,6 +58,16 @@ struct AddToFoodDiaryView: View {
             })
             .padding(.trailing)
             .accessibilityLabel("Barcode scanner button")
+            
+            Button(action: {
+                isQuickAddPresented = true
+            }, label: {
+                Label("", systemImage: "bolt.fill")
+                    .font(.system(size: 25))
+                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+            })
+            .padding(.trailing)
+            .accessibilityLabel("Quick add food button")
         }
     }
     
@@ -91,6 +102,9 @@ struct AddToFoodDiaryView: View {
         .navigationDestination(isPresented: $isBarcodeScannerPresented, destination: {
             BarcodeScannerView()
         })
+        .sheet(isPresented: $isQuickAddPresented) {
+            QuickFoodAddView(selectedDate: date, notification: $notification)
+        }
         .padding()
     }
     

@@ -15,6 +15,10 @@ struct FoodDetailView: View {
     @State var food: Food
     @State var foodImageURL: String = ""
     @State private var amount: String = ""
+    @State private var calories: String = ""
+    @State private var protein: String = ""
+    @State private var carbs: String = ""
+    @State private var fats: String = ""
     @EnvironmentObject var diaryVM: DiaryViewModel
     @Binding var notification: InAppNotification?
     
@@ -25,13 +29,29 @@ struct FoodDetailView: View {
                 ProgressView()
             } else {
                 // else show actual details of the food
-                viewHeading
-                    .padding()
+                if food.name == "Quick add" {
+                    quickFoodViewHeading
+                        .padding()
+                } else {
+                    normalViewHeading
+                        .padding()
+                }
                 VStack {
                     // table to show current nutritional values
-                    NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: $amount)
-                    editArea
-                        .padding()
+                    if food.name == "Quick add" {
+                        NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: .constant("100"))
+
+                    } else {
+                        NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: $amount)
+                    }
+                    if food.name == "Quick add" {
+                        editAreaQuickAdd
+                            .padding()
+                    } else {
+                        foodEditArea
+                            .padding()
+                    }
+   
                     Spacer()
                     Button(action: {
                         print("Save button tapped")
@@ -56,7 +76,7 @@ struct FoodDetailView: View {
         }
     }
     
-    var viewHeading: some View {
+    var normalViewHeading: some View {
         HStack {
             AsyncImage(url: URL(string: foodImageURL)) { image in
                 image.resizable()
@@ -76,27 +96,134 @@ struct FoodDetailView: View {
         }
     }
     
-    var editArea: some View {
+    var quickFoodViewHeading: some View {
         HStack {
-            // inputs and labels to change the amount
-            Text("Amount (g/ml):")
-                .font(.subheadline)
+            Image(systemName: "bolt.square.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, height: 100)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .accessibilityLabel("Bolt image")
+            
+            Text(food.name)
+                .font(.title)
                 .fontWeight(.bold)
-            
+                .padding()
             Spacer()
-            
-            TextField("100g", text: $amount)
-                .font(.subheadline)
-                .fontWeight(.light)
-                .multilineTextAlignment(.trailing)
-                .keyboardType(.numberPad)
-                .frame(width: 100)
-                .textFieldStyle(.roundedBorder)
-                .onAppear {
-                    self.amount = String(food.amount)
-                }
-                .accessibilityLabel("Amount input field")
         }
+    }
+    
+    var editAreaQuickAdd: some View {
+        VStack {
+            HStack {
+                // inputs and labels to values
+                Text("Calories (kcal):")
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                TextField("100", text: $calories)
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 100)
+                    .onAppear {
+                        self.calories = String(food.nutritionalInfo.kcal)
+                    }
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
+                    .accessibilityLabel("Calories input")
+            }
+            .padding()
+            
+            HStack {
+                Text("Protein (g):")
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                TextField("10", text: $protein)
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 100)
+                    .onAppear {
+                        self.protein = String(food.totalNutrition.protein)
+                    }
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
+                    .accessibilityLabel("Protein input")
+            }
+            .padding()
+            
+            HStack {
+                Text("Carbs (g):")
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                TextField("20", text: $carbs)
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 100)
+                    .onAppear {
+                        self.carbs = String(food.totalNutrition.carbs)
+                    }
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
+                    .accessibilityLabel("Carbs input")
+            }
+            .padding()
+            
+            HStack {
+                Text("Fats (g):")
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                TextField("5", text: $fats)
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 100)
+                    .keyboardType(.decimalPad)
+                    .onAppear {
+                        self.fats = String(food.totalNutrition.fat)
+                    }
+                    .textFieldStyle(.roundedBorder)
+                    .accessibilityLabel("Fats input")
+                    .padding()
+            }
+            Spacer()
+        }
+    }
+    
+    var foodEditArea: some View {
+            HStack {
+                // inputs and labels to change the amount
+                Text("Amount (g/ml):")
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                TextField("100g", text: $amount)
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+                    .frame(width: 100)
+                    .textFieldStyle(.roundedBorder)
+                    .onAppear {
+                        self.amount = String(food.amount)
+                    }
+                    .accessibilityLabel("Amount input field")
+            }
     }
     
     /// method for fetchign the food item using diary service

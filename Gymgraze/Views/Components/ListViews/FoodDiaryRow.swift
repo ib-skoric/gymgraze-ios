@@ -19,10 +19,12 @@ struct FoodDiaryRow: View {
             VStack(alignment: .leading) {
                 Text("\(food.name)")
                     .font(.headline)
-                Text(String(food.amount) + "g")
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .foregroundStyle(.gray)
+                if food.name != "Quick add" {
+                    Text(String(food.amount) + "g")
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .foregroundStyle(.gray)
+                }
                 Text("C: \(String(format: "%.1f", food.totalNutrition.carbs)) P: \(String(format: "%.1f", food.totalNutrition.protein)) F: \(String(format: "%.1f", food.totalNutrition.fat))")
                     .font(.subheadline)
                     .fontWeight(.light)
