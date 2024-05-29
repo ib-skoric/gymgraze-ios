@@ -40,7 +40,7 @@ struct FoodDetailView: View {
                     // table to show current nutritional values
                     if food.name == "Quick add" {
                         NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: .constant("100"))
-
+                        
                     } else {
                         NutritionalInfoTable(nutritionalInfo: food.nutritionalInfo, amount: $amount)
                     }
@@ -51,7 +51,7 @@ struct FoodDetailView: View {
                         foodEditArea
                             .padding()
                     }
-   
+                    
                     Spacer()
                     Button(action: {
                         print("Save button tapped")
@@ -197,33 +197,35 @@ struct FoodDetailView: View {
                     }
                     .textFieldStyle(.roundedBorder)
                     .accessibilityLabel("Fats input")
-                    .padding()
             }
+            .padding()
+            
             Spacer()
         }
     }
     
     var foodEditArea: some View {
-            HStack {
-                // inputs and labels to change the amount
-                Text("Amount (g/ml):")
-                    .font(.subheadline)
-                    .fontWeight(.bold)
-                
-                Spacer()
-                
-                TextField("100g", text: $amount)
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
-                    .frame(width: 100)
-                    .textFieldStyle(.roundedBorder)
-                    .onAppear {
-                        self.amount = String(food.amount)
-                    }
-                    .accessibilityLabel("Amount input field")
-            }
+        HStack {
+            // inputs and labels to change the amount
+            Text("Amount (g/ml):")
+                .font(.subheadline)
+                .fontWeight(.bold)
+            
+            Spacer()
+            
+            TextField("100g", text: $amount)
+                .font(.subheadline)
+                .fontWeight(.light)
+                .multilineTextAlignment(.trailing)
+                .keyboardType(.numberPad)
+                .frame(width: 100)
+                .textFieldStyle(.roundedBorder)
+                .onAppear {
+                    self.amount = String(food.amount)
+                }
+                .accessibilityLabel("Amount input field")
+        }
+        .padding()
     }
     
     /// method for fetchign the food item using diary service
@@ -258,19 +260,32 @@ struct FoodDetailView: View {
     func updateFoodAmount() {
         let diaryService = DiaryService()
         
-        let intAmount = Int(amount) ?? 0
-        
-        print(food.id)
-        
-        diaryService.updateFoodAmount(foodId: food.id, amount: intAmount) { result in
-            switch result {
-            case .success(let food):
-                print(food)
-                diaryVM.fetchFoodDiary()
-            case .failure(let error):
-                print(error)
+        if food.name != "Quick add" {
+            let intAmount = Int(amount) ?? 0
+            
+            diaryService.updateFoodAmount(foodId: food.id, amount: intAmount) { result in
+                switch result {
+                case .success(let food):
+                    print(food)
+                    diaryVM.fetchFoodDiary()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        } else {
+            
+            let kcalInt = Int(calories) ?? 0
+            
+            diaryService.updateQuickFood(foodId: food.id, kcal: kcalInt, protein: Double(protein) ?? 0, carbs: Double(carbs) ?? 0, fats: Double(fats) ?? 0) { result in
+                switch result {
+                case .success(let food):
+                    print(food)
+                    diaryVM.fetchFoodDiary()
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
+        
     }
-    
 }

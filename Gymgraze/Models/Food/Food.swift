@@ -183,3 +183,22 @@ struct FoodItem: Codable, Identifiable {
 struct FoodSummary: Codable {
     var kcal: Double
 }
+
+struct FoodToAPI: Encodable {
+    var name: String
+    var barcode: String
+    var amount: Double
+    var food_diary_entry_id: Int
+    var meal_id: Int
+    var nutritional_info_attributes: NutritionalInfoToAPI
+}
+
+struct NutritionalInfoToAPI: Encodable {
+    var kcal: Int
+    var carbs: Double
+    var fat: Double
+    var protein: Double
+    var salt: Double
+    var sugar: Double
+    var fiber: Double
+}

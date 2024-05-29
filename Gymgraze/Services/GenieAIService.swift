@@ -12,7 +12,7 @@ class OpenAIService {
     func getOpenAIResponse(method: String, kcal: Double, protein: Double, carbs: Double, fat: Double, completion: @escaping (Result<String, APIError>) -> Void) {
         let token: String? = getToken()
         
-        guard let url = URL(string: "https://gymgraze-3e55f4cbb92e.herokuapp.com/openai") else {
+        guard let url = URL(string: "http://localhost:3000/openai") else {
             completion(.failure(APIError.invalidURL))
             return
         }
