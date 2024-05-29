@@ -12,6 +12,7 @@ struct EditPersonalDetailsView: View {
     @State var name: String = ""
     @State var age: String = ""
     @State var height: String = ""
+    @State private var showConfirmationModal = false
     @EnvironmentObject var userVM: UserViewModel
     @Binding var notification: InAppNotification?
     
@@ -37,6 +38,18 @@ struct EditPersonalDetailsView: View {
                 }
                 
                 Spacer()
+                
+                Button(action: {
+                    showConfirmationModal = true
+                }, label: {
+                    Text("Delete my account")
+                        .foregroundColor(.primary)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .cornerRadius(10)
+                })
+                .padding()
             }
             // on appear fetch detail
             .onAppear {
@@ -47,6 +60,11 @@ struct EditPersonalDetailsView: View {
             // on disappear update the details
             .onDisappear {
                 handlePersonalDetailsUpdate()
+            }
+            .alert(isPresented: $showConfirmationModal) {
+                Alert(title: Text("Are you sure you want to delete your account?"), message: Text("This action cannot be undone."), primaryButton: .destructive(Text("Delete"), action: {
+                    deleteUserProfile(userId: userVM.user?.id ?? 0)
+                }), secondaryButton: .cancel())
             }
         }
     }
@@ -62,6 +80,27 @@ struct EditPersonalDetailsView: View {
             case .failure:
                 print("Failed to update personal details")
             }
+        }
+    }
+    
+    func deleteUserProfile(userId: Int) {
+        
+        let userService = UserService()
+        
+        userService.deleteProfile(userId: userId) { result in
+            switch result {
+            case .success:
+                logout()
+                print("Successfully deleted account")
+            case .failure:
+                print("Failed to delete account")
+            }
+        }
+    }
+    
+    func logout() {
+        DispatchQueue.main.async {
+            userVM.logout()
         }
     }
 }

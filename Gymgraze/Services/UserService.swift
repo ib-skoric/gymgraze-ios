@@ -737,4 +737,37 @@ class UserService {
             }
         }.resume()
     }
+    
+    func deleteProfile(userId: Int, completion: @escaping (Result<Bool, APIError>) -> Void) {
+        let token: String? = getToken()
+        
+        guard let url = URL(string: "https://gymgraze-3e55f4cbb92e.herokuapp.com/user/\(userId)") else {
+            completion(.failure(APIError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token ?? "not set")", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(APIError.serverDown))
+                return
+            }
+            
+            if let httpResonse = response as? HTTPURLResponse {
+                switch httpResonse.statusCode {
+                case 202:
+                    completion(.success(true))
+                case 422:
+                    print("Could not delete user")
+                    completion(.failure(APIError.custom(errorMessage: "Could not delete user")))
+                default:
+                    completion(.failure(APIError.custom(errorMessage: "Status code: \(httpResonse.statusCode)")))
+                }
+            }
+        }.resume()
+    }
 }

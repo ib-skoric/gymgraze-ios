@@ -19,7 +19,12 @@ struct LoginView: View {
         NavigationStack {
             VStack {
                 // add the logo
-                Image("logo").resizable().frame(width: 150, height: 150)
+                Image("logo")
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250, height: 250)
+                    .padding(.bottom)
                 // add in two custom input fields
                 InputField(data: $userVM.email, title: "Email").accessibilityLabel("Email input field")
                     .autocapitalization(.none)
