@@ -47,6 +47,14 @@ struct BarcodeScannerView: View {
                         }
                     }
                 }
+                .onDisappear {
+                        scannedText = ""
+                        isShowingScanner = false
+                        DispatchQueue.main.async {
+                            isShowingScanner = true
+                            id += 1
+                        }
+                }
             }
             .inAppNotificationView(notification: $notification)
         }
