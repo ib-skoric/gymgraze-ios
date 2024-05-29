@@ -84,6 +84,11 @@ struct RegistrationView: View {
                     Text("That's all!\n\n Ready?\n Hit the button below and let's go! 🚀")
                         .multilineTextAlignment(.center)
                         .font(.headline)
+                    Text("By signing up, you agree to your data being processed in the European Union")
+                        .multilineTextAlignment(.center)
+                        .font(.caption)
+                        .foregroundStyle(.gray)
+                        .padding()
                 }
                 .transition(.push(from: .trailing))
             }
