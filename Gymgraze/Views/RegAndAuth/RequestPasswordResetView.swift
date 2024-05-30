@@ -28,6 +28,8 @@ struct RequestPasswordResetView: View {
                 .padding()
             
             InputField(data: $passwordResetEmail, title: "Your email")
+                .autocapitalization(.none)
+                .autocorrectionDisabled()
                 .accessibilityLabel("Email input field")
             
             Spacer()
