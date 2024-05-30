@@ -100,7 +100,7 @@ struct AddToFoodDiaryView: View {
             .accessibilityLabel("Search button")
         }
         .navigationDestination(isPresented: $isBarcodeScannerPresented, destination: {
-            BarcodeScannerView()
+            BarcodeScannerView(date: $date)
         })
         .sheet(isPresented: $isQuickAddPresented) {
             QuickFoodAddView(selectedDate: date, notification: $notification)
