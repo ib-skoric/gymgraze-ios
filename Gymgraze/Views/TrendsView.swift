@@ -59,7 +59,7 @@ struct TrendsView: View {
                 if trendsVM.trendsGraphsVisible["Weight"] == true {
                     GroupBox("Body weight trends") {
                         // check that no value is set to 0
-                        if !trendsVM.trends.weights.contains { $0.weight == 0 } {
+                        if (!trendsVM.trends.weights.contains { $0.weight == 0 } && !trendsVM.trends.weights.isEmpty) {
                             // Sort the weights array by date
                             let sortedWeights = trendsVM.trends.weights.sorted { $0.date < $1.date }
                             Chart(sortedWeights, id: \.id) { dataPoint in
@@ -87,7 +87,7 @@ struct TrendsView: View {
                 // check if Body fat percentage graph is visible and if it has enough data
                 if trendsVM.trendsGraphsVisible["Body fat percentage"] == true {
                     GroupBox("Body fat percentage trends") {
-                        if !trendsVM.trends.bodyFatPercentages.contains(where: { $0.bodyFatPercentage == 0 }) {
+                        if (!trendsVM.trends.bodyFatPercentages.contains(where: { $0.bodyFatPercentage == 0 }) && !trendsVM.trends.bodyFatPercentages.isEmpty) {
                             // Sort the body fat percentages array by date
                             let sortedBfPercentages = trendsVM.trends.bodyFatPercentages.sorted { $0.date < $1.date }
                             Chart(sortedBfPercentages, id: \.id) { dataPoint in
@@ -116,7 +116,7 @@ struct TrendsView: View {
                 // check if Arm measurement graph is visible and if it has enough data
                 if trendsVM.trendsGraphsVisible["Arm measurement"] == true {
                     GroupBox("Arm measurement trends") {
-                        if !trendsVM.trends.armMeasurements.contains(where: { $0.armMeasurement == 0 }) {
+                        if (!trendsVM.trends.armMeasurements.contains(where: { $0.armMeasurement == 0 }) && !trendsVM.trends.armMeasurements.isEmpty) {
                             // Sort the arm measurements array by date
                             let sortedArmMeasurements = trendsVM.trends.armMeasurements.sorted { $0.date < $1.date }
                             Chart(sortedArmMeasurements, id: \.id) { dataPoint in
@@ -144,7 +144,7 @@ struct TrendsView: View {
                 // check if Waist measurement graph is visible and if it has enough data
                 if trendsVM.trendsGraphsVisible["Waist measurement"] == true {
                     GroupBox("Waist measurement trends") {
-                        if !trendsVM.trends.waistMeasurements.contains(where: { $0.waistMeasurement == 0 }) {
+                        if (!trendsVM.trends.waistMeasurements.contains(where: { $0.waistMeasurement == 0 }) && !trendsVM.trends.waistMeasurements.isEmpty) {
                             // Sort the waist measurements array by date
                             let sortedWaistMeasurements = trendsVM.trends.waistMeasurements.sorted { $0.date < $1.date }
                             Chart(sortedWaistMeasurements, id: \.id) { dataPoint in
@@ -172,7 +172,7 @@ struct TrendsView: View {
                 // check if Chest measurement graph is visible and if it has enough data
                 if trendsVM.trendsGraphsVisible["Chest measurement"] == true {
                     GroupBox("Chest measurement trends") {
-                        if !trendsVM.trends.chestMeasurements.contains(where: { $0.chestMeasurement == 0 }) {
+                        if (!trendsVM.trends.chestMeasurements.contains(where: { $0.chestMeasurement == 0 }) && !trendsVM.trends.chestMeasurements.isEmpty) {
                             // Sort the chest measurements array by date
                             let sortedChestMeasurements = trendsVM.trends.chestMeasurements.sorted { $0.date < $1.date }
                             Chart(sortedChestMeasurements, id: \.id) { dataPoint in
