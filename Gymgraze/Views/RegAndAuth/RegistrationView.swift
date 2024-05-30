@@ -43,8 +43,8 @@ struct RegistrationView: View {
             Step(question: "Give us a password to keep your account safe and sound!", placeholder: "Password", binding: $password, error: $passwordError),
             Step(question: "What should we call you?", placeholder: "Name", binding: $name, error: $nameError),
             Step(question: "What is your age?", placeholder: "Age", binding: $age, error: $ageError),
-            Step(question: "What is your current weight?", placeholder: "Weight", binding: $weight, error: $weightError),
-            Step(question: "What is your current height?", placeholder: "Height", binding: $height, error: $heightError)
+            Step(question: "What is your current weight?", placeholder: "Weight (kg)", binding: $weight, error: $weightError),
+            Step(question: "What is your current height?", placeholder: "Height (cm)", binding: $height, error: $heightError)
         ]
     }
     var body: some View {

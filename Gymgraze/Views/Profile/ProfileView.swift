@@ -70,11 +70,8 @@ struct ProfileView: View {
     
     func logout() {
         DispatchQueue.main.async {
+            userLoggedOut = true
             userVM.logout()
         }
     }
 }
-
-//#Preview {
-//    ProfileView()
-//}
