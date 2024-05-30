@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var userVM: UserViewModel
     @State var selectedTab = 0
     @State private var notification: InAppNotification? = nil
+    @State var date: Date = Date()
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -23,7 +24,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Diary", systemImage: "book.pages.fill")
                 }.tag(1)
-            BarcodeScannerView()
+            BarcodeScannerView(date: $date)
                 .tabItem {
                     Label("Quick scan", systemImage: "plus.circle")
                 }.tag(2)

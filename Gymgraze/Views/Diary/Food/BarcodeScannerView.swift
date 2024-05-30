@@ -17,7 +17,8 @@ struct BarcodeScannerView: View {
     @State var showProductView = false
     @State private var id = 0
     @State private var notification: InAppNotification? = nil
-    
+    @Binding var date: Date
+
     var body: some View {
         // check that the device supports data scanner
         if DataScannerViewController.isSupported && DataScannerViewController.isAvailable {
@@ -33,7 +34,7 @@ struct BarcodeScannerView: View {
                     .id(id)
                     // when scanned, pop up the sheet
                     .sheet(isPresented: $showProductView) {
-                        ProductView(barcode: scannedText, selectedDate: Date(), notification: $notification)
+                        ProductView(barcode: scannedText, selectedDate: date ?? Date(), notification: $notification)
                     }
                 }
                 // when the sheet is dismissed, reset the scanned text and show the scanner again
@@ -65,8 +66,4 @@ struct BarcodeScannerView: View {
             Text("It appears your camera may not be available")
         }
     }
-}
-
-#Preview {
-    BarcodeScannerView()
 }
