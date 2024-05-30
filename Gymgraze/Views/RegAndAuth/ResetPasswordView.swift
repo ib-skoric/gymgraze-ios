@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ResetPasswordView: View {
     
+    // state and env variables to handle view updates
     @EnvironmentObject var userVM: UserViewModel
     @State private var newPassword: String = ""
     @State private var newPasswordConfirm: String = ""
@@ -34,8 +35,9 @@ struct ResetPasswordView: View {
             Spacer()
             
             InputField(data: $newPassword, title: "Your new password")
+                .accessibilityLabel("New password input field")
             InputField(data: $newPasswordConfirm, title: "Confirm your new password")
-            
+                .accessibilityLabel("New password confirmation input field")
             Spacer()
             
             Button(action: {
@@ -45,7 +47,7 @@ struct ResetPasswordView: View {
                 Text("Reset password")
             }).buttonStyle(CTAButton())
                 .padding()
-                .accessibilityLabel("Confirm email")
+                .accessibilityLabel("Confirm email button")
                 .navigationDestination(isPresented: $passwordResetSuccessful, destination: {
                     LoginView().navigationBarBackButtonHidden(true)
                 })
@@ -55,12 +57,14 @@ struct ResetPasswordView: View {
         }
     }
     
+    /// func to validate if the passwords match
     func validatePasswordsMatch() {
         if newPassword != newPasswordConfirm {
             self.hasErrorsResettingPassword = true
         }
     }
     
+    /// func to reset the password
     func resetPassword(token: String, password: String) {
         UserService().resetPsasword(token: token, password: password) {
             (result) in

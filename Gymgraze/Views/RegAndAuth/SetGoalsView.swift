@@ -48,6 +48,7 @@ struct SetGoalsView: View {
             VStack {
                 InputField(data: $stepsCount, title: "👟 Target step count per day")
                     .padding(.bottom)
+                    .accessibilityLabel("Target step count input field")
                 Text(stepsCountError)
                     .multilineTextAlignment(.center)
                     .font(.subheadline)
@@ -55,6 +56,7 @@ struct SetGoalsView: View {
                 
                 InputField(data: $exercise, title: "🏋️‍♂️ Target exercise daily (in minutes)")
                     .padding(.bottom)
+                    .accessibilityLabel("Target exercise daily field")
                 Text(exerciseError)
                     .multilineTextAlignment(.center)
                     .font(.subheadline)
@@ -62,6 +64,7 @@ struct SetGoalsView: View {
                 
                 InputField(data: $kcal, title: "🍏 Calories to consume per day (kcal)")
                     .padding(.bottom)
+                    .accessibilityLabel("Calories to consume per day field")
                 Text(kcalError)
                     .multilineTextAlignment(.center)
                     .font(.subheadline)
@@ -69,7 +72,7 @@ struct SetGoalsView: View {
             }
             
             
-            Text("You can always change these later.")
+            Text("P.S. You can always change these later.")
                 .multilineTextAlignment(.center)
                 .font(.subheadline)
                 .foregroundColor(.gray)
@@ -96,6 +99,7 @@ struct SetGoalsView: View {
         }
     }
     
+    /// function that validates all fields have value and values are valid
     func validateFields() -> Bool {
         var isValid: Bool = false
         
@@ -113,6 +117,7 @@ struct SetGoalsView: View {
         
     }
     
+    // function to handle setting goals via API
     func setGoals() {
         isLoading = true
         // convert string values to int

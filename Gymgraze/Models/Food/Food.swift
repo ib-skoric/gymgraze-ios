@@ -63,6 +63,12 @@ struct FoodItem: Codable, Identifiable {
             imageURL = ""
             nutriments = Nutriments()
         }
+        
+        init(productName: String, nutriments: Nutriments) {
+            id = ""
+            self.productName = productName
+            self.nutriments = nutriments
+        }
     }
     
     struct Nutriments: Codable {
@@ -141,6 +147,16 @@ struct FoodItem: Codable, Identifiable {
             self.sugar100g = 0
             self.fiber100g = 0
         }
+        
+        init(kcal100g: Int, carbs100g: Double, protein100g: Double, fat100g: Double, salt100g: Double, sugar100g: Double, fiber100g: Double) {
+            self.kcal100g = kcal100g
+            self.carbs100g = carbs100g
+            self.protein100g = protein100g
+            self.fat100g = fat100g
+            self.salt100g = salt100g
+            self.sugar100g = sugar100g
+            self.fiber100g = fiber100g
+        }
     }
     
     enum CodingKeys: String, CodingKey {
@@ -153,6 +169,11 @@ struct FoodItem: Codable, Identifiable {
         self.product = product
     }
     
+    init(product: Product) {
+        self.id = "0000000000000"
+        self.product = product
+    }
+    
     init() {
         id = ""
         product = Product()
@@ -161,4 +182,23 @@ struct FoodItem: Codable, Identifiable {
 
 struct FoodSummary: Codable {
     var kcal: Double
+}
+
+struct FoodToAPI: Encodable {
+    var name: String
+    var barcode: String
+    var amount: Double
+    var food_diary_entry_id: Int
+    var meal_id: Int
+    var nutritional_info_attributes: NutritionalInfoToAPI
+}
+
+struct NutritionalInfoToAPI: Encodable {
+    var kcal: Int
+    var carbs: Double
+    var fat: Double
+    var protein: Double
+    var salt: Double
+    var sugar: Double
+    var fiber: Double
 }

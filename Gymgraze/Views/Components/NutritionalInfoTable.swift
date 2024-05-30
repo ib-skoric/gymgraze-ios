@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct NutritionalInfoTable: View {
-    
+    // state and env variables to handle view updates
     var nutritionalInfo: NutritionalInfo
     @Binding var amount: String
     
     var body: some View {
-        
         let calories_calc = Double(nutritionalInfo.kcal) * (Double(amount) ?? 0) / 100
         // round up calories calculated so that inputting 50 and 50.5 will yield slightly different results
         let calories = Int(ceil(calories_calc))
@@ -26,6 +25,7 @@ struct NutritionalInfoTable: View {
 
         VStack {
             HStack {
+                // show all values in a table like format
                 Text("**Calories:** \(calories)")
                     .font(.subheadline)
                     .fontWeight(.light)
@@ -42,7 +42,10 @@ struct NutritionalInfoTable: View {
                     .font(.subheadline)
                     .fontWeight(.light)
             }
+            // insert a divider
             Divider()
+            
+            // show remaining stats
             HStack {
                 Text("**Fiber:** \(fiber, specifier: "%.2f")g")
                     .font(.subheadline)
@@ -61,7 +64,3 @@ struct NutritionalInfoTable: View {
         .frame(height: 75)
     }
 }
-
-//#Preview {
-//    NutritionalInfoTable(nutritionalInfo: NutritionalInfo())
-//}

@@ -9,27 +9,17 @@ import SwiftUI
 
 struct RequestPasswordResetView: View {
     
+    // state and env variables to handle view updates
     @State var passwordResetEmail: String = ""
     @State var isLoading = false
     @State var hasErrorSendingEmail = false
     @State var emailSentSuccessfully = false
-    
     @EnvironmentObject var userVM: UserViewModel
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Text("Reset your password")
-                    .multilineTextAlignment(.center)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                Text("It happens to everyone, no worries!")
-                    .multilineTextAlignment(.center)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            }
-            .padding(.top)
+            viewHeading
+                .padding(.top)
             
             Spacer()
             
@@ -38,6 +28,9 @@ struct RequestPasswordResetView: View {
                 .padding()
             
             InputField(data: $passwordResetEmail, title: "Your email")
+                .autocapitalization(.none)
+                .autocorrectionDisabled()
+                .accessibilityLabel("Email input field")
             
             Spacer()
             Button(action: {
@@ -60,6 +53,7 @@ struct RequestPasswordResetView: View {
         }
     }
     
+    /// func to send password reset email
     func requestPasswordReset() {
         isLoading = true
         userVM.requestPasswordRest(email: passwordResetEmail) { result in
@@ -76,6 +70,20 @@ struct RequestPasswordResetView: View {
                     hasErrorSendingEmail = true
                 }
             }
+        }
+    }
+    
+    var viewHeading: some View {
+        VStack {
+            Text("Reset your password")
+                .multilineTextAlignment(.center)
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("It happens to everyone, no worries!")
+                .multilineTextAlignment(.center)
+                .font(.subheadline)
+                .foregroundColor(.gray)
         }
     }
 }

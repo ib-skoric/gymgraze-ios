@@ -9,10 +9,12 @@ import SwiftUI
 
 struct WorkoutDiaryRow: View {
     
+    // variables
     var workout: Workout
-
+    
     var body: some View {
         HStack {
+            // list all exercises within a workout
             VStack(alignment: .leading) {
                 Text("Workout")
                     .font(.headline)

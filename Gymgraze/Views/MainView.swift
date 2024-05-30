@@ -9,16 +9,19 @@ import SwiftUI
 
 struct MainView: View {
     
+    // Env and observed objects
     @EnvironmentObject var userVM: UserViewModel
     @ObservedObject var mainVM = MainViewModel()
     
-    
+    // variable to store random cards
     var randomCards: [ArticleCard] = []
     
+    // actual view
     var body: some View {
         NavigationStack {
             Heading(text: "👋 Welcome, \(userVM.user?.name ?? "there")")
             
+            // scroll view for quick stat cards
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     StatCard(type: "calories", goal: userVM.user?.goal?.kcal, currentValue: mainVM.totalKcal)
@@ -28,6 +31,7 @@ struct MainView: View {
                 .frame(height: 200)
             }
             
+            // scroll view for article tip cards
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach(mainVM.randomCards) { card in
                     NavigationLink(destination: CardDetailView(card: card)) {
@@ -40,6 +44,7 @@ struct MainView: View {
             
             Spacer()
         }.onAppear {
+            // fetch data and food summary
             mainVM.fetchData()
             mainVM.fetchFoodSummary()
         }

@@ -8,25 +8,27 @@
 import SwiftUI
 
 struct AddToDropdown: View {
-
+    // state and env variables to handle view updates
     var type: String
     @Binding var date: Date
     @Binding var notification: InAppNotification?
     @EnvironmentObject var diaryVM: DiaryViewModel
 
     var body: some View {
-        
+        // show menu
         Menu {
             NavigationLink {
                 AddToFoodDiaryView(date: $date)
             } label: {
                 Label("Add food", systemImage: "fork.knife")
             }
+            .accessibilityLabel("Add food button")
             NavigationLink {
                 StartWorkoutView(date: date, notification: $notification)
             } label: {
                 Label("Add workout", systemImage: "figure.run")
             }
+            .accessibilityLabel("Add workout button")
             if diaryVM.diaryProgressEntry == nil {
                 NavigationLink {
                     AddProgressLogView(date: date, notification: $notification)
@@ -34,8 +36,11 @@ struct AddToDropdown: View {
                     Label("Add progress log", systemImage: "square.and.pencil")
                         .environmentObject(diaryVM)
                 }
+                .accessibilityLabel("Add progress log button")
+
             }
         } label: {
+            // compute label based on button type
             if type == "menu" {
                 Label("", systemImage: "plus")
                     .font(.system(size: 20))
@@ -50,7 +55,3 @@ struct AddToDropdown: View {
         .padding(.trailing)
     }
 }
-
-//#Preview {
-//    AddToDropdown(isAddFoodViewPresented: .constant(false), isAddWorkoutViewPresented: .constant(false), type: "menu", date: Date())
-//}

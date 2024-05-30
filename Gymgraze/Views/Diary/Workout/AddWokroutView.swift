@@ -21,6 +21,7 @@ struct AddWorkoutView: View {
     @Binding var notification: InAppNotification?
     @StateObject var viewModel = AddWorkoutViewModel()
     
+    /// function to format the data as short string
     func formatDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -29,6 +30,7 @@ struct AddWorkoutView: View {
         return dateFormatter.string(from: date)
     }
     
+    /// function to handle adding exercise to workout based on the template
     func handleTemplate() {
         if let template = selectedTemplate {
             
@@ -61,27 +63,10 @@ struct AddWorkoutView: View {
     }
     
     
-    
     var body: some View {
         NavigationStack {
             VStack {
-                HStack {
-                    Heading(text: "New workout")
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        showAddExerciseView = true
-                    }, label: {
-                        Label("", systemImage: "plus")
-                            .font(.system(size: 25))
-                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
-                    })
-                    .padding(.trailing)
-                    .sheet(isPresented: $showAddExerciseView) {
-                        AddExerciseView(viewModel: viewModel)
-                    }
-                }
+                heading
                 
                 Text("Started at: \(formatDate(date: startedAt))")
                     .fontWeight(.light)
@@ -104,38 +89,60 @@ struct AddWorkoutView: View {
                 Spacer()
                 
                 Button(action: {
-                    viewModel.date = date
-                    viewModel.saveWorkout() { result in
-                        switch result {
-                        case .success(_):
-                            DispatchQueue.main.async {
-                                print("successfully saved workout")
-                                self.isWorkoutFinished = true
-                                viewModel.reset()
-                                diaryVM.refresh()
-                                selectedTemplate = nil
-                                notification = InAppNotification(style: .success, message: "Workout has been saved successfully")
-                                self.dismiss()
-                            }
-                        case .failure(let error):
-                            notification = InAppNotification(style: .networkError, message: "Something went wrong, try again later")
-                            print(error)
-                        }
-                    }
+                    handleSaveWorkout()
                 }) {
                     Text("Finish workout")
                 }
                 .buttonStyle(CTAButton())
                 .padding()
-                
+                .disabled(viewModel.workoutExercies.isEmpty)
+                .accessibilityLabel("Finish workout button")
             }
             .onDisappear {
                 diaryVM.refresh()
             }
         }
     }
+    
+    func handleSaveWorkout() {
+        viewModel.date = date
+        viewModel.saveWorkout() { result in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    print("successfully saved workout")
+                    self.isWorkoutFinished = true
+                    viewModel.reset()
+                    diaryVM.refresh()
+                    selectedTemplate = nil
+                    notification = InAppNotification(style: .success, message: "Workout has been saved successfully")
+                    self.dismiss()
+                }
+            case .failure(let error):
+                notification = InAppNotification(style: .networkError, message: "Something went wrong, try again later")
+                print(error)
+            }
+        }
+    }
+    
+    var heading: some View {
+        HStack {
+            Heading(text: "New workout")
+            
+            Spacer()
+            
+            Button(action: {
+                showAddExerciseView = true
+            }, label: {
+                Label("", systemImage: "plus")
+                    .font(.system(size: 25))
+                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.purple, .orange]), startPoint: .top, endPoint: .bottom))
+            })
+            .padding(.trailing)
+            .sheet(isPresented: $showAddExerciseView) {
+                AddExerciseView(viewModel: viewModel)
+            }
+            .accessibilityLabel("Add exercise to workout button")
+        }
+    }
 }
-
-//#Preview {
-//    AddWorkoutView()
-//}

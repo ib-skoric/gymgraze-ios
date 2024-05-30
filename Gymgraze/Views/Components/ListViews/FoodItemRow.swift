@@ -9,11 +9,13 @@ import SwiftUI
 
 struct FoodItemRow: View {
     
+    // variables
     var food: FoodItem.Product
     @ObservedObject var viewModel: FavouriteFoodsViewModel
     
     var body: some View {
         HStack {
+            // show product name if not, show no name found
             VStack(alignment: .leading) {
                 Text((String(food.productName ?? "No name found")))
                     .font(.headline)
@@ -23,6 +25,7 @@ struct FoodItemRow: View {
                     .foregroundStyle(.gray)
             }
             Spacer()
+            
             // add icon if the food is a favourite
             if food.id != "" && viewModel.favouriteFoodsIds.contains(food.id) || viewModel.favouriteFoods.contains(where: { $0.id == food.id }) {
                 Image(systemName: "star.fill")
@@ -41,7 +44,3 @@ struct FoodItemRow: View {
         .padding()
     }
 }
-
-//#Preview {
-//    FoodItemRow(food: FoodItem.Product())
-//}

@@ -15,6 +15,7 @@ struct InAppNotificationView: View {
     var onCanceled: (() -> Void)
     
     var body: some View {
+        // HStack to display the message and the icon
         HStack(alignment: .center, spacing: 12) {
               Image(systemName: style.icon)
                 .foregroundColor(.primary)
@@ -42,7 +43,3 @@ struct InAppNotificationView: View {
             .padding(.horizontal, 16)
           }
 }
-
-//#Preview {
-//    InAppNotificationView()
-//}

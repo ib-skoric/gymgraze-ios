@@ -19,6 +19,7 @@ struct AddExerciseView: View {
     
     var body: some View {
         NavigationStack {
+            // list of all excercise types
             List(viewModel.exercisesTypes, id: \.id) { exerciseType in
                 let isCardio = exerciseType.exerciseCategory == "cardio"
                 let isExerciseInWorkout = viewModel.workoutExercies.contains(where: { $0.exerciseTypeId == exerciseType.id })
@@ -57,6 +58,7 @@ struct AddExerciseView: View {
         .accentColor(.orange)
     }
     
+    /// function to display correct execrcise type icon
     private func exerciseTypeImage(isCardio: Bool) -> some View {
         if isCardio {
             return Image(systemName: "figure.run")
@@ -67,8 +69,7 @@ struct AddExerciseView: View {
         }
     }
     
-    
-    
+    /// functon to handle tapping on exercise (ie. adding it or removing it from the list) 
     func handleTapOnExercise(exerciseType: ExerciseType, isExerciseInWorkout: Bool) {
         if !isExerciseInWorkout {
             if !exerciseType.historicalSetRepData.isEmpty {
@@ -100,7 +101,3 @@ struct AddExerciseView: View {
         }
     }
 }
-
-//#Preview {
-//    AddExerciseView()
-//}

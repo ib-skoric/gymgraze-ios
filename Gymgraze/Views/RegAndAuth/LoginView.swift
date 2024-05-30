@@ -11,7 +11,6 @@ struct LoginView: View {
     
     // environment object to store the user view model
     @EnvironmentObject var userVM: UserViewModel
-    
     @State var isLoading: Bool = false
     @State var isAuthenticatedAndConfirmedUser = false
     @State private var notification: InAppNotification? = nil
@@ -20,10 +19,19 @@ struct LoginView: View {
         NavigationStack {
             VStack {
                 // add the logo
-                Image("logo").resizable().frame(width: 150, height: 150)
+                Image("logo")
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250, height: 250)
+                    .padding(.bottom)
                 // add in two custom input fields
                 InputField(data: $userVM.email, title: "Email").accessibilityLabel("Email input field")
+                    .autocapitalization(.none)
+                    .autocorrectionDisabled()
+                    .accessibilityLabel("Email input field")
                 InputField(data: $userVM.password, title: "Password").accessibilityLabel("Password input field")
+                    .accessibilityLabel("Password input field")
                 // add in the login button
                 Button(action: {
                     authenticateUser()
@@ -46,6 +54,8 @@ struct LoginView: View {
                     notification = InAppNotification(style: .error, message: "Ooops, something went wrong authenticating you. Please try again later")
                 }
             }
+            
+            // navigation links to reset password and sign up
             NavigationLink(destination: RequestPasswordResetView()) {
                 Text("🔒 Forgot password? Let's reset it")
                     .tint(.secondary)
@@ -61,6 +71,7 @@ struct LoginView: View {
         }
     }
     
+    /// func to authenticate user via API
     func authenticateUser() {
         isLoading = true
         userVM.logout()

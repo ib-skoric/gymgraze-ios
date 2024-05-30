@@ -21,6 +21,7 @@
 		210DA2FF2B826ABF00F96B75 /* ArticleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210DA2FE2B826ABF00F96B75 /* ArticleCardView.swift */; };
 		2132124D2BA8A1A2006548D3 /* NutritionalInfoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2132124C2BA8A1A2006548D3 /* NutritionalInfoTable.swift */; };
 		214087772BA25929004E0B51 /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214087762BA25929004E0B51 /* FoodDetailView.swift */; };
+		214882D12C04FA9E007C2589 /* QuickFoodAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214882D02C04FA9E007C2589 /* QuickFoodAddView.swift */; };
 		2150C1612BD064FA00B4097F /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150C1602BD064FA00B4097F /* CardDetailView.swift */; };
 		2150C1652BD0667B00B4097F /* ArticleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150C1642BD0667B00B4097F /* ArticleCard.swift */; };
 		215D54322B757B1C00A07029 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D54312B757B1C00A07029 /* Registration.swift */; };
@@ -117,6 +118,7 @@
 		210DA2FE2B826ABF00F96B75 /* ArticleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCardView.swift; sourceTree = "<group>"; };
 		2132124C2BA8A1A2006548D3 /* NutritionalInfoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfoTable.swift; sourceTree = "<group>"; };
 		214087762BA25929004E0B51 /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
+		214882D02C04FA9E007C2589 /* QuickFoodAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFoodAddView.swift; sourceTree = "<group>"; };
 		2150C1602BD064FA00B4097F /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		2150C1642BD0667B00B4097F /* ArticleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCard.swift; sourceTree = "<group>"; };
 		215D54312B757B1C00A07029 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				21729B2A2B94DC7F009091B0 /* BarcodeScannerView.swift */,
 				214087762BA25929004E0B51 /* FoodDetailView.swift */,
 				21729B2C2B9503C4009091B0 /* ProductView.swift */,
+				214882D02C04FA9E007C2589 /* QuickFoodAddView.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				2170E8A92BB4B7C400599C16 /* AddExerciseTypeDropdown.swift in Sources */,
 				219FAFDE2BDD7B7400567EDA /* RestTimerPill.swift in Sources */,
 				21EC13CC2B62FDF100CF0814 /* Food.swift in Sources */,
+				214882D12C04FA9E007C2589 /* QuickFoodAddView.swift in Sources */,
 				215E46E62BC5D3A1008A6EA3 /* EditPersonalDetailsView.swift in Sources */,
 				21B595812BC186ED0018743B /* PickWorkoutTemplateView.swift in Sources */,
 				2170E8AD2BB4BECC00599C16 /* DurationInput.swift in Sources */,

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    // ----- Variables -----
+    // State variables
     @State var email: String = ""
     @State var password: String = ""
     @State var name: String = ""
@@ -43,8 +43,8 @@ struct RegistrationView: View {
             Step(question: "Give us a password to keep your account safe and sound!", placeholder: "Password", binding: $password, error: $passwordError),
             Step(question: "What should we call you?", placeholder: "Name", binding: $name, error: $nameError),
             Step(question: "What is your age?", placeholder: "Age", binding: $age, error: $ageError),
-            Step(question: "What is your current weight?", placeholder: "Weight", binding: $weight, error: $weightError),
-            Step(question: "What is your current height?", placeholder: "Height", binding: $height, error: $heightError)
+            Step(question: "What is your current weight?", placeholder: "Weight (kg)", binding: $weight, error: $weightError),
+            Step(question: "What is your current height?", placeholder: "Height (cm)", binding: $height, error: $heightError)
         ]
     }
     var body: some View {
@@ -84,6 +84,11 @@ struct RegistrationView: View {
                     Text("That's all!\n\n Ready?\n Hit the button below and let's go! 🚀")
                         .multilineTextAlignment(.center)
                         .font(.headline)
+                    Text("By signing up, you agree to your data being processed in the European Union")
+                        .multilineTextAlignment(.center)
+                        .font(.caption)
+                        .foregroundStyle(.gray)
+                        .padding()
                 }
                 .transition(.push(from: .trailing))
             }
@@ -118,14 +123,11 @@ struct RegistrationView: View {
                     .background {
                         NavigationLink(destination: ConfirmationCodeInputView(confirmationType: "email").navigationBarBackButtonHidden(true), isActive: $showEmailConfirmationView) {}
                     }
-                //                    .navigationDestination(isPresented: $showEmailConfirmationView) {
-                //                        ConfirmationCodeInputView(confirmationType: "email")
-                //                            .navigationBarBackButtonHidden(true)
-                //                    }
             }
         }
     }
     
+    /// function that validates field based on it's step ID
     func validateField(step: Int) -> Bool {
         let field = steps[step].placeholder
         let value = steps[step].binding.wrappedValue

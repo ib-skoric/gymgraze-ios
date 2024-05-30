@@ -8,12 +8,14 @@
 import Foundation
 import SwiftUI
 
+// enum for different styles
 enum InAppNotificationStyle {
     case error
     case success
     case networkError
 }
 
+// extension for computed properties
 extension InAppNotificationStyle {
     var colour : Color {
         switch self {

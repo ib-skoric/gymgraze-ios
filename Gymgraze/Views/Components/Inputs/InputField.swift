@@ -22,12 +22,14 @@ struct InputField: View {
                 .padding(4)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .offset(y: 10)
+                .accessibilityLabel("\(title) input field")
             
             // switch based on title
             switch title {
             case "Password", "Your new password", "Confirm your new password":
                 SecureField("", text: $data)
                     .padding()
+                    .accessibilityLabel("\(title) input field")
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
@@ -37,6 +39,7 @@ struct InputField: View {
                 TextField("", text: $data)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
+                    .accessibilityLabel("\(title) input field")
                     .padding()
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
@@ -45,8 +48,9 @@ struct InputField: View {
                 
             case "Age", "Weight", "Height", "Steps", "Exercise", "Calories (kcal)", "👟 Target step count per day", "🏋️‍♂️ Target exercise daily (in minutes)", "🍏 Calories to consume per day (kcal)", "Weight (kg)", "Body fat percentage (%)", "Arm measurement (cm)", "Waist measurement (cm)", "Chest measurement (cm)":
                 TextField("", text: $data)
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                     .padding()
+                    .accessibilityLabel("\(title) input field")
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
@@ -54,6 +58,7 @@ struct InputField: View {
             default:
                 TextField("", text: $data)
                     .padding()
+                    .accessibilityLabel("\(title) input field")
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)
